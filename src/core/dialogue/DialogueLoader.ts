@@ -74,7 +74,7 @@ export class YAMLDialogueLoader implements DialogueDataSource {
     const genreFiles: Record<string, string[]> = {
       'start': ['first-meeting.yaml'],
       'neutral': ['topics.yaml'], 
-      'contextual': ['conversations.yaml', 'dialogues.yaml', 'personality-quirks.yaml', 'prophetic-visions.yaml', 'sound-memories.yaml', 'forgotten-memories.yaml', 'reality-manipulation.yaml'],
+      'contextual': this.getContextualFiles(characterId),
       'end': ['goodbye.yaml']
     };
     
@@ -92,6 +92,20 @@ export class YAMLDialogueLoader implements DialogueDataSource {
     }
     
     return allNodes;
+  }
+
+  private getContextualFiles(characterId: CharacterId): string[] {
+    const commonFiles = ['memory-fragments.yaml', 'dark-hints.yaml'];
+    
+    const characterSpecificFiles: Record<CharacterId, string[]> = {
+      'shino': ['forgotten-memories.yaml'],
+      'minase': ['prophetic-visions.yaml'], 
+      'ayane': ['personality-quirks.yaml'],
+      'nazuna': ['sound-memories.yaml'],
+      'tomo': ['reality-manipulation.yaml']
+    };
+    
+    return [...commonFiles, ...(characterSpecificFiles[characterId] || [])];
   }
 
   private async loadSingleFile(characterId: CharacterId, genreDir: string, fileName: string, allNodes: DialogueNode[]): Promise<void> {
