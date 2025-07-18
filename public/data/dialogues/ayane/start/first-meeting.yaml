@@ -1,10 +1,185 @@
 dialogues:
-  - id: ayane_start_greeting
-    text: "あ、また来てくれたんですね。この廃駅で待つのも、最近は慣れてきました。"
+  # あやねとの初回出会い
+  - id: ayane_start_first_meeting
+    text: "あ、こんばんは。私、あやねです。今日は赤いマフラーを持ってきたんです。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.ayane
+        operator: equals
+        value: 0
     choices:
-      - text: "いつもここで何をしているの？"
-        next: ayane_neutral_activity
-      - text: "電車を待っているの？"
-        next: ayane_neutral_train
-      - text: "少し話していこうか"
-        next: ayane_neutral_sunset
+      - text: "素敵なマフラーだね"
+        effects:
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+          - type: increment
+            variable: ayane.muffler_mentions
+            value: 1
+        next: ayane_first_muffler_response
+      - text: "電車を待ってるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.train_mentions
+            value: 1
+        next: ayane_first_train_response
+      - text: "......（沈黙）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_first_silence_response
+
+  # あやねとの再会（無邪気な反応）
+  - id: ayane_start_cheerful
+    text: "あ、また会いましたね！前も確か、こんな風に話した気がします。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.ayane
+        operator: greater_than
+        value: 0
+    choices:
+      - text: "覚えてる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.loop_awareness
+            value: 1
+        next: ayane_memory_response
+      - text: "そうだね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_agreement_response
+      - text: "初めてじゃない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.confusion_level
+            value: 1
+        next: ayane_doubt_response
+
+  # マフラーへの愛着が強い場合
+  - id: ayane_start_muffler_focus
+    text: "この赤いマフラー、大切なんです。でも、誰にもらったのか思い出せなくて。"
+    conditions:
+      - type: variable
+        name: ayane.muffler_mentions
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "大切なものなんだね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_muffler_importance
+      - text: "誰かからのプレゼント？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.muffler_mentions
+            value: 1
+        next: ayane_muffler_mystery
+      - text: "思い出さなくてもいい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_comfort_response
+
+  # 高い信頼度での開始
+  - id: ayane_start_trusted
+    text: "あなたと話していると、とても安心します。また今日も来てくれて嬉しいです。"
+    conditions:
+      - type: variable
+        name: ayane.trust_level
+        operator: greater_than
+        value: 5
+    choices:
+      - text: "僕も嬉しい"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_mutual_happiness
+      - text: "いつでも話しに来るよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_promise_response
+      - text: "今日は何を話そうか"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.conversation_enthusiasm
+            value: 1
+        next: ayane_topic_choice
+
+  # ループ意識が高い場合
+  - id: ayane_start_loop_awareness
+    text: "不思議です。同じような会話を何度もしている気がするんです。でも、それでも楽しいです。"
+    conditions:
+      - type: variable
+        name: ayane.loop_awareness
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "同じ会話？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.loop_awareness
+            value: 1
+        next: ayane_loop_explanation
+      - text: "楽しいならいいじゃない"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_innocence_response
+      - text: "気のせいじゃない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.confusion_level
+            value: 1
+        next: ayane_confusion_response

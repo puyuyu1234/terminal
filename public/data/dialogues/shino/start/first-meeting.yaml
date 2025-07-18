@@ -1,10 +1,148 @@
 dialogues:
-  - id: shino_start_greeting
-    text: "あ、こんにちは。今日もここに来たんですね。私、橋の向こうを見ているんです。"
+  # 詩乃との初回出会い（信頼度0の場合）
+  - id: shino_start_first_meeting
+    text: "……誰？"
+    conditions:
+      - type: variable
+        name: character_encounter_count.shino
+        operator: equals
+        value: 0
     choices:
-      - text: "橋の向こうに何があるの？"
-        next: shino_neutral_bridge
-      - text: "なぜここにいるの？"
-        next: shino_neutral_reason
-      - text: "少し話していこうか"
-        next: shino_neutral_peaceful
+      - text: "ただの通りすがり"
+        effects:
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+        next: shino_first_neutral_response
+      - text: "......"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 2
+        next: shino_first_silence_response
+      - text: "君も誰かを待ってるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.waiting_person_mentions
+            value: 1
+        next: shino_first_curious_response
+
+  # 詩乃との再会（2回目以降）
+  - id: shino_start_reunion
+    text: "また来たんだ。{{character_encounter_count.shino}}回目だよね。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.shino
+        operator: greater_than
+        value: 0
+    choices:
+      - text: "覚えてるんだ"
+        effects:
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+          - type: increment
+            variable: shino.memory_issues
+            value: 1
+        next: shino_memory_response
+      - text: "そうだったかな？"
+        effects:
+          - type: increment
+            variable: shino.memory_confusion
+            value: 2
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: shino_doubt_response
+      - text: "......"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_silence_understanding
+
+  # 高い信頼度での開始
+  - id: shino_start_familiar
+    text: "今日も来てくれたんだね。なんだか、安心する。"
+    conditions:
+      - type: variable
+        name: shino.trust_level
+        operator: greater_than
+        value: 5
+    choices:
+      - text: "君といると落ち着く"
+        effects:
+          - type: increment
+            variable: shino.comfort_level
+            value: 2
+          - type: increment
+            variable: emotional_depth
+            value: 1
+        next: shino_deep_connection
+      - text: "今日はどんな気分？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.anxiety_level
+            value: -1
+        next: shino_mood_check
+      - text: "橋の向こうを見てた？"
+        effects:
+          - type: increment
+            variable: shino.bridge_fascination
+            value: 1
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+        next: shino_bridge_topic
+
+  # 記憶の問題が蓄積されている場合
+  - id: shino_start_memory_issues
+    text: "あれ？昨日も来てたっけ？それとも...今日が初めて？"
+    conditions:
+      - type: variable
+        name: shino.memory_issues
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "大丈夫？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.anxiety_level
+            value: 1
+        next: shino_memory_concern
+      - text: "何回も会ってるよ"
+        effects:
+          - type: increment
+            variable: shino.memory_issues
+            value: 2
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: shino_memory_confusion_deep
+      - text: "時間の感覚がおかしいね"
+        effects:
+          - type: increment
+            variable: time_distortion_events
+            value: 1
+          - type: increment
+            variable: shino.memory_issues
+            value: 1
+        next: shino_time_distortion_talk

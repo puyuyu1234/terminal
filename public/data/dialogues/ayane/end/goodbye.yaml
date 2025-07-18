@@ -1,7 +1,268 @@
 dialogues:
-  - id: ayane_end_goodbye
-    text: "また明日も来てくれますか？私、ここで待っていますから。"
+  # 基本的な終了パターン
+  - id: ayane_end_promise
+    text: "約束、覚えてますからね。またお話しましょう。"
     effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.trust_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_end_cheerful
+    text: "今日は楽しかったです。ありがとうございました。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.conversation_enthusiasm
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_end_gentle
+    text: "お疲れ様でした。今日も素敵な夜でしたね。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.comfort_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 高い信頼度での終了
+  - id: ayane_end_deep_trust
+    text: "あなたとお話しできて本当に幸せです。また、きっと会えますよね。"
+    conditions:
+      - type: variable
+        name: ayane.trust_level
+        operator: greater_than
+        value: 7
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # マフラーへの愛着が深い場合の終了
+  - id: ayane_end_muffler_attachment
+    text: "このマフラーと一緒に、あなたのことも大切に覚えていますね。"
+    conditions:
+      - type: variable
+        name: ayane.muffler_mentions
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.muffler_mentions
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # ループ意識が高い場合の終了
+  - id: ayane_end_loop_awareness
+    text: "同じような会話をまたするかもしれません。でも、それも楽しいです。"
+    conditions:
+      - type: variable
+        name: ayane.loop_awareness
+        operator: greater_than
+        value: 4
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.loop_awareness
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 無邪気さが高い場合の終了
+  - id: ayane_end_innocent
+    text: "今日も楽しいことがたくさんありました。明日も楽しいといいな。"
+    conditions:
+      - type: variable
+        name: ayane.innocence_level
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.innocence_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 会話への熱意が高い場合の終了
+  - id: ayane_end_enthusiastic
+    text: "お話するのって本当に楽しいですね。時間があっという間でした。"
+    conditions:
+      - type: variable
+        name: ayane.conversation_enthusiasm
+        operator: greater_than
+        value: 4
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.conversation_enthusiasm
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 沈黙が多かった場合の終了
+  - id: ayane_end_silent_understanding
+    text: "言葉じゃなくても、心が通じ合った気がします。"
+    conditions:
+      - type: variable
+        name: player_silence_count
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.comfort_level
+        value: 2
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 電車への言及が多い場合の終了
+  - id: ayane_end_train_hope
+    text: "電車のお話、また聞かせてください。いつか本当に来るかもしれませんね。"
+    conditions:
+      - type: variable
+        name: ayane.train_mentions
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.hope_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 混乱状態での終了
+  - id: ayane_end_confused
+    text: "なんだか頭がぼんやりしますが、楽しかったです。"
+    conditions:
+      - type: variable
+        name: ayane.confusion_level
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.confusion_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 希望的な気持ちが高い場合の終了
+  - id: ayane_end_hopeful
+    text: "明日はもっと素敵なことがありそうな気がします。"
+    conditions:
+      - type: variable
+        name: ayane.hope_level
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.hope_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 初回での特別な終了
+  - id: ayane_end_first_meeting
+    text: "初めてお会いしたのに、ずっと前から知っているような気がします。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.ayane
+        operator: equals
+        value: 0
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 特別な瞬間を感じている場合の終了
+  - id: ayane_end_special_moment
+    text: "この時間は特別でした。きっと忘れません。"
+    conditions:
+      - type: variable
+        name: ayane.special_moment
+        operator: greater_than
+        value: 2
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 快適さが高い場合の終了
+  - id: ayane_end_comfortable
+    text: "あなたといると、とても心地良いです。また会えることを楽しみにしています。"
+    conditions:
+      - type: variable
+        name: ayane.comfort_level
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.ayane
+        value: 1
+      - type: increment
+        variable: ayane.comfort_level
+        value: 1
       - type: custom
         handler: end_dialogue_session
     choices: []

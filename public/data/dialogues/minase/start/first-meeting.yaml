@@ -1,10 +1,185 @@
 dialogues:
-  - id: minase_start_greeting
-    text: "あら、またお客さんですね。こんな場所に来るなんて、物好きな方ですこと。"
+  # ミナセとの初回出会い
+  - id: minase_start_first_meeting
+    text: "あら、またお客さんね。こんな時間に、物好きな方ですこと。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.minase
+        operator: equals
+        value: 0
     choices:
-      - text: "ここで何をしているの？"
-        next: minase_neutral_activity
       - text: "君も物好きだね"
-        next: minase_neutral_response
-      - text: "少し話していこうか"
-        next: minase_neutral_peaceful
+        effects:
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+        next: minase_first_witty_response
+      - text: "なぜここにいるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_first_mysterious_response
+      - text: "......"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: minase.player_observation
+            value: 1
+        next: minase_first_silent_response
+
+  # ミナセとの再会（予言的な発言）
+  - id: minase_start_prophetic
+    text: "{{character_encounter_count.minase}}回目の出会いね。私には見えているの。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.minase
+        operator: greater_than
+        value: 0
+    choices:
+      - text: "何が見えるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_prophecy_response
+      - text: "君は不思議な人だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_mysterious_acknowledgment
+      - text: "信じない"
+        effects:
+          - type: increment
+            variable: minase.trust_level
+            value: -1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_skeptical_response
+
+  # 時間に関する警告が多い場合
+  - id: minase_start_time_warning
+    text: "あなたの時間、止まってるわよ？このままだと...まあ、いいか。"
+    conditions:
+      - type: variable
+        name: minase.time_warnings
+        operator: greater_than
+        value: 2
+    choices:
+      - text: "どういう意味？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.time_warnings
+            value: 1
+        next: minase_time_explanation
+      - text: "怖いことを言わないで"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_fear_response
+      - text: "君の時間は？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_time_deflection
+
+  # 高い信頼度での開始
+  - id: minase_start_trusted
+    text: "いらっしゃい。今夜もあなたと話せて嬉しいわ。"
+    conditions:
+      - type: variable
+        name: minase.trust_level
+        operator: greater_than
+        value: 5
+    choices:
+      - text: "僕も嬉しい"
+        effects:
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+          - type: increment
+            variable: emotional_depth
+            value: 1
+        next: minase_mutual_happiness
+      - text: "今夜は何が見える？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_tonight_vision
+      - text: "いつも待っててくれてありがとう"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_gratitude_response
+
+  # 未来知識が蓄積されている場合
+  - id: minase_start_future_knowledge
+    text: "あなたの未来に、大きな変化が見えるわ。でも、話してもいいのかしら？"
+    conditions:
+      - type: variable
+        name: minase.future_knowledge
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "聞きたい"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_future_revelation
+      - text: "知らない方がいい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_wisdom_response
+      - text: "君が決めて"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_decision_making
