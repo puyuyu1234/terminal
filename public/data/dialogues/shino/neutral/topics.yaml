@@ -1,60 +1,462 @@
 dialogues:
-  - id: shino_neutral_bridge
-    text: "分からないんです。でも、何かがあるような気がして。いつか確かめに行きたいです。"
+  # 初回会話での中立的な応答
+  - id: shino_first_neutral_response
+    text: "そう。……私も、誰かを待ってるの。でも、誰だったかな。"
     choices:
-      - text: "一緒に行ってみよう"
-        next: shino_neutral_together
-      - text: "きっと素敵なものがあるよ"
-        next: shino_neutral_hope
-      - text: "もう帰ろうか"
-        next: shino_end_goodbye
+      - text: "思い出せない？"
+        effects:
+          - type: increment
+            variable: shino.memory_issues
+            value: 1
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+        next: shino_memory_struggle
+      - text: "大切な人？"
+        effects:
+          - type: increment
+            variable: shino.waiting_person_mentions
+            value: 1
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+        next: shino_important_person
+      - text: "急がなくていい"
+        effects:
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+        next: shino_comforting_response
 
-  - id: shino_neutral_reason
-    text: "ここは落ち着くんです。時間がゆっくり流れているような気がして。"
+  # 沈黙への理解を示す応答
+  - id: shino_first_silence_response
+    text: "……話したくないなら、いいよ。私も同じだから。"
+    effects:
+      - type: increment
+        variable: shino.trust_level
+        value: 2
     choices:
-      - text: "確かに静かで落ち着くね"
-        next: shino_neutral_peaceful
-      - text: "時間を忘れそうだね"
-        next: shino_neutral_time
-      - text: "帰る時間だよ"
-        next: shino_end_goodbye
+      - text: "一緒にいるだけで十分"
+        effects:
+          - type: increment
+            variable: shino.comfort_level
+            value: 2
+          - type: increment
+            variable: emotional_depth
+            value: 1
+        next: shino_silent_companionship
+      - text: "君の話を聞きたい"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+        next: shino_reluctant_sharing
+      - text: "......"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_deeper_silence
 
-  - id: shino_neutral_together
-    text: "本当ですか？でも、まだ勇気が出ないんです。もう少し待っていてもいいですか？"
+  # 好奇心に対する応答
+  - id: shino_first_curious_response
+    text: "うん。でも、その人のことを思い出すと、胸が痛くなる。"
     choices:
-      - text: "急がなくていいよ"
-        next: shino_neutral_patience
-      - text: "いつでも一緒に行くから"
-        next: shino_end_goodbye
+      - text: "無理に思い出さなくてもいい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.anxiety_level
+            value: -1
+        next: shino_relief_response
+      - text: "どんな人だった？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.waiting_person_mentions
+            value: 1
+        next: shino_person_description
+      - text: "痛い時は話さなくていい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_understanding_response
 
-  - id: shino_neutral_hope
-    text: "はい、私もそう思います。きっと、今まで見たことのない景色があるはずです。"
+  # 記憶の問題についての深い会話
+  - id: shino_memory_struggle
+    text: "時々、昨日のことも思い出せない。でも、その人の声だけは覚えてる。"
+    conditions:
+      - type: variable
+        name: shino.memory_issues
+        operator: greater_than
+        value: 0
     choices:
-      - text: "楽しみだね"
-        next: shino_neutral_anticipation
-      - text: "いつか見に行こう"
-        next: shino_end_goodbye
+      - text: "どんな声？"
+        effects:
+          - type: increment
+            variable: shino.waiting_person_mentions
+            value: 1
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+        next: shino_voice_memory
+      - text: "大切な記憶なんだね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_precious_memory
+      - text: "記憶は曖昧でも気持ちは本物"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+        next: shino_feelings_validation
 
-  - id: shino_neutral_peaceful
-    text: "はい、騒がしい世界から離れて、自分と向き合えるんです。"
+  # 橋に関する話題
+  - id: shino_bridge_topic
+    text: "橋の向こうに、その人がいるような気がするの。でも、渡るのが怖い。"
     choices:
-      - text: "大切な時間だね"
-        next: shino_end_goodbye
+      - text: "なぜ怖いの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.anxiety_level
+            value: 1
+        next: shino_bridge_fear
+      - text: "一緒に行こうか？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.bridge_fascination
+            value: 1
+        next: shino_bridge_offer
+      - text: "待つのも選択肢の一つ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_waiting_acceptance
 
-  - id: shino_neutral_time
-    text: "そうですね。でも、それがいいんです。急ぐ必要のない時間って、貴重だと思います。"
+  # 深いつながりの会話
+  - id: shino_deep_connection
+    text: "あなたといると、その人を思い出す。似てるのかもしれない。"
     choices:
-      - text: "君と一緒だと時間を忘れる"
-        next: shino_end_goodbye
+      - text: "どんなところが？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.waiting_person_mentions
+            value: 1
+        next: shino_similarity_explanation
+      - text: "それは嬉しい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+        next: shino_happiness_response
+      - text: "その人も大切な存在なんだね"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_precious_person_talk
 
-  - id: shino_neutral_patience
-    text: "ありがとうございます。そう言ってもらえると安心します。"
+  # 記憶の混乱が深刻な場合
+  - id: shino_memory_confusion_deep
+    text: "そうだっけ？でも、初めて会った気もする。私の頭、おかしいのかな。"
     choices:
-      - text: "また明日も来るよ"
-        next: shino_end_goodbye
+      - text: "おかしくない、大丈夫"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.anxiety_level
+            value: -1
+        next: shino_reassurance_response
+      - text: "記憶って曖昧なもの"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_memory_nature_talk
+      - text: "今この瞬間が大切"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+        next: shino_present_moment_focus
 
-  - id: shino_neutral_anticipation
-    text: "はい、でも今はまだ、想像している時間も楽しいんです。"
+  # 時間の歪みについての話
+  - id: shino_time_distortion_talk
+    text: "時間って、本当に流れてるのかな？ここにいると、止まってるような気がする。"
     choices:
-      - text: "想像も楽しいものだね"
-        next: shino_end_goodbye
+      - text: "不思議な場所だね"
+        effects:
+          - type: increment
+            variable: mystery_level
+            value: 1
+          - type: increment
+            variable: time_distortion_events
+            value: 1
+        next: shino_mysterious_place_talk
+      - text: "君と一緒だから時間を忘れる"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_timeless_moment
+      - text: "大切な時間だから"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+        next: shino_precious_time_talk
+
+  # 不足していたノードを追加
+  - id: shino_memory_response
+    text: "そう、覚えてる。あなたのことも覚えてる。嬉しい。"
+    choices:
+      - text: "僕も覚えてる"
+        next: shino_conversation_winding_down
+      - text: "会えて良かった"
+        next: shino_end_gentle
+
+  - id: shino_doubt_response
+    text: "そうかもしれない。でも、会えて良かった。"
+    choices:
+      - text: "僕も"
+        next: shino_end_gentle
+
+  - id: shino_silence_understanding
+    text: "......"
+    choices:
+      - text: "......"
+        next: shino_end_silent_understanding
+
+  - id: shino_mood_check
+    text: "今日は、いつもより落ち着いてる。あなたがいるから。"
+    choices:
+      - text: "安心してもらえて良かった"
+        next: shino_end_gentle
+
+  - id: shino_memory_concern
+    text: "大丈夫。あなたがいてくれるから。"
+    choices:
+      - text: "いつでもここにいる"
+        next: shino_end_promise
+
+  - id: shino_important_person
+    text: "大切な人だった。でも、顔が思い出せない。"
+    choices:
+      - text: "無理しなくていい"
+        next: shino_conversation_winding_down
+
+  - id: shino_comforting_response
+    text: "ありがとう。優しいね。"
+    choices:
+      - text: "当たり前だよ"
+        next: shino_end_gentle
+
+  - id: shino_silent_companionship
+    text: "......"
+    choices:
+      - text: "......"
+        next: shino_end_silent_understanding
+
+  - id: shino_reluctant_sharing
+    text: "話すのは難しい。でも、あなたになら。"
+    choices:
+      - text: "聞いてる"
+        next: shino_conversation_winding_down
+
+  - id: shino_deeper_silence
+    text: "......"
+    choices:
+      - text: "......"
+        next: shino_end_silent_understanding
+
+  - id: shino_relief_response
+    text: "ありがとう。胸が少し楽になった。"
+    choices:
+      - text: "良かった"
+        next: shino_end_gentle
+
+  - id: shino_person_description
+    text: "優しい人だった。あなたみたいに。"
+    choices:
+      - text: "素敵な人だったんだね"
+        next: shino_conversation_winding_down
+
+  - id: shino_understanding_response
+    text: "理解してくれてありがとう。"
+    choices:
+      - text: "どういたしまして"
+        next: shino_end_gentle
+
+  - id: shino_voice_memory
+    text: "穏やかで、暖かい声だった。"
+    choices:
+      - text: "いい声だったんだね"
+        next: shino_conversation_winding_down
+
+  - id: shino_precious_memory
+    text: "うん。だから忘れたくない。"
+    choices:
+      - text: "忘れなくていい"
+        next: shino_end_gentle
+
+  - id: shino_feelings_validation
+    text: "そうだね。気持ちは確かにある。"
+    choices:
+      - text: "それが一番大切"
+        next: shino_end_caring
+
+  - id: shino_bridge_fear
+    text: "渡ったら、もう戻れない気がする。"
+    choices:
+      - text: "戻れるよ"
+        next: shino_conversation_winding_down
+
+  - id: shino_bridge_offer
+    text: "一緒に？...いつか、勇気が出たら。"
+    choices:
+      - text: "その時を待ってる"
+        next: shino_end_promise
+
+  - id: shino_waiting_acceptance
+    text: "そうだね。待つことも大切。"
+    choices:
+      - text: "一緒に待とう"
+        next: shino_end_promise
+
+  - id: shino_similarity_explanation
+    text: "話し方とか、雰囲気とか...安心する。"
+    choices:
+      - text: "それは嬉しい"
+        next: shino_end_gentle
+
+  - id: shino_happiness_response
+    text: "嬉しい。あなたに会えて良かった。"
+    choices:
+      - text: "僕も"
+        next: shino_end_gentle
+
+  - id: shino_precious_person_talk
+    text: "大切な人だった。でも、もういない。"
+    choices:
+      - text: "でも記憶は残る"
+        next: shino_end_caring
+
+  - id: shino_reassurance_response
+    text: "ありがとう。そう言ってもらえると安心する。"
+    choices:
+      - text: "いつでもそばにいる"
+        next: shino_end_promise
+
+  - id: shino_memory_nature_talk
+    text: "そうだね。でも、大切なことは覚えてる。"
+    choices:
+      - text: "それで十分"
+        next: shino_end_gentle
+
+  - id: shino_present_moment_focus
+    text: "今、あなたがいる。それが一番大切。"
+    choices:
+      - text: "今を大切にしよう"
+        next: shino_end_caring
+
+  - id: shino_mysterious_place_talk
+    text: "不思議な場所だけど、あなたがいると怖くない。"
+    choices:
+      - text: "一緒にいるから"
+        next: shino_end_promise
+
+  - id: shino_timeless_moment
+    text: "時間が止まっても、あなたとなら。"
+    choices:
+      - text: "永遠にいたい"
+        next: shino_end_caring
+
+  - id: shino_precious_time_talk
+    text: "大切な時間をありがとう。"
+    choices:
+      - text: "僕も楽しかった"
+        next: shino_end_gentle
+
+  # 終了に向かうノード
+  - id: shino_conversation_winding_down
+    text: "今日は話せて良かった。でも、もう遅いから..."
+    choices:
+      - text: "また明日も来る"
+        effects:
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+        next: shino_end_promise
+      - text: "お疲れ様"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+        next: shino_end_gentle
+      - text: "いい夢を"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+        next: shino_end_caring

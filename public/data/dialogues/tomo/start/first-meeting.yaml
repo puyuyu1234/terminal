@@ -1,10 +1,185 @@
 dialogues:
-  - id: tomo_start_greeting
-    text: "おかえりなさい。今日はどんな一日でしたか？私はずっとここで待っていました。"
+  # トモとの初回出会い
+  - id: tomo_start_first_meeting
+    text: "あ...こんばんは。名前は...言えません。でも、この落書き帳があるから大丈夫です。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.tomo
+        operator: equals
+        value: 0
     choices:
-      - text: "いい一日だったよ"
-        next: tomo_neutral_good_day
-      - text: "疲れた一日だった"
-        next: tomo_neutral_tired
-      - text: "少し話していこうか"
-        next: tomo_neutral_comfort
+      - text: "なぜ名前を言えないの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.name_mystery
+            value: 1
+        next: tomo_first_name_mystery
+      - text: "落書き帳？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.drawing_mentions
+            value: 1
+        next: tomo_first_drawing_response
+      - text: "......（静かに見守る）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: tomo.comfort_level
+            value: 1
+        next: tomo_first_silence_response
+
+  # トモとの再会（不思議な挨拶）
+  - id: tomo_start_reality_shift
+    text: "また会いましたね。でも、今日は昨日とは違う感じがします。私が変えたのかもしれません。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.tomo
+        operator: greater_than
+        value: 0
+    choices:
+      - text: "何を変えたの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_reality_explanation
+      - text: "確かに違う感じがする"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_validation_response
+      - text: "気のせいじゃない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.doubt_level
+            value: 1
+        next: tomo_doubt_response
+
+  # 落書き帳への関心が高い場合
+  - id: tomo_start_drawing_focus
+    text: "今日は新しい絵を描きました。現実を...少し変える絵です。"
+    conditions:
+      - type: variable
+        name: tomo.drawing_mentions
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "現実を変える絵？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_drawing_power
+      - text: "見せてもらえる？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.drawing_mentions
+            value: 1
+        next: tomo_drawing_show
+      - text: "どんな絵？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.art_interest
+            value: 1
+        next: tomo_art_description
+
+  # 高い信頼度での開始
+  - id: tomo_start_trusted
+    text: "あなたには、本当のことを言えそうです。私、普通の人間じゃないかもしれません。"
+    conditions:
+      - type: variable
+        name: tomo.trust_level
+        operator: greater_than
+        value: 5
+    choices:
+      - text: "どういう意味？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.secret_sharing
+            value: 1
+        next: tomo_secret_revelation
+      - text: "大丈夫、僕も普通じゃない"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_mutual_understanding
+      - text: "君は君だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.acceptance_level
+            value: 1
+        next: tomo_acceptance_response
+
+  # 現実改変が蓄積されている場合
+  - id: tomo_start_reality_master
+    text: "この場所、少しずつ変わっていますよね。私の落書きの影響です。"
+    conditions:
+      - type: variable
+        name: tomo.reality_alteration
+        operator: greater_than
+        value: 4
+    choices:
+      - text: "どう変わってる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_reality_changes
+      - text: "すごい力だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.power_recognition
+            value: 1
+        next: tomo_power_acknowledgment
+      - text: "危険じゃない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.concern_level
+            value: 1
+        next: tomo_danger_discussion

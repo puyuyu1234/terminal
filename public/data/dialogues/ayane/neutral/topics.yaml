@@ -1,54 +1,781 @@
 dialogues:
-  - id: ayane_neutral_activity
-    text: "いつもは本を読んだり、夕日を見たりしています。ここは静かで、考え事をするのにちょうどいいんです。"
+  # 初回でのマフラーに関する応答
+  - id: ayane_first_muffler_response
+    text: "ありがとうございます。この赤い色が好きなんです。でも、なぜ好きなのかはわからないんです。"
     choices:
-      - text: "どんな本を読んでいるの？"
-        next: ayane_neutral_books
-      - text: "夕日がきれいですね"
-        next: ayane_neutral_sunset
-      - text: "もう帰ろうか"
-        next: ayane_end_goodbye
+      - text: "色に理由はいらない"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_color_acceptance
+      - text: "誰かに似合うと言われた？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.muffler_mentions
+            value: 1
+        next: ayane_compliment_memory
+      - text: "君にとても似合う"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_compliment_response
 
-  - id: ayane_neutral_train
-    text: "電車...もう来ないって分かってるんです。でも、いつか来るような気がして。"
+  # 電車に関する初回応答
+  - id: ayane_first_train_response
+    text: "電車...そうですね。でも、いつ来るのかわからないんです。時刻表もないし。"
     choices:
-      - text: "なぜそう思うの？"
-        next: ayane_neutral_hope
+      - text: "いつか来るよ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.hope_level
+            value: 1
+        next: ayane_hopeful_waiting
+      - text: "どこに行きたいの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.train_mentions
+            value: 1
+        next: ayane_destination_talk
+      - text: "待つのも悪くない"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_waiting_acceptance
+
+  # 沈黙への無邪気な反応
+  - id: ayane_first_silence_response
+    text: "あ、何も言わないんですね。でも、なんだか安心します。話すのが苦手な人もいますもんね。"
+    choices:
+      - text: "君と話すのは楽しい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_conversation_joy
+      - text: "......（続けて沈黙）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_silence_understanding
+      - text: "話すのが好きなの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.conversation_enthusiasm
+            value: 1
+        next: ayane_talking_preference
+
+  # 記憶に関する応答
+  - id: ayane_memory_response
+    text: "覚えているような、いないような...でも、あなたのことは覚えています。"
+    choices:
+      - text: "僕も覚えてる"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_mutual_memory
+      - text: "記憶って曖昧だよね"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.loop_awareness
+            value: 1
+        next: ayane_memory_nature
+      - text: "大切なことは覚えてる"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_important_memory
+
+  # 同意への応答
+  - id: ayane_agreement_response
+    text: "そうですよね。でも、毎回少しずつ違うような気もします。"
+    choices:
+      - text: "違うところがある？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.loop_awareness
+            value: 1
+        next: ayane_differences_talk
+      - text: "変化があるのは自然"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_change_acceptance
+      - text: "君が成長してるんだ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_growth_talk
+
+  # 疑いへの応答
+  - id: ayane_doubt_response
+    text: "初めて...？そうかもしれません。でも、どこかで会ったような気がしていて。"
+    choices:
+      - text: "不思議な感覚だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.confusion_level
+            value: 1
+        next: ayane_strange_feeling
+      - text: "気のせいじゃない"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.loop_awareness
+            value: 1
+        next: ayane_feeling_validation
+      - text: "今この瞬間が大切"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_present_moment
+
+  # マフラーの重要性に関する話
+  - id: ayane_muffler_importance
+    text: "はい、とても大切なんです。なくしたら、きっと自分じゃなくなってしまいます。"
+    choices:
+      - text: "そんなに大切なの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.muffler_mentions
+            value: 1
+        next: ayane_muffler_attachment
+      - text: "なくさないよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_protection_promise
+      - text: "君は君のままだよ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_identity_reassurance
+
+  # マフラーの謎に関する話
+  - id: ayane_muffler_mystery
+    text: "そうかもしれません。でも、誰からかは思い出せなくて。大切な人だったと思うんですけど。"
+    choices:
+      - text: "いつか思い出すよ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.hope_level
+            value: 1
+        next: ayane_memory_hope
+      - text: "その人は優しい人だった？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.muffler_mentions
+            value: 1
+        next: ayane_giver_description
+      - text: "思い出さなくても愛情は残る"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_love_remains
+
+  # 慰めに対する応答
+  - id: ayane_comfort_response
+    text: "ありがとうございます。あなたって、とても優しい人ですね。"
+    choices:
+      - text: "当たり前だよ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_kindness_natural
+      - text: "君も優しい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_mutual_kindness
+      - text: "困った時はお互い様"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_mutual_support
+
+  # 相互の幸福感
+  - id: ayane_mutual_happiness
+    text: "わぁ、嬉しいです。こんなに楽しい時間を過ごせて幸せです。"
+    choices:
+      - text: "僕も同じ気持ち"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_shared_joy
+      - text: "いつまでも話していたい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.conversation_enthusiasm
+            value: 1
+        next: ayane_eternal_conversation
+      - text: "今日は特別な日だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.special_moment
+            value: 1
+        next: ayane_special_day
+
+  # 約束に対する応答
+  - id: ayane_promise_response
+    text: "本当ですか？嬉しいです。いつでも待ってますから。"
+    choices:
+      - text: "約束だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_promise_confirmed
+      - text: "一緒に時間を過ごそう"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_time_together
+      - text: "君がいるから来る"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_personal_connection
+
+  # 話題選択への応答
+  - id: ayane_topic_choice
+    text: "そうですね。今日は何を話しましょうか。あ、電車の音が聞こえる気がします。"
+    choices:
+      - text: "電車について話そう"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.train_mentions
+            value: 1
+        next: ayane_train_discussion
+      - text: "マフラーの話をしよう"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.muffler_mentions
+            value: 1
+        next: ayane_muffler_discussion
+      - text: "君の好きなことを聞きたい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.conversation_enthusiasm
+            value: 1
+        next: ayane_interests_talk
+
+  # ループ説明への応答
+  - id: ayane_loop_explanation
+    text: "はい、同じような...でも、ちょっとずつ違うんです。不思議ですよね。"
+    choices:
+      - text: "時間がループしてる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.loop_awareness
+            value: 1
+        next: ayane_time_loop_talk
+      - text: "気にしなくていい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_loop_dismissal
+      - text: "楽しいことは何度でも"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_repetition_joy
+
+  # 無邪気さへの応答
+  - id: ayane_innocence_response
+    text: "そうですね。楽しいことは何度体験しても楽しいです。"
+    choices:
+      - text: "その通りだ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_joy_confirmation
+      - text: "君の笑顔が好き"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_smile_appreciation
+      - text: "いつも前向きだね"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.conversation_enthusiasm
+            value: 1
+        next: ayane_positive_nature
+
+  # 混乱への応答
+  - id: ayane_confusion_response
+    text: "気のせい...そうかもしれません。でも、でも、やっぱり不思議です。"
+    choices:
+      - text: "不思議なことは多い"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.confusion_level
+            value: 1
+        next: ayane_mystery_acceptance
+      - text: "君の感覚は正しい"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.loop_awareness
+            value: 1
+        next: ayane_intuition_validation
+      - text: "考えすぎかもしれない"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_overthinking_relief
+
+  # 終了に向かう会話
+  - id: ayane_conversation_winding_down
+    text: "今日もお話できて楽しかったです。でも、そろそろ遅い時間ですね。"
+    choices:
+      - text: "また明日も来る"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_end_promise
+      - text: "楽しい時間だった"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.conversation_enthusiasm
+            value: 1
+        next: ayane_end_cheerful
+      - text: "お疲れ様"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+        next: ayane_end_gentle
+
+  # 中間ノード（参照エラーを避けるため）
+  - id: ayane_color_acceptance
+    text: "そうですね。好きなものに理由はいらないですよね。"
+    choices:
+      - text: "自然な感情だよ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_compliment_memory
+    text: "そうかもしれません。でも、思い出せないんです。"
+    choices:
+      - text: "思い出さなくてもいい"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_compliment_response
+    text: "ありがとうございます。そう言ってもらえると嬉しいです。"
+    choices:
+      - text: "本当のことだよ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_hopeful_waiting
+    text: "はい、いつかきっと。それまで待っています。"
+    choices:
       - text: "一緒に待とう"
-        next: ayane_neutral_together
-      - text: "帰る時間だよ"
-        next: ayane_end_goodbye
+        next: ayane_conversation_winding_down
 
-  - id: ayane_neutral_books
-    text: "古い詩集とか、短編小説とか。時間が止まったみたいなお話が好きです。"
+  - id: ayane_destination_talk
+    text: "どこでしょう。でも、どこでもいいような気もします。"
     choices:
-      - text: "おすすめの本はある？"
-        next: ayane_neutral_recommendation
-      - text: "それは面白そうだね"
-        next: ayane_end_goodbye
+      - text: "旅の楽しみだね"
+        next: ayane_conversation_winding_down
 
-  - id: ayane_neutral_sunset
-    text: "はい、毎日少しずつ違う色になるんです。今日はオレンジ色が強いですね。"
+  - id: ayane_waiting_acceptance
+    text: "そうですね。待つ時間も大切ですよね。"
     choices:
-      - text: "一緒に見よう"
-        next: ayane_neutral_together
-      - text: "きれいな夕日だね"
-        next: ayane_end_goodbye
+      - text: "その通りだ"
+        next: ayane_conversation_winding_down
 
-  - id: ayane_neutral_hope
-    text: "希望って、理由なんていらないんじゃないでしょうか。ただ、信じていたいだけなんです。"
+  - id: ayane_conversation_joy
+    text: "私も楽しいです。あなたと話していると時間を忘れます。"
     choices:
-      - text: "素敵な考えだね"
-        next: ayane_end_goodbye
+      - text: "時間を忘れるほど楽しい"
+        next: ayane_conversation_winding_down
 
-  - id: ayane_neutral_together
-    text: "はい、一緒にいてくれると嬉しいです。でも、あなたも帰る時間がありますよね。"
+  - id: ayane_silence_understanding
+    text: "......沈黙も会話の一つですね。"
     choices:
-      - text: "もう少しだけ"
-        next: ayane_end_goodbye
+      - text: "......"
+        next: ayane_end_silent_understanding
 
-  - id: ayane_neutral_recommendation
-    text: "『星の王子さま』はいかがですか。大切なものは目に見えないって言葉が印象的です。"
+  - id: ayane_talking_preference
+    text: "はい、お話するのが好きです。でも、聞くのも好きです。"
     choices:
-      - text: "今度読んでみるよ"
-        next: ayane_end_goodbye
+      - text: "いいバランスだね"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_mutual_memory
+    text: "嬉しいです。お互いに覚えているなら、それで十分ですね。"
+    choices:
+      - text: "それで十分だ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_memory_nature
+    text: "そうですね。でも、曖昧でも大切な記憶はありますよね。"
+    choices:
+      - text: "大切な記憶は残る"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_important_memory
+    text: "はい、大切なことはちゃんと覚えています。"
+    choices:
+      - text: "それが一番大切"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_differences_talk
+    text: "ちょっとした違いです。でも、それが面白いんです。"
+    choices:
+      - text: "変化があるのはいいこと"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_change_acceptance
+    text: "そうですね。変化も楽しいものですね。"
+    choices:
+      - text: "変化を楽しもう"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_growth_talk
+    text: "成長...そうかもしれません。あなたのおかげです。"
+    choices:
+      - text: "君の力だよ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_strange_feeling
+    text: "不思議ですよね。でも、嫌な感じはしません。"
+    choices:
+      - text: "いい感じだね"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_feeling_validation
+    text: "そうですよね。きっと何かの意味があるんです。"
+    choices:
+      - text: "意味があるかもしれない"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_present_moment
+    text: "そうですね。今この瞬間が一番大切です。"
+    choices:
+      - text: "今を大切にしよう"
+        next: ayane_conversation_winding_down
+
+  # 追加の中間ノード
+  - id: ayane_muffler_attachment
+    text: "はい、このマフラーは私の一部なんです。"
+    choices:
+      - text: "大切にしてね"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_protection_promise
+    text: "ありがとうございます。安心しました。"
+    choices:
+      - text: "いつでも守るよ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_identity_reassurance
+    text: "そう言ってもらえると嬉しいです。"
+    choices:
+      - text: "君は君だ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_memory_hope
+    text: "そうですね。いつか思い出せるかもしれません。"
+    choices:
+      - text: "きっと思い出せる"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_giver_description
+    text: "優しい人だったと思います。暖かい感じがします。"
+    choices:
+      - text: "いい人だったんだね"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_love_remains
+    text: "そうですね。愛情は形がなくても残るものですね。"
+    choices:
+      - text: "愛は永遠だ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_kindness_natural
+    text: "自然に優しくできるなんて、素敵です。"
+    choices:
+      - text: "君も自然に優しい"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_mutual_kindness
+    text: "お互いに優しくできるって、いいですね。"
+    choices:
+      - text: "お互い様だ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_mutual_support
+    text: "そうですね。支え合っていきましょう。"
+    choices:
+      - text: "一緒に頑張ろう"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_shared_joy
+    text: "同じ気持ちでいてくれて嬉しいです。"
+    choices:
+      - text: "いつも同じ気持ち"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_eternal_conversation
+    text: "私もです。時間が止まってもいいくらいです。"
+    choices:
+      - text: "永遠に話していたい"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_special_day
+    text: "はい、とても特別な日です。"
+    choices:
+      - text: "忘れられない日だ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_promise_confirmed
+    text: "約束してくれるんですね。嬉しいです。"
+    choices:
+      - text: "絶対に約束する"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_time_together
+    text: "一緒にいられる時間、大切にします。"
+    choices:
+      - text: "僕も大切にする"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_personal_connection
+    text: "私がいるから...嬉しいです。"
+    choices:
+      - text: "君がいるから来る"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_train_discussion
+    text: "電車のお話ですね。いつか本当に来るかもしれません。"
+    choices:
+      - text: "きっと来る"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_muffler_discussion
+    text: "マフラーのお話ですね。いつでも喜んでお話しします。"
+    choices:
+      - text: "大切なものだものね"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_interests_talk
+    text: "私の好きなこと...お話することと、静かな時間です。"
+    choices:
+      - text: "いいものが好きだね"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_time_loop_talk
+    text: "時間のループ...そうかもしれません。でも、楽しいループです。"
+    choices:
+      - text: "楽しいなら問題ない"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_loop_dismissal
+    text: "そうですね。気にしないでおきます。"
+    choices:
+      - text: "それがいい"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_repetition_joy
+    text: "はい、楽しいことは何度でも！"
+    choices:
+      - text: "その通りだ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_joy_confirmation
+    text: "分かってくれて嬉しいです。"
+    choices:
+      - text: "当然だよ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_smile_appreciation
+    text: "笑顔が好きだなんて、嬉しいです。"
+    choices:
+      - text: "いつも笑顔でいて"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_positive_nature
+    text: "前向きでいるのが好きなんです。"
+    choices:
+      - text: "素晴らしいことだ"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_mystery_acceptance
+    text: "そうですね。不思議なことはたくさんあります。"
+    choices:
+      - text: "不思議も楽しい"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_intuition_validation
+    text: "私の感覚を信じてくれるんですね。"
+    choices:
+      - text: "君の感覚は正しい"
+        next: ayane_conversation_winding_down
+
+  - id: ayane_overthinking_relief
+    text: "そうかもしれません。あまり考えすぎないようにします。"
+    choices:
+      - text: "楽にいこう"
+        next: ayane_conversation_winding_down

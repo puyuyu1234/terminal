@@ -1,7 +1,257 @@
 dialogues:
-  - id: minase_end_goodbye
-    text: "また会いましょうね。私、ここで待っていますから。"
+  # 基本的な終了パターン
+  - id: minase_end_promise
+    text: "約束ね。私の予言が外れることはないから。"
     effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.future_hints
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_end_prophetic
+    text: "そう、予言通りに。あなたは運命を受け入れる人なのね。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.prophecy_count
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_end_gentle
+    text: "お疲れ様。あなたとの時間は、いつも特別よ。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.trust_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 神秘的な終了
+  - id: minase_end_mysterious
+    text: "恐れることはない。未来は思っているより優しいものよ。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.mysterious_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 理解を示す終了
+  - id: minase_end_understanding
+    text: "沈黙の中にも、真実がある。あなたはそれを知っている。"
+    conditions:
+      - type: variable
+        name: player_silence_count
+        operator: greater_than
+        value: 2
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.player_observation
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 決意を示す終了
+  - id: minase_end_determined
+    text: "その決意、美しいわ。きっと、あなたは成し遂げる。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.trust_level
+        value: 2
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 受け入れを示す終了
+  - id: minase_end_acceptance
+    text: "気づいてくれて良かった。真実を受け入れることは勇気がいることよ。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.time_distortion
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 永遠の絆を示す終了
+  - id: minase_end_eternal
+    text: "永遠...それもまた、運命の一つね。覚えておくわ。"
+    conditions:
+      - type: variable
+        name: minase.trust_level
+        operator: greater_than
+        value: 8
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 2
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 希望を示す終了
+  - id: minase_end_hopeful
+    text: "そう、光がある。あなたの未来は明るいのよ。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.future_knowledge
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 記憶に残る終了
+  - id: minase_end_memorable
+    text: "記憶は時を超える。あなたの記憶の中で、私は永遠に生きるわ。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.trust_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 孤独を感じる終了
+  - id: minase_end_loneliness
+    text: "寂しい？...そうかもしれない。でも、あなたがいてくれるから。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.trust_level
+        value: 2
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 高い予言カウントでの終了
+  - id: minase_end_prophetic_master
+    text: "私の予言は{{minase.prophecy_count}}回も的中している。もう疑う余地はないでしょう？"
+    conditions:
+      - type: variable
+        name: minase.prophecy_count
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.accuracy_rate
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 時間の歪みを感じる終了
+  - id: minase_end_time_distortion
+    text: "時間が歪んでいる。でも、あなたとの時間は真実よ。"
+    conditions:
+      - type: variable
+        name: time_distortion_events
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.time_distortion
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 未来知識が深い場合の終了
+  - id: minase_end_deep_knowledge
+    text: "あなたの未来について、もう十分に知っている。安心して。"
+    conditions:
+      - type: variable
+        name: minase.future_knowledge
+        operator: greater_than
+        value: 7
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.future_knowledge
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 初回での特別な終了
+  - id: minase_end_first_meeting
+    text: "初めて会ったとは思えない。まるで、ずっと前から知っているみたい。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.minase
+        operator: equals
+        value: 0
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 観察力が高い場合の終了
+  - id: minase_end_observer
+    text: "あなたのことは、もう十分に観察した。興味深い人ね。"
+    conditions:
+      - type: variable
+        name: minase.player_observation
+        operator: greater_than
+        value: 4
+    effects:
+      - type: increment
+        variable: character_encounter_count.minase
+        value: 1
+      - type: increment
+        variable: minase.player_observation
+        value: 1
       - type: custom
         handler: end_dialogue_session
     choices: []

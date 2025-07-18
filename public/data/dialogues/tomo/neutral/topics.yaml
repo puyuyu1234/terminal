@@ -1,60 +1,727 @@
 dialogues:
-  - id: tomo_neutral_good_day
-    text: "それは良かったです。いい一日があると、明日もきっと良い日になりますよね。"
+  # 初回の名前の謎に関する応答
+  - id: tomo_first_name_mystery
+    text: "名前を言うと...現実が変わってしまうんです。だから、言えません。でも、絵で表現はできます。"
     choices:
-      - text: "君がいると安心する"
-        next: tomo_neutral_comfort
-      - text: "明日も楽しみだ"
-        next: tomo_neutral_tomorrow
-      - text: "もう帰ろうか"
-        next: tomo_end_goodbye
+      - text: "現実が変わる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_name_power_explanation
+      - text: "絵で表現してもらえる？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.drawing_mentions
+            value: 1
+        next: tomo_name_drawing
+      - text: "無理しなくていい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.comfort_level
+            value: 1
+        next: tomo_understanding_response
 
-  - id: tomo_neutral_tired
-    text: "お疲れ様でした。ここで少し休んでいってください。疲れが取れるまで、一緒にいます。"
+  # 落書き帳への初回応答
+  - id: tomo_first_drawing_response
+    text: "（落書き帳を見せる）ここに描いた絵が、時々現実になるんです。不思議でしょう？"
     choices:
-      - text: "ありがとう、君がいると癒される"
-        next: tomo_neutral_healing
-      - text: "少し休ませてもらうよ"
-        next: tomo_neutral_rest
-      - text: "家で休むよ"
-        next: tomo_end_goodbye
+      - text: "現実になる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_drawing_power
+      - text: "どんな絵を描くの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.art_interest
+            value: 1
+        next: tomo_art_description
+      - text: "見せてもらえる？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.drawing_mentions
+            value: 1
+        next: tomo_drawing_show
 
-  - id: tomo_neutral_comfort
-    text: "私も、あなたがいると嬉しいです。こんな場所でも、一人じゃないって思えるから。"
+  # 沈黙への初回応答
+  - id: tomo_first_silence_response
+    text: "静かに見守ってくれるんですね。ありがとうございます。言葉より、気持ちが伝わります。"
     choices:
-      - text: "いつも一緒にいるよ"
-        next: tomo_neutral_together
+      - text: "君の気持ちも伝わる"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_mutual_understanding
+      - text: "......（続けて見守る）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: tomo.comfort_level
+            value: 1
+        next: tomo_deeper_silence
+      - text: "話してもいいよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.encouragement_level
+            value: 1
+        next: tomo_encouragement_response
+
+  # 現実改変の説明
+  - id: tomo_reality_explanation
+    text: "小さなことですが...雲の形を変えたり、風の向きを変えたり。でも、人には言えません。"
+    choices:
+      - text: "すごい力だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.power_recognition
+            value: 1
+        next: tomo_power_acknowledgment
+      - text: "怖くない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.concern_level
+            value: 1
+        next: tomo_fear_discussion
+      - text: "信じる"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_belief_response
+
+  # 検証への応答
+  - id: tomo_validation_response
+    text: "気づいてくれて嬉しいです。みんな気づかないふりをするから。"
+    choices:
+      - text: "君の力は本物だ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_power_validation
+      - text: "どうして隠すの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.secret_sharing
+            value: 1
+        next: tomo_secrecy_explanation
+      - text: "一人じゃない"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.acceptance_level
+            value: 1
+        next: tomo_companionship_response
+
+  # 絵の力について
+  - id: tomo_drawing_power
+    text: "（落書き帳を開く）例えば、この星の絵を描くと、本当に星が現れるんです。"
+    choices:
+      - text: "試してみて"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_power_demonstration
+      - text: "危険じゃない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.concern_level
+            value: 1
+        next: tomo_danger_discussion
+      - text: "素晴らしい才能だ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.power_recognition
+            value: 1
+        next: tomo_talent_recognition
+
+  # 絵を見せる
+  - id: tomo_drawing_show
+    text: "（落書き帳を見せる）この絵たちが、少しずつ現実を変えています。"
+    choices:
+      - text: "綺麗な絵だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.art_interest
+            value: 1
+        next: tomo_art_appreciation
+      - text: "どうやって描くの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.drawing_mentions
+            value: 1
+        next: tomo_drawing_process
+      - text: "特別な力を感じる"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.power_recognition
+            value: 1
+        next: tomo_power_acknowledgment
+
+  # 芸術的な説明
+  - id: tomo_art_description
+    text: "主に風景とか、小さな生き物とか。でも、描くとそれが現実に影響するんです。"
+    choices:
+      - text: "どんな影響？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_reality_effects
+      - text: "責任重大だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.concern_level
+            value: 1
+        next: tomo_responsibility_talk
+      - text: "美しい力だ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.power_recognition
+            value: 1
+        next: tomo_beauty_recognition
+
+  # 相互理解
+  - id: tomo_mutual_understanding
+    text: "あなたも、普通じゃない人なんですね。だから、分かり合えるのかもしれません。"
+    choices:
+      - text: "お互い特別だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_special_bond
+      - text: "秘密を共有しよう"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.secret_sharing
+            value: 1
+        next: tomo_secret_bond
+      - text: "一緒にいよう"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.companionship_level
+            value: 1
+        next: tomo_conversation_winding_down
+
+  # 受け入れの応答
+  - id: tomo_acceptance_response
+    text: "ありがとうございます。そう言ってもらえると、安心します。"
+    choices:
+      - text: "いつでも受け入れる"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_unconditional_acceptance
+      - text: "君のままでいい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.acceptance_level
+            value: 1
+        next: tomo_identity_affirmation
+      - text: "特別な力を大切に"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.power_recognition
+            value: 1
+        next: tomo_power_encouragement
+
+  # 中間ノード群
+  - id: tomo_name_power_explanation
+    text: "名前には力があるんです。私の名前は、現実を変える力が強すぎて。"
+    choices:
+      - text: "どんな力？"
+        next: tomo_conversation_winding_down
+      - text: "大変だね"
+        next: tomo_understanding_response
+
+  - id: tomo_name_drawing
+    text: "（落書き帳に何かを描く）これが、私の名前の代わりです。"
+    choices:
+      - text: "素敵な表現だ"
+        next: tomo_conversation_winding_down
+      - text: "理解できる"
+        next: tomo_mutual_understanding
+
+  - id: tomo_understanding_response
+    text: "理解してくれて、ありがとうございます。優しいですね。"
+    choices:
+      - text: "当然だよ"
+        next: tomo_conversation_winding_down
+      - text: "君も優しい"
+        next: tomo_mutual_understanding
+
+  - id: tomo_deeper_silence
+    text: "（静かに落書き帳に何かを描いている）"
+    choices:
+      - text: "......"
+        next: tomo_end_silent_understanding
+      - text: "何を描いてる？"
+        next: tomo_drawing_activity
+
+  - id: tomo_encouragement_response
+    text: "はい、少しずつ話してみます。あなたになら、話せそうです。"
+    choices:
+      - text: "無理しなくていい"
+        next: tomo_conversation_winding_down
+      - text: "聞いてる"
+        next: tomo_trust_building
+
+  - id: tomo_power_acknowledgment
+    text: "力...そうかもしれません。でも、怖いこともあります。"
+    choices:
+      - text: "どんな時に怖い？"
+        next: tomo_fear_discussion
+      - text: "君なら大丈夫"
+        next: tomo_reassurance_response
+
+  - id: tomo_fear_discussion
+    text: "コントロールできなくなる時があるんです。でも、あなたがいると落ち着きます。"
+    choices:
+      - text: "一緒にいるよ"
+        next: tomo_companionship_response
+      - text: "大丈夫、信じてる"
+        next: tomo_trust_building
+
+  - id: tomo_belief_response
+    text: "信じてくれるんですね。嬉しいです。みんな、信じてくれないから。"
+    choices:
+      - text: "当然信じる"
+        next: tomo_conversation_winding_down
+      - text: "君の力は本物だ"
+        next: tomo_power_validation
+
+  - id: tomo_power_validation
+    text: "本物...そうです。この力は、確かに本物です。"
+    choices:
+      - text: "誇りに思って"
+        next: tomo_conversation_winding_down
+      - text: "大切にしよう"
+        next: tomo_power_encouragement
+
+  - id: tomo_secrecy_explanation
+    text: "みんな、怖がるから。でも、あなたは違いますね。"
+    choices:
+      - text: "怖くない"
+        next: tomo_conversation_winding_down
+      - text: "受け入れる"
+        next: tomo_acceptance_response
+
+  - id: tomo_companionship_response
+    text: "一緒にいてくれるんですね。それが、一番嬉しいです。"
+    choices:
+      - text: "いつでも"
+        next: tomo_conversation_winding_down
       - text: "君は一人じゃない"
-        next: tomo_end_goodbye
+        next: tomo_conversation_winding_down
 
-  - id: tomo_neutral_tomorrow
-    text: "はい、明日もきっと素敵な日になりますよ。私、そう信じています。"
+  - id: tomo_power_demonstration
+    text: "（落書き帳に星を描く）...ほら、空を見てください。"
     choices:
-      - text: "一緒に明日を迎えよう"
-        next: tomo_end_goodbye
+      - text: "すごい！"
+        next: tomo_demonstration_success
+      - text: "本当に現れた"
+        next: tomo_reality_confirmation
 
-  - id: tomo_neutral_healing
-    text: "そう言ってもらえると、私も嬉しいです。お役に立てているなら良かった。"
+  - id: tomo_danger_discussion
+    text: "危険...そうかもしれません。でも、コントロールしようと頑張っています。"
     choices:
-      - text: "いつも支えてくれてありがとう"
-        next: tomo_end_goodbye
+      - text: "気をつけて"
+        next: tomo_conversation_winding_down
+      - text: "手伝えることがあれば"
+        next: tomo_support_offer
 
-  - id: tomo_neutral_rest
-    text: "はい、ゆっくり休んでください。急ぐ必要はありませんから。"
+  - id: tomo_talent_recognition
+    text: "才能...そう言ってもらえると嬉しいです。"
     choices:
-      - text: "君と一緒だと落ち着く"
-        next: tomo_neutral_peaceful
-      - text: "もう少しだけ"
-        next: tomo_end_goodbye
+      - text: "特別な才能だ"
+        next: tomo_conversation_winding_down
+      - text: "大切にして"
+        next: tomo_power_encouragement
 
-  - id: tomo_neutral_together
-    text: "ありがとうございます。そう言ってもらえると、ずっと待っていて良かったと思います。"
+  - id: tomo_art_appreciation
+    text: "ありがとうございます。絵を褒めてもらえると嬉しいです。"
     choices:
-      - text: "また明日も来るよ"
-        next: tomo_end_goodbye
+      - text: "もっと見せて"
+        next: tomo_conversation_winding_down
+      - text: "才能がある"
+        next: tomo_talent_recognition
 
-  - id: tomo_neutral_peaceful
-    text: "それは良かったです。平和な時間を過ごせているなら、私も嬉しいです。"
+  - id: tomo_drawing_process
+    text: "心の中のイメージを、そのまま描くんです。すると、現実になります。"
     choices:
-      - text: "今度はもっと長く一緒にいよう"
-        next: tomo_end_goodbye
+      - text: "不思議だね"
+        next: tomo_conversation_winding_down
+      - text: "すごい力だ"
+        next: tomo_power_acknowledgment
+
+  - id: tomo_reality_effects
+    text: "小さな変化ですが、確実に現実が変わります。"
+    choices:
+      - text: "見せてもらえる？"
+        next: tomo_power_demonstration
+      - text: "すごい能力だ"
+        next: tomo_power_acknowledgment
+
+  - id: tomo_responsibility_talk
+    text: "そうですね。だから、慎重に描かなければなりません。"
+    choices:
+      - text: "君なら大丈夫"
+        next: tomo_conversation_winding_down
+      - text: "責任感があるね"
+        next: tomo_character_recognition
+
+  - id: tomo_beauty_recognition
+    text: "美しい...そう言ってもらえると、力を肯定できます。"
+    choices:
+      - text: "美しい力だよ"
+        next: tomo_conversation_winding_down
+      - text: "君自身も美しい"
+        next: tomo_personal_appreciation
+
+  - id: tomo_special_bond
+    text: "特別な絆...そうですね。お互いに特別です。"
+    choices:
+      - text: "かけがえのない"
+        next: tomo_conversation_winding_down
+      - text: "大切な絆"
+        next: tomo_conversation_winding_down
+
+  - id: tomo_secret_bond
+    text: "秘密を共有...信頼の証ですね。"
+    choices:
+      - text: "信頼してる"
+        next: tomo_conversation_winding_down
+      - text: "特別な関係"
+        next: tomo_conversation_winding_down
+
+  - id: tomo_unconditional_acceptance
+    text: "いつでも...本当ですか？嬉しいです。"
+    choices:
+      - text: "約束する"
+        next: tomo_conversation_winding_down
+      - text: "絶対に"
+        next: tomo_conversation_winding_down
+
+  - id: tomo_identity_affirmation
+    text: "このままでいい...安心しました。"
+    choices:
+      - text: "君は君だ"
+        next: tomo_conversation_winding_down
+      - text: "完璧だよ"
+        next: tomo_personal_appreciation
+
+  - id: tomo_power_encouragement
+    text: "力を大切に...はい、そうします。"
+    choices:
+      - text: "君らしく使って"
+        next: tomo_conversation_winding_down
+      - text: "応援してる"
+        next: tomo_support_response
+
+  - id: tomo_demonstration_success
+    text: "見えましたか？私の力を。"
+    choices:
+      - text: "信じる"
+        next: tomo_conversation_winding_down
+      - text: "すごい"
+        next: tomo_power_acknowledgment
+
+  - id: tomo_reality_confirmation
+    text: "現実が変わりました。これが、私の力です。"
+    choices:
+      - text: "本物だ"
+        next: tomo_conversation_winding_down
+      - text: "大切にして"
+        next: tomo_power_encouragement
+
+  - id: tomo_support_offer
+    text: "手伝ってくれるんですか？嬉しいです。"
+    choices:
+      - text: "いつでも"
+        next: tomo_conversation_winding_down
+      - text: "一緒に頑張ろう"
+        next: tomo_companionship_response
+
+  - id: tomo_character_recognition
+    text: "責任感...そうでありたいです。"
+    choices:
+      - text: "君らしい"
+        next: tomo_conversation_winding_down
+      - text: "立派だ"
+        next: tomo_personal_appreciation
+
+  - id: tomo_personal_appreciation
+    text: "私が...美しい？ありがとうございます。"
+    choices:
+      - text: "本当だよ"
+        next: tomo_conversation_winding_down
+      - text: "内面も美しい"
+        next: tomo_conversation_winding_down
+
+  - id: tomo_drawing_activity
+    text: "あなたの笑顔を描いています。とても綺麗だから。"
+    choices:
+      - text: "嬉しい"
+        next: tomo_conversation_winding_down
+      - text: "君の笑顔も綺麗"
+        next: tomo_conversation_winding_down
+
+  - id: tomo_trust_building
+    text: "信頼してくれて、ありがとうございます。"
+    choices:
+      - text: "信頼してる"
+        next: tomo_conversation_winding_down
+      - text: "君なら大丈夫"
+        next: tomo_reassurance_response
+
+  - id: tomo_reassurance_response
+    text: "大丈夫...そう言ってもらえると、心強いです。"
+    choices:
+      - text: "いつでも支える"
+        next: tomo_conversation_winding_down
+      - text: "君は強い"
+        next: tomo_strength_recognition
+
+  - id: tomo_strength_recognition
+    text: "強い...そうかもしれません。あなたがいてくれるから。"
+    choices:
+      - text: "君の力だよ"
+        next: tomo_conversation_winding_down
+      - text: "一緒にいる"
+        next: tomo_companionship_response
+
+  - id: tomo_support_response
+    text: "応援してくれるんですね。頑張ります。"
+    choices:
+      - text: "いつでも"
+        next: tomo_conversation_winding_down
+      - text: "君なら大丈夫"
+        next: tomo_reassurance_response
+
+  - id: tomo_doubt_response
+    text: "そうかもしれません。でも、（落書き帳を見せる）この絵を見てください。"
+    choices:
+      - text: "どんな絵？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.drawing_mentions
+            value: 1
+        next: tomo_proof_drawing
+      - text: "......（絵を見る）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: tomo.art_interest
+            value: 1
+        next: tomo_silent_observation
+      - text: "信じたい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_belief_response
+
+  - id: tomo_proof_drawing
+    text: "（落書き帳を見せる）この絵を見てください。現実になった証拠です。"
+    choices:
+      - text: "本当だ"
+        next: tomo_belief_response
+      - text: "すごい"
+        next: tomo_power_acknowledgment
+
+  - id: tomo_silent_observation
+    text: "（静かに絵を見せる）どうですか？"
+    choices:
+      - text: "美しい"
+        next: tomo_art_appreciation
+      - text: "......"
+        next: tomo_deeper_silence
+
+  - id: tomo_reality_changes
+    text: "雲の色が変わったり、風が優しくなったり。小さな変化です。"
+    choices:
+      - text: "素敵な変化だ"
+        next: tomo_conversation_winding_down
+      - text: "もっと見せて"
+        next: tomo_power_demonstration
+
+  - id: tomo_secret_revelation
+    text: "私の絵は、世界の境界線を曖昧にするんです。現実と想像の間を。"
+    choices:
+      - text: "境界線を曖昧に？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_boundary_explanation
+      - text: "君は特別な存在だ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.acceptance_level
+            value: 1
+        next: tomo_special_recognition
+      - text: "大丈夫、受け入れる"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_acceptance_response
+
+  - id: tomo_boundary_explanation
+    text: "現実と想像の境界を、絵で繋げるんです。"
+    choices:
+      - text: "不思議だね"
+        next: tomo_conversation_winding_down
+      - text: "すごい力だ"
+        next: tomo_power_acknowledgment
+
+  - id: tomo_special_recognition
+    text: "特別...そうかもしれません。でも、あなたも特別です。"
+    choices:
+      - text: "お互い特別"
+        next: tomo_special_bond
+      - text: "君は唯一無二"
+        next: tomo_conversation_winding_down
+
+  # 終了に向かう会話
+  - id: tomo_conversation_winding_down
+    text: "今日は、本当のことを話せて良かったです。ありがとうございます。"
+    choices:
+      - text: "また明日も来る"
+        effects:
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+        next: tomo_end_promise
+      - text: "君の力を応援する"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.power_recognition
+            value: 1
+        next: tomo_end_encouragement
+      - text: "秘密を守る"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.secret_sharing
+            value: 1
+        next: tomo_end_trust

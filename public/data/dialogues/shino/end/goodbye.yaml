@@ -1,7 +1,170 @@
 dialogues:
-  - id: shino_end_goodbye
-    text: "また来てくれますか？私、ここで橋の向こうを見ながら待っています。"
+  # 基本的な終了パターン
+  - id: shino_end_promise
+    text: "ありがとう。私、ここで待ってるから。きっと、また会えるよね。"
     effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_end_gentle
+    text: "うん。今日は...いい夜だった。お疲れ様。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: shino.comfort_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_end_caring
+    text: "いい夢を...私も、その人の夢を見られるかな。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: shino.waiting_person_mentions
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 高い信頼度での終了
+  - id: shino_end_deep_trust
+    text: "あなたと話していると、安心する。その人も、きっとあなたみたいに優しい人だった。"
+    conditions:
+      - type: variable
+        name: shino.trust_level
+        operator: greater_than
+        value: 7
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 記憶の問題が深刻な場合の終了
+  - id: shino_end_memory_confusion
+    text: "また...忘れてしまうかもしれない。でも、この気持ちだけは覚えていたい。"
+    conditions:
+      - type: variable
+        name: shino.memory_issues
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: shino.memory_issues
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 橋への関心が高い場合の終了
+  - id: shino_end_bridge_longing
+    text: "橋の向こうに行く勇気、いつかきっと...あなたがいてくれるから。"
+    conditions:
+      - type: variable
+        name: shino.bridge_fascination
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: shino.bridge_fascination
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 不安レベルが高い場合の終了
+  - id: shino_end_anxious
+    text: "もう遅いから...でも、一人になるのが怖い。でも、大丈夫。"
+    conditions:
+      - type: variable
+        name: shino.anxiety_level
+        operator: greater_than
+        value: 4
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: shino.anxiety_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 沈黙が多かった場合の終了
+  - id: shino_end_silent_understanding
+    text: "言葉はいらない。あなたがいてくれるだけで...ありがとう。"
+    conditions:
+      - type: variable
+        name: player_silence_count
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: shino.comfort_level
+        value: 2
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 時間の歪みを感じている場合の終了
+  - id: shino_end_time_distortion
+    text: "時間が止まっていたみたい。でも、それでも良かった。"
+    conditions:
+      - type: variable
+        name: time_distortion_events
+        operator: greater_than
+        value: 2
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: time_distortion_events
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 初回での特別な終了
+  - id: shino_end_first_meeting
+    text: "初めて会ったのに、なぜか懐かしい。不思議ね。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.shino
+        operator: equals
+        value: 0
+    effects:
+      - type: increment
+        variable: character_encounter_count.shino
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
       - type: custom
         handler: end_dialogue_session
     choices: []

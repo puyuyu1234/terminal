@@ -1,7 +1,192 @@
 dialogues:
-  - id: nazuna_end_goodbye
-    text: "また来てくれますか？私、ここで記録を続けていますから。"
+  # 基本的な終了パターン
+  - id: nazuna_end_promise
+    text: "......（小さく手を振る）約束、覚えています。また、お話しましょう。"
     effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.trust_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_end_encouragement
+    text: "......（録音機を大切そうに持つ）頑張って、いい音を録り続けます。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.recorder_mentions
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_end_gentle
+    text: "......（温かく微笑む）今日は、ありがとうございました。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.comfort_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 沈黙が多かった場合の終了
+  - id: nazuna_end_silent_understanding
+    text: "......（静かに手を振る）言葉はいらないですね。心が通じ合いました。"
+    conditions:
+      - type: variable
+        name: player_silence_count
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.comfort_level
+        value: 2
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 録音機への言及が多い場合の終了
+  - id: nazuna_end_recorder_focus
+    text: "......（録音機を見つめる）この録音機と一緒に、あなたのことも覚えています。"
+    conditions:
+      - type: variable
+        name: nazuna.recorder_mentions
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.recorder_mentions
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 電車音への関心が高い場合の終了
+  - id: nazuna_end_train_sound_love
+    text: "......（遠くを見つめる）電車の音、また一緒に聞きましょう。"
+    conditions:
+      - type: variable
+        name: nazuna.train_sound_focus
+        operator: greater_than
+        value: 4
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.train_sound_focus
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 高い信頼度での終了
+  - id: nazuna_end_deep_trust
+    text: "......（普段より大きな声で）あなたと話せて、とても嬉しかったです。"
+    conditions:
+      - type: variable
+        name: nazuna.trust_level
+        operator: greater_than
+        value: 7
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 録音許可を得た場合の終了
+  - id: nazuna_end_recording_permission
+    text: "......（録音機を大切そうに持つ）あなたの声、大切に保存しました。"
+    conditions:
+      - type: variable
+        name: nazuna.recording_permission
+        operator: greater_than
+        value: 0
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.recording_permission
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 声への関心が高い場合の終了
+  - id: nazuna_end_voice_appreciation
+    text: "......（恥ずかしそうに）あなたの声、とても美しいです。また聞かせてください。"
+    conditions:
+      - type: variable
+        name: nazuna.voice_interest
+        operator: greater_than
+        value: 2
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.voice_interest
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 快適度が高い場合の終了
+  - id: nazuna_end_comfortable
+    text: "......（安心した表情）あなたといると、とても心が落ち着きます。"
+    conditions:
+      - type: variable
+        name: nazuna.comfort_level
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: nazuna.comfort_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 初回での特別な終了
+  - id: nazuna_end_first_meeting
+    text: "......（小さく微笑む）初めてお会いしたのに、不思議と安心しました。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.nazuna
+        operator: equals
+        value: 0
+    effects:
+      - type: increment
+        variable: character_encounter_count.nazuna
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
       - type: custom
         handler: end_dialogue_session
     choices: []

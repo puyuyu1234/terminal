@@ -70,19 +70,33 @@ export class GameEngine {
         nodeId: event.data.nodeId,
         choiceMade: event.data.choiceId
       });
+      // 選択時は履歴に追加するのみ、保存はセッション終了時に行う
     });
 
     this.eventBus.on('dialogue_end', (event) => {
-      console.log('Dialogue ended:', event.data);
-      this.stateManager.save();
+      console.log('[GameEngine] Dialogue ended event received:', event.data);
+      // 対話終了時の保存はendSession()で行う
     });
   }
 
   async initialize(): Promise<void> {
-    if (this.isInitialized) return;
+    if (this.isInitialized) {
+      console.log('[GameEngine] Already initialized, skipping...');
+      return;
+    }
 
     try {
+      console.log('[GameEngine] Initializing game engine...');
       await this.stateManager.initialize();
+      
+      const state = this.stateManager.getState();
+      console.log('[GameEngine] Post-initialization state:', {
+        totalVisits: state.player.totalVisits,
+        characterCount: state.characters.size,
+        flagCount: state.flags.size,
+        variableCount: state.variables.size
+      });
+      
       this.isInitialized = true;
       console.log('Game engine initialized successfully');
     } catch (error) {
@@ -96,22 +110,33 @@ export class GameEngine {
       await this.initialize();
     }
 
+    console.log('[GameEngine] Starting new session...');
+    const currentState = this.stateManager.getState();
+    console.log('[GameEngine] Current state before session:', {
+      totalVisits: currentState.player.totalVisits,
+      characterCount: currentState.characters.size
+    });
+
     // Create game context
     const environment = this.createEnvironment();
+    
+    // Update state for new session BEFORE character selection
+    this.stateManager.incrementPlayerVisits();
+    console.log('[GameEngine] Incremented player visits to:', this.stateManager.getState().player.totalVisits);
+    
+    // Get updated state for character selection
+    const updatedState = this.stateManager.getState();
     const selectedCharacter = this.characterManager.selectTonightCharacter({
-      state: this.stateManager.getState(),
+      state: updatedState,
       currentCharacter: null as any, // Will be set after character selection
       environment
     });
 
     this.currentContext = {
-      state: this.stateManager.getState(),
+      state: updatedState,
       currentCharacter: selectedCharacter,
       environment
     };
-
-    // Update state for new session
-    this.stateManager.incrementPlayerVisits();
     
     // Load dialogue data for the selected character
     await this.loadCharacterDialogue(selectedCharacter.id);
@@ -119,8 +144,7 @@ export class GameEngine {
     // Start the dialogue
     await this.dialogueManager.startDialogue(selectedCharacter.id, this.currentContext);
     
-    // Increment meet count after dialogue starts
-    this.stateManager.incrementCharacterMeetCount(selectedCharacter.id);
+    // NOTE: Meet count will be incremented when dialogue ends, not at start
 
     return this.currentContext;
   }
@@ -183,17 +207,25 @@ export class GameEngine {
   }
 
   async makeChoice(choiceIndex: number): Promise<boolean> {
-    if (!this.currentContext) return false;
+    if (!this.currentContext) {
+      console.log('[GameEngine] makeChoice: No current context');
+      return false;
+    }
 
     try {
+      console.log('[GameEngine] makeChoice: Making choice', choiceIndex);
       const nextNode = await this.dialogueManager.makeChoice(choiceIndex, this.currentContext);
       
       // Check if dialogue has ended
       if (!nextNode) {
+        console.log('[GameEngine] makeChoice: No next node - dialogue ended');
+        console.log('[GameEngine] makeChoice: About to call endSession()');
         this.endSession();
+        console.log('[GameEngine] makeChoice: endSession() called');
         return false;
       }
 
+      console.log('[GameEngine] makeChoice: Continuing dialogue');
       return true;
     } catch (error) {
       console.error('Error making choice:', error);
@@ -202,10 +234,40 @@ export class GameEngine {
   }
 
   private endSession(): void {
+    console.log('[GameEngine] endSession called');
+    console.log('[GameEngine] Current context exists:', !!this.currentContext);
+    
     if (this.currentContext) {
+      const characterId = this.currentContext.currentCharacter.id;
+      console.log('[GameEngine] Ending session for character:', characterId);
+      
+      // Increment meet count when dialogue session ends
+      this.stateManager.incrementCharacterMeetCount(characterId);
+      const charState = this.stateManager.getCharacterState(characterId);
+      console.log('[GameEngine] Session ended - incremented meet count for', characterId, 'to:', charState.meetCount);
+      
       this.dialogueManager.endDialogue(this.currentContext);
+      
+      // セッション終了時に確実に保存
+      console.log('[GameEngine] Saving state on session end...');
+      this.stateManager.save().then(() => {
+        console.log('[GameEngine] Session ended - state saved successfully');
+      }).catch(error => {
+        console.error('[GameEngine] Failed to save state on session end:', error);
+      });
+      
       this.currentContext = null;
+      console.log('[GameEngine] Current context cleared');
+    } else {
+      console.log('[GameEngine] No current context to end');
     }
+  }
+
+  // 公開メソッド: 手動でセッション終了
+  endCurrentSession(): void {
+    console.log('[GameEngine] Manually ending current session');
+    console.log('[GameEngine] Current context before manual end:', !!this.currentContext);
+    this.endSession();
   }
 
   getCurrentCharacter(): Character | null {
