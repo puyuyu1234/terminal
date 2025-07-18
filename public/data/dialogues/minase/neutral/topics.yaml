@@ -1,52 +1,532 @@
 dialogues:
-  - id: minase_neutral_activity
-    text: "特に何もしていませんわ。ただ、この場所が落ち着くんです。現実から少し離れられるような。"
+  # 初回出会いでの機知に富んだ応答
+  - id: minase_first_witty_response
+    text: "あら、なかなか面白い方ね。でも、私の方がずっと物好きよ。だって、あなたの未来を見てしまうんですもの。"
     choices:
-      - text: "現実から逃げたいことがあるの？"
-        next: minase_neutral_escape
-      - text: "確かに静かで落ち着くね"
-        next: minase_neutral_peaceful
-      - text: "もう帰ろうか"
-        next: minase_end_goodbye
+      - text: "どんな未来？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_first_prophecy
+      - text: "それは怖いね"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_fear_acknowledgment
+      - text: "信じない"
+        effects:
+          - type: increment
+            variable: minase.trust_level
+            value: -1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_skepticism_response
 
-  - id: minase_neutral_response
-    text: "ふふ、そうですね。でも、私は意味があってここにいるんですよ。"
+  # 神秘的な応答
+  - id: minase_first_mysterious_response
+    text: "理由？そんなものがあるとでも？私はただ、ここにいるべき時にいるだけ。"
     choices:
-      - text: "どんな意味？"
-        next: minase_neutral_meaning
-      - text: "それは興味深いね"
-        next: minase_end_goodbye
+      - text: "運命ってこと？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_fate_discussion
+      - text: "僕もそう感じる"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_connection_acknowledgment
+      - text: "よくわからない"
+        effects:
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_mystery_deepening
 
-  - id: minase_neutral_escape
-    text: "逃げるなんて、そんな弱い言葉は使いませんわ。ただ、時には立ち止まることも必要でしょう？"
+  # 沈黙への観察的応答
+  - id: minase_first_silent_response
+    text: "無口な方ね。でも、心の中は騒がしいでしょう？私には聞こえるのよ。"
     choices:
-      - text: "その通りだね"
-        next: minase_neutral_agreement
-      - text: "でも前に進まないと"
-        next: minase_end_goodbye
+      - text: "何が聞こえるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.player_observation
+            value: 1
+        next: minase_mind_reading
+      - text: "怖い"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_intimidation_response
+      - text: "......"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: minase.player_observation
+            value: 1
+        next: minase_deeper_observation
 
-  - id: minase_neutral_peaceful
-    text: "でしょう？時間が止まったみたいで、何も考えなくていいんです。"
+  # 予言的な応答
+  - id: minase_prophecy_response
+    text: "あなたの選択が、この場所の運命を変える。でも、それがいつかは...まだ見えないわ。"
     choices:
-      - text: "一緒にいると安心する"
-        next: minase_neutral_comfort
-      - text: "たまにはそういう時間も必要だね"
-        next: minase_end_goodbye
+      - text: "どう変わるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_change_explanation
+      - text: "責任重大だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_responsibility_talk
+      - text: "信じられない"
+        effects:
+          - type: increment
+            variable: minase.trust_level
+            value: -1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_disbelief_response
 
-  - id: minase_neutral_meaning
-    text: "秘密ですわ。でも、いつかお話しする日が来るかもしれませんね。"
+  # 時間に関する説明
+  - id: minase_time_explanation
+    text: "時間は流れているようで、実は止まっている。あなたは気づいていないけれど、同じ瞬間を何度も繰り返してるのよ。"
     choices:
-      - text: "楽しみにしてるよ"
-        next: minase_end_goodbye
+      - text: "ループしてるってこと？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: time_distortion_events
+            value: 1
+        next: minase_loop_confirmation
+      - text: "そんなはずない"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_denial_response
+      - text: "なぜ君は知ってるの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_knowledge_source
 
-  - id: minase_neutral_agreement
-    text: "分かってくださるのね。急いでばかりいると、大切なものを見落としてしまいますから。"
+  # 未来の啓示
+  - id: minase_future_revelation
+    text: "あなたは誰かを救うことになる。でも、その代償は...いえ、やっぱり言わない方がいいわ。"
     choices:
-      - text: "君と話していると時間を忘れる"
-        next: minase_end_goodbye
+      - text: "誰を救うの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_salvation_hint
+      - text: "代償って何？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_cost_hint
+      - text: "教えてくれてありがとう"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_gratitude_received
 
-  - id: minase_neutral_comfort
-    text: "あら、そんなことを言われると照れてしまいますわ。でも、嬉しいです。"
+  # 深い信頼関係での会話
+  - id: minase_mutual_happiness
+    text: "あなたといると、未来が明るく見える。珍しいことよ。"
     choices:
-      - text: "また明日も来るよ"
-        next: minase_end_goodbye
+      - text: "君といると安心する"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_mutual_comfort
+      - text: "普段は暗いの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_dark_visions
+      - text: "特別な夜だね"
+        effects:
+          - type: increment
+            variable: emotional_depth
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_special_moment
+
+  # 心読み的な会話
+  - id: minase_mind_reading
+    text: "不安、孤独、そして...希望。あなたの心は複雑ね。"
+    choices:
+      - text: "当たってる"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.player_observation
+            value: 1
+        next: minase_accuracy_confirmation
+      - text: "そんなのわからないはず"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_power_demonstration
+      - text: "君の心は？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_self_revelation
+
+  # 運命に関する議論
+  - id: minase_fate_discussion
+    text: "運命...そんな綺麗な言葉じゃないわ。もっと複雑で、残酷なもの。"
+    choices:
+      - text: "変えられないの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_fate_change_possibility
+      - text: "受け入れるしかない"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_acceptance_talk
+      - text: "運命なんて信じない"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_fate_rebellion
+
+  # 終了へ向かう会話
+  - id: minase_conversation_ending
+    text: "今夜はここまでね。でも、また会えるわ。私には見えているから。"
+    choices:
+      - text: "また明日も来る"
+        effects:
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+        next: minase_end_promise
+      - text: "予言通りに"
+        effects:
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+        next: minase_end_prophetic
+      - text: "お疲れ様"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+        next: minase_end_gentle
+
+  # 不足していたノードを追加
+  - id: minase_first_prophecy
+    text: "明日の夜、あなたは重要な選択をする。その選択が...いえ、まだ早いわ。"
+    choices:
+      - text: "どんな選択？"
+        next: minase_conversation_ending
+      - text: "怖い"
+        next: minase_end_mysterious
+
+  - id: minase_fear_acknowledgment
+    text: "怖がることはない。未来を知ることは呪いでもあり、祝福でもある。"
+    choices:
+      - text: "理解できない"
+        next: minase_conversation_ending
+
+  - id: minase_skepticism_response
+    text: "信じなくてもいいのよ。でも、時が来れば分かる。"
+    choices:
+      - text: "時が来る？"
+        next: minase_conversation_ending
+
+  - id: minase_connection_acknowledgment
+    text: "そう、あなたもここにいるべき人。偶然なんてないのよ。"
+    choices:
+      - text: "運命的な出会い"
+        next: minase_end_gentle
+
+  - id: minase_mystery_deepening
+    text: "わからなくていい。わからないことの方が多いのが人生よ。"
+    choices:
+      - text: "君は何者？"
+        next: minase_conversation_ending
+
+  - id: minase_intimidation_response
+    text: "怖がらないで。私はあなたの味方よ。"
+    choices:
+      - text: "ありがとう"
+        next: minase_end_gentle
+
+  - id: minase_deeper_observation
+    text: "沈黙も言葉。あなたの沈黙は美しいわ。"
+    choices:
+      - text: "......"
+        next: minase_end_understanding
+
+  - id: minase_change_explanation
+    text: "良い方向に変わる。でも、それには代償が伴う。"
+    choices:
+      - text: "代償を払う"
+        next: minase_end_determined
+
+  - id: minase_responsibility_talk
+    text: "責任を感じる必要はない。あなたはただ、あなたらしくいればいい。"
+    choices:
+      - text: "ありがとう"
+        next: minase_end_gentle
+
+  - id: minase_disbelief_response
+    text: "信じなくても、現実は変わらない。でも、それでもいいの。"
+    choices:
+      - text: "ごめん"
+        next: minase_end_gentle
+
+  - id: minase_loop_confirmation
+    text: "そう、ループ。でも、今夜は少し違う。あなたがいるから。"
+    choices:
+      - text: "僕が何かを変える？"
+        next: minase_conversation_ending
+
+  - id: minase_denial_response
+    text: "否定したくなる気持ちはわかる。でも、心のどこかでは気づいているでしょう？"
+    choices:
+      - text: "...そうかもしれない"
+        next: minase_end_acceptance
+
+  - id: minase_knowledge_source
+    text: "なぜ知ってるか？私は時の外にいるから。"
+    choices:
+      - text: "時の外？"
+        next: minase_conversation_ending
+
+  - id: minase_salvation_hint
+    text: "この場所にいる、迷子の魂を。でも、それは別の話。"
+    choices:
+      - text: "迷子の魂？"
+        next: minase_conversation_ending
+
+  - id: minase_cost_hint
+    text: "代償は...あなた自身の何かを失うこと。でも、それでも価値がある。"
+    choices:
+      - text: "失ってもいい"
+        next: minase_end_determined
+
+  - id: minase_gratitude_received
+    text: "どういたしまして。あなたのような人に出会えて、私も嬉しいわ。"
+    choices:
+      - text: "僕も嬉しい"
+        next: minase_end_gentle
+
+  - id: minase_mutual_comfort
+    text: "お互いに、心の支えになれるのね。"
+    choices:
+      - text: "ずっと一緒にいよう"
+        next: minase_end_eternal
+
+  - id: minase_dark_visions
+    text: "普段は暗い未来ばかり見える。でも、あなたの未来は違う。"
+    choices:
+      - text: "光があるってこと？"
+        next: minase_end_hopeful
+
+  - id: minase_special_moment
+    text: "特別な夜。きっと、あなたも覚えているでしょう。"
+    choices:
+      - text: "忘れない"
+        next: minase_end_memorable
+
+  - id: minase_accuracy_confirmation
+    text: "当たり前よ。あなたの心は、私には丸見えなのだから。"
+    choices:
+      - text: "不思議だ"
+        next: minase_conversation_ending
+
+  - id: minase_power_demonstration
+    text: "信じなくても、これが現実。私の力よ。"
+    choices:
+      - text: "すごい"
+        next: minase_conversation_ending
+
+  - id: minase_self_revelation
+    text: "私の心？空っぽよ。未来しか見えないから。"
+    choices:
+      - text: "寂しくない？"
+        next: minase_end_loneliness
+
+  - id: minase_fate_change_possibility
+    text: "変えられる。でも、変えることで失うものもある。"
+    choices:
+      - text: "それでも変えたい"
+        next: minase_end_determined
+
+  - id: minase_acceptance_talk
+    text: "受け入れることも一つの力。あなたは賢い。"
+    choices:
+      - text: "君から学んだ"
+        next: minase_end_gentle
+
+  - id: minase_fate_rebellion
+    text: "反発する気持ちも理解できる。でも、運命は意外と融通が利くのよ。"
+    choices:
+      - text: "融通が利く？"
+        next: minase_conversation_ending
+
+  # 不足していたノードを追加（参照エラー修正）
+  - id: minase_mysterious_acknowledgment
+    text: "不思議？私にとってはごく普通のことよ。でも、あなたには特別に映るのね。"
+    choices:
+      - text: "どうしてそんな力が？"
+        next: minase_conversation_ending
+      - text: "僕には理解できない"
+        next: minase_end_mysterious
+
+  - id: minase_skeptical_response
+    text: "疑うのは当然よ。でも、疑いもやがて確信に変わる。"
+    choices:
+      - text: "いつか信じる"
+        next: minase_end_gentle
+      - text: "証拠を見せて"
+        next: minase_conversation_ending
+
+  - id: minase_fear_response
+    text: "怖がる必要はない。私は危険な存在じゃないの。"
+    choices:
+      - text: "安心した"
+        next: minase_end_gentle
+      - text: "まだ少し怖い"
+        next: minase_conversation_ending
+
+  - id: minase_time_deflection
+    text: "私の時間？私には時間という概念がないの。永遠に今を生きているから。"
+    choices:
+      - text: "永遠に？"
+        next: minase_conversation_ending
+      - text: "それは孤独だね"
+        next: minase_end_loneliness
+
+  - id: minase_tonight_vision
+    text: "今夜は特別な夜よ。あなたの未来が大きく変わる分岐点が見える。"
+    choices:
+      - text: "どう変わる？"
+        next: minase_future_revelation
+      - text: "変わりたい"
+        next: minase_end_determined
+
+  - id: minase_gratitude_response
+    text: "感謝してくれるのね。でも、私は当然のことをしているだけよ。"
+    choices:
+      - text: "当然じゃない"
+        next: minase_end_gentle
+      - text: "君は特別だ"
+        next: minase_conversation_ending
+
+  - id: minase_wisdom_response
+    text: "賢明な判断ね。知らない方が良いことも確かにある。"
+    choices:
+      - text: "君が決めて"
+        next: minase_conversation_ending
+      - text: "でも少し知りたい"
+        next: minase_end_mysterious
+
+  - id: minase_decision_making
+    text: "私が決める...そうね。今はまだ話さない方がいいわ。時が来れば分かる。"
+    choices:
+      - text: "分かった"
+        next: minase_end_gentle
+      - text: "いつになる？"
+        next: minase_conversation_ending

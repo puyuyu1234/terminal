@@ -1,7 +1,325 @@
 dialogues:
-  - id: tomo_end_goodbye
-    text: "また明日も来てくれますか？私、ここで待っていますから。"
+  # 基本的な終了パターン
+  - id: tomo_end_promise
+    text: "また明日も...絵を描いて待っています。現実を、少しずつ変えながら。"
     effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.trust_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_end_encouragement
+    text: "（落書き帳を大切そうに抱える）力を大切に使います。ありがとうございました。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.power_recognition
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_end_trust
+    text: "秘密を守ってくれるんですね。安心しました。また、お話しましょう。"
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.secret_sharing
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 沈黙が多かった場合の終了
+  - id: tomo_end_silent_understanding
+    text: "言葉がなくても、心が通じました。不思議な感覚です。"
+    conditions:
+      - type: variable
+        name: player_silence_count
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.comfort_level
+        value: 2
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 現実改変に関する言及が多い場合の終了
+  - id: tomo_end_reality_master
+    text: "現実を変える力...あなたといると、怖くありません。また、試してみます。"
+    conditions:
+      - type: variable
+        name: tomo.reality_alteration
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.reality_alteration
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 絵への関心が高い場合の終了
+  - id: tomo_end_artistic_bond
+    text: "（落書き帳を見せる）この絵たちが、あなたとの思い出を表しています。"
+    conditions:
+      - type: variable
+        name: tomo.drawing_mentions
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.art_interest
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 高い信頼度での終了
+  - id: tomo_end_deep_trust
+    text: "あなたになら、本当の名前を言えそうです。でも、今日はまだ...また今度。"
+    conditions:
+      - type: variable
+        name: tomo.trust_level
+        operator: greater_than
+        value: 7
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.name_mystery
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 名前の謎に関する言及が多い場合の終了
+  - id: tomo_end_name_mystery
+    text: "名前の力...いつか、あなたになら話せるかもしれません。"
+    conditions:
+      - type: variable
+        name: tomo.name_mystery
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.name_mystery
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 力の認識が高い場合の終了
+  - id: tomo_end_power_accepted
+    text: "私の力を受け入れてくれて、ありがとうございます。希望が見えました。"
+    conditions:
+      - type: variable
+        name: tomo.power_recognition
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.acceptance_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 秘密の共有が進んだ場合の終了
+  - id: tomo_end_secret_keeper
+    text: "秘密を分かち合える人がいるって、素晴らしいことです。"
+    conditions:
+      - type: variable
+        name: tomo.secret_sharing
+        operator: greater_than
+        value: 4
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.trust_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 心配や懸念が示された場合の終了
+  - id: tomo_end_protected
+    text: "心配してくれて、ありがとうございます。一人じゃないんですね。"
+    conditions:
+      - type: variable
+        name: tomo.concern_level
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.companionship_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 励ましが多かった場合の終了
+  - id: tomo_end_encouraged
+    text: "励ましてくれて、ありがとうございます。頑張って、力をコントロールしてみます。"
+    conditions:
+      - type: variable
+        name: tomo.encouragement_level
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.encouragement_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 受け入れられた感覚が高い場合の終了
+  - id: tomo_end_accepted
+    text: "受け入れられるって、こんなに温かいんですね。心が軽くなりました。"
+    conditions:
+      - type: variable
+        name: tomo.acceptance_level
+        operator: greater_than
+        value: 4
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.acceptance_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 仲間意識が高い場合の終了
+  - id: tomo_end_companionship
+    text: "一緒にいてくれる人がいるって、現実を変えるより嬉しいです。"
+    conditions:
+      - type: variable
+        name: tomo.companionship_level
+        operator: greater_than
+        value: 3
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.companionship_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 疑いが示された場合の終了
+  - id: tomo_end_doubt_resolved
+    text: "疑うのも当然です。でも、いつか信じてもらえるように頑張ります。"
+    conditions:
+      - type: variable
+        name: tomo.doubt_level
+        operator: greater_than
+        value: 2
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.doubt_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 初回での特別な終了
+  - id: tomo_end_first_meeting
+    text: "初めてお会いしたのに、不思議と親しみを感じます。現実が、少し変わったのかもしれません。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.tomo
+        operator: equals
+        value: 0
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # アートへの関心が高い場合の終了
+  - id: tomo_end_art_appreciation
+    text: "絵を理解してくれて、嬉しいです。芸術と現実の境界線って、曖昧ですね。"
+    conditions:
+      - type: variable
+        name: tomo.art_interest
+        operator: greater_than
+        value: 4
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.art_interest
+        value: 1
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 快適度が高い場合の終了
+  - id: tomo_end_comfortable
+    text: "あなたといると、自然体でいられます。こんな感覚、久しぶりです。"
+    conditions:
+      - type: variable
+        name: tomo.comfort_level
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: character_encounter_count.tomo
+        value: 1
+      - type: increment
+        variable: tomo.comfort_level
+        value: 1
       - type: custom
         handler: end_dialogue_session
     choices: []

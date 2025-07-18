@@ -1,10 +1,185 @@
 dialogues:
-  - id: nazuna_start_greeting
-    text: "こんにちは...また来てくれたんですね。私、ここで色々なことを記録してるんです。"
+  # なずなとの初回出会い
+  - id: nazuna_start_first_meeting
+    text: "...こんばんは。（小さな声で）録音機、持ってきました。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.nazuna
+        operator: equals
+        value: 0
     choices:
-      - text: "何を記録しているの？"
-        next: nazuna_neutral_recording
-      - text: "一人で寂しくない？"
-        next: nazuna_neutral_loneliness
-      - text: "少し話していこうか"
-        next: nazuna_neutral_feelings
+      - text: "録音機？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.recorder_mentions
+            value: 1
+        next: nazuna_first_recorder_response
+      - text: "電車の音を録音してるの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.train_sound_focus
+            value: 1
+        next: nazuna_first_train_sound_response
+      - text: "......（静かに見守る）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_first_silence_response
+
+  # なずなとの再会（静かな挨拶）
+  - id: nazuna_start_quiet_greeting
+    text: "......（小さく手を振る）また、来てくれたんですね。"
+    conditions:
+      - type: variable
+        name: character_encounter_count.nazuna
+        operator: greater_than
+        value: 0
+    choices:
+      - text: "また会えて嬉しい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+        next: nazuna_happiness_response
+      - text: "今日も録音してるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.recorder_mentions
+            value: 1
+        next: nazuna_recording_activity
+      - text: "......（静かに座る）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_silent_companionship
+
+  # 録音機への関心が高い場合
+  - id: nazuna_start_recorder_focus
+    text: "......（録音機を大切そうに持ちながら）今日も、いい音が録れそうです。"
+    conditions:
+      - type: variable
+        name: nazuna.recorder_mentions
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "どんな音を録ってるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.recorder_mentions
+            value: 1
+        next: nazuna_sound_collection
+      - text: "大切な録音機だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+        next: nazuna_recorder_importance
+      - text: "......（録音機を見つめる）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_shared_focus
+
+  # 高い信頼度での開始
+  - id: nazuna_start_trusted
+    text: "......（いつもより声が大きい）お疲れ様です。あなたの声も、録音したいくらいです。"
+    conditions:
+      - type: variable
+        name: nazuna.trust_level
+        operator: greater_than
+        value: 5
+    choices:
+      - text: "僕の声を？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.voice_interest
+            value: 1
+        next: nazuna_voice_appreciation
+      - text: "嬉しい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+        next: nazuna_mutual_appreciation
+      - text: "録音してもいいよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: nazuna.recording_permission
+            value: 1
+        next: nazuna_recording_permission
+
+  # 電車音への反応が蓄積されている場合
+  - id: nazuna_start_train_enthusiast
+    text: "......（録音機を向ける）線路の音、聞こえますか？とても綺麗なんです。"
+    conditions:
+      - type: variable
+        name: nazuna.train_sound_focus
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "どんな音？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.train_sound_focus
+            value: 1
+        next: nazuna_train_sound_description
+      - text: "一緒に聞こう"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_shared_listening
+      - text: "......（耳を澄ます）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.train_sound_focus
+            value: 1
+        next: nazuna_listening_together

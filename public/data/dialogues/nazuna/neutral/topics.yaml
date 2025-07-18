@@ -1,60 +1,427 @@
 dialogues:
-  - id: nazuna_neutral_recording
-    text: "夕日の色とか、風の音とか、小さな変化を書き留めているんです。忘れたくないから。"
+  # 録音機に関する応答
+  - id: nazuna_first_recorder_response
+    text: "......（録音機を見せる）これで、駅の音を録音してるんです。電車の音、風の音、人の足音..."
     choices:
-      - text: "どんな変化があった？"
-        next: nazuna_neutral_changes
-      - text: "記録を見せてもらえる？"
-        next: nazuna_neutral_show
-      - text: "もう帰ろうか"
-        next: nazuna_end_goodbye
+      - text: "面白い趣味だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+        next: nazuna_hobby_validation
+      - text: "どんな音が一番好き？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.recorder_mentions
+            value: 1
+        next: nazuna_favorite_sound
+      - text: "......（興味深そうに聞く）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_quiet_interest
 
-  - id: nazuna_neutral_loneliness
-    text: "最初は寂しかったけど、今は慣れました。一人でも、色々なことを感じられるんです。"
+  # 電車音への初回応答
+  - id: nazuna_first_train_sound_response
+    text: "......（うなずく）そうです。電車の音は...特別なんです。心が落ち着くんです。"
     choices:
-      - text: "どんなことを感じるの？"
-        next: nazuna_neutral_feelings
-      - text: "一緒にいてもいい？"
-        next: nazuna_neutral_together
-      - text: "帰る時間だよ"
-        next: nazuna_end_goodbye
+      - text: "なぜ特別なの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.train_sound_focus
+            value: 1
+        next: nazuna_train_sound_meaning
+      - text: "僕も好きだ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+        next: nazuna_shared_appreciation
+      - text: "......（一緒に聞く）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.train_sound_focus
+            value: 1
+        next: nazuna_listening_together
 
-  - id: nazuna_neutral_changes
-    text: "昨日は雲が薄いピンク色でした。今日は少し濃いオレンジ色です。毎日違うんですよ。"
+  # 沈黙への初回応答
+  - id: nazuna_first_silence_response
+    text: "......（安心したような表情）話さなくても、大丈夫です。静かな時間、好きです。"
     choices:
-      - text: "詳しく観察してるんだね"
-        next: nazuna_neutral_observation
-      - text: "今日の夕日はどう？"
-        next: nazuna_end_goodbye
+      - text: "静かな時間もいいね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_silence_appreciation
+      - text: "......（続けて沈黙）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_deeper_silence
+      - text: "君といると安心する"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+        next: nazuna_mutual_comfort
 
-  - id: nazuna_neutral_show
-    text: "はい、でも字が汚いので恥ずかしいです...。でも、読んでくれるなら嬉しいです。"
+  # 中間ノード群
+  - id: nazuna_hobby_validation
+    text: "......（嬉しそうに）ありがとうございます。音って、見えないけど美しいんです。"
     choices:
-      - text: "きっと素敵な記録だよ"
-        next: nazuna_neutral_encouragement
-      - text: "今度ゆっくり読ませて"
-        next: nazuna_end_goodbye
+      - text: "確かにそうだね"
+        next: nazuna_conversation_winding_down
+      - text: "他にどんな音を録ってる？"
+        next: nazuna_sound_collection
 
-  - id: nazuna_neutral_feelings
-    text: "風の冷たさとか、夕日の暖かさとか、時間の流れとか...言葉にするのは難しいですが。"
+  - id: nazuna_favorite_sound
+    text: "......電車の音です。でも、あなたの声も...綺麗だと思います。"
     choices:
-      - text: "感性豊かなんだね"
-        next: nazuna_end_goodbye
+      - text: "ありがとう"
+        next: nazuna_conversation_winding_down
+      - text: "君の声も素敵だ"
+        next: nazuna_voice_compliment
 
-  - id: nazuna_neutral_together
-    text: "はい、一緒にいてくれると嬉しいです。でも、あなたには帰る場所があるでしょう？"
+  - id: nazuna_quiet_interest
+    text: "......（録音機を大切そうに持つ）興味を持ってくれて、嬉しいです。"
     choices:
-      - text: "また明日も来るよ"
-        next: nazuna_end_goodbye
+      - text: "もっと聞かせて"
+        next: nazuna_sound_collection
+      - text: "大切なものなんだね"
+        next: nazuna_recorder_importance
 
-  - id: nazuna_neutral_observation
-    text: "小さなことでも、よく見ていると色々な発見があるんです。"
+  - id: nazuna_train_sound_meaning
+    text: "......昔、お父さんと電車に乗った時の音に似てるんです。"
     choices:
-      - text: "今度一緒に観察しよう"
-        next: nazuna_end_goodbye
+      - text: "大切な思い出だね"
+        next: nazuna_memory_validation
+      - text: "お父さんとの思い出"
+        next: nazuna_family_memory
 
-  - id: nazuna_neutral_encouragement
-    text: "ありがとうございます...そう言ってもらえると、記録を続ける励みになります。"
+  - id: nazuna_shared_appreciation
+    text: "......（小さく微笑む）同じ気持ちの人がいて、嬉しいです。"
     choices:
-      - text: "頑張って続けてね"
-        next: nazuna_end_goodbye
+      - text: "一緒に聞こう"
+        next: nazuna_listening_together
+      - text: "美しい音だね"
+        next: nazuna_conversation_winding_down
+
+  - id: nazuna_listening_together
+    text: "......（静かに耳を澄ます）...聞こえますか？遠くから、かすかに。"
+    choices:
+      - text: "聞こえる"
+        next: nazuna_shared_experience
+      - text: "......（一緒に聞く）"
+        next: nazuna_deeper_silence
+
+  - id: nazuna_silence_appreciation
+    text: "......（安心した表情）言葉がなくても、心が通じる時があります。"
+    choices:
+      - text: "その通りだ"
+        next: nazuna_conversation_winding_down
+      - text: "......（うなずく）"
+        next: nazuna_deeper_silence
+
+  - id: nazuna_deeper_silence
+    text: "......（穏やかな表情で録音機を見つめる）"
+    choices:
+      - text: "......"
+        next: nazuna_end_silent_understanding
+      - text: "今日も録音できた？"
+        next: nazuna_recording_success
+
+  - id: nazuna_mutual_comfort
+    text: "......（小さく微笑む）私も、あなたといると安心します。"
+    choices:
+      - text: "お互い様だね"
+        next: nazuna_conversation_winding_down
+      - text: "......（優しく微笑む）"
+        next: nazuna_end_gentle
+
+  # 追加の重要なノード群
+  - id: nazuna_sound_collection
+    text: "......風の音、鳥の声、人の足音...でも、電車の音が一番好きです。"
+    choices:
+      - text: "素敵なコレクションだね"
+        next: nazuna_conversation_winding_down
+      - text: "聞かせてもらえる？"
+        next: nazuna_recording_sharing
+
+  - id: nazuna_recorder_importance
+    text: "......（録音機を大切そうに撫でる）これがあると、孤独じゃないんです。"
+    choices:
+      - text: "大切な友達だね"
+        next: nazuna_conversation_winding_down
+      - text: "僕もいるよ"
+        next: nazuna_companionship
+
+  - id: nazuna_voice_compliment
+    text: "......（恥ずかしそうに）ありがとうございます。あまり話さないので..."
+    choices:
+      - text: "とても綺麗な声だよ"
+        next: nazuna_conversation_winding_down
+      - text: "もっと聞きたい"
+        next: nazuna_encouragement
+
+  - id: nazuna_memory_validation
+    text: "......（うなずく）はい。とても大切な思い出です。"
+    choices:
+      - text: "思い出は宝物だね"
+        next: nazuna_conversation_winding_down
+      - text: "お父さんは優しい人？"
+        next: nazuna_family_memory
+
+  - id: nazuna_family_memory
+    text: "......（温かい表情）はい。いつも静かに、でも優しく見守ってくれました。"
+    choices:
+      - text: "素敵なお父さんだね"
+        next: nazuna_conversation_winding_down
+      - text: "君もそんな人だ"
+        next: nazuna_personality_reflection
+
+  - id: nazuna_shared_experience
+    text: "......（嬉しそうに）聞こえましたね。一緒に聞けて、嬉しいです。"
+    choices:
+      - text: "美しい音だった"
+        next: nazuna_conversation_winding_down
+      - text: "また一緒に聞こう"
+        next: nazuna_promise_response
+
+  - id: nazuna_recording_success
+    text: "......（録音機を確認する）はい。今日もいい音が録れました。"
+    choices:
+      - text: "良かった"
+        next: nazuna_conversation_winding_down
+      - text: "どんな音？"
+        next: nazuna_today_sounds
+
+  - id: nazuna_recording_sharing
+    text: "......（録音機を操作する）この音、聞いてもらえますか？"
+    choices:
+      - text: "ぜひ聞きたい"
+        next: nazuna_playback_moment
+      - text: "......（静かに待つ）"
+        next: nazuna_shared_listening
+
+  - id: nazuna_companionship
+    text: "......（温かく微笑む）はい。あなたもいてくれます。"
+    choices:
+      - text: "いつでもいるよ"
+        next: nazuna_promise_response
+      - text: "......（優しく微笑む）"
+        next: nazuna_end_gentle
+
+  - id: nazuna_encouragement
+    text: "......（少し声を出して）ありがとうございます。頑張って、もっと話してみます。"
+    choices:
+      - text: "無理しなくていい"
+        next: nazuna_conversation_winding_down
+      - text: "君のペースで"
+        next: nazuna_understanding_response
+
+  - id: nazuna_personality_reflection
+    text: "......（考え込む）私も、お父さんみたいになれてるでしょうか？"
+    choices:
+      - text: "きっとなれてる"
+        next: nazuna_conversation_winding_down
+      - text: "優しい人だよ"
+        next: nazuna_affirmation_response
+
+  - id: nazuna_promise_response
+    text: "......（嬉しそうに）約束ですね。楽しみにしています。"
+    choices:
+      - text: "約束だよ"
+        next: nazuna_conversation_winding_down
+      - text: "......（うなずく）"
+        next: nazuna_end_promise
+
+  - id: nazuna_today_sounds
+    text: "......風の音と、遠くの電車の音。そして、あなたの声も録れました。"
+    choices:
+      - text: "僕の声も？"
+        next: nazuna_voice_recording
+      - text: "いい音だね"
+        next: nazuna_conversation_winding_down
+
+  - id: nazuna_playback_moment
+    text: "......（録音機から小さく音が流れる）どうでしょうか？"
+    choices:
+      - text: "とても美しい"
+        next: nazuna_appreciation_response
+      - text: "......（静かに聞く）"
+        next: nazuna_shared_listening
+
+  - id: nazuna_shared_listening
+    text: "......（静かに録音機を向ける）一緒に聞きましょう。"
+    choices:
+      - text: "......（静かに聞く）"
+        next: nazuna_shared_experience
+      - text: "美しい音だね"
+        next: nazuna_appreciation_response
+
+  - id: nazuna_shared_focus
+    text: "......（録音機を一緒に見つめる）この音たちが、私の宝物です。"
+    choices:
+      - text: "素敵な宝物だね"
+        next: nazuna_conversation_winding_down
+      - text: "......（一緒に見つめる）"
+        next: nazuna_deeper_silence
+
+  - id: nazuna_understanding_response
+    text: "......（安心した表情）ありがとうございます。理解してくれて。"
+    choices:
+      - text: "当然だよ"
+        next: nazuna_conversation_winding_down
+      - text: "......（温かく見守る）"
+        next: nazuna_end_gentle
+
+  - id: nazuna_affirmation_response
+    text: "......（嬉しそうに）そう言ってもらえると、嬉しいです。"
+    choices:
+      - text: "本当のことだよ"
+        next: nazuna_conversation_winding_down
+      - text: "......（微笑む）"
+        next: nazuna_end_gentle
+
+  - id: nazuna_voice_recording
+    text: "......（恥ずかしそうに）はい。とても綺麗な声でした。"
+    choices:
+      - text: "ありがとう"
+        next: nazuna_conversation_winding_down
+      - text: "君の声も録音したい"
+        next: nazuna_mutual_recording
+
+  - id: nazuna_appreciation_response
+    text: "......（嬉しそうに）分かってもらえて、嬉しいです。"
+    choices:
+      - text: "また聞かせて"
+        next: nazuna_conversation_winding_down
+      - text: "......（感動した表情）"
+        next: nazuna_end_gentle
+
+  - id: nazuna_mutual_recording
+    text: "......（驚いた表情）私の声を？...恥ずかしいですが、嬉しいです。"
+    choices:
+      - text: "素敵な声だから"
+        next: nazuna_conversation_winding_down
+      - text: "......（優しく微笑む）"
+        next: nazuna_end_gentle
+
+  # 終了に向かう会話
+  - id: nazuna_conversation_winding_down
+    text: "......（録音機を大切そうに持つ）今日も、いい時間でした。"
+    choices:
+      - text: "また明日も来る"
+        effects:
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+        next: nazuna_end_promise
+      - text: "録音、頑張って"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.recorder_mentions
+            value: 1
+        next: nazuna_end_encouragement
+      - text: "......（静かに手を振る）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_end_silent_understanding
+
+  # 追加の分岐ノード
+  - id: nazuna_happiness_response
+    text: "......（小さく手を振り返す）私も、また会えて嬉しいです。"
+    choices:
+      - text: "今日も一緒にいよう"
+        next: nazuna_conversation_winding_down
+      - text: "......（優しく微笑む）"
+        next: nazuna_mutual_comfort
+
+  - id: nazuna_recording_activity
+    text: "......（録音機を見せる）はい。今日も、いろんな音を録音しています。"
+    choices:
+      - text: "どんな音？"
+        next: nazuna_today_sounds
+      - text: "......（興味深そうに見る）"
+        next: nazuna_quiet_interest
+
+  - id: nazuna_silent_companionship
+    text: "......（安心した表情で座る）"
+    choices:
+      - text: "......（一緒に座る）"
+        next: nazuna_deeper_silence
+      - text: "静かな時間だね"
+        next: nazuna_silence_appreciation
+
+  - id: nazuna_voice_appreciation
+    text: "......（恥ずかしそうに）とても優しい声なんです。録音したいくらい..."
+    choices:
+      - text: "嬉しい"
+        next: nazuna_mutual_appreciation
+      - text: "録音してもいいよ"
+        next: nazuna_recording_permission
+
+  - id: nazuna_mutual_appreciation
+    text: "......（嬉しそうに）お互いに、いい声ですね。"
+    choices:
+      - text: "そうだね"
+        next: nazuna_conversation_winding_down
+      - text: "......（嬉しそうに微笑む）"
+        next: nazuna_end_gentle
+
+  - id: nazuna_recording_permission
+    text: "......（驚いた表情）本当に？ありがとうございます。"
+    choices:
+      - text: "君の大切な録音に"
+        next: nazuna_conversation_winding_down
+      - text: "......（優しくうなずく）"
+        next: nazuna_end_gentle
+
+  - id: nazuna_train_sound_description
+    text: "......（録音機を向ける）遠くから、カタンカタンって...心地よい音です。"
+    choices:
+      - text: "聞こえる"
+        next: nazuna_shared_experience
+      - text: "......（一緒に聞く）"
+        next: nazuna_listening_together
