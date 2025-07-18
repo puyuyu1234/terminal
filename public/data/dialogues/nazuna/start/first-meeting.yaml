@@ -1,0 +1,10 @@
+dialogues:
+  - id: nazuna_start_greeting
+    text: "こんにちは...また来てくれたんですね。私、ここで色々なことを記録してるんです。"
+    choices:
+      - text: "何を記録しているの？"
+        next: nazuna_neutral_recording
+      - text: "一人で寂しくない？"
+        next: nazuna_neutral_loneliness
+      - text: "少し話していこうか"
+        next: nazuna_neutral_feelings

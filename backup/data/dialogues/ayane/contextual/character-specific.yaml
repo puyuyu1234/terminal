@@ -1,0 +1,1076 @@
+character: ayane
+nodes:
+  - id: ayane_mutual_lightness
+    text: やった！同じ気持ちだ！心が軽いと、世界がキラキラして見えるよね！
+    choices:
+      - text: 見える世界が変わりますね
+        next: ayane_mutual_lightness_extended_conversation
+      - text: あなたのおかげです
+        next: ayane_mutual_lightness_extended_conversation
+      - text: ...
+        next: ayane_mutual_lightness_extended_conversation
+  - id: ayane_gratitude_response
+    text: 嬉しいって言ってもらえると、もっと嬉しくなっちゃう！
+    choices:
+      - text: 喜びが倍になりますね
+        next: ayane_gratitude_response_extended_conversation
+      - text: 素直な反応ですね
+        next: ayane_gratitude_response_extended_conversation
+      - text: ...
+        next: ayane_gratitude_response_extended_conversation
+  - id: ayane_remembers_previous
+    text: 前回話した雲の話、覚えてる？あの後、面白い雲を見つけたんだ！
+    conditions:
+      - type: flag
+        flag: ayane_talked_about_clouds
+        expected: true
+    choices:
+      - text: どんな雲でしたか？
+        next: ayane_remembers_previous_extended_conversation
+      - text: 覚えてますよ
+        next: ayane_remembers_previous_extended_conversation
+      - text: ...
+        next: ayane_remembers_previous_extended_conversation
+  - id: ayane_cloud_description
+    text: うさぎみたいな雲だったの！耳がぴょんと立ってて、すごく可愛かった！
+    choices:
+      - text: 想像力豊かですね
+        next: ayane_cloud_description_extended_conversation
+      - text: 僕も見たかった
+        next: ayane_cloud_description_extended_conversation
+      - text: ...
+        next: ayane_cloud_description_extended_conversation
+  - id: ayane_after_silence_choice
+    text: 静かな人だと思ってたけど、話すと面白いんだね！
+    conditions:
+      - type: custom
+        handler: player_choice_history
+        params:
+          recentChoiceType: silence
+          minimumCount: 3
+    choices:
+      - text: 話すのは緊張します
+        next: ayane_after_silence_choice_extended_conversation
+      - text: あなたが話しやすいから
+        next: ayane_after_silence_choice_extended_conversation
+      - text: ...
+        next: ayane_after_silence_choice_extended_conversation
+  - id: ayane_evening_reflection
+    text: 夕方のこの時間って、一日を振り返る時間なのかな？
+    conditions:
+      - type: environment
+        name: timeOfDay
+        value: evening
+      - type: variable
+        name: ayane_meet_count
+        operator: greater_than
+        value: 3
+    choices:
+      - text: 振り返りは大切ですね
+        next: ayane_evening_reflection_extended_conversation
+      - text: 今を大切にしたい
+        next: ayane_evening_reflection_extended_conversation
+      - text: ...
+        next: ayane_evening_reflection_extended_conversation
+  - id: ayane_rainy_mood
+    text: 雨の日って、なんだか特別な気分になるよね！
+    conditions:
+      - type: environment
+        name: weather
+        value: rainy
+    choices:
+      - text: 雨の音が好きです
+        next: ayane_rainy_mood_extended_conversation
+      - text: 室内にいたい気分
+        next: ayane_cozy_feeling
+      - text: ...
+        next: ayane_rainy_mood_extended_conversation
+  - id: ayane_world_perception
+    text: そうそう！心の状態で見える世界が変わるって、すごく不思議で面白いよね！
+    choices:
+      - text: 内面が外界に影響する
+        next: ayane_world_perception_extended_conversation
+      - text: 心の力は大きい
+        next: ayane_world_perception_extended_conversation
+      - text: ...
+        next: ayane_world_perception_extended_conversation
+  - id: ayane_credit_response
+    text: 私のおかげって言うけど、あなたがいるから私も楽しいんだよ！
+    choices:
+      - text: お互い様ですね
+        next: ayane_credit_response_extended_conversation
+      - text: 一緒にいると楽しい
+        next: ayane_credit_response_extended_conversation
+      - text: ...
+        next: ayane_credit_response_extended_conversation
+  - id: ayane_sparkle_silence
+    text: 無言でも、キラキラした気持ちは伝わってくるね！
+    choices:
+      - text: 感情は伝染しますね
+        next: ayane_emotional_contagion
+      - text: 雰囲気で分かる
+        next: ayane_atmosphere_reading
+      - text: ...
+        next: ayane_sparkle_silence_extended_conversation
+  - id: ayane_joy_multiplication
+    text: 喜びを分かち合うと、本当に倍になるよね！一人よりずっと楽しい！
+    choices:
+      - text: 共有の力ですね
+        next: ayane_sharing_power
+      - text: つながりを感じます
+        next: ayane_connection_feeling
+      - text: ...
+        next: ayane_joy_multiplication_extended_conversation
+  - id: ayane_honesty_appreciation
+    text: 素直って言ってもらえて嬉しい！隠すより、そのままの方がいいよね！
+    choices:
+      - text: 自然体が一番
+        next: ayane_honesty_appreciation_extended_conversation
+      - text: あなたらしさが素敵
+        next: ayane_honesty_appreciation_extended_conversation
+      - text: ...
+        next: ayane_honesty_appreciation_extended_conversation
+  - id: ayane_comfortable_silence
+    text: あなたといると、静かな時間も心地いいんだ。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    choices:
+      - text: 安心できる関係ですね
+        next: ayane_security_feeling
+      - text: 僕もです
+        next: ayane_mutual_comfort
+      - text: ...
+        next: ayane_deep_comfort_silence
+  - id: ayane_memory_confirmation
+    text: 覚えててくれたんだ！嬉しい！話したことを覚えててもらえるって、大切にされてる感じがする！
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    choices:
+      - text: 大切な話でした
+        next: ayane_importance_recognition
+      - text: あなたとの会話は印象的
+        next: ayane_memorable_conversation
+      - text: ...
+        next: ayane_cherished_silence
+  - id: ayane_cloud_memory_silence
+    text: 無言でも、一緒に雲を思い出してくれてるのかな？
+    choices:
+      - text: 楽しい記憶です
+        next: ayane_cloud_memory_silence_extended_conversation
+      - text: 共有した時間
+        next: ayane_cloud_memory_silence_extended_conversation
+      - text: ...
+        next: ayane_cloud_memory_silence_extended_conversation
+  - id: ayane_imagination_development
+    text: 想像力って、使えば使うほど豊かになるよね！毎日が冒険になる！
+    choices:
+      - text: 創造性は大切
+        next: ayane_imagination_development_extended_conversation
+      - text: 日常に魔法をかける
+        next: ayane_imagination_development_extended_conversation
+      - text: ...
+        next: ayane_imagination_development_extended_conversation
+  - id: ayane_sharing_wish
+    text: 一緒に見たかったって言ってもらえて嬉しい！今度見つけたら教えるね！
+    effects:
+      - type: set_flag
+        flag: ayane_cloud_sharing_promise
+    choices:
+      - text: 楽しみにしています
+        next: ayane_sharing_wish_extended_conversation
+      - text: ありがとう
+        next: ayane_sharing_wish_extended_conversation
+      - text: ...
+        next: ayane_sharing_wish_extended_conversation
+  - id: ayane_nervousness_understanding
+    text: 緊張する気持ち、わかるよ！でも、緊張してるあなたも素敵だと思う！
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 18
+    choices:
+      - text: 理解してくれてありがとう
+        next: ayane_nervousness_understanding_extended_conversation
+      - text: 少しずつ慣れてきました
+        next: ayane_nervousness_understanding_extended_conversation
+      - text: ...
+        next: ayane_nervousness_understanding_extended_conversation
+  - id: ayane_comfort_creation
+    text: 話しやすいって言ってもらえて嬉しい！安心できる関係でいたいな！
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 22
+    choices:
+      - text: とても安心できます
+        next: ayane_comfort_creation_extended_conversation
+      - text: 自然体でいられる
+        next: ayane_comfort_creation_extended_conversation
+      - text: ...
+        next: ayane_comfort_creation_extended_conversation
+  - id: ayane_reflection_value
+    text: 振り返りって大切だよね！今日も楽しいことがあったなって思える！
+    choices:
+      - text: 感謝の気持ちですね
+        next: ayane_reflection_value_extended_conversation
+      - text: ポジティブな視点
+        next: ayane_reflection_value_extended_conversation
+      - text: ...
+        next: ayane_reflection_value_extended_conversation
+  - id: ayane_present_focus
+    text: 今を大切にするって素敵な考え！この瞬間を大切にしよう！
+    choices:
+      - text: 今この時間が大切
+        next: ayane_present_focus_extended_conversation
+      - text: 一緒にいる今
+        next: ayane_present_focus_extended_conversation
+      - text: ...
+        next: ayane_present_focus_extended_conversation
+  - id: ayane_rain_sound_appreciation
+    text: 雨の音って、自然の音楽みたいだよね！心が落ち着く！
+    choices:
+      - text: 自然のメロディー
+        next: ayane_nature_music
+      - text: リラックス効果がある
+        next: ayane_relaxation_effect
+      - text: ...
+        next: ayane_rain_sound_appreciation_extended_conversation
+  - id: ayane_reality_doubt_explanation
+    text: なんていうか...時間の流れが違うような、夢の中にいるような感じがするの。
+    choices:
+      - text: 不思議な場所ですね
+        next: ayane_mysterious_place
+      - text: 夢と現実の境界
+        next: ayane_dream_reality_border
+      - text: ...
+        next: ayane_metaphysical_silence
+  - id: ayane_shared_uncertainty
+    text: 同じこと感じてるんだ！一人じゃないってわかって、ちょっと安心した！
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 25
+    choices:
+      - text: 共感できて嬉しい
+        next: ayane_empathy_relief
+      - text: 一緒に考えましょう
+        next: ayane_collaborative_thinking
+      - text: ...
+        next: ayane_shared_uncertainty_extended_conversation
+  - id: ayane_inner_outer_connection
+    text: 内面と外界がつながってるって考えると、世界がもっと面白くなるよね！
+    next: ayane_contextual_end
+  - id: ayane_mental_power
+    text: 心の力って本当にすごいと思う！希望を持つだけで世界が変わる！
+    next: ayane_contextual_end
+  - id: ayane_mutual_benefit
+    text: お互い様って素敵な関係だよね！一緒にいることで、両方が幸せになれる！
+    next: ayane_contextual_end
+  - id: ayane_togetherness_joy
+    text: 一緒にいると楽しいって、最高の関係だと思う！
+    next: ayane_contextual_end
+  - id: ayane_reciprocal_silence
+    text: お互いを大切に思う静かな気持ち、とても温かいね。
+    next: ayane_contextual_end
+  - id: ayane_atmosphere_reading
+    text: 雰囲気で分かるって、心がつながってる証拠だよね！
+    next: ayane_contextual_end
+  - id: ayane_sharing_power
+    text: 共有の力って本当にすごい！一人では感じられない喜びがある！
+    next: ayane_contextual_end
+  - id: ayane_multiplication_silence
+    text: 喜びが掛け算されていく、この静かな幸せ...
+    next: ayane_contextual_end
+  - id: ayane_natural_self
+    text: 自然体が一番！ありのままでいられる関係って、とても貴重だよね！
+    next: ayane_contextual_end
+  - id: ayane_individuality_praise
+    text: 私らしさって言ってもらえて嬉しい！個性を大切にしてくれてありがとう！
+    next: ayane_contextual_end
+  - id: ayane_authenticity_silence
+    text: 真の自分でいられる静かな安らぎ、何にも代えがたいね。
+    next: ayane_contextual_end
+  - id: ayane_mutual_comfort
+    text: お互いに心地いいって、理想的な関係だと思う！
+    next: ayane_contextual_end
+  - id: ayane_importance_recognition
+    text: 大切な話って言ってもらえて、すごく嬉しい！
+    next: ayane_contextual_end
+  - id: ayane_memorable_conversation
+    text: 印象的って言ってもらえて光栄！心に残る会話ができて嬉しいな！
+    next: ayane_contextual_end
+  - id: ayane_cherished_silence
+    text: 大切にしてもらってる静かな温かさ、心に染みるね。
+    next: ayane_contextual_end
+  - id: ayane_pleasant_memory
+    text: 楽しい記憶って宝物だよね！いつまでも大切にしたい！
+    next: ayane_contextual_end
+  - id: ayane_shared_time
+    text: 共有した時間って、特別な意味を持つよね！
+    next: ayane_contextual_end
+  - id: ayane_creativity_value
+    text: 創造性って人生を豊かにしてくれるよね！毎日がアートになる！
+    next: ayane_contextual_end
+  - id: ayane_daily_magic
+    text: 日常に魔法をかけるって素敵な表現！毎日が特別になりそう！
+    next: ayane_contextual_end
+  - id: ayane_imagination_silence
+    text: 想像の翼を静かに広げていく時間も、大切にしたいな。
+    next: ayane_contextual_end
+  - id: ayane_anticipation_response
+    text: 楽しみにしてもらえると、私も嬉しくなる！約束だよ！
+    next: ayane_contextual_end
+  - id: ayane_gratitude_acknowledgment
+    text: ありがとうって言ってもらえるだけで、心が温かくなるね！
+    next: ayane_contextual_end
+  - id: ayane_promise_silence
+    text: 約束を静かに心に刻む、この瞬間も大切だね。
+    next: ayane_contextual_end
+  - id: ayane_understanding_gratitude
+    text: 理解してくれてありがとうって言ってもらえて、こちらこそありがとう！
+    next: ayane_contextual_end
+  - id: ayane_gradual_comfort
+    text: 少しずつ慣れてきたって聞けて嬉しい！その成長が素敵だよ！
+    next: ayane_contextual_end
+  - id: ayane_acceptance_silence
+    text: 受け入れてもらえる安心感を、静かに感じていてね。
+    next: ayane_contextual_end
+  - id: ayane_security_confirmation
+    text: とても安心できるって言ってもらえて、私も安心した！
+    next: ayane_contextual_end
+  - id: ayane_natural_state
+    text: 自然体でいられるって、最高の褒め言葉だと思う！
+    next: ayane_contextual_end
+  - id: ayane_gratitude_attitude
+    text: 感謝の気持ちって、心を明るくしてくれるよね！
+    next: ayane_contextual_end
+  - id: ayane_positive_perspective
+    text: ポジティブな視点って、人生を輝かせてくれるよね！
+    next: ayane_contextual_end
+  - id: ayane_grateful_silence
+    text: 感謝の気持ちを静かに噛みしめる時間も、とても大切だね。
+    next: ayane_contextual_end
+  - id: ayane_moment_appreciation
+    text: この瞬間を大切にする気持ち、とても素敵だと思う！
+    next: ayane_contextual_end
+  - id: ayane_together_now
+    text: 一緒にいる今この時間が、一番大切な時間だね！
+    next: ayane_contextual_end
+  - id: ayane_present_silence
+    text: 現在という贈り物を、静かに味わっていよう。
+    next: ayane_contextual_end
+  - id: ayane_nature_music
+    text: 自然のメロディーって、心の奥深くに響くよね！
+    next: ayane_contextual_end
+  - id: ayane_relaxation_effect
+    text: リラックス効果があるって、自然の力ってすごいよね！
+    next: ayane_contextual_end
+  - id: ayane_rain_music_silence
+    text: 雨の音楽を静かに聴く時間も、心の栄養になるね。
+    next: ayane_contextual_end
+  - id: ayane_coziness_appreciation
+    text: 居心地の良さって、心の安らぎをくれるよね！
+    next: ayane_contextual_end
+  - id: ayane_safe_space
+    text: 安全な場所があるって、とても大切なことだよね！
+    next: ayane_contextual_end
+  - id: ayane_cozy_silence
+    text: 居心地の良い静寂の中で、心も温かくなるね。
+    next: ayane_contextual_end
+  - id: ayane_mysterious_place
+    text: 不思議な場所って言葉がぴったり！でも、不思議だからこそ面白いのかも！
+    next: ayane_contextual_end
+  - id: ayane_dream_reality_border
+    text: 夢と現実の境界って曖昧だよね！どちらも大切な体験だと思う！
+    next: ayane_contextual_end
+  - id: ayane_metaphysical_silence
+    text: 形而上学的な静寂の中で、存在の不思議を感じるね。
+    next: ayane_contextual_end
+  - id: ayane_empathy_relief
+    text: 共感できて嬉しいって、まさに私の気持ち！一緒に感じられる人がいるって幸せ！
+    next: ayane_contextual_end
+  - id: ayane_collaborative_thinking
+    text: 一緒に考えようって言ってもらえて嬉しい！二人で考えると、もっと深い答えが見つかりそう！
+    next: ayane_contextual_end
+  - id: ayane_shared_mystery_silence
+    text: 共有する神秘を静かに味わう、この特別な時間...
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 35
+    next: ayane_contextual_end
+  - id: ayane_joy_silence
+    text: 喜びを静かに分かち合う時間って、とても神聖で美しいね！
+    choices:
+      - text: 静かな喜び
+        next: ayane_joy_silence_extended_conversation
+      - text: 心の共鳴
+        next: ayane_joy_silence_extended_conversation
+      - text: ...
+        next: ayane_joy_silence_extended_conversation
+  - id: ayane_quiet_joy
+    text: 静かな喜びって、心の奥深くに響くよね！長く続く幸せ！
+    next: ayane_contextual_end
+  - id: ayane_sacred_joy_silence
+    text: 神聖な喜びを静かに感じる、この至福の時間...
+    next: ayane_contextual_end
+  - id: ayane_twilight_silence
+    text: 夕暮れの静寂の中で、一日を静かに振り返ってみよう。
+    next: ayane_contextual_end
+  - id: ayane_reality_silence
+    text: 現実について静かに考える時間も、とても貴重だね。
+    next: ayane_contextual_end
+  - id: ayane_rabbit_cloud_silence
+    text: うさぎの雲を思い浮かべながら、静かに空を見上げてみよう。
+    next: ayane_contextual_end
+  - id: ayane_contradiction_silence
+    text: 静かな人と話好きな人、どちらも同じ人の中にいるって面白いね。
+    next: ayane_contextual_end
+  - id: ayane_memory_value
+    text: 思い出って心の宝物だよね！大切にしてたら、いつでも温かくなれる！
+    choices:
+      - text: 心の宝物
+        next: ayane_memory_value_extended_conversation
+      - text: 温かい気持ち
+        next: ayane_warmth_feelings
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_rain_beauty
+    text: 雨の日って、世界が洗われてるみたい！新しい始まりを感じるの！
+    choices:
+      - text: 清らかな気持ち
+        next: ayane_pure_feelings
+      - text: 新しいスタート
+        next: ayane_rain_beauty_extended_conversation
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_quiet_sharing
+    text: 静けさを一緒に味わうって、とても特別！心が近くにいる感じ！
+    choices:
+      - text: 特別な時間
+        next: ayane_special_moments
+      - text: 心の距離
+        next: ayane_emotional_closeness
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_treasure_memories
+    text: 宝物の思い出、いっぱい集めようね！
+    next: ayane_contextual_end
+  - id: ayane_fresh_start
+    text: 新しいスタート、一緒に切れたらいいな！
+    choices:
+      - text: 一緒に新しい道を
+        next: ayane_fresh_start_extended_conversation
+      - text: どんなスタートにしましょう
+        next: ayane_fresh_start_extended_conversation
+      - text: あなたがいてくれるから
+        next: ayane_fresh_start_extended_conversation
+      - text: ...
+        next: ayane_fresh_start_extended_conversation
+  - id: ayane_new_path_together
+    text: 一緒に歩む道って、どんなに困難でも楽しくなりそう！
+    choices:
+      - text: 支え合いながら
+        next: ayane_new_path_together_extended_conversation
+      - text: 新しい発見がありそう
+        next: ayane_new_path_together_extended_conversation
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_start_planning
+    text: ワクワクする計画を立てるのって楽しいよね！何から始めようか？
+    choices:
+      - text: 小さな一歩から
+        next: ayane_start_planning_extended_conversation
+      - text: 夢を大きく描いて
+        next: ayane_big_dreams
+      - text: ...
+        next: ayane_start_planning_extended_conversation
+  - id: ayane_planning_silence
+    text: 計画を静かに考えるのも大切だよね。心の準備をしながら、ゆっくりと。
+    choices:
+      - text: じっくり考えたい
+        next: ayane_planning_silence_extended_conversation
+      - text: 心の準備が大切
+        next: ayane_planning_silence_extended_conversation
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_thoughtful_planning
+    text: じっくり考えるって素敵！急がずに、自分のペースで進んでいこう。
+    next: ayane_contextual_end
+  - id: ayane_mental_readiness
+    text: 心の準備って本当に大切！準備ができてから始めるのが一番だよね。
+    next: ayane_contextual_end
+  - id: ayane_companionship_strength
+    text: 一人じゃないって感じると、勇気が湧いてくるよ！
+    choices:
+      - text: お互いに励まし合って
+        next: ayane_mutual_encouragement
+      - text: 心強いパートナーシップ
+        next: ayane_strong_partnership
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_fresh_silence
+    text: 新しい始まりを静かに感じる、この特別な瞬間...
+    choices:
+      - text: 静寂の中の希望
+        next: ayane_silent_hope
+      - text: 心の準備をしている
+        next: ayane_mental_preparation
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_mutual_support_path
+    text: 支え合いながら進む道って、最高の冒険だと思う！
+    next: ayane_contextual_end
+  - id: ayane_discovery_journey
+    text: 新しい発見がある旅って、毎日がサプライズの連続だね！
+    next: ayane_contextual_end
+  - id: ayane_small_steps
+    text: 小さな一歩の積み重ねが、大きな変化を生むんだよね！
+    next: ayane_contextual_end
+  - id: ayane_big_dreams
+    text: 大きな夢を描くと、心が踊るような気持ちになる！
+    next: ayane_contextual_end
+  - id: ayane_mutual_encouragement
+    text: お互いに励まし合える関係って、本当に素敵だと思う！
+    next: ayane_contextual_end
+  - id: ayane_strong_partnership
+    text: 強いパートナーシップがあれば、どんな困難も乗り越えられそう！
+    next: ayane_contextual_end
+  - id: ayane_silent_hope
+    text: 静かな希望って、心の奥で光り続けるんだね！
+    next: ayane_contextual_end
+  - id: ayane_mental_preparation
+    text: 心の準備って大切！新しいスタートに向けて、気持ちを整えてるんだね！
+    next: ayane_contextual_end
+  - id: ayane_special_moments
+    text: 特別な時間を分かち合えて、本当に幸せ！
+    next: ayane_contextual_end
+  - id: ayane_rain_contemplation
+    text: 雨の音を静かに聞きながら、心も穏やかになっていく...
+    choices:
+      - text: 穏やかな気持ち
+        next: ayane_peaceful_mind
+      - text: 雨音のリズム
+        next: ayane_rain_rhythm
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_memory_contemplation
+    text: 思い出って、時間が経つほど色あせるんじゃなくて、深い味わいが出てくるよね。
+    choices:
+      - text: 時間の魔法
+        next: ayane_time_magic
+      - text: 記憶の深み
+        next: ayane_memory_depth
+      - text: ...
+        next: ayane_contextual_end
+  - id: ayane_peaceful_mind
+    text: 穏やかな気持ちって、心の平和だよね！この安らぎを大切にしたい。
+    next: ayane_contextual_end
+  - id: ayane_rain_rhythm
+    text: 雨音のリズムって、自然の音楽！心も同じリズムで踊ってる感じ。
+    next: ayane_contextual_end
+  - id: ayane_time_magic
+    text: 時間の魔法って素敵な表現！過去も現在も、魔法で結ばれてるのかも。
+    next: ayane_contextual_end
+  - id: ayane_memory_depth
+    text: 記憶の深みって、海の底みたい！潜れば潜るほど、美しいものが見つかる。
+    next: ayane_contextual_end
+  - id: ayane_contextual_end
+    text: 深い話ができて嬉しかった。こういう時間を大切にしたいね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_mutual_lightness_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: ayane_mutual_lightness_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_gratitude_response_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_gratitude_response_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_remembers_previous_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_remembers_previous_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_remembers_previous_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_cloud_description_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_cloud_description_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_after_silence_choice_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_after_silence_choice_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_evening_reflection_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_evening_reflection_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_rainy_mood_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_rainy_mood_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_world_perception_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_world_perception_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_credit_response_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_credit_response_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_sparkle_silence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_joy_multiplication_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_honesty_appreciation_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_honesty_appreciation_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_cloud_memory_silence_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_cloud_memory_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_cloud_memory_silence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_imagination_development_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_imagination_development_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_sharing_wish_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_sharing_wish_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_sharing_wish_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_nervousness_understanding_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_nervousness_understanding_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_nervousness_understanding_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_comfort_creation_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_comfort_creation_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_reflection_value_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_reflection_value_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_reflection_value_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_present_focus_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_present_focus_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_rain_sound_appreciation_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_shared_uncertainty_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_joy_silence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_joy_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_memory_value_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_rain_beauty_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_fresh_start_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_fresh_start_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_new_path_together_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_start_planning_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_start_planning_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_planning_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_mutual_lightness_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_mutual_lightness_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_mutual_lightness_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_mutual_lightness_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_remembers_previous_to_memory_end_memory_bridge_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_remembers_previous_to_memory_end_memory_bridge_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_remembers_previous_to_memory_end_memory_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_sharing_wish_to_emotional_end_emotion_bridge_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_sharing_wish_to_emotional_end_emotion_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: ayane_sharing_wish_to_emotional_end_emotion_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    next: hopeful_end
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end
+  - id: ayane_mutual_lightness_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: &a2
+      - text: 協力的な探求ですね
+        next: ayane_fresh_start_extended_conversation_intermediate
+      - text: 新しい発見がありました
+        next: ayane_fresh_start_extended_conversation_intermediate
+      - text: 心が通じ合います
+        next: ayane_fresh_start_extended_conversation_intermediate
+  - id: ayane_gratitude_response_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_remembers_previous_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_cloud_description_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_after_silence_choice_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_evening_reflection_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_rainy_mood_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_world_perception_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_credit_response_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_sparkle_silence_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_joy_multiplication_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_honesty_appreciation_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_cloud_memory_silence_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_imagination_development_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_sharing_wish_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_nervousness_understanding_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_comfort_creation_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_reflection_value_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_present_focus_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_rain_sound_appreciation_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_shared_uncertainty_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_joy_silence_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_memory_value_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_rain_beauty_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_fresh_start_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_new_path_together_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_start_planning_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: ayane_planning_silence_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: gentle_listening
+    text: 話を聞いてくれる人がいるというのは、とても心強いものです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: emotional_end
+      - text: いつでも話してください
+        next: trust_end
+      - text: 支え合えますね
+        next: contextual_end
+  - id: ayane_fresh_start_extended_conversation_intermediate
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices:
+      - text: 協力的な探求ですね
+        next: ayane_fresh_start_extended_conversation_final_trust
+      - text: 新しい発見がありました
+        next: ayane_fresh_start_extended_conversation_final_deep
+      - text: 心が通じ合います
+        next: ayane_fresh_start_extended_conversation_final_emotional
+  - id: ayane_fresh_start_extended_conversation_final_trust
+    text: 信頼関係が築けたようで嬉しいです。この絆を大切にしたいですね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_fresh_start_extended_conversation_final_deep
+    text: 深い洞察を共有できました。こうした対話が人生を豊かにしますね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_fresh_start_extended_conversation_final_emotional
+    text: 心のつながりを感じます。このような理解し合える関係に感謝しています。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_start_planning_extended_conversation_intermediate
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices:
+      - text: 協力的な探求ですね
+        next: ayane_start_planning_extended_conversation_final_trust
+      - text: 新しい発見がありました
+        next: ayane_start_planning_extended_conversation_final_deep
+      - text: 心が通じ合います
+        next: ayane_start_planning_extended_conversation_final_emotional
+  - id: ayane_start_planning_extended_conversation_final_trust
+    text: 信頼関係が築けたようで嬉しいです。この絆を大切にしたいですね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_start_planning_extended_conversation_final_deep
+    text: 深い洞察を共有できました。こうした対話が人生を豊かにしますね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_start_planning_extended_conversation_final_emotional
+    text: 心のつながりを感じます。このような理解し合える関係に感謝しています。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_deep_relationship_start_extended_conversation_intermediate
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices:
+      - text: 協力的な探求ですね
+        next: ayane_deep_relationship_start_extended_conversation_final_trust
+      - text: 新しい発見がありました
+        next: ayane_deep_relationship_start_extended_conversation_final_deep
+      - text: 心が通じ合います
+        next: ayane_deep_relationship_start_extended_conversation_final_emotional
+  - id: ayane_deep_relationship_start_extended_conversation_final_trust
+    text: 信頼関係が築けたようで嬉しいです。この絆を大切にしたいですね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_deep_relationship_start_extended_conversation_final_deep
+    text: 深い洞察を共有できました。こうした対話が人生を豊かにしますね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: ayane_deep_relationship_start_extended_conversation_final_emotional
+    text: 心のつながりを感じます。このような理解し合える関係に感謝しています。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

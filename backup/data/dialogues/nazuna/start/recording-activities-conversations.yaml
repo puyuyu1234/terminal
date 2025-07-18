@@ -1,0 +1,394 @@
+character: nazuna
+nodes:
+  # Recording session extended conversations
+  - id: nazuna_start_recording_session_extended_conversation
+    text: 録音について...音を集めることは、時間を集めることでもあります。その瞬間にしか存在しない音を、記録として残したいんです。
+    choices:
+      - text: 時間を集めることの意味を教えてください
+        next: nazuna_recording_time_collection
+      - text: その瞬間にしか存在しない音を感じたいです
+        next: nazuna_recording_moment_sound
+      - text: 記録として残す理由を知りたいです
+        next: nazuna_recording_preservation_reason
+
+  - id: nazuna_recording_time_collection
+    text: 時間を集める...音には時間が込められています。風の音には季節が、鳥の鳴き声には朝の時間が、雨音には天候の時間が。
+    choices:
+      - text: 音に込められた時間を感じたいです
+        next: nazuna_recording_time_feeling
+      - text: 季節の音を集める楽しさを教えてください
+        next: nazuna_recording_seasonal_joy
+      - text: 天候の時間を録音で残したいです
+        next: nazuna_recording_weather_time
+
+  - id: nazuna_recording_moment_sound
+    text: その瞬間の音...一度しか聞けない音、二度と同じにはならない音。それが音の特別さです。
+    choices:
+      - text: 一度しか聞けない音を大切にしたいです
+        next: nazuna_recording_unique_sound
+      - text: 二度と同じにならない音の価値を感じます
+        next: nazuna_recording_unrepeatable_value
+      - text: 音の特別さを一緒に感じたいです
+        next: nazuna_recording_special_sharing
+
+  - id: nazuna_recording_preservation_reason
+    text: 記録として残す理由...美しい音は消えてしまいます。でも、記録があれば、いつでもその美しさを思い出せます。
+    choices:
+      - text: 美しい音を思い出したいです
+        next: nazuna_recording_beauty_memory
+      - text: 消えてしまう音を残す技術を学びたいです
+        next: nazuna_recording_preservation_technique
+      - text: いつでも美しさを感じられる方法を教えてください
+        next: nazuna_recording_eternal_beauty
+
+  - id: nazuna_recording_time_feeling
+    text: 音に込められた時間...それは音の記憶です。聞くたびに、その時の気持ちや風景が蘇ってきます。
+    choices:
+      - text: 音の記憶を大切にしたいです
+        next: emotional_end
+      - text: その時の気持ちを一緒に思い出したいです
+        next: trust_end
+      - text: 風景が蘇る音を聞かせてください
+        next: contextual_end
+
+  - id: nazuna_recording_seasonal_joy
+    text: 季節の音を集める楽しさ...春の音、夏の音、秋の音、冬の音。それぞれが違う表情を持っています。
+    choices:
+      - text: 季節ごとの音の表情を教えてください
+        next: deep_end
+      - text: 春の音を一緒に聞きたいです
+        next: emotional_end
+      - text: 季節の音のコレクションを共有したいです
+        next: trust_end
+
+  - id: nazuna_recording_weather_time
+    text: 天候の時間...晴れの日の音、雨の日の音、曇りの日の音。天候が変わると、音の世界も変わります。
+    choices:
+      - text: 天候による音の変化を感じたいです
+        next: emotional_end
+      - text: 晴れの日の音を聞かせてください
+        next: trust_end
+      - text: 音の世界の変化を一緒に楽しみたいです
+        next: contextual_end
+
+  - id: nazuna_recording_unique_sound
+    text: 一度しか聞けない音...それは生きている音です。録音はできても、その瞬間の空気感は二度と戻りません。
+    choices:
+      - text: 生きている音を感じたいです
+        next: emotional_end
+      - text: その瞬間の空気感を大切にしたいです
+        next: trust_end
+      - text: 二度と戻らない瞬間を共有したいです
+        next: contextual_end
+
+  - id: nazuna_recording_unrepeatable_value
+    text: 二度と同じにならない音の価値...それは音の個性です。同じ場所、同じ時間でも、微妙に違う音になります。
+    choices:
+      - text: 音の個性を理解したいです
+        next: deep_end
+      - text: 微妙な違いを聞き分けたいです
+        next: emotional_end
+      - text: 音の個性を一緒に発見したいです
+        next: trust_end
+
+  - id: nazuna_recording_special_sharing
+    text: 音の特別さの共有...一人で聞く音も美しいですが、誰かと一緒に聞く音はもっと特別です。
+    choices:
+      - text: 一緒に聞く音の特別さを感じたいです
+        next: emotional_end
+      - text: 共有することで増す美しさを教えてください
+        next: trust_end
+      - text: 特別な音を一緒に体験したいです
+        next: contextual_end
+
+  - id: nazuna_recording_beauty_memory
+    text: 美しい音の記憶...記録された音を聞くと、その時の感動が蘇ります。記憶と音が一体になった瞬間です。
+    choices:
+      - text: 感動が蘇る瞬間を体験したいです
+        next: emotional_end
+      - text: 記憶と音が一体になる感覚を教えてください
+        next: trust_end
+      - text: 美しい音の記憶を共有したいです
+        next: contextual_end
+
+  - id: nazuna_recording_preservation_technique
+    text: 音を残す技術...録音機は技術ですが、どの音を残すかは心で決めます。技術と心が合わさって、音の記録ができます。
+    choices:
+      - text: 心で決める音の選択を学びたいです
+        next: deep_end
+      - text: 技術と心の合わせ方を教えてください
+        next: emotional_end
+      - text: 音の記録の作り方を共有したいです
+        next: trust_end
+
+  - id: nazuna_recording_eternal_beauty
+    text: 永遠の美しさ...音は時間と共に変化しますが、美しさは永遠です。記録された音も、聞くたびに新しい美しさを発見できます。
+    choices:
+      - text: 永遠の美しさを感じたいです
+        next: emotional_end
+      - text: 新しい美しさの発見を共有したいです
+        next: trust_end
+      - text: 変化する音の美しさを一緒に楽しみたいです
+        next: contextual_end
+
+  # Weather sensitivity extended conversations
+  - id: nazuna_start_weather_sensitivity_extended_conversation
+    text: 天候の変化と音...録音を続けていると、天候の変化を音で感じるようになります。風の音が教えてくれるのです。
+    choices:
+      - text: 天候の変化を音で感じる方法を教えてください
+        next: nazuna_weather_sound_detection
+      - text: 風の音が教えてくれることを聞きたいです
+        next: nazuna_weather_wind_teaching
+      - text: 天候と音の関係を理解したいです
+        next: nazuna_weather_sound_relationship
+
+  - id: nazuna_weather_sound_detection
+    text: 音による天候の感知...空気の密度、湿度、気圧。すべてが音に影響を与えます。音は天候の鏡です。
+    choices:
+      - text: 音が天候の鏡である意味を教えてください
+        next: nazuna_weather_mirror_meaning
+      - text: 空気の密度が音に与える影響を感じたいです
+        next: nazuna_weather_air_density
+      - text: 湿度と音の関係を学びたいです
+        next: nazuna_weather_humidity_sound
+
+  - id: nazuna_weather_wind_teaching
+    text: 風の音の教え...風は天候の使者です。雨を運んでくる風、晴れを運んでくる風。それぞれ違う音がします。
+    choices:
+      - text: 風の音の違いを聞き分けたいです
+        next: nazuna_weather_wind_differences
+      - text: 天候の使者としての風を理解したいです
+        next: nazuna_weather_wind_messenger
+      - text: 雨を運ぶ風の音を聞かせてください
+        next: nazuna_weather_rain_wind
+
+  - id: nazuna_weather_sound_relationship
+    text: 天候と音の関係...天候が変わると、音の世界も変わります。同じ場所でも、全く違う音の風景になります。
+    choices:
+      - text: 音の風景の変化を感じたいです
+        next: nazuna_weather_sound_landscape
+      - text: 同じ場所の違う音を聞き比べたいです
+        next: nazuna_weather_sound_comparison
+      - text: 天候による音の世界の変化を教えてください
+        next: nazuna_weather_world_change
+
+  - id: nazuna_weather_mirror_meaning
+    text: 音が天候の鏡...音は目に見えない天候の変化を、耳に聞こえる形で教えてくれます。とても便利な鏡です。
+    choices:
+      - text: 目に見えない変化を音で感じたいです
+        next: emotional_end
+      - text: 耳に聞こえる天候の変化を教えてください
+        next: trust_end
+      - text: 便利な鏡としての音を使いたいです
+        next: contextual_end
+
+  - id: nazuna_weather_air_density
+    text: 空気の密度と音...濃い空気と薄い空気では、音の伝わり方が違います。音の速度も、響き方も変わります。
+    choices:
+      - text: 音の伝わり方の違いを体験したいです
+        next: deep_end
+      - text: 音の速度の変化を感じたいです
+        next: emotional_end
+      - text: 響き方の変化を一緒に聞きたいです
+        next: trust_end
+
+  - id: nazuna_weather_humidity_sound
+    text: 湿度と音...乾いた空気と湿った空気では、音の質が違います。湿度が高いと、音が柔らかくなります。
+    choices:
+      - text: 音の質の違いを学びたいです
+        next: emotional_end
+      - text: 音が柔らかくなる現象を感じたいです
+        next: trust_end
+      - text: 湿度による音の変化を一緒に楽しみたいです
+        next: contextual_end
+
+  - id: nazuna_weather_wind_differences
+    text: 風の音の違い...強い風と弱い風、温かい風と冷たい風。それぞれが違う音を奏でます。
+    choices:
+      - text: 風の音の演奏を聞きたいです
+        next: deep_end
+      - text: 温かい風と冷たい風の音を比べたいです
+        next: emotional_end
+      - text: 風の音の違いを一緒に楽しみたいです
+        next: trust_end
+
+  - id: nazuna_weather_wind_messenger
+    text: 天候の使者としての風...風は天候の情報を運んでくれます。遠くの雨の匂い、近くの晴れの気配。すべて風が教えてくれます。
+    choices:
+      - text: 風が運ぶ情報を読み取りたいです
+        next: emotional_end
+      - text: 遠くの雨の匂いを感じたいです
+        next: trust_end
+      - text: 風の教えを一緒に学びたいです
+        next: contextual_end
+
+  - id: nazuna_weather_rain_wind
+    text: 雨を運ぶ風...その風の音は、少し重くて、湿っています。雨の予告をしてくれる、特別な音です。
+    choices:
+      - text: 雨の予告をする音を聞きたいです
+        next: emotional_end
+      - text: 重くて湿った風の音を感じたいです
+        next: trust_end
+      - text: 特別な音を一緒に聞きたいです
+        next: contextual_end
+
+  - id: nazuna_weather_sound_landscape
+    text: 音の風景...晴れた日の音の風景と、雨の日の音の風景は全く違います。同じ場所でも、別の世界のようです。
+    choices:
+      - text: 音の風景の違いを感じたいです
+        next: emotional_end
+      - text: 別の世界のような音を体験したいです
+        next: trust_end
+      - text: 音の風景を一緒に楽しみたいです
+        next: contextual_end
+
+  - id: nazuna_weather_sound_comparison
+    text: 同じ場所の違う音...朝の音と夜の音、晴れの音と雨の音。比べると、その違いがよくわかります。
+    choices:
+      - text: 音の違いの発見を共有したいです
+        next: emotional_end
+      - text: 比較することで見えてくる音の特徴を教えてください
+        next: trust_end
+      - text: 音の比較を一緒に楽しみたいです
+        next: contextual_end
+
+  - id: nazuna_weather_world_change
+    text: 音の世界の変化...天候が変わると、音の世界も生まれ変わります。新しい音の世界を発見する楽しさがあります。
+    choices:
+      - text: 音の世界の生まれ変わりを感じたいです
+        next: deep_end
+      - text: 新しい音の世界を一緒に発見したいです
+        next: emotional_end
+      - text: 音の世界の変化を楽しみたいです
+        next: trust_end
+
+  # Comfortable familiarity extended conversations
+  - id: nazuna_start_comfortable_familiarity_extended_conversation
+    text: いつもの時間...規則的に会うようになって、あなたの音が私の時間の一部になりました。安定した音として、心に根付いています。
+    choices:
+      - text: 時間の一部になれて嬉しいです
+        next: nazuna_familiarity_time_part
+      - text: 安定した音として心に根付くことを光栄に思います
+        next: nazuna_familiarity_stable_sound
+      - text: 心に根付く音について教えてください
+        next: nazuna_familiarity_rooted_sound
+
+  - id: nazuna_familiarity_time_part
+    text: 時間の一部...人の声が時間の一部になるということは、その人が生活の一部になるということです。とても特別なことです。
+    choices:
+      - text: 生活の一部になることの特別さを教えてください
+        next: nazuna_familiarity_life_part
+      - text: 人の声が時間になる意味を理解したいです
+        next: nazuna_familiarity_voice_time
+      - text: 特別なことを一緒に大切にしたいです
+        next: nazuna_familiarity_special_care
+
+  - id: nazuna_familiarity_stable_sound
+    text: 安定した音...変わらない音、信頼できる音。それは心の支えになります。不安定な時代に、安定した音は宝物です。
+    choices:
+      - text: 心の支えになる音を大切にしたいです
+        next: nazuna_familiarity_heart_support
+      - text: 信頼できる音の価値を感じます
+        next: nazuna_familiarity_trustworthy_sound
+      - text: 不安定な時代の宝物を共有したいです
+        next: nazuna_familiarity_treasure_sharing
+
+  - id: nazuna_familiarity_rooted_sound
+    text: 心に根付く音...それは深く根を張った音です。表面的な音ではなく、心の奥深くに響く音。簡単には忘れられない音です。
+    choices:
+      - text: 深く根を張った音を理解したいです
+        next: nazuna_familiarity_deep_roots
+      - text: 心の奥深くに響く音を感じたいです
+        next: nazuna_familiarity_deep_resonance
+      - text: 忘れられない音を一緒に大切にしたいです
+        next: nazuna_familiarity_unforgettable_sound
+
+  - id: nazuna_familiarity_life_part
+    text: 生活の一部になる特別さ...それは日常の中に溶け込むということです。特別だけど自然、馴染んでいるけど大切。
+    choices:
+      - text: 日常に溶け込む音を大切にしたいです
+        next: emotional_end
+      - text: 自然で大切な音を理解したいです
+        next: trust_end
+      - text: 馴染んだ音の価値を感じたいです
+        next: contextual_end
+
+  - id: nazuna_familiarity_voice_time
+    text: 人の声が時間になる...その人を思い出すと、その人の声も一緒に思い出されます。声が時間の記憶になっているのです。
+    choices:
+      - text: 時間の記憶としての声を大切にしたいです
+        next: emotional_end
+      - text: 声の記憶を一緒に作りたいです
+        next: trust_end
+      - text: 思い出される声の意味を教えてください
+        next: contextual_end
+
+  - id: nazuna_familiarity_special_care
+    text: 特別なことを大切にする...特別なことは、意識して大切にしないと、当たり前になってしまいます。意識的に大切にしたいです。
+    choices:
+      - text: 意識的に大切にすることを学びたいです
+        next: emotional_end
+      - text: 特別なことを当たり前にしない方法を教えてください
+        next: trust_end
+      - text: 一緒に意識的に大切にしたいです
+        next: contextual_end
+
+  - id: nazuna_familiarity_heart_support
+    text: 心の支えになる音...困った時、不安な時、その音があると心が落ち着きます。音の力は偉大です。
+    choices:
+      - text: 音の力の偉大さを感じたいです
+        next: emotional_end
+      - text: 心が落ち着く音を共有したいです
+        next: trust_end
+      - text: 不安な時の音の効果を教えてください
+        next: contextual_end
+
+  - id: nazuna_familiarity_trustworthy_sound
+    text: 信頼できる音...その音があると、安心できます。信頼は時間をかけて築かれるもの。音の信頼も同じです。
+    choices:
+      - text: 音の信頼を築く時間を大切にしたいです
+        next: emotional_end
+      - text: 安心できる音を共有したいです
+        next: trust_end
+      - text: 信頼できる音の築き方を教えてください
+        next: contextual_end
+
+  - id: nazuna_familiarity_treasure_sharing
+    text: 宝物の共有...一人で持っている宝物より、誰かと共有する宝物の方が価値があります。音の宝物も同じです。
+    choices:
+      - text: 音の宝物を一緒に共有したいです
+        next: emotional_end
+      - text: 共有することで増す価値を感じたいです
+        next: trust_end
+      - text: 一緒に持つ宝物を大切にしたいです
+        next: contextual_end
+
+  - id: nazuna_familiarity_deep_roots
+    text: 深く根を張った音...それは時間をかけて心に定着した音です。急に消えることはない、永続的な音。
+    choices:
+      - text: 時間をかけて定着する音を大切にしたいです
+        next: deep_end
+      - text: 永続的な音を理解したいです
+        next: emotional_end
+      - text: 心に定着した音を共有したいです
+        next: trust_end
+
+  - id: nazuna_familiarity_deep_resonance
+    text: 心の奥深くに響く音...それは表面的な聞こえ方を超えた音です。魂のレベルで響く、深い音。
+    choices:
+      - text: 魂のレベルで響く音を感じたいです
+        next: emotional_end
+      - text: 表面的を超えた音を理解したいです
+        next: trust_end
+      - text: 深い音を一緒に聞きたいです
+        next: contextual_end
+
+  - id: nazuna_familiarity_unforgettable_sound
+    text: 忘れられない音...それは心に刻まれた音です。時間が経っても、鮮明に思い出せる音。記憶の中で生き続ける音。
+    choices:
+      - text: 心に刻まれた音を大切にしたいです
+        next: emotional_end
+      - text: 記憶の中で生き続ける音を共有したいです
+        next: trust_end
+      - text: 忘れられない音を一緒に作りたいです
+        next: contextual_end

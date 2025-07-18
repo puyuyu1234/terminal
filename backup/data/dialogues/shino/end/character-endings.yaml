@@ -1,0 +1,8 @@
+character: shino
+nodes:
+  - id: shino_session_end
+    text: 今日は話してくれてありがとう。...また、会えるよね？
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

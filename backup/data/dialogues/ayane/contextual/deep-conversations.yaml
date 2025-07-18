@@ -1,0 +1,10 @@
+character: ayane
+nodes:
+  - id: ayane_deep_comfort_silence
+    text: ......
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    next: ayane_contextual_end

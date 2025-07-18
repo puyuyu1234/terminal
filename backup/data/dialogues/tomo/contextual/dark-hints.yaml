@@ -1,0 +1,312 @@
+conversations:
+  # 現実改変能力の暗い過去（低確率）
+  - id: tomo_power_accident_hint
+    text: "...(落書き帳を見つめる)...前に...書いちゃった...消えちゃダメなもの..."
+    probability: 0.10
+    conditions:
+      - if: "tomo_trust_level >= 4 && tomo_reality_awareness >= 3"
+    effects:
+      - type: increment
+        variable: tomo_power_accident
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "何を書いたの？"
+        next: tomo_accident_details
+      - text: "消えちゃダメなもの？"
+        next: tomo_precious_loss
+      - text: "大切なものだった？"
+        next: tomo_loss_impact
+
+  - id: tomo_person_erasure
+    text: "...(落書き帳を閉じる)...大切な人...名前を...消しちゃった...もう...会えない..."
+    probability: 0.08
+    conditions:
+      - if: "tomo_power_accident >= 1"
+    effects:
+      - type: increment
+        variable: tomo_person_loss
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 3
+    choices:
+      - text: "誰を消したの？"
+        next: tomo_victim_identity
+      - text: "書き直せない？"
+        next: tomo_irreversible_loss
+      - text: "どうして消したの？"
+        next: tomo_erasure_reason
+
+  # 児童虐待の暗示
+  - id: tomo_escape_reality_hint
+    text: "...(落書き帳に書く)...現実...変える...痛くない世界...作る..."
+    probability: 0.12
+    conditions:
+      - if: "tomo_trust_level >= 3 && tomo_loneliness_level >= 3"
+    effects:
+      - type: increment
+        variable: tomo_abuse_hints
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+    choices:
+      - text: "痛くない世界？"
+        next: tomo_pain_escape
+      - text: "現実が痛い？"
+        next: tomo_reality_pain
+      - text: "何から逃げてるの？"
+        next: tomo_escape_source
+
+  - id: tomo_home_fear
+    text: "...(落書き帳を抱える)...家...怖い...帰りたくない...ここなら...安全..."
+    probability: 0.09
+    conditions:
+      - if: "tomo_abuse_hints >= 1"
+    effects:
+      - type: increment
+        variable: tomo_home_trauma
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 2
+    choices:
+      - text: "家で何があるの？"
+        next: tomo_home_situation
+      - text: "誰が怖いの？"
+        next: tomo_fear_source
+      - text: "ここにいていいよ"
+        next: tomo_safety_assurance
+
+  # 人格分裂の暗示
+  - id: tomo_multiple_names_hint
+    text: "...(落書き帳をめくる)...名前...たくさん...どれが...本当の私？"
+    probability: 0.07
+    conditions:
+      - if: "tomo_name_avoidance >= 3 && tomo_trust_level >= 4"
+    effects:
+      - type: increment
+        variable: tomo_identity_confusion
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 2
+    choices:
+      - text: "たくさんの名前？"
+        next: tomo_name_collection
+      - text: "どの名前が好き？"
+        next: tomo_name_preference
+      - text: "全部君だよ"
+        next: tomo_identity_acceptance
+
+  - id: tomo_personality_fragments
+    text: "...(落書き帳に書く)...強い私...弱い私...怒った私...泣いた私...バラバラ..."
+    probability: 0.06
+    conditions:
+      - if: "tomo_identity_confusion >= 1"
+    effects:
+      - type: increment
+        variable: tomo_fragmentation
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "バラバラってどういうこと？"
+        next: tomo_fragmentation_explanation
+      - text: "どの私が本当？"
+        next: tomo_true_self_question
+      - text: "全部つながってる"
+        next: tomo_integration_encouragement
+
+  # 現実改変の危険性
+  - id: tomo_world_distortion
+    text: "...(落書き帳を見る)...書きすぎた...世界...おかしくなった...戻せない..."
+    probability: 0.05
+    conditions:
+      - if: "tomo_reality_awareness >= 5"
+    effects:
+      - type: increment
+        variable: tomo_world_damage
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "世界がおかしい？"
+        next: tomo_reality_breakdown
+      - text: "何を書いたの？"
+        next: tomo_dangerous_writing
+      - text: "戻す方法はない？"
+        next: tomo_restoration_possibility
+
+  - id: tomo_reality_collapse
+    text: "...(落書き帳を閉じる)...現実...と...想像...境界...なくなった..."
+    probability: 0.04
+    conditions:
+      - if: "tomo_world_damage >= 1"
+    effects:
+      - type: increment
+        variable: tomo_reality_dissolution
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 3
+    choices:
+      - text: "境界がない？"
+        next: tomo_boundary_loss
+      - text: "何が現実？"
+        next: tomo_reality_question
+      - text: "大丈夫、現実はある"
+        next: tomo_reality_anchor
+
+  # 孤独と絶望
+  - id: tomo_complete_isolation
+    text: "...(落書き帳に書く)...誰も...いない...書いても...一人...消える..."
+    probability: 0.08
+    conditions:
+      - if: "tomo_loneliness_level >= 4"
+    effects:
+      - type: increment
+        variable: tomo_despair_level
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 2
+    choices:
+      - text: "僕がいるよ"
+        next: tomo_connection_offer
+      - text: "一人じゃない"
+        next: tomo_isolation_denial
+      - text: "なぜ消えるの？"
+        next: tomo_disappearance_fear
+
+  # 継続ノード
+  - id: tomo_accident_details
+    text: "...(落書き帳を開く)...お母さん...名前...線で...消した...そしたら...本当に..."
+    effects:
+      - type: increment
+        variable: tomo_maternal_loss
+        value: 1
+    choices:
+      - text: "お母さんが消えた？"
+        next: tomo_mother_erasure
+      - text: "なぜ消したの？"
+        next: tomo_erasure_motive
+      - text: "事故だったんだね"
+        next: tomo_accident_understanding
+
+  - id: tomo_pain_escape
+    text: "...(落書き帳に書く)...叩かれない...怒られない...泣かない...そんな世界..."
+    effects:
+      - type: increment
+        variable: tomo_violence_history
+        value: 1
+    choices:
+      - text: "誰に叩かれるの？"
+        next: tomo_abuser_identity
+      - text: "もう叩かれない"
+        next: tomo_safety_promise
+      - text: "辛かったね"
+        next: tomo_pain_acknowledgment
+
+  - id: tomo_home_situation
+    text: "...(震える)...お父さん...お酒...怖い...隠れる...でも...見つかる..."
+    effects:
+      - type: increment
+        variable: tomo_paternal_abuse
+        value: 1
+    choices:
+      - text: "お父さんが怖い？"
+        next: tomo_father_fear
+      - text: "誰かに相談した？"
+        next: tomo_help_seeking
+      - text: "ここは安全だよ"
+        next: tomo_sanctuary_confirmation
+
+  - id: tomo_name_collection
+    text: "...(落書き帳をめくる)...あき...ゆみ...さき...どれも...私...でも...違う..."
+    effects:
+      - type: increment
+        variable: tomo_name_multiplicity
+        value: 1
+    choices:
+      - text: "どうして違う名前？"
+        next: tomo_name_reasons
+      - text: "全部覚えてる？"
+        next: tomo_name_memory
+      - text: "好きな名前はある？"
+        next: tomo_name_attachment
+
+  - id: tomo_fragmentation_explanation
+    text: "...(落書き帳に書く)...痛い時...別の私...怒る時...また別の私...バラバラ..."
+    effects:
+      - type: increment
+        variable: tomo_coping_mechanism
+        value: 1
+    choices:
+      - text: "痛い時に別の自分？"
+        next: tomo_pain_personality
+      - text: "それは自分を守る方法？"
+        next: tomo_protection_mechanism
+      - text: "統合できる？"
+        next: tomo_integration_possibility
+
+  - id: tomo_reality_breakdown
+    text: "...(落書き帳を見る)...書いた世界...現実...混じった...どこまで...本当？"
+    effects:
+      - type: increment
+        variable: tomo_reality_confusion
+        value: 1
+    choices:
+      - text: "今ここは現実だよ"
+        next: tomo_present_reality
+      - text: "何が混じったの？"
+        next: tomo_mixing_details
+      - text: "区別する方法はある？"
+        next: tomo_distinction_method
+
+  - id: tomo_connection_offer
+    text: "...(落書き帳を見る)...本当？...消えない？...書かなくても...いる？"
+    effects:
+      - type: increment
+        variable: tomo_connection_hope
+        value: 1
+    choices:
+      - text: "消えないよ"
+        next: tomo_permanence_promise
+      - text: "書かなくても存在する"
+        next: tomo_natural_existence
+      - text: "いつでもここにいる"
+        next: tomo_constant_presence
+
+  - id: tomo_mother_erasure
+    text: "...(泣く)...怒って...線で...消した...そしたら...本当に...いなくなった..."
+    effects:
+      - type: increment
+        variable: tomo_guilt_level
+        value: 2
+    choices:
+      - text: "怒ったから消したの？"
+        next: tomo_anger_erasure
+      - text: "君のせいじゃない"
+        next: tomo_guilt_relief
+      - text: "お母さんは君を愛してた"
+        next: tomo_maternal_love
+
+  - id: tomo_abuser_identity
+    text: "...(落書き帳を抱える)...お父さん...でも...書けない...消えたら...また...一人..."
+    effects:
+      - type: increment
+        variable: tomo_conflicted_love
+        value: 1
+    choices:
+      - text: "お父さんを愛してる？"
+        next: tomo_complicated_feelings
+      - text: "一人になるのが怖い？"
+        next: tomo_abandonment_fear
+      - text: "安全な場所を作ろう"
+        next: tomo_safe_space_creation

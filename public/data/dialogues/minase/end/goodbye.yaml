@@ -1,0 +1,7 @@
+dialogues:
+  - id: minase_end_goodbye
+    text: "また会いましょうね。私、ここで待っていますから。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

@@ -1,0 +1,7 @@
+dialogues:
+  - id: shino_end_goodbye
+    text: "また来てくれますか？私、ここで橋の向こうを見ながら待っています。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

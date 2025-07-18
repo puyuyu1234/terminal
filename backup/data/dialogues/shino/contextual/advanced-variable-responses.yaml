@@ -1,0 +1,223 @@
+conversations:
+  # 季節・天候への反応（環境変数依存）
+  - id: shino_weather_memory_connection
+    text: "今日の天気..."
+    conditions:
+      - if: "weather_mentions >= 5 && shino_memory_issues >= 2"
+        text: "今日の天気...昨日と同じような気がするけど、昨日がいつだったかわからなくて。"
+      - if: "weather_mentions >= 3"
+        text: "今日の天気、なんだか記憶の中の天気と似てるような..."
+      - else:
+        text: "今日の天気、どうですか？"
+    choices:
+      - text: "記憶の中の天気？"
+        next: shino_weather_memory_detail
+      - text: "同じような日があったの？"
+        next: shino_repeated_weather
+      - text: "今日は今日だよ"
+        next: shino_present_focus
+
+  # 時間経過による心理状態の変化
+  - id: shino_time_distortion_awareness
+    text: "時間が..."
+    conditions:
+      - if: "session_duration >= 30 && shino_trust_level >= 4"
+        text: "時間が...止まってるような気がします。ずっと同じ時間にいるような..."
+      - if: "session_duration >= 20 && shino_memory_issues >= 3"
+        text: "時間が...よくわからなくなってきました。何分くらい話してましたっけ？"
+      - if: "session_duration >= 15"
+        text: "時間が...経つのが早いような、遅いような。"
+      - else:
+        text: "時間が...静かに流れてますね。"
+    choices:
+      - text: "時間の感覚がおかしい？"
+        next: shino_time_confusion
+      - text: "一緒にいると時間を忘れる"
+        next: shino_timeless_connection
+      - text: "今が大切"
+        next: shino_present_moment
+
+  # 複数キャラクターとの遭遇による変化
+  - id: shino_other_character_awareness
+    text: "他にも..."
+    conditions:
+      - if: "has_met_all_characters == true && shino_trust_level >= 5"
+        text: "他にも、ここに来る人がいるんですね。みんな、何かを待ってるような..."
+      - if: "character_encounter_count.minase >= 3 && shino_trust_level >= 3"
+        text: "他にも、時々変わった人を見かけます。未来のことを話す人とか..."
+      - if: "character_encounter_count.ayane >= 2"
+        text: "他にも、無邪気な子を見かけることがあります。"
+      - else:
+        text: "他にも、誰か来るんでしょうか？"
+    choices:
+      - text: "どんな人たち？"
+        next: shino_character_descriptions
+      - text: "みんな待ってるの？"
+        next: shino_waiting_community
+      - text: "君だけでいい"
+        next: shino_exclusive_attention
+
+  # 感情的な深度による変化
+  - id: shino_emotional_depth_response
+    text: "感情って..."
+    conditions:
+      - if: "emotional_depth >= 8 && shino_trust_level >= 6"
+        text: "感情って、薬で抑えようとしても消えないんですね。特に、罪悪感は..."
+      - if: "emotional_depth >= 6 && shino_anxiety_level >= 3"
+        text: "感情って、波のように押し寄せてくるんです。不安と安心が混じって..."
+      - if: "emotional_depth >= 4"
+        text: "感情って、複雑ですね。嬉しいのに悲しいような..."
+      - else:
+        text: "感情って、不思議ですね。"
+    choices:
+      - text: "罪悪感って何に対して？"
+        next: shino_guilt_exploration
+      - text: "波のような感情？"
+        next: shino_emotional_waves
+      - text: "複雑な感情は自然なこと"
+        next: shino_emotion_normalization
+
+  # プレイヤーの行動パターン学習
+  - id: shino_player_pattern_observation
+    text: "あなたは..."
+    conditions:
+      - if: "player_empathy_level >= 6 && player_silence_count >= 4"
+        text: "あなたは、話を聞くのが上手ですね。静かに、でも心で理解してくれる。"
+      - if: "player_protective_instinct >= 4"
+        text: "あなたは、私を守ろうとしてくれますね。でも、私は守られるに値するのでしょうか？"
+      - if: "player_curiosity_level >= 5"
+        text: "あなたは、いろんなことを知りたがりますね。でも、知らない方がいいこともあるんです。"
+      - else:
+        text: "あなたは、不思議な人ですね。"
+    choices:
+      - text: "守られるに値するよ"
+        next: shino_worth_affirmation
+      - text: "知らない方がいいこと？"
+        next: shino_dangerous_knowledge
+      - text: "君のことを理解したい"
+        next: shino_understanding_desire
+
+  # 夜の深さによる変化
+  - id: shino_night_depth_psychology
+    text: "夜が深くなると..."
+    conditions:
+      - if: "night_progression >= 9 && shino_medication_hints >= 2"
+        text: "夜が深くなると、薬の効果が弱くなって...本当の自分が出てきそうで怖いです。"
+      - if: "night_progression >= 7 && shino_dark_knowledge >= 1"
+        text: "夜が深くなると、隠していることが口に出そうになります。"
+      - if: "night_progression >= 5"
+        text: "夜が深くなると、心の奥底が見えてきそうで..."
+      - else:
+        text: "夜が深くなると、静かになりますね。"
+    choices:
+      - text: "本当の自分？"
+        next: shino_true_self_fear
+      - text: "隠していることがあるの？"
+        next: shino_hidden_secrets
+      - text: "心の奥底を見てもいい"
+        next: shino_depth_permission
+
+  # 継続訪問による関係性の変化
+  - id: shino_relationship_evolution
+    text: "こうして何回も会っていると..."
+    conditions:
+      - if: "consecutive_visits >= 10 && shino_trust_level >= 7"
+        text: "こうして何回も会っていると、もう家族みたいな気がしてきます。でも、家族には言えないことがあるんです。"
+      - if: "consecutive_visits >= 7 && shino_comfort_level >= 5"
+        text: "こうして何回も会っていると、とても安心できます。でも、安心しすぎるのも怖くて..."
+      - if: "consecutive_visits >= 5"
+        text: "こうして何回も会っていると、だんだん心を開けるようになってきました。"
+      - else:
+        text: "こうして何回も会っていると、嬉しいです。"
+    choices:
+      - text: "家族には言えないこと？"
+        next: shino_family_secrets
+      - text: "なぜ安心しすぎるのが怖い？"
+        next: shino_safety_fear
+      - text: "心を開いてくれて嬉しい"
+        next: shino_openness_appreciation
+
+  # 継続ノード
+  - id: shino_weather_memory_detail
+    text: "事故の日も、こんな天気だったような...でも、はっきりしなくて。"
+    effects:
+      - type: increment
+        variable: shino_accident_hints
+        value: 1
+    choices:
+      - text: "事故の日？"
+        next: shino_accident_memory_fragment
+      - text: "思い出さなくてもいい"
+        next: shino_memory_protection
+      - text: "今日は今日"
+        next: shino_present_grounding
+
+  - id: shino_time_confusion
+    text: "薬を飲んでから、時間の感覚が...朝なのか夜なのかもわからなくなって。"
+    effects:
+      - type: increment
+        variable: shino_medication_hints
+        value: 1
+    choices:
+      - text: "薬の副作用？"
+        next: shino_medication_effects
+      - text: "医者に相談してみて"
+        next: shino_medical_advice
+      - text: "今は夜だよ"
+        next: shino_time_orientation
+
+  - id: shino_character_descriptions
+    text: "みんな、どこか悲しそうで...でも、それを隠してるような人たちです。"
+    effects:
+      - type: increment
+        variable: shino_empathy_level
+        value: 1
+    choices:
+      - text: "君も隠してる？"
+        next: shino_hidden_sadness
+      - text: "悲しい人が集まる場所？"
+        next: shino_sad_gathering
+      - text: "みんな支え合えるといいね"
+        next: shino_mutual_support
+
+  - id: shino_guilt_exploration
+    text: "あの人を...止められなかった罪悪感。私が、もっと早く気づいていれば..."
+    effects:
+      - type: increment
+        variable: shino_guilt_hints
+        value: 1
+    choices:
+      - text: "誰を止められなかった？"
+        next: shino_guilt_target
+      - text: "気づけないことは罪じゃない"
+        next: shino_guilt_absolution
+      - text: "自分を責めすぎないで"
+        next: shino_self_compassion
+
+  - id: shino_worth_affirmation
+    text: "本当に...？でも、私は...取り返しのつかないことをしてしまったかもしれないんです。"
+    effects:
+      - type: increment
+        variable: shino_self_worth_doubt
+        value: 1
+    choices:
+      - text: "どんなことをしたの？"
+        next: shino_past_actions
+      - text: "取り返しがつかないことなんてない"
+        next: shino_redemption_possibility
+      - text: "過去より今の君を見てる"
+        next: shino_present_focus_affirmation
+
+  - id: shino_true_self_fear
+    text: "本当の私は...優しくないかもしれません。怖いことを考えることもあるんです。"
+    effects:
+      - type: increment
+        variable: shino_dark_thoughts
+        value: 1
+    choices:
+      - text: "どんなことを考えるの？"
+        next: shino_dark_thought_details
+      - text: "みんな暗い考えを持つことはある"
+        next: shino_thought_normalization
+      - text: "怖い考えがあっても君は君"
+        next: shino_unconditional_acceptance

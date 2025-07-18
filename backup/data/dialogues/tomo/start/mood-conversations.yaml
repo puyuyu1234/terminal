@@ -1,0 +1,918 @@
+character: tomo
+nodes:
+  # Drawing mood extended conversations
+  - id: tomo_start_drawing_mood_extended_conversation
+    text: 今日は絵を描きたい気分です。この駅の風景をスケッチしてみようかなと思って。光と影の変化を捉えてみたいんです。
+    choices:
+      - text: 光と影の変化を一緒に観察したいです
+        next: tomo_drawing_mood_light_shadow
+      - text: 駅の風景をスケッチする魅力を教えてください
+        next: tomo_drawing_mood_station_sketch
+      - text: 絵を描きたい気分になる理由を知りたいです
+        next: tomo_drawing_mood_inspiration
+
+  - id: tomo_drawing_mood_light_shadow
+    text: 光と影の観察...時間が経つにつれて、光の角度が変わって影も移動します。それを追いかけるように描くのは、とても楽しい作業です。
+    choices:
+      - text: 時間の経過を絵で表現したいです
+        next: tomo_drawing_mood_time_expression
+      - text: 光の角度の変化を学びたいです
+        next: tomo_drawing_mood_light_angle
+      - text: 影の移動を追いかける楽しさを体験したいです
+        next: tomo_drawing_mood_shadow_chase
+
+  - id: tomo_drawing_mood_station_sketch
+    text: 駅の風景スケッチ...駅は人の営みが見える場所です。待つ人、急ぐ人、別れる人、出会う人。それぞれの物語を線で表現できたら素敵です。
+    choices:
+      - text: 人の営みを線で表現する方法を教えてください
+        next: tomo_drawing_mood_human_activity
+      - text: 待つ人の物語を描きたいです
+        next: tomo_drawing_mood_waiting_story
+      - text: それぞれの物語を見つけたいです
+        next: tomo_drawing_mood_find_stories
+
+  - id: tomo_drawing_mood_inspiration
+    text: 絵を描きたい気分...美しいものを見た時、心が動いた時、その感動を形にしたくなります。言葉では表現できない何かを、絵で表現したいんです。
+    choices:
+      - text: 感動を形にする方法を学びたいです
+        next: tomo_drawing_mood_emotion_form
+      - text: 言葉では表現できない何かを理解したいです
+        next: tomo_drawing_mood_beyond_words
+      - text: 心が動いた瞬間を一緒に大切にしたいです
+        next: tomo_drawing_mood_moving_moments
+
+  - id: tomo_drawing_mood_time_expression
+    text: 時間の表現...一枚の絵の中に、異なる時間の光を重ねて描くことがあります。朝の光、昼の光、夕方の光。時間の流れを感じられます。
+    choices:
+      - text: 時間の流れを感じる絵を見たいです
+        next: emotional_end
+      - text: 異なる時間の光を重ねる技術を教えてください
+        next: trust_end
+      - text: 時間の表現を一緒に研究したいです
+        next: contextual_end
+
+  - id: tomo_drawing_mood_light_angle
+    text: 光の角度...朝は低い角度から、昼は高い角度から、夕方は再び低い角度から。それぞれが全く違う表情を作り出します。
+    choices:
+      - text: 光の角度による表情の違いを学びたいです
+        next: deep_end
+      - text: 朝と夕方の光の違いを感じたいです
+        next: emotional_end
+      - text: 昼の高い角度の光を一緒に観察したいです
+        next: trust_end
+
+  - id: tomo_drawing_mood_shadow_chase
+    text: 影追いの楽しさ...影は生きているように動きます。それを追いかけて描くのは、まるで影と対話しているような感覚になります。
+    choices:
+      - text: 影と対話する感覚を体験したいです
+        next: emotional_end
+      - text: 生きている影を一緒に観察したいです
+        next: trust_end
+      - text: 影の動きを追いかける楽しさを共有したいです
+        next: contextual_end
+
+  - id: tomo_drawing_mood_human_activity
+    text: 人の営みの表現...姿勢、動き、表情、すべてがその人の物語を語っています。それを線で捉えるのは難しいけれど、やりがいがあります。
+    choices:
+      - text: 姿勢や動きから物語を読み取りたいです
+        next: deep_end
+      - text: 線で人の物語を表現する方法を学びたいです
+        next: emotional_end
+      - text: やりがいのある挑戦を一緒にしたいです
+        next: trust_end
+
+  - id: tomo_drawing_mood_waiting_story
+    text: 待つ人の物語...電車を待つ人、人を待つ人、時間を待つ人。それぞれの待ち方に、その人の性格や状況が現れます。
+    choices:
+      - text: 待ち方から人の性格を読み取りたいです
+        next: emotional_end
+      - text: 時間を待つ人の気持ちを理解したいです
+        next: trust_end
+      - text: 待つ人の物語を一緒に想像したいです
+        next: contextual_end
+
+  - id: tomo_drawing_mood_find_stories
+    text: 物語の発見...よく観察すると、すべての人に物語があることがわかります。その物語を見つけて、絵に込めることができたら幸せです。
+    choices:
+      - text: すべての人の物語を大切にしたいです
+        next: emotional_end
+      - text: 物語を見つける観察力を身につけたいです
+        next: trust_end
+      - text: 絵に物語を込める方法を教えてください
+        next: contextual_end
+
+  - id: tomo_drawing_mood_emotion_form
+    text: 感動を形に...感動は目に見えないものですが、色や線、形を使って表現することができます。それが絵の魅力の一つです。
+    choices:
+      - text: 目に見えないものを表現する魅力を理解したいです
+        next: deep_end
+      - text: 色や線で感動を表現したいです
+        next: emotional_end
+      - text: 絵の魅力を一緒に探求したいです
+        next: trust_end
+
+  - id: tomo_drawing_mood_beyond_words
+    text: 言葉を超えた表現...言葉で説明できない複雑な感情や、微妙な雰囲気。それを絵で表現できた時の達成感は格別です。
+    choices:
+      - text: 複雑な感情を表現したいです
+        next: emotional_end
+      - text: 微妙な雰囲気を感じ取りたいです
+        next: trust_end
+      - text: 格別な達成感を一緒に味わいたいです
+        next: contextual_end
+
+  - id: tomo_drawing_mood_moving_moments
+    text: 心が動く瞬間...美しい景色を見た時、優しい言葉を聞いた時、温かい気持ちになった時。そういう瞬間を大切にしたいです。
+    choices:
+      - text: 美しい景色を一緒に見たいです
+        next: emotional_end
+      - text: 優しい言葉を大切にしたいです
+        next: trust_end
+      - text: 温かい気持ちを共有したいです
+        next: contextual_end
+
+  # Frustrated mood extended conversations
+  - id: tomo_start_frustrated_mood_extended_conversation
+    text: 今日は少しイライラしています。うまく表現できないもどかしさがあって...でも、ここに来ると心が落ち着きます。
+    choices:
+      - text: うまく表現できないもどかしさを理解したいです
+        next: tomo_frustrated_mood_expression_difficulty
+      - text: 心が落ち着く理由を教えてください
+        next: tomo_frustrated_mood_calming_effect
+      - text: イライラした気持ちを一緒に整理したいです
+        next: tomo_frustrated_mood_organize_feelings
+
+  - id: tomo_frustrated_mood_expression_difficulty
+    text: 表現の困難...頭の中にはあるのに、それを言葉や形にできない。そのギャップが frustrating です。でも、それも創作の一部かもしれません。
+    choices:
+      - text: 頭の中のイメージを形にする方法を教えてください
+        next: tomo_frustrated_mood_image_to_form
+      - text: 創作の一部としての困難を理解したいです
+        next: tomo_frustrated_mood_creative_difficulty
+      - text: ギャップを埋める方法を一緒に考えたいです
+        next: tomo_frustrated_mood_bridge_gap
+
+  - id: tomo_frustrated_mood_calming_effect
+    text: 心が落ち着く理由...この場所には、焦りや不安を和らげる何かがあります。時間がゆっくり流れて、心に余裕が生まれるんです。
+    choices:
+      - text: 焦りや不安を和らげる方法を学びたいです
+        next: tomo_frustrated_mood_ease_anxiety
+      - text: 時間がゆっくり流れる感覚を体験したいです
+        next: tomo_frustrated_mood_slow_time
+      - text: 心に余裕を生む方法を教えてください
+        next: tomo_frustrated_mood_mental_space
+
+  - id: tomo_frustrated_mood_organize_feelings
+    text: 気持ちの整理...混乱した感情を一つずつ分けて、整理していく作業。時間はかかりますが、とても大切なプロセスです。
+    choices:
+      - text: 感情を分ける方法を教えてください
+        next: tomo_frustrated_mood_separate_emotions
+      - text: 大切なプロセスを一緒に体験したいです
+        next: tomo_frustrated_mood_important_process
+      - text: 混乱した感情を整理したいです
+        next: tomo_frustrated_mood_organize_confusion
+
+  - id: tomo_frustrated_mood_image_to_form
+    text: イメージの具現化...抽象的なイメージを具体的な形にするのは難しいけれど、試行錯誤することで少しずつ近づけます。
+    choices:
+      - text: 抽象的なイメージを理解したいです
+        next: emotional_end
+      - text: 試行錯誤の過程を一緒に楽しみたいです
+        next: trust_end
+      - text: 具体的な形にする技術を学びたいです
+        next: contextual_end
+
+  - id: tomo_frustrated_mood_creative_difficulty
+    text: 創作の困難...表現できないもどかしさも、創作の原動力の一つです。完璧に表現できないからこそ、挑戦し続けられるのかもしれません。
+    choices:
+      - text: 創作の原動力を理解したいです
+        next: deep_end
+      - text: 挑戦し続ける意味を教えてください
+        next: emotional_end
+      - text: もどかしさを原動力に変えたいです
+        next: trust_end
+
+  - id: tomo_frustrated_mood_bridge_gap
+    text: ギャップを埋める...理想と現実の間、頭の中と表現の間のギャップ。それを埋める努力が、成長につながります。
+    choices:
+      - text: 理想と現実の間を埋めたいです
+        next: emotional_end
+      - text: 成長につながる努力を続けたいです
+        next: trust_end
+      - text: ギャップを埋める方法を一緒に考えたいです
+        next: contextual_end
+
+  - id: tomo_frustrated_mood_ease_anxiety
+    text: 不安の緩和...深呼吸をして、今この瞬間に集中する。過去の後悔や未来の不安から離れて、今を大切にします。
+    choices:
+      - text: 今この瞬間に集中する方法を学びたいです
+        next: deep_end
+      - text: 今を大切にする心を持ちたいです
+        next: emotional_end
+      - text: 深呼吸を一緒にしたいです
+        next: trust_end
+
+  - id: tomo_frustrated_mood_slow_time
+    text: 時間の感覚...急いでいる時は時間が足りなく感じ、ゆっくりしている時は時間が豊かに感じます。心の状態が時間の感覚を変えるんです。
+    choices:
+      - text: 時間を豊かに感じる方法を教えてください
+        next: emotional_end
+      - text: 心の状態と時間の関係を理解したいです
+        next: trust_end
+      - text: ゆっくりとした時間を一緒に過ごしたいです
+        next: contextual_end
+
+  - id: tomo_frustrated_mood_mental_space
+    text: 心の余裕...余裕があると、物事を違う角度から見ることができます。イライラしている時は視野が狭くなりがちですが、余裕があると広くなります。
+    choices:
+      - text: 視野を広げる方法を学びたいです
+        next: emotional_end
+      - text: 物事を違う角度から見たいです
+        next: trust_end
+      - text: 心の余裕を作る方法を教えてください
+        next: contextual_end
+
+  - id: tomo_frustrated_mood_separate_emotions
+    text: 感情の分離...怒り、悲しみ、不安、失望。混ざり合った感情を一つずつ取り出して、それぞれと向き合います。
+    choices:
+      - text: それぞれの感情と向き合いたいです
+        next: deep_end
+      - text: 感情を取り出す方法を教えてください
+        next: emotional_end
+      - text: 混ざり合った感情を理解したいです
+        next: trust_end
+
+  - id: tomo_frustrated_mood_important_process
+    text: 大切なプロセス...感情を整理することは、自分を理解することです。時間はかかりますが、とても価値のある作業です。
+    choices:
+      - text: 自分を理解する方法を学びたいです
+        next: emotional_end
+      - text: 価値のある作業を一緒に続けたいです
+        next: trust_end
+      - text: 感情整理の価値を理解したいです
+        next: contextual_end
+
+  - id: tomo_frustrated_mood_organize_confusion
+    text: 混乱の整理...混乱している時こそ、一歩引いて冷静に考えることが大切です。混乱の中にも、必ず答えがあります。
+    choices:
+      - text: 冷静に考える方法を教えてください
+        next: emotional_end
+      - text: 混乱の中の答えを見つけたいです
+        next: trust_end
+      - text: 一歩引いて考えることを学びたいです
+        next: contextual_end
+
+  # Accomplished mood extended conversations
+  - id: tomo_start_accomplished_mood_extended_conversation
+    text: 今日は何かを成し遂げたような気分です。小さなことでも、完成させると達成感があります。この感覚を大切にしたいです。
+    choices:
+      - text: 小さなことでも達成感を感じることを学びたいです
+        next: tomo_accomplished_mood_small_achievement
+      - text: 完成させる喜びを一緒に味わいたいです
+        next: tomo_accomplished_mood_completion_joy
+      - text: この感覚を大切にする方法を教えてください
+        next: tomo_accomplished_mood_cherish_feeling
+
+  - id: tomo_accomplished_mood_small_achievement
+    text: 小さな達成...大きな成果でなくても、一つのことを最後までやり遂げることには価値があります。積み重ねが大切です。
+    choices:
+      - text: 一つのことを最後までやり遂げる方法を学びたいです
+        next: tomo_accomplished_mood_completion_method
+      - text: 積み重ねの価値を理解したいです
+        next: tomo_accomplished_mood_accumulation_value
+      - text: 小さな達成を積み重ねたいです
+        next: tomo_accomplished_mood_build_achievements
+
+  - id: tomo_accomplished_mood_completion_joy
+    text: 完成の喜び...途中で諦めそうになったことも、最後まで続けると大きな喜びになります。プロセスの苦労が報われる瞬間です。
+    choices:
+      - text: 最後まで続ける方法を教えてください
+        next: tomo_accomplished_mood_perseverance
+      - text: プロセスの苦労を乗り越えたいです
+        next: tomo_accomplished_mood_overcome_struggle
+      - text: 報われる瞬間を一緒に体験したいです
+        next: tomo_accomplished_mood_rewarding_moment
+
+  - id: tomo_accomplished_mood_cherish_feeling
+    text: 感覚を大切にする...達成感は一時的なものですが、その記憶は長く残ります。その記憶が次の挑戦の原動力になります。
+    choices:
+      - text: 達成感の記憶を大切にしたいです
+        next: tomo_accomplished_mood_achievement_memory
+      - text: 次の挑戦への原動力を得たいです
+        next: tomo_accomplished_mood_motivation_source
+      - text: 一時的な感覚を長く残す方法を教えてください
+        next: tomo_accomplished_mood_lasting_feeling
+
+  - id: tomo_accomplished_mood_completion_method
+    text: 完成への道...目標を小さく分けて、一つずつクリアしていく。途中で挫折しそうになっても、小さな成功を積み重ねます。
+    choices:
+      - text: 目標を小さく分ける方法を学びたいです
+        next: emotional_end
+      - text: 小さな成功を積み重ねたいです
+        next: trust_end
+      - text: 挫折を乗り越える方法を教えてください
+        next: contextual_end
+
+  - id: tomo_accomplished_mood_accumulation_value
+    text: 積み重ねの価値...一度の大きな成功より、小さな成功の積み重ねの方が、確実で持続性があります。基礎を固めることが大切です。
+    choices:
+      - text: 確実で持続性のある成功を目指したいです
+        next: deep_end
+      - text: 基礎を固める方法を教えてください
+        next: emotional_end
+      - text: 小さな成功を大切にしたいです
+        next: trust_end
+
+  - id: tomo_accomplished_mood_build_achievements
+    text: 達成の構築...一つの達成は次の達成の土台になります。階段を一段ずつ上がるように、確実に前進していきます。
+    choices:
+      - text: 確実に前進する方法を学びたいです
+        next: emotional_end
+      - text: 階段を一段ずつ上がる感覚を体験したいです
+        next: trust_end
+      - text: 達成を土台にする方法を教えてください
+        next: contextual_end
+
+  - id: tomo_accomplished_mood_perseverance
+    text: 継続の力...諦めそうになった時こそ、もう一歩踏み出すことが大切です。その一歩が、大きな変化をもたらします。
+    choices:
+      - text: もう一歩踏み出す勇気を持ちたいです
+        next: deep_end
+      - text: 継続する力を身につけたいです
+        next: emotional_end
+      - text: 大きな変化を体験したいです
+        next: trust_end
+
+  - id: tomo_accomplished_mood_overcome_struggle
+    text: 苦労を乗り越える...困難な時期があるからこそ、成功した時の喜びが大きくなります。苦労も成長の一部です。
+    choices:
+      - text: 困難な時期を乗り越える方法を学びたいです
+        next: emotional_end
+      - text: 苦労を成長の一部として受け入れたいです
+        next: trust_end
+      - text: 成功した時の喜びを一緒に味わいたいです
+        next: contextual_end
+
+  - id: tomo_accomplished_mood_rewarding_moment
+    text: 報われる瞬間...努力が実を結ぶ瞬間は、何物にも代えがたいものです。その瞬間のために、また新しい挑戦を始めたくなります。
+    choices:
+      - text: 努力が実を結ぶ体験をしたいです
+        next: emotional_end
+      - text: 新しい挑戦を始める勇気を持ちたいです
+        next: trust_end
+      - text: 何物にも代えがたい瞬間を共有したいです
+        next: contextual_end
+
+  - id: tomo_accomplished_mood_achievement_memory
+    text: 達成の記憶...成功の記憶は、困難な時の支えになります。「あの時できたから、今回もできる」という自信の源になります。
+    choices:
+      - text: 困難な時の支えを作りたいです
+        next: deep_end
+      - text: 自信の源を増やしたいです
+        next: emotional_end
+      - text: 成功の記憶を大切にしたいです
+        next: trust_end
+
+  - id: tomo_accomplished_mood_motivation_source
+    text: 動機の源...一つの達成が次の挑戦への動機になります。成功の循環を作ることで、継続的な成長が可能になります。
+    choices:
+      - text: 成功の循環を作りたいです
+        next: emotional_end
+      - text: 継続的な成長を目指したいです
+        next: trust_end
+      - text: 次の挑戦への動機を得たいです
+        next: contextual_end
+
+  - id: tomo_accomplished_mood_lasting_feeling
+    text: 持続する感覚...一瞬の達成感を心に刻み込むことで、その感覚をいつでも思い出すことができます。心の宝物になります。
+    choices:
+      - text: 心に刻み込む方法を教えてください
+        next: emotional_end
+      - text: 心の宝物を増やしたいです
+        next: trust_end
+      - text: いつでも思い出せる感覚を大切にしたいです
+        next: contextual_end
+
+  # Experimental mood extended conversations
+  - id: tomo_start_experimental_mood_extended_conversation
+    text: 今日は何か新しいことを試してみたい気分です。いつもと違う角度から物事を見たり、新しい表現方法を探したり。実験的な気持ちです。
+    choices:
+      - text: 新しい角度から物事を見る方法を教えてください
+        next: tomo_experimental_mood_new_perspective
+      - text: 新しい表現方法を一緒に探したいです
+        next: tomo_experimental_mood_new_expression
+      - text: 実験的な気持ちを大切にしたいです
+        next: tomo_experimental_mood_experimental_spirit
+
+  - id: tomo_experimental_mood_new_perspective
+    text: 新しい視点...普段見慣れたものでも、角度を変えると全く違って見えます。上から見る、下から見る、遠くから見る、近くから見る。
+    choices:
+      - text: 角度を変えて見る練習をしたいです
+        next: tomo_experimental_mood_angle_practice
+      - text: 上から見る視点を体験したいです
+        next: tomo_experimental_mood_top_view
+      - text: 遠くと近くの違いを感じたいです
+        next: tomo_experimental_mood_distance_difference
+
+  - id: tomo_experimental_mood_new_expression
+    text: 新しい表現...いつもの方法とは違う方法で表現してみる。色を使わずに描く、音を使わずに音楽を表現する。制約が創造性を生みます。
+    choices:
+      - text: 制約が創造性を生む理由を知りたいです
+        next: tomo_experimental_mood_constraint_creativity
+      - text: 色を使わない表現を試してみたいです
+        next: tomo_experimental_mood_colorless_expression
+      - text: 音を使わない音楽表現を理解したいです
+        next: tomo_experimental_mood_soundless_music
+
+  - id: tomo_experimental_mood_experimental_spirit
+    text: 実験精神...失敗を恐れずに、新しいことに挑戦する心。失敗も学びの一部として受け入れることが大切です。
+    choices:
+      - text: 失敗を恐れない方法を教えてください
+        next: tomo_experimental_mood_fearless_approach
+      - text: 失敗を学びの一部として受け入れたいです
+        next: tomo_experimental_mood_failure_learning
+      - text: 新しいことに挑戦する心を持ちたいです
+        next: tomo_experimental_mood_challenge_spirit
+
+  - id: tomo_experimental_mood_angle_practice
+    text: 視点の練習...毎日見ているものを、意識的に違う角度から見る練習。それだけで、世界が広がります。
+    choices:
+      - text: 世界が広がる感覚を体験したいです
+        next: emotional_end
+      - text: 意識的に違う角度から見る方法を学びたいです
+        next: trust_end
+      - text: 毎日の練習を一緒に続けたいです
+        next: contextual_end
+
+  - id: tomo_experimental_mood_top_view
+    text: 上からの視点...鳥の目線で見ると、全体像が見えます。細部に埋もれていた時には見えなかったパターンや関係性が見えてきます。
+    choices:
+      - text: 全体像を見る重要性を理解したいです
+        next: deep_end
+      - text: パターンや関係性を発見したいです
+        next: emotional_end
+      - text: 鳥の目線で物事を見たいです
+        next: trust_end
+
+  - id: tomo_experimental_mood_distance_difference
+    text: 距離による違い...遠くから見ると大きな流れが見え、近くから見ると細かい部分が見えます。どちらも大切な視点です。
+    choices:
+      - text: 大きな流れを見る方法を学びたいです
+        next: emotional_end
+      - text: 細かい部分を見る目を養いたいです
+        next: trust_end
+      - text: 両方の視点を使い分けたいです
+        next: contextual_end
+
+  - id: tomo_experimental_mood_constraint_creativity
+    text: 制約と創造性...制約があることで、その中でできることを必死に考えます。その必死さが、新しいアイデアを生み出します。
+    choices:
+      - text: 制約の中で新しいアイデアを生み出したいです
+        next: deep_end
+      - text: 必死に考えることの価値を理解したいです
+        next: emotional_end
+      - text: 制約を創造性の源にしたいです
+        next: trust_end
+
+  - id: tomo_experimental_mood_colorless_expression
+    text: 色のない表現...色に頼らずに、形や線、質感だけで表現する。それにより、本当に大切な要素が見えてきます。
+    choices:
+      - text: 本当に大切な要素を見つけたいです
+        next: emotional_end
+      - text: 形や線で表現する方法を学びたいです
+        next: trust_end
+      - text: 質感で表現する技術を教えてください
+        next: contextual_end
+
+  - id: tomo_experimental_mood_soundless_music
+    text: 音のない音楽...動き、リズム、間合い。音がなくても、音楽的な表現は可能です。視覚的な音楽とも言えるかもしれません。
+    choices:
+      - text: 視覚的な音楽を理解したいです
+        next: emotional_end
+      - text: 動きとリズムで表現したいです
+        next: trust_end
+      - text: 間合いの大切さを学びたいです
+        next: contextual_end
+
+  - id: tomo_experimental_mood_fearless_approach
+    text: 恐れない姿勢...失敗は終わりではなく、新しい始まりです。失敗から学んで、次に活かすことができれば、それは価値のある経験です。
+    choices:
+      - text: 失敗を新しい始まりとして捉えたいです
+        next: deep_end
+      - text: 失敗から学ぶ方法を教えてください
+        next: emotional_end
+      - text: 価値のある経験を積みたいです
+        next: trust_end
+
+  - id: tomo_experimental_mood_failure_learning
+    text: 失敗からの学び...失敗は最高の先生です。成功からは得られない、貴重な学びを与えてくれます。
+    choices:
+      - text: 失敗を最高の先生として受け入れたいです
+        next: emotional_end
+      - text: 貴重な学びを得たいです
+        next: trust_end
+      - text: 成功からは得られない学びを理解したいです
+        next: contextual_end
+
+  - id: tomo_experimental_mood_challenge_spirit
+    text: 挑戦の精神...新しいことに挑戦する勇気は、人生を豊かにします。安全な場所にいるだけでは、成長はありません。
+    choices:
+      - text: 人生を豊かにする挑戦をしたいです
+        next: emotional_end
+      - text: 成長するための挑戦を続けたいです
+        next: trust_end
+      - text: 新しいことに挑戦する勇気を持ちたいです
+        next: contextual_end
+
+  # Contemplative mood extended conversations
+  - id: tomo_start_contemplative_mood_extended_conversation
+    text: 今日は深く考え込む気分です。人生について、芸術について、自分について。静かに内省する時間を持ちたいです。
+    choices:
+      - text: 人生について深く考えたいです
+        next: tomo_contemplative_mood_life_reflection
+      - text: 芸術について内省したいです
+        next: tomo_contemplative_mood_art_introspection
+      - text: 自分について静かに考えたいです
+        next: tomo_contemplative_mood_self_reflection
+
+  - id: tomo_contemplative_mood_life_reflection
+    text: 人生の考察...生きることの意味、幸せとは何か、自分は何のために存在しているのか。深い問いに向き合う時間です。
+    choices:
+      - text: 生きることの意味を一緒に考えたいです
+        next: tomo_contemplative_mood_meaning_life
+      - text: 幸せとは何かを探求したいです
+        next: tomo_contemplative_mood_pursuit_happiness
+      - text: 存在する意味を見つけたいです
+        next: tomo_contemplative_mood_existence_purpose
+
+  - id: tomo_contemplative_mood_art_introspection
+    text: 芸術への内省...なぜ人は美を求めるのか、表現することの意味、芸術が人生に与える影響。芸術の本質について考えます。
+    choices:
+      - text: 人が美を求める理由を理解したいです
+        next: tomo_contemplative_mood_beauty_pursuit
+      - text: 表現することの意味を探りたいです
+        next: tomo_contemplative_mood_expression_meaning
+      - text: 芸術が人生に与える影響を感じたいです
+        next: tomo_contemplative_mood_art_impact
+
+  - id: tomo_contemplative_mood_self_reflection
+    text: 自己への内省...本当の自分とは何か、自分の長所と短所、これからどう生きていきたいか。自分自身と深く向き合います。
+    choices:
+      - text: 本当の自分を知りたいです
+        next: tomo_contemplative_mood_true_self
+      - text: 自分の長所と短所を受け入れたいです
+        next: tomo_contemplative_mood_accept_self
+      - text: これからの生き方を考えたいです
+        next: tomo_contemplative_mood_future_direction
+
+  - id: tomo_contemplative_mood_meaning_life
+    text: 生きる意味...完全な答えはないかもしれませんが、考え続けることに意味があります。その過程で、自分なりの答えが見つかるかもしれません。
+    choices:
+      - text: 考え続けることの意味を理解したいです
+        next: emotional_end
+      - text: 自分なりの答えを見つけたいです
+        next: trust_end
+      - text: 完全な答えがないことを受け入れたいです
+        next: contextual_end
+
+  - id: tomo_contemplative_mood_pursuit_happiness
+    text: 幸せの探求...幸せは外から与えられるものではなく、内から生まれるものかもしれません。自分の心の中に、幸せの種があるのかもしれません。
+    choices:
+      - text: 内から生まれる幸せを理解したいです
+        next: deep_end
+      - text: 心の中の幸せの種を見つけたいです
+        next: emotional_end
+      - text: 幸せの本質を一緒に探りたいです
+        next: trust_end
+
+  - id: tomo_contemplative_mood_existence_purpose
+    text: 存在の目的...大きな目的がなくても、小さな目的の積み重ねが人生を意味あるものにします。今日の目的、今の目的を大切にします。
+    choices:
+      - text: 小さな目的を大切にしたいです
+        next: emotional_end
+      - text: 今の目的を見つけたいです
+        next: trust_end
+      - text: 人生を意味あるものにしたいです
+        next: contextual_end
+
+  - id: tomo_contemplative_mood_beauty_pursuit
+    text: 美の追求...美しいものを見ると、心が動きます。その感動が、人生を豊かにしてくれます。美は人間にとって必要不可欠なものかもしれません。
+    choices:
+      - text: 心が動く美しいものを見つけたいです
+        next: deep_end
+      - text: 人生を豊かにする美を理解したいです
+        next: emotional_end
+      - text: 美の必要性を感じたいです
+        next: trust_end
+
+  - id: tomo_contemplative_mood_expression_meaning
+    text: 表現の意味...内面にあるものを外に出すこと、他者との共有、自己理解の深化。表現は人間の根源的な欲求かもしれません。
+    choices:
+      - text: 内面を外に出すことの価値を理解したいです
+        next: emotional_end
+      - text: 他者との共有を大切にしたいです
+        next: trust_end
+      - text: 自己理解を深めたいです
+        next: contextual_end
+
+  - id: tomo_contemplative_mood_art_impact
+    text: 芸術の影響...芸術は人の心を変え、視野を広げ、人生を豊かにします。芸術なしには、人生は味気ないものになってしまうかもしれません。
+    choices:
+      - text: 芸術が心を変える力を感じたいです
+        next: emotional_end
+      - text: 視野を広げる芸術を体験したいです
+        next: trust_end
+      - text: 人生を豊かにする芸術を探求したいです
+        next: contextual_end
+
+  - id: tomo_contemplative_mood_true_self
+    text: 真の自己...役割や期待を取り払った時に残る、本当の自分。それを知ることは、人生の指針になります。
+    choices:
+      - text: 役割や期待を取り払いたいです
+        next: deep_end
+      - text: 本当の自分を受け入れたいです
+        next: emotional_end
+      - text: 人生の指針を見つけたいです
+        next: trust_end
+
+  - id: tomo_contemplative_mood_accept_self
+    text: 自己受容...完璧でない自分を受け入れることから、成長が始まります。短所も含めて、自分を愛することが大切です。
+    choices:
+      - text: 完璧でない自分を受け入れたいです
+        next: emotional_end
+      - text: 自分を愛することを学びたいです
+        next: trust_end
+      - text: 短所を含めた自分を大切にしたいです
+        next: contextual_end
+
+  - id: tomo_contemplative_mood_future_direction
+    text: 未来への方向性...過去の経験を活かし、現在の自分を理解し、未来への道筋を描く。それが人生設計の基本です。
+    choices:
+      - text: 過去の経験を活かしたいです
+        next: emotional_end
+      - text: 現在の自分を理解したいです
+        next: trust_end
+      - text: 未来への道筋を描きたいです
+        next: contextual_end
+
+  # Connected mood extended conversations
+  - id: tomo_start_connected_mood_extended_conversation
+    text: 今日は何かとつながっている感覚があります。人とのつながり、自然とのつながり、過去と未来のつながり。すべてが一つに感じられます。
+    choices:
+      - text: 人とのつながりを大切にしたいです
+        next: tomo_connected_mood_human_connection
+      - text: 自然とのつながりを感じたいです
+        next: tomo_connected_mood_nature_connection
+      - text: 過去と未来のつながりを理解したいです
+        next: tomo_connected_mood_time_connection
+
+  - id: tomo_connected_mood_human_connection
+    text: 人とのつながり...言葉を交わさなくても、心でつながっている感覚。見えない糸で結ばれているような、温かい感じです。
+    choices:
+      - text: 心でつながる感覚を体験したいです
+        next: tomo_connected_mood_heart_connection
+      - text: 見えない糸を感じたいです
+        next: tomo_connected_mood_invisible_thread
+      - text: 温かいつながりを大切にしたいです
+        next: tomo_connected_mood_warm_connection
+
+  - id: tomo_connected_mood_nature_connection
+    text: 自然とのつながり...風、木々、鳥の声、すべてが一つの大きな生命体の一部のように感じられます。自分もその一部であることを感じます。
+    choices:
+      - text: 大きな生命体の一部であることを感じたいです
+        next: tomo_connected_mood_life_organism
+      - text: 風や木々との一体感を体験したいです
+        next: tomo_connected_mood_nature_unity
+      - text: 自然の中での自分の位置を理解したいです
+        next: tomo_connected_mood_natural_position
+
+  - id: tomo_connected_mood_time_connection
+    text: 時間のつながり...過去の自分、現在の自分、未来の自分が一つの線でつながっている感覚。時間を超えた自分の連続性を感じます。
+    choices:
+      - text: 時間を超えた連続性を理解したいです
+        next: tomo_connected_mood_time_continuity
+      - text: 過去と現在と未来の自分を統合したいです
+        next: tomo_connected_mood_self_integration
+      - text: 一つの線でつながった感覚を体験したいです
+        next: tomo_connected_mood_linear_connection
+
+  - id: tomo_connected_mood_heart_connection
+    text: 心のつながり...言葉では表現できない、深いレベルでの理解。相手の気持ちが、自分の気持ちのように感じられます。
+    choices:
+      - text: 深いレベルでの理解を体験したいです
+        next: emotional_end
+      - text: 相手の気持ちを自分のように感じたいです
+        next: trust_end
+      - text: 言葉を超えたつながりを大切にしたいです
+        next: contextual_end
+
+  - id: tomo_connected_mood_invisible_thread
+    text: 見えない糸...物理的には見えないけれど、確かに存在するつながり。それが人と人を結び、支え合う力になります。
+    choices:
+      - text: 確かに存在するつながりを感じたいです
+        next: deep_end
+      - text: 人と人を結ぶ力を理解したいです
+        next: emotional_end
+      - text: 支え合う力を大切にしたいです
+        next: trust_end
+
+  - id: tomo_connected_mood_warm_connection
+    text: 温かいつながり...心を温めてくれるような、安心できるつながり。孤独感を消し去って、生きる力を与えてくれます。
+    choices:
+      - text: 心を温めるつながりを大切にしたいです
+        next: emotional_end
+      - text: 孤独感を消す方法を教えてください
+        next: trust_end
+      - text: 生きる力を与えるつながりを求めたいです
+        next: contextual_end
+
+  - id: tomo_connected_mood_life_organism
+    text: 生命の有機体...すべてが相互に関連し合い、影響し合っている大きなシステム。その一部であることの責任と喜びを感じます。
+    choices:
+      - text: 相互関連のシステムを理解したいです
+        next: deep_end
+      - text: 一部であることの責任を感じたいです
+        next: emotional_end
+      - text: 一部であることの喜びを味わいたいです
+        next: trust_end
+
+  - id: tomo_connected_mood_nature_unity
+    text: 自然との一体感...自分と自然の境界がなくなるような感覚。風になったり、木になったり、鳥になったりするような感じです。
+    choices:
+      - text: 境界がなくなる感覚を体験したいです
+        next: emotional_end
+      - text: 風になったような感じを味わいたいです
+        next: trust_end
+      - text: 自然と一体になりたいです
+        next: contextual_end
+
+  - id: tomo_connected_mood_natural_position
+    text: 自然の中での位置...自分は自然の一部であり、自然に支えられて生きています。その恩恵を感じ、感謝の気持ちを持ちます。
+    choices:
+      - text: 自然の恩恵を感じたいです
+        next: emotional_end
+      - text: 感謝の気持ちを大切にしたいです
+        next: trust_end
+      - text: 自然に支えられていることを理解したいです
+        next: contextual_end
+
+  - id: tomo_connected_mood_time_continuity
+    text: 時間の連続性...過去の経験が現在を作り、現在の選択が未来を作る。すべてがつながった一つの流れです。
+    choices:
+      - text: 過去の経験を現在に活かしたいです
+        next: deep_end
+      - text: 現在の選択を大切にしたいです
+        next: emotional_end
+      - text: 一つの流れを感じたいです
+        next: trust_end
+
+  - id: tomo_connected_mood_self_integration
+    text: 自己の統合...過去の自分も、現在の自分も、未来の自分も、すべて自分です。分裂することなく、統合された自分でいたいです。
+    choices:
+      - text: 統合された自分でいたいです
+        next: emotional_end
+      - text: 分裂しない自分を維持したいです
+        next: trust_end
+      - text: すべての自分を受け入れたいです
+        next: contextual_end
+
+  - id: tomo_connected_mood_linear_connection
+    text: 線的なつながり...点と点がつながって線になるように、瞬間と瞬間がつながって人生になります。その美しさを感じます。
+    choices:
+      - text: 点と点がつながる美しさを感じたいです
+        next: emotional_end
+      - text: 瞬間と瞬間のつながりを大切にしたいです
+        next: trust_end
+      - text: 人生の線的な美しさを理解したいです
+        next: contextual_end
+
+  # Vulnerable mood extended conversations
+  - id: tomo_start_vulnerable_mood_extended_conversation
+    text: 今日は心が少し脆弱な感じがします。傷つきやすくて、でも同時に感受性が高まっているような。この状態も大切にしたいです。
+    choices:
+      - text: 脆弱な心を大切にしたいです
+        next: tomo_vulnerable_mood_fragile_heart
+      - text: 感受性が高まった状態を理解したいです
+        next: tomo_vulnerable_mood_heightened_sensitivity
+      - text: 傷つきやすい時の過ごし方を教えてください
+        next: tomo_vulnerable_mood_fragile_time
+
+  - id: tomo_vulnerable_mood_fragile_heart
+    text: 脆弱な心...普段は隠している感情が表面に出てきます。それは弱さではなく、人間らしさの表れです。
+    choices:
+      - text: 人間らしさを大切にしたいです
+        next: tomo_vulnerable_mood_humanity
+      - text: 隠している感情を受け入れたいです
+        next: tomo_vulnerable_mood_hidden_emotions
+      - text: 弱さではないことを理解したいです
+        next: tomo_vulnerable_mood_not_weakness
+
+  - id: tomo_vulnerable_mood_heightened_sensitivity
+    text: 高まった感受性...普段は感じないような微細な感情や、美しさに気づけます。痛みも深いですが、喜びも深いです。
+    choices:
+      - text: 微細な感情を感じたいです
+        next: tomo_vulnerable_mood_subtle_emotions
+      - text: 美しさに気づく力を大切にしたいです
+        next: tomo_vulnerable_mood_beauty_awareness
+      - text: 深い喜びを体験したいです
+        next: tomo_vulnerable_mood_deep_joy
+
+  - id: tomo_vulnerable_mood_fragile_time
+    text: 脆弱な時間...無理をしないで、自分を労わることが大切です。優しい時間を過ごして、心を癒します。
+    choices:
+      - text: 自分を労わる方法を教えてください
+        next: tomo_vulnerable_mood_self_care
+      - text: 優しい時間の過ごし方を学びたいです
+        next: tomo_vulnerable_mood_gentle_time
+      - text: 心を癒す方法を知りたいです
+        next: tomo_vulnerable_mood_heart_healing
+
+  - id: tomo_vulnerable_mood_humanity
+    text: 人間らしさ...完璧でない自分、弱い自分も含めて人間です。その全てを受け入れることで、より深い人間性を育めます。
+    choices:
+      - text: 完璧でない自分を受け入れたいです
+        next: emotional_end
+      - text: 弱い自分も愛したいです
+        next: trust_end
+      - text: 深い人間性を育みたいです
+        next: contextual_end
+
+  - id: tomo_vulnerable_mood_hidden_emotions
+    text: 隠された感情...普段は抑えている感情が、脆弱な時に表面に現れます。それらの感情と向き合うことで、自分をより深く理解できます。
+    choices:
+      - text: 抑えている感情と向き合いたいです
+        next: deep_end
+      - text: 自分をより深く理解したいです
+        next: emotional_end
+      - text: 感情を表面に出すことを学びたいです
+        next: trust_end
+
+  - id: tomo_vulnerable_mood_not_weakness
+    text: 弱さではない強さ...脆弱であることは、実は勇気の表れです。自分の弱さを認めることで、真の強さが生まれます。
+    choices:
+      - text: 真の強さを身につけたいです
+        next: emotional_end
+      - text: 勇気の表れを理解したいです
+        next: trust_end
+      - text: 弱さを認める勇気を持ちたいです
+        next: contextual_end
+
+  - id: tomo_vulnerable_mood_subtle_emotions
+    text: 微細な感情...喜びと悲しみの間、希望と不安の間にある、名前のない感情。それらを感じることで、感情の豊かさを知ります。
+    choices:
+      - text: 名前のない感情を大切にしたいです
+        next: emotional_end
+      - text: 感情の豊かさを体験したいです
+        next: trust_end
+      - text: 微細な感情を理解したいです
+        next: contextual_end
+
+  - id: tomo_vulnerable_mood_beauty_awareness
+    text: 美への気づき...脆弱な時は、普段見過ごしている美しさに気づけます。涙で曇った目だからこそ見える美しさがあります。
+    choices:
+      - text: 涙で曇った目で見る美しさを理解したいです
+        next: deep_end
+      - text: 見過ごしている美しさを見つけたいです
+        next: emotional_end
+      - text: 脆弱な時の美への気づきを大切にしたいです
+        next: trust_end
+
+  - id: tomo_vulnerable_mood_deep_joy
+    text: 深い喜び...痛みを知るからこそ、喜びの深さがわかります。脆弱な心で感じる喜びは、とても純粋で美しいものです。
+    choices:
+      - text: 痛みを知ることの価値を理解したいです
+        next: emotional_end
+      - text: 純粋で美しい喜びを体験したいです
+        next: trust_end
+      - text: 深い喜びを一緒に味わいたいです
+        next: contextual_end
+
+  - id: tomo_vulnerable_mood_self_care
+    text: 自己ケア...心が疲れた時は、無理をしないで休むことが大切です。自分に優しくすることで、心が回復します。
+    choices:
+      - text: 自分に優しくする方法を学びたいです
+        next: emotional_end
+      - text: 心の回復を促したいです
+        next: trust_end
+      - text: 無理をしない生き方を教えてください
+        next: contextual_end
+
+  - id: tomo_vulnerable_mood_gentle_time
+    text: 優しい時間...急がず、焦らず、ゆっくりと過ごす時間。心に負担をかけない、穏やかな時間です。
+    choices:
+      - text: 心に負担をかけない時間を過ごしたいです
+        next: emotional_end
+      - text: 穏やかな時間を大切にしたいです
+        next: trust_end
+      - text: 急がない生き方を学びたいです
+        next: contextual_end
+
+  - id: tomo_vulnerable_mood_heart_healing
+    text: 心の癒し...傷ついた心を癒すのは時間です。でも、その時間を大切に過ごすことで、より強く、より優しい心になれます。
+    choices:
+      - text: 時間を大切に過ごしたいです
+        next: emotional_end
+      - text: より強く優しい心になりたいです
+        next: trust_end
+      - text: 心の癒しを体験したいです
+        next: contextual_end

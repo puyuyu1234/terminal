@@ -1,0 +1,10 @@
+dialogues:
+  - id: shino_start_greeting
+    text: "あ、こんにちは。今日もここに来たんですね。私、橋の向こうを見ているんです。"
+    choices:
+      - text: "橋の向こうに何があるの？"
+        next: shino_neutral_bridge
+      - text: "なぜここにいるの？"
+        next: shino_neutral_reason
+      - text: "少し話していこうか"
+        next: shino_neutral_peaceful

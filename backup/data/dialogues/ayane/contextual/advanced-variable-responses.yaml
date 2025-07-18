@@ -1,0 +1,205 @@
+conversations:
+  # 現実認識の歪みによる混乱
+  - id: ayane_reality_confusion_escalation
+    text: "今日は..."
+    conditions:
+      - if: "ayane_reality_distortion >= 4 && night_progression >= 6"
+        text: "今日は晴れてるのに雨が降ってて、暖かいのに寒くて...何が本当なんでしょう？"
+      - if: "ayane_reality_distortion >= 3"
+        text: "今日は昨日と同じ日のような気がします。でも、昨日っていつでしたっけ？"
+      - if: "ayane_reality_distortion >= 1"
+        text: "今日は不思議な日ですね。いつもと違うような、同じような..."
+      - else:
+        text: "今日はいい天気ですね。"
+    choices:
+      - text: "何が本当かわからない？"
+        next: ayane_truth_uncertainty
+      - text: "昨日のことは覚えてる？"
+        next: ayane_yesterday_memory
+      - text: "今、ここが現実だよ"
+        next: ayane_reality_grounding
+
+  # 人格の切り替わり頻度による自己認識
+  - id: ayane_personality_awareness
+    text: "私って..."
+    conditions:
+      - if: "ayane_personality_hints >= 4 && ayane_trust_level >= 5"
+        text: "私って、一人じゃないみたいです。時々、知らない私が出てきて、勝手におしゃべりします。"
+      - if: "ayane_personality_hints >= 3"
+        text: "私って、時々自分じゃないような気がします。別の人が私の体を使ってるみたいで..."
+      - if: "ayane_personality_hints >= 1"
+        text: "私って、変な子でしょうか？時々、自分でも何を言ってるかわからなくて。"
+      - else:
+        text: "私って、どんな子に見えます？"
+    choices:
+      - text: "知らない私？"
+        next: ayane_other_personality_inquiry
+      - text: "別の人が体を使ってる？"
+        next: ayane_possession_feeling
+      - text: "君は君だよ"
+        next: ayane_identity_affirmation
+
+  # 記憶の断片化レベル
+  - id: ayane_memory_fragmentation
+    text: "記憶が..."
+    conditions:
+      - if: "ayane_memory_confusion >= 5 && ayane_personality_hints >= 3"
+        text: "記憶が、パズルのピースみたいにバラバラです。どのピースがどの私のものかわからなくて..."
+      - if: "ayane_memory_confusion >= 3"
+        text: "記憶が、映画のフィルムみたいに切れ切れです。つながらない場面がたくさん。"
+      - if: "ayane_memory_confusion >= 1"
+        text: "記憶が、ぼんやりしてるんです。"
+      - else:
+        text: "記憶って、不思議ですね。"
+    choices:
+      - text: "どの私のもの？"
+        next: ayane_memory_ownership
+      - text: "つながらない場面？"
+        next: ayane_missing_memories
+      - text: "パズルを一緒に組み立てよう"
+        next: ayane_memory_reconstruction
+
+  # 他キャラクターとの相互作用
+  - id: ayane_character_interactions
+    text: "他の人たちは..."
+    conditions:
+      - if: "character_encounter_count.shino >= 3 && ayane_trust_level >= 4"
+        text: "他の人たちは、あの薬を飲んでる人みたいに、何かを忘れようとしてるのかな？"
+      - if: "character_encounter_count.minase >= 2"
+        text: "他の人たちは、未来を見る人みたいに、特別な能力があるのかな？"
+      - if: "has_met_all_characters == true"
+        text: "他の人たちは、みんな秘密を持ってるような気がします。"
+      - else:
+        text: "他の人たちは、どんな人なんでしょう？"
+    choices:
+      - text: "君も秘密を持ってる？"
+        next: ayane_secret_acknowledgment
+      - text: "忘れたいことがあるの？"
+        next: ayane_forgetting_desire
+      - text: "みんな特別だね"
+        next: ayane_special_recognition
+
+  # 無邪気さと暗黒面のバランス
+  - id: ayane_innocence_darkness_balance
+    text: "楽しいことと怖いことって..."
+    conditions:
+      - if: "ayane_innocence_level >= 4 && ayane_dark_hints >= 3"
+        text: "楽しいことと怖いことって、実は同じなのかもしれません。だって、どっちもドキドキするから。"
+      - if: "ayane_innocence_level >= 3 && ayane_dark_hints >= 2"
+        text: "楽しいことと怖いことって、紙一重ですね。ちょっと間違えると、どっちがどっちかわからなくなる。"
+      - if: "ayane_dark_hints >= 1"
+        text: "楽しいことと怖いことって、混じることがあるんです。"
+      - else:
+        text: "楽しいことと怖いことって、全然違いますよね。"
+    choices:
+      - text: "同じって？"
+        next: ayane_emotion_confusion
+      - text: "間違えることがある？"
+        next: ayane_moral_confusion
+      - text: "どっちも大切な感情"
+        next: ayane_emotion_acceptance
+
+  # 時間経過による混乱の深化
+  - id: ayane_time_confusion_deepening
+    text: "時間って..."
+    conditions:
+      - if: "session_duration >= 25 && ayane_memory_confusion >= 4"
+        text: "時間って、ゴムみたいに伸びたり縮んだりしません？今、何時間話してるんでしょう？"
+      - if: "session_duration >= 20 && ayane_reality_distortion >= 3"
+        text: "時間って、時々逆向きに流れるような気がします。さっき言ったことを、これから言うような..."
+      - if: "session_duration >= 15"
+        text: "時間って、あっという間ですね。でも、とても長い気もします。"
+      - else:
+        text: "時間って、流れてますね。"
+    choices:
+      - text: "逆向きに流れる？"
+        next: ayane_reverse_time
+      - text: "伸びたり縮んだり？"
+        next: ayane_elastic_time
+      - text: "今は今だよ"
+        next: ayane_present_moment
+
+  # 継続ノード
+  - id: ayane_truth_uncertainty
+    text: "本当のことって、人によって違うんでしょうか？私には晴れに見えても、他の人には雨に見えるとか。"
+    effects:
+      - type: increment
+        variable: ayane_reality_questioning
+        value: 1
+    choices:
+      - text: "みんな同じ現実を見てる"
+        next: ayane_shared_reality
+      - text: "感じ方は人それぞれ"
+        next: ayane_subjective_reality
+      - text: "君にはどう見える？"
+        next: ayane_perception_inquiry
+
+  - id: ayane_other_personality_inquiry
+    text: "はい、知らない私です。その子は、私よりも大人で、でも怖いことを知ってるんです。"
+    effects:
+      - type: increment
+        variable: ayane_personality_awareness
+        value: 1
+    choices:
+      - text: "どんな怖いことを？"
+        next: ayane_dark_knowledge
+      - text: "大人の自分？"
+        next: ayane_mature_personality
+      - text: "その子と話せる？"
+        next: ayane_personality_communication
+
+  - id: ayane_memory_ownership
+    text: "楽しい記憶は明るい私のもので、怖い記憶は暗い私のものです。でも、境界が曖昧で..."
+    effects:
+      - type: increment
+        variable: ayane_memory_division
+        value: 1
+    choices:
+      - text: "明るい私と暗い私？"
+        next: ayane_personality_dichotomy
+      - text: "境界が曖昧？"
+        next: ayane_boundary_blur
+      - text: "どっちも君の記憶"
+        next: ayane_memory_integration
+
+  - id: ayane_secret_acknowledgment
+    text: "秘密...あります。でも、どの私の秘密かわからないんです。知らない間に、何かしちゃったみたいで..."
+    effects:
+      - type: increment
+        variable: ayane_secret_burden
+        value: 1
+    choices:
+      - text: "何をしちゃったの？"
+        next: ayane_unknown_actions
+      - text: "思い出せない？"
+        next: ayane_amnesia_episodes
+      - text: "秘密を抱え込まないで"
+        next: ayane_secret_sharing
+
+  - id: ayane_emotion_confusion
+    text: "だって、怖い時もドキドキするし、楽しい時もドキドキするから、体は同じ反応なんです。"
+    effects:
+      - type: increment
+        variable: ayane_emotional_confusion
+        value: 1
+    choices:
+      - text: "体の反応は同じでも気持ちは違う"
+        next: ayane_emotion_education
+      - text: "混乱するのは当然"
+        next: ayane_confusion_normalization
+      - text: "どっちの気持ちが強い？"
+        next: ayane_dominant_emotion
+
+  - id: ayane_reverse_time
+    text: "はい、昨日のことが明日起こるような、明日のことが昨日起こったような...順番がごちゃごちゃです。"
+    effects:
+      - type: increment
+        variable: ayane_temporal_confusion
+        value: 1
+    choices:
+      - text: "順番がわからない？"
+        next: ayane_sequence_confusion
+      - text: "過去と未来が混ざってる？"
+        next: ayane_time_mixing
+      - text: "今だけを考えよう"
+        next: ayane_present_focus

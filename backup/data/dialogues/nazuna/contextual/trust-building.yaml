@@ -1,0 +1,344 @@
+character: nazuna
+nodes:
+  - id: nazuna_trust_development
+    text: ......あなたといると、安心する。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 6
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: nazuna
+          operator: greater_than
+          value: 50
+    effects:
+      - type: set_flag
+        flag: nazuna_feels_safe
+    choices:
+      - text: 僕もです
+        next: nazuna_trust_development_extended_conversation
+      - text: なぜですか？
+        next: nazuna_trust_development_extended_conversation
+      - text: ...
+        next: nazuna_trust_development_extended_conversation
+  - id: nazuna_recording_confidence
+    text: ......録音機、見せてもいい。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 8
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: nazuna
+          operator: greater_than
+          value: 60
+      - type: flag
+        name: nazuna_feels_safe
+    effects:
+      - type: set_flag
+        flag: nazuna_shares_equipment
+    choices:
+      - text: 見せてください
+        next: nazuna_recording_confidence_extended_conversation
+      - text: 大切なものでしょう？
+        next: nazuna_recording_confidence_extended_conversation
+      - text: ...
+        next: nazuna_recording_confidence_extended_conversation
+  - id: nazuna_train_revelation
+    text: ......電車の音、実は聞こえてる。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 10
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: nazuna
+          operator: greater_than
+          value: 70
+      - type: flag
+        name: nazuna_shares_equipment
+    effects:
+      - type: set_flag
+        flag: nazuna_hears_trains
+    choices:
+      - text: 本当に？
+        next: nazuna_train_revelation_extended_conversation
+      - text: いつから？
+        next: nazuna_train_revelation_extended_conversation
+      - text: ...
+        next: nazuna_train_revelation_extended_conversation
+  - id: nazuna_vulnerability_moment
+    text: ......怖い時もある。音が、なくなること。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 12
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: nazuna
+          operator: greater_than
+          value: 80
+      - type: flag
+        name: nazuna_hears_trains
+    effects:
+      - type: set_flag
+        flag: nazuna_shared_fear
+    choices:
+      - text: なくならないよ
+        next: nazuna_vulnerability_moment_extended_conversation
+      - text: そんな時は？
+        next: nazuna_vulnerability_moment_extended_conversation
+      - text: ...
+        next: nazuna_vulnerability_moment_extended_conversation
+  - id: nazuna_sound_teaching
+    text: ......音の聞き方、教えてもいい。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 15
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: nazuna
+          operator: greater_than
+          value: 85
+      - type: flag
+        name: nazuna_shared_fear
+    effects:
+      - type: set_flag
+        flag: nazuna_becomes_teacher
+    choices:
+      - text: 教えてください
+        next: nazuna_sound_teaching_extended_conversation
+      - text: 僕にできますか？
+        next: nazuna_sound_teaching_extended_conversation
+      - text: ...
+        next: nazuna_sound_teaching_extended_conversation
+  - id: nazuna_trust_development_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: nazuna_trust_development_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_recording_confidence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_recording_confidence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_train_revelation_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_train_revelation_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_vulnerability_moment_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_vulnerability_moment_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_sound_teaching_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_sound_teaching_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_trust_development_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_trust_development_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_trust_development_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_trust_development_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    choices:
+      - text: 一緒に進んでいきましょう
+        next: nazuna_trust_shared_journey
+      - text: 新しい発見がありそうです
+        next: nazuna_trust_discovery_anticipation
+      - text: 希望が見えてきました
+        next: nazuna_trust_emerging_hope
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end
+  - id: nazuna_trust_development_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: &a2
+      - text: 協力的な探求ですね
+        next: trust_end
+      - text: 新しい発見がありました
+        next: deep_end
+      - text: 心が通じ合います
+        next: emotional_end
+  - id: nazuna_recording_confidence_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_train_revelation_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_vulnerability_moment_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_sound_teaching_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: gentle_listening
+    text: 話を聞いてくれる人がいるというのは、とても心強いものです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: emotional_end
+      - text: いつでも話してください
+        next: trust_end
+      - text: 支え合えますね
+        next: contextual_end
+  - id: nazuna_trust_shared_journey
+    text: 一緒に進む道...それは一人で歩く道とは違います。支え合い、励まし合いながら進むことで、より遠くまで行けます。
+    choices:
+      - text: 支え合いながら進みたいです
+        next: emotional_end
+      - text: より遠くまで行ける可能性を感じます
+        next: trust_end
+      - text: 一緒に歩く道を大切にしたいです
+        next: contextual_end
+  - id: nazuna_trust_discovery_anticipation
+    text: 新しい発見への期待...それは学びの始まりです。未知のことを知る喜び、新しい視点を得る楽しみ。とても心躍ることです。
+    choices:
+      - text: 学びの始まりを楽しみにしています
+        next: deep_end
+      - text: 新しい視点を得る楽しみを共有したいです
+        next: emotional_end
+      - text: 心躍る発見を一緒に体験したいです
+        next: trust_end
+  - id: nazuna_trust_emerging_hope
+    text: 見えてきた希望...それは暗闇の中の光のようなものです。小さくても、確実に道を照らしてくれる大切な光。
+    choices:
+      - text: 暗闇の中の光を大切にしたいです
+        next: emotional_end
+      - text: 道を照らしてくれる希望を共有したいです
+        next: trust_end
+      - text: 小さくても確実な光を感じたいです
+        next: hopeful_end

@@ -1,0 +1,269 @@
+character: minase
+nodes:
+  # 分析・理解関連の終了ノード
+  - id: minase_acceptance_silence
+    text: "受け入れることの意味を、静かに考えている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_observation_depth
+    text: "観察の深さには限界がない。興味深い発見だった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_pattern_recognition
+    text: "パターンを認識することで、新しい理解が生まれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_analytical_satisfaction
+    text: "分析的思考の満足感を、共有できて良かった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_complexity_appreciation
+    text: "複雑さを理解することの価値を、改めて感じる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 時間・記憶関連の終了ノード
+  - id: minase_temporal_understanding
+    text: "時間の性質について、新しい視点を得られた。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_memory_analysis
+    text: "記憶の仕組みを分析することで、人間性をより深く理解できる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_permanence_reflection
+    text: "永続性について考えることは、存在の意味を問うことだ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_change_inevitability
+    text: "変化の必然性を受け入れることも、知恵の一つだろう。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 知識・学習関連の終了ノード
+  - id: minase_knowledge_pursuit
+    text: "知識への探求心は、人間の最も美しい特質の一つだ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_intellectual_curiosity
+    text: "知的好奇心を刺激する会話だった。感謝している。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_wisdom_sharing
+    text: "知恵を分かち合うことで、双方が成長できる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_understanding_deepening
+    text: "理解が深まることの喜びを、共有できて良かった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 人間性・感情関連の終了ノード
+  - id: minase_emotional_complexity
+    text: "感情の複雑さを理解することは、人間を知ることだ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_empathy_mechanism
+    text: "共感の仕組みを分析することで、人間関係への理解が深まる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_vulnerability_strength
+    text: "脆弱性が強さになることもある。興味深い逆説だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_trust_mechanics
+    text: "信頼の仕組みを理解することは、関係性を築く基盤だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 存在・現実関連の終了ノード
+  - id: minase_existence_contemplation
+    text: "存在について考えることは、哲学の根本問題だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_reality_perception
+    text: "現実の認識には個人差がある。それもまた興味深い。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_consciousness_mystery
+    text: "意識の神秘について、まだ解明されていないことが多い。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_identity_formation
+    text: "アイデンティティの形成過程は、複雑で興味深い。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 関係性・コミュニケーション関連の終了ノード
+  - id: minase_communication_effectiveness
+    text: "効果的なコミュニケーションの条件を理解できた。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_dialogue_value
+    text: "対話の価値を改めて認識する機会だった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_mutual_understanding
+    text: "相互理解の深化は、人間関係の基盤だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_perspective_exchange
+    text: "視点を交換することで、新しい洞察が得られる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 静寂・内省関連の終了ノード
+  - id: minase_contemplative_silence
+    text: "思索的な静寂の中で、理解がより深まっていく。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_analytical_pause
+    text: "分析のための pause も、思考過程の重要な要素だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_reflective_conclusion
+    text: "反省的な結論に達することができた。有意義だった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_intellectual_satisfaction
+    text: "知的な満足感を得られる会話だった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 不確実性・曖昧さ関連の終了ノード
+  - id: minase_uncertainty_acceptance
+    text: "不確実性を受け入れることも、理解の一形態だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_ambiguity_tolerance
+    text: "曖昧さに対する耐性は、柔軟な思考の証拠だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_mystery_preservation
+    text: "謎を保持することで、探求心が維持される。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_unknown_respect
+    text: "未知なるものへの敬意を持つことは、学習者の姿勢だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 成長・発展関連の終了ノード
+  - id: minase_growth_observation
+    text: "成長を観察することで、変化の法則を理解できる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_development_tracking
+    text: "発展を追跡することは、進歩の測定に有効だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_evolution_witness
+    text: "進化の証人となることは、特権的な体験だ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: minase_potential_recognition
+    text: "潜在能力を認識することは、可能性への扉を開く。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

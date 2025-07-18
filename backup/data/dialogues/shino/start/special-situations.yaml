@@ -1,0 +1,353 @@
+character: shino
+nodes:
+  - id: shino_start_late_night
+    text: こんなに遅い時間に……大丈夫？
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 3
+      - type: environment
+        name: timeOfDay
+        value: late_night
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: concern_thanks
+        text: 心配してくれるんですね
+        next: shino_start_late_night_extended_conversation
+      - id: insomnia_comment
+        text: 眠れなくて
+        next: shino_start_late_night_extended_conversation
+      - id: silent_response
+        text: ...
+        next: shino_start_late_night_extended_conversation
+  - id: shino_start_after_silence
+    text: ……前は、あまり話さなかったね
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 1
+      - type: variable
+        name: silence_count
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: silence_explanation
+        text: 話すのが苦手で
+        next: shino_start_after_silence_extended_conversation
+      - id: change_comment
+        text: 今日は話したい気分です
+        next: shino_start_after_silence_extended_conversation
+      - id: silent_response
+        text: ...
+        next: shino_start_after_silence_extended_conversation
+  - id: shino_night_apologetic
+    text: 謝らなくていいよ……夜の方が、落ち着くから
+    next: contextual_end
+  - id: shino_night_casual
+    text: 散歩……いいね。私は、ずっとここにいるけど
+    next: contextual_end
+  - id: shino_night_silence
+    text: 夜は、静かでいいよね……
+    choices:
+      - text: 夜の静けさ
+        next: shino_night_silence_extended_conversation
+      - text: 心が落ち着く
+        next: shino_night_silence_extended_conversation
+      - text: ...
+        next: shino_night_silence_extended_conversation
+  - id: shino_night_preference
+    text: 夜の方が、自分らしくいられる気がする
+    choices:
+      - text: なぜですか？
+        next: shino_night_preference_extended_conversation
+      - text: 僕もそう思います
+        next: shino_night_preference_extended_conversation
+      - text: ...
+        next: shino_night_preference_extended_conversation
+  - id: shino_night_reason
+    text: 昼間は、眩しすぎて……隠れたくなる
+    next: shino_session_end
+  - id: shino_night_kinship
+    text: 同じ……嬉しいな
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 10
+    next: shino_session_end
+  - id: shino_night_comfort
+    text: 夜って……静かで、考えごとをしちゃう
+    choices:
+      - text: どんなことを考える？
+        next: shino_night_comfort_extended_conversation
+      - text: 僕もそうです
+        next: shino_night_comfort_extended_conversation
+      - text: ...
+        next: shino_night_comfort_extended_conversation
+  - id: shino_night_companionship
+    text: 夜を一緒に……それだけで十分
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 25
+    next: shino_session_end
+  - id: shino_night_thoughts
+    text: 存在のこととか……意味のこととか
+    next: shino_session_end
+  - id: shino_peaceful_night
+    text: 平和な時間……本当にそう
+    choices:
+      - text: いつも感じられる？
+        next: shino_peaceful_night_extended_conversation
+      - text: 大切な時間ですね
+        next: shino_peaceful_night_extended_conversation
+      - text: ...
+        next: shino_peaceful_night_extended_conversation
+  - id: shino_contemplative_night
+    text: 考えることができる……夜の贈り物
+    choices:
+      - text: どんなことを考える？
+        next: shino_contemplative_night_extended_conversation
+      - text: 考える時間は大切
+        next: shino_contemplative_night_extended_conversation
+      - text: ...
+        next: shino_contemplative_night_extended_conversation
+  - id: shino_extended_night_silence
+    text: ……夜の静けさを、一緒に感じてる
+    choices:
+      - text: 共有する静けさ
+        next: shino_extended_night_silence_extended_conversation
+      - text: 特別な時間
+        next: shino_extended_night_silence_extended_conversation
+      - text: ...
+        next: shino_extended_night_silence_extended_conversation
+  - id: shino_night_reflections
+    text: 存在のこととか……なぜここにいるのかとか
+    next: shino_session_end
+  - id: shino_night_tranquility
+    text: 夜の静けさ……心に染み入る
+    choices:
+      - text: 美しい静けさ
+        next: shino_night_tranquility_extended_conversation
+      - text: 深い平和
+        next: shino_night_tranquility_extended_conversation
+      - text: ...
+        next: shino_night_tranquility_extended_conversation
+  - id: shino_start_late_night_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: shino_start_late_night_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_start_after_silence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_start_after_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_preference_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_preference_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_comfort_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_comfort_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_peaceful_night_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_peaceful_night_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_contemplative_night_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_contemplative_night_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_extended_night_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_extended_night_silence_to_special_end_special_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_extended_night_silence_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_tranquility_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_tranquility_to_deep_end_deep_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_tranquility_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_start_late_night_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_start_late_night_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_start_late_night_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_start_late_night_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_preference_to_shino_session_end_bridge_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_preference_to_shino_session_end_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_preference_to_shino_session_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_extended_night_silence_to_special_end_special_bridge_to_special_end_special_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_extended_night_silence_to_special_end_special_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_extended_night_silence_to_special_end_special_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_tranquility_to_deep_end_deep_bridge_to_deep_end_deep_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_tranquility_to_deep_end_deep_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_night_tranquility_to_deep_end_deep_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    next: hopeful_end
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end

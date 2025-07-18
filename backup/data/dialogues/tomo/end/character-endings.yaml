@@ -1,0 +1,8 @@
+character: tomo
+nodes:
+  - id: tomo_session_end
+    text: "今日は素敵な時間だった。新しいインスピレーションをもらえたよ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

@@ -1,0 +1,94 @@
+character: common
+nodes:
+  - id: session_end
+    text: また会えるといいね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: contextual_end
+    text: 今日は楽しい時間だった。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: special_end
+    text: この時間を大切にしたい。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: trust_end
+    text: 話せて良かった。ありがとう。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: deep_end
+    text: 深い話ができて嬉しかった。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: silence_end
+    text: 静かな時間も、とても大切だね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: first_meet_end
+    text: 初めて話せて嬉しかった。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: emotional_end
+    text: 心が通じ合えたみたい。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: memory_end
+    text: 思い出を共有できて良かった。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: hopeful_end
+    text: 未来が楽しみになった。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: first_meet_continuation
+    text: そう言ってもらえると嬉しい。こうして話せて良かった。
+    choices:
+      - text: 僕も楽しかったです
+        next: first_meet_positive_end
+      - text: 新鮮な気持ちです
+        next: first_meet_positive_end
+      - text: ...
+        next: first_meet_quiet_end
+  
+  # 新しい中間ノード - first_meet_endの代替
+  - id: first_meet_bridge
+    text: 初めて話せて嬉しかった。
+    choices:
+      - text: また話したいです
+        next: first_meet_continuation
+      - text: この時間が心地よい
+        next: first_meet_continuation
+      - text: ...
+        next: first_meet_continuation
+  - id: first_meet_positive_end
+    text: また会えるといいね。今日はありがとう。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+  - id: first_meet_quiet_end
+    text: 静かな時間も、とても大切だね。また会えるといいね。
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

@@ -1,0 +1,40 @@
+character: minase
+nodes:
+  - id: minase_start_second_meet
+    text: また来たのね。予定通りよ。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: equals
+        value: 1
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: 予定？
+        next: minase_start_second_meet_extended_conversation
+      - text: 覚えてるの？
+        next: minase_start_second_meet_extended_conversation
+      - text: ...
+        next: minase_start_second_meet_extended_conversation
+  - id: minase_start_frequent_visitor
+    text: "{{meet_count}}回目ね。私の予想より少し多いわ。"
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: greater_than
+        value: 2
+      - type: variable
+        name: minase_meet_count
+        operator: less_than
+        value: 8
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: 予想と違う？
+        next: minase_start_frequent_visitor_extended_conversation
+      - text: 数えてるんですね
+        next: minase_start_frequent_visitor_extended_conversation
+      - text: ...
+        next: minase_start_frequent_visitor_extended_conversation

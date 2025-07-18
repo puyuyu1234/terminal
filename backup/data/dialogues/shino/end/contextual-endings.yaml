@@ -1,0 +1,253 @@
+character: shino
+nodes:
+  # 感情・理解関連の終了ノード
+  - id: shino_found_gratitude
+    text: "隠れていた気持ちを...見つけてくれて、ありがとう。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_understanding_hope
+    text: "理解してくれる人がいるって...希望が持てる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_communication_difficulty
+    text: "話すのは...難しいけど、でも...話したいって思う。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_presence_acknowledgment
+    text: "そばにいてくれる...それだけで、心が温かくなる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_profound_silence
+    text: "深い静寂の中で...心が通じ合っている気がする。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 時間・現実関連の終了ノード
+  - id: shino_eternal_evening
+    text: "永遠の夕暮れ...でも、あなたがいれば、それでもいい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_change_blindness
+    text: "変化が見えなくても...心の中では、何かが変わってる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_seasonal_indifference
+    text: "季節は変わらないけど...気持ちは変わっていく。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_reality_hope
+    text: "現実は辛いけど...でも、希望は持っていたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_temporal_loop
+    text: "時間の輪の中で...でも、この瞬間は特別。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # メタ意識・ループ関連の終了ノード
+  - id: shino_loop_acknowledgment
+    text: "繰り返しに気づいてる...でも、それも含めて現実なのかも。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_loop_denial
+    text: "繰り返しなんて...そんなこと、考えたくない。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_repetition_value
+    text: "繰り返しにも...価値があるのかもしれない。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_loop_silence
+    text: "無限の輪の中で...静かに考えてる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_awareness_validation
+    text: "気づきを認めてくれて...少し、楽になった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_shared_perception
+    text: "同じものを見てる...一人じゃないって分かる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_commitment_despite_loop
+    text: "繰り返しでも...この気持ちは本物だと思う。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_temporal_silence
+    text: "時間の外で...静かに佇んでいる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 変化・成長関連の終了ノード
+  - id: shino_change_explanation
+    text: "変化について...少しずつ分かってきた気がする。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_transformation_awareness
+    text: "変わっていく自分に...気づいてしまった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_mutual_transformation
+    text: "お互いに変わっていく...それが、自然なのかも。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 親密さ・名前関連の終了ノード
+  - id: shino_name_comfort
+    text: "名前を呼んでもらえると...心が温かくなる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_name_special
+    text: "特別な呼び方...大切にしたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_habit_acceptance
+    text: "習慣を受け入れてくれて...ありがとう。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_predictability_comfort
+    text: "予測できることの中にも...安らぎがある。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 存在・可視性関連の終了ノード
+  - id: shino_temporal_healing
+    text: "時間が癒してくれる...そう信じてる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_existence_relief
+    text: "存在を認めてくれて...ほっとした。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_visibility_comfort
+    text: "見えてるって言ってもらえて...安心できる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_intellectual_intimacy
+    text: "深く考えることを...一緒にしてくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 脆弱性・信頼関連の終了ノード
+  - id: shino_shame_vulnerability
+    text: "恥ずかしい気持ちも...受け入れてくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_mutual_safety
+    text: "お互いを守りあえる...そんな関係でいたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_protection_offer
+    text: "守ってくれるって...そう言ってもらえて嬉しい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_togetherness_promise
+    text: "一緒にいるって約束...大切にしたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_safety_silence
+    text: "安全な静寂の中で...心も休んでる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: shino_miracle_recognition
+    text: "奇跡みたいな出会い...大切にしたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

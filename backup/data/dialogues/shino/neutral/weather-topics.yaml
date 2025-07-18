@@ -1,0 +1,164 @@
+character: shino
+nodes:
+  - id: shino_weather_silence
+    text: ……雨の音だけ聞いてよう
+    next: contextual_end
+  - id: shino_weather_followup
+    text: でも、雨が止んだら……また静かになっちゃう
+    choices:
+      - text: 静かな方がいい？
+        next: shino_weather_followup_extended_conversation
+      - text: 寂しくなりますか？
+        next: shino_weather_followup_extended_conversation
+      - text: ...
+        next: shino_weather_followup_extended_conversation
+  - id: shino_weather_followup_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: shino_weather_followup_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_weather_followup_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_weather_followup_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_weather_followup_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_weather_followup_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    next: hopeful_end
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end
+  - id: shino_weather_followup_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices:
+      - text: 協力的な探求ですね
+        next: trust_end
+      - text: 新しい発見がありました
+        next: deep_end
+      - text: 心が通じ合います
+        next: emotional_end
+  - id: gentle_listening
+    text: 話を聞いてくれる人がいるというのは、とても心強いものです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: emotional_end
+      - text: いつでも話してください
+        next: trust_end
+      - text: 支え合えますね
+        next: contextual_end

@@ -1,0 +1,245 @@
+character: ayane
+nodes:
+  # Energetic day conversations
+  - id: ayane_start_energetic_day_to_silence_end_quiet_bridge
+    text: 今日は本当に元気が出る日！でも、この静寂の中で感じる energy は特別です。外の世界とは違う、内なる energy を感じませんか？
+    choices:
+      - text: 内なる energy について教えてください
+        next: ayane_inner_energy_exploration
+      - text: 静寂の中の energy を感じたいです
+        next: ayane_quiet_energy_feeling
+      - text: 外の世界との違いを理解したいです
+        next: ayane_world_difference_understanding
+
+  # Nostalgic mood conversations  
+  - id: ayane_start_nostalgic_mood_to_contextual_end_bridge
+    text: 懐かしい気持ち...この廃駅には、たくさんの思い出が詰まっているような気がします。過去と現在が混ざり合う不思議な感覚です。
+    choices:
+      - text: 過去と現在の混ざり合いを感じたいです
+        next: ayane_time_blend_experience
+      - text: この場所の思い出を一緒に感じたいです
+        next: ayane_shared_memories
+      - text: 懐かしい気持ちを大切にしたいです
+        next: ayane_nostalgic_treasuring
+
+  - id: ayane_start_nostalgic_mood_to_silence_end_quiet_bridge
+    text: 懐かしさと静寂...昔の記憶が静かに蘇ってくる時間です。言葉にしなくても、心で感じられる何かがありますね。
+    choices:
+      - text: 昔の記憶を静かに感じたいです
+        next: ayane_quiet_memories
+      - text: 心で感じられる何かを探りたいです
+        next: ayane_heart_feeling_exploration
+      - text: 言葉にしない感覚を大切にしたいです
+        next: ayane_wordless_sensation
+
+  # Inner peace conversations
+  - id: ayane_inner_peace_start_to_contextual_end_bridge
+    text: 内なる平和...この場所で自分自身と向き合う時間は、とても価値のあるものです。心の奥底にある静けさを感じられます。
+    choices:
+      - text: 自分自身と向き合う時間を大切にしたいです
+        next: ayane_self_reflection_time
+      - text: 心の奥底の静けさを感じたいです
+        next: ayane_deep_quietude
+      - text: 内なる平和を一緒に体験したいです
+        next: ayane_shared_inner_peace
+
+  - id: ayane_inner_peace_start_to_emotional_end_emotion_bridge
+    text: 感情が動く瞬間...平和な気持ちの中でも、心は生きていて、様々な感情が湧いてきます。それが人間らしさなのかもしれません。
+    choices:
+      - text: 人間らしさを一緒に感じたいです
+        next: ayane_humanity_exploration
+      - text: 様々な感情を大切にしたいです
+        next: ayane_emotion_appreciation
+      - text: 心が生きている感覚を体験したいです
+        next: ayane_living_heart_experience
+
+  - id: ayane_inner_peace_start_to_silence_end_quiet_bridge
+    text: 静寂の中の平和...言葉を交わさなくても、お互いの存在を感じられる瞬間があります。それは特別な繋がりです。
+    choices:
+      - text: お互いの存在を感じたいです
+        next: ayane_mutual_presence
+      - text: 特別な繋がりを大切にしたいです
+        next: ayane_special_connection
+      - text: 言葉を超えた理解を求めたいです
+        next: ayane_beyond_words_understanding
+
+  # Continuation nodes
+  - id: ayane_inner_energy_exploration
+    text: 内なる energy...外の世界の忙しさから離れて、本当の自分の力を感じる時間です。静寂の中にこそ、本物の energy があります。
+    choices:
+      - text: 本当の自分の力を感じたいです
+        next: emotional_end
+      - text: 本物の energy を体験したいです
+        next: trust_end
+      - text: 静寂の中の力を理解したいです
+        next: contextual_end
+
+  - id: ayane_quiet_energy_feeling
+    text: 静寂の energy...静かな場所にも、実は強い生命力があふれています。それを感じられる人は、とても繊細な心を持っています。
+    choices:
+      - text: 強い生命力を感じたいです
+        next: emotional_end
+      - text: 繊細な心を大切にしたいです
+        next: trust_end
+      - text: 静かな場所の力を理解したいです
+        next: contextual_end
+
+  - id: ayane_world_difference_understanding
+    text: 外の世界との違い...ここでは時間がゆっくり流れて、本当に大切なことが見えてきます。急がなくても良い場所です。
+    choices:
+      - text: 時間がゆっくり流れる感覚を楽しみたいです
+        next: emotional_end
+      - text: 本当に大切なことを見つけたいです
+        next: trust_end
+      - text: 急がなくても良い場所を大切にしたいです
+        next: contextual_end
+
+  - id: ayane_time_blend_experience
+    text: 時間の混ざり合い...過去の記憶と現在の感情が一つになる瞬間があります。それは とても美しい体験です。
+    choices:
+      - text: 過去と現在が一つになる瞬間を体験したいです
+        next: deep_end
+      - text: 美しい体験を一緒に味わいたいです
+        next: emotional_end
+      - text: 記憶と感情の繋がりを感じたいです
+        next: trust_end
+
+  - id: ayane_shared_memories
+    text: 共有される思い出...この場所には、多くの人の記憶が重なっています。私たちの会話も、新しい思い出として残るでしょう。
+    choices:
+      - text: 多くの人の記憶を感じたいです
+        next: emotional_end
+      - text: 新しい思い出を一緒に作りたいです
+        next: trust_end
+      - text: 記憶の重なりを理解したいです
+        next: contextual_end
+
+  - id: ayane_nostalgic_treasuring
+    text: 懐かしさを大切に...過去の美しい記憶は、現在を豊かにしてくれます。懐かしい気持ちも、大切な宝物です。
+    choices:
+      - text: 過去の美しい記憶を大切にしたいです
+        next: emotional_end
+      - text: 現在を豊かにする方法を学びたいです
+        next: trust_end
+      - text: 懐かしい気持ちを宝物として保管したいです
+        next: contextual_end
+
+  - id: ayane_quiet_memories
+    text: 静かな記憶...昔の出来事も、静寂の中で思い出すと、新しい意味を持つことがあります。記憶は生きているのです。
+    choices:
+      - text: 記憶が生きている感覚を体験したいです
+        next: deep_end
+      - text: 新しい意味を一緒に発見したいです
+        next: emotional_end
+      - text: 静寂の中の思い出を大切にしたいです
+        next: trust_end
+
+  - id: ayane_heart_feeling_exploration
+    text: 心で感じること...頭で考えるのではなく、心で感じる瞬間があります。それは言葉では説明できない、とても大切な体験です。
+    choices:
+      - text: 心で感じる瞬間を大切にしたいです
+        next: emotional_end
+      - text: 言葉では説明できない体験を共有したいです
+        next: trust_end
+      - text: 頭で考えることとの違いを理解したいです
+        next: contextual_end
+
+  - id: ayane_wordless_sensation
+    text: 言葉にしない感覚...時には、言葉にしないことで、より深い理解が生まれます。沈黙にも、豊かな表現があります。
+    choices:
+      - text: 沈黙の豊かな表現を学びたいです
+        next: emotional_end
+      - text: より深い理解を一緒に求めたいです
+        next: trust_end
+      - text: 言葉にしない美しさを感じたいです
+        next: contextual_end
+
+  - id: ayane_self_reflection_time
+    text: 自己反省の時間...自分自身と向き合うことで、新しい発見があります。一人の時間も、とても価値のあるものです。
+    choices:
+      - text: 新しい発見を一緒に楽しみたいです
+        next: emotional_end
+      - text: 一人の時間の価値を理解したいです
+        next: trust_end
+      - text: 自分自身との対話を大切にしたいです
+        next: contextual_end
+
+  - id: ayane_deep_quietude
+    text: 深い静けさ...心の奥底には、とても静かで平和な場所があります。そこに辿り着くのは、とても特別な体験です。
+    choices:
+      - text: 心の奥底の平和な場所を探したいです
+        next: deep_end
+      - text: 特別な体験を一緒に味わいたいです
+        next: emotional_end
+      - text: 深い静けさを感じたいです
+        next: trust_end
+
+  - id: ayane_shared_inner_peace
+    text: 共有される平和...一人で感じる平和も素晴らしいですが、誰かと共有する平和は、さらに深い意味を持ちます。
+    choices:
+      - text: 深い意味を一緒に探求したいです
+        next: emotional_end
+      - text: 共有する平和を大切にしたいです
+        next: trust_end
+      - text: 一人の平和と共有する平和の違いを理解したいです
+        next: contextual_end
+
+  - id: ayane_humanity_exploration
+    text: 人間らしさの探求...感情があるからこそ、人間は美しいのです。喜びも悲しみも、すべてが人間らしさの表れです。
+    choices:
+      - text: 人間の美しさを一緒に発見したいです
+        next: emotional_end
+      - text: 喜びも悲しみも大切にしたいです
+        next: trust_end
+      - text: 感情の価値を理解したいです
+        next: contextual_end
+
+  - id: ayane_emotion_appreciation
+    text: 感情への感謝...様々な感情があることで、人生は豊かになります。感情を否定せず、感謝することが大切です。
+    choices:
+      - text: 人生の豊かさを感じたいです
+        next: deep_end
+      - text: 感情への感謝を学びたいです
+        next: emotional_end
+      - text: 感情を否定しない心を育てたいです
+        next: trust_end
+
+  - id: ayane_living_heart_experience
+    text: 生きている心の体験...心臓の鼓動のように、心も生きて動いています。それを感じられる瞬間は、とても precious です。
+    choices:
+      - text: 心の鼓動を感じたいです
+        next: emotional_end
+      - text: precious な瞬間を大切にしたいです
+        next: trust_end
+      - text: 生きている心を実感したいです
+        next: contextual_end
+
+  - id: ayane_mutual_presence
+    text: 相互の存在感...言葉がなくても、お互いがここにいることを感じられます。それは、とても温かい感覚です。
+    choices:
+      - text: 温かい感覚を一緒に味わいたいです
+        next: emotional_end
+      - text: お互いの存在を感謝したいです
+        next: trust_end
+      - text: 言葉のない繋がりを感じたいです
+        next: contextual_end
+
+  - id: ayane_special_connection
+    text: 特別な繋がり...人と人との間には、目に見えない糸があります。その糸を感じられる関係は、とても precious です。
+    choices:
+      - text: 目に見えない糸を感じたいです
+        next: deep_end
+      - text: precious な関係を大切にしたいです
+        next: emotional_end
+      - text: 特別な繋がりを育てたいです
+        next: trust_end
+
+  - id: ayane_beyond_words_understanding
+    text: 言葉を超えた理解...時には、言葉よりも心で理解することがあります。それは、とても深い communication です。
+    choices:
+      - text: 心で理解することを学びたいです
+        next: emotional_end
+      - text: 深い communication を体験したいです
+        next: trust_end
+      - text: 言葉を超えた世界を探求したいです
+        next: contextual_end

@@ -1,0 +1,62 @@
+character: ayane
+nodes:
+  - id: ayane_start_first_meet_evening
+    text: わあ！誰かいる！久しぶりに人に会った！
+    conditions:
+      - type: variable
+        name: ayane_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: evening
+    effects:
+      - type: increment
+        variable: ayane_meet_count
+    choices:
+      - text: こんばんは
+        next: ayane_start_first_meet_evening_extended_conversation
+      - text: 驚かせてしまって
+        next: ayane_start_first_meet_evening_extended_conversation
+      - text: ...
+        next: ayane_start_first_meet_evening_extended_conversation
+  - id: ayane_start_first_meet_energetic
+    text: あ、新しい人だ！赤いマフラー、似合ってる？
+    conditions:
+      - type: variable
+        name: ayane_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: night
+    effects:
+      - type: increment
+        variable: ayane_meet_count
+    choices:
+      - text: とても似合ってます
+        next: ayane_start_first_meet_energetic_extended_conversation
+      - text: 綺麗な色ですね
+        next: ayane_start_first_meet_energetic_extended_conversation
+      - text: ...
+        next: ayane_start_first_meet_energetic_extended_conversation
+  - id: ayane_start_first_meet_rainy
+    text: 雨の中でも来てくれたんだ！嬉しい！
+    conditions:
+      - type: variable
+        name: ayane_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: rainy
+    effects:
+      - type: increment
+        variable: ayane_meet_count
+    choices:
+      - text: 雨は平気です
+        next: ayane_start_first_meet_rainy_extended_conversation
+      - text: あなたは濡れませんか？
+        next: ayane_start_first_meet_rainy_extended_conversation
+      - text: ...
+        next: ayane_start_first_meet_rainy_extended_conversation

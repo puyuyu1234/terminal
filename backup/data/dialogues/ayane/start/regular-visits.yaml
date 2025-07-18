@@ -1,0 +1,27 @@
+character: ayane
+nodes:
+  - id: ayane_start_regular_visitor
+    text: 今日も来てくれたんだ！待ってたよ！
+    conditions:
+      - type: variable
+        name: ayane_meet_count
+        operator: greater_than
+        value: 7
+    effects:
+      - type: increment
+        variable: ayane_meet_count
+    choices:
+      - text: 待ってくれてたんですか？
+        next: ayane_start_regular_visitor_extended_conversation
+      - text: 僕も楽しみでした
+        next: ayane_start_regular_visitor_extended_conversation
+      - text: ...
+        next: ayane_regular_silence
+  - id: ayane_regular_silence
+    text: いつものように、静かに一緒にいよう！
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    next: contextual_end

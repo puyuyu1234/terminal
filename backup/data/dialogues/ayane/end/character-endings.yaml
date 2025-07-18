@@ -1,0 +1,22 @@
+character: ayane
+nodes:
+  - id: ayane_session_end
+    text: "また話そうね！今日は楽しかった！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_contextual_end
+    text: "深い話ができて嬉しかった。こういう時間を大切にしたいね。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_neutral_end
+    text: "今日もありがとう。また明日も会えるといいな。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

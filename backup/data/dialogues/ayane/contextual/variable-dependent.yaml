@@ -1,0 +1,231 @@
+conversations:
+  # 無邪気さレベルによる変化
+  - id: ayane_innocence_level
+    text: "{{player_name}}さん！"
+    conditions:
+      - if: "ayane_innocence_level >= 5"
+        text: "{{player_name}}さん！今日もいい天気ですね！でも、なんで空はこんなに暗いのかな？"
+      - if: "ayane_innocence_level >= 3"
+        text: "{{player_name}}さん！今日は何しに来たんですか？私と遊びます？"
+      - if: "ayane_innocence_level >= 1"
+        text: "{{player_name}}さん、こんばんは！"
+      - else:
+        text: "{{player_name}}さん...？あ、こんばんは。"
+    choices:
+      - text: "元気だね"
+        next: ayane_energy_response
+      - text: "何して遊ぼうか"
+        next: ayane_play_suggestion
+      - text: "今日は調子どう？"
+        next: ayane_condition_check
+
+  # 記憶の混乱レベル
+  - id: ayane_memory_confusion
+    text: "あれ、"
+    conditions:
+      - if: "ayane_memory_confusion >= 4"
+        text: "あれ、{{player_name}}さんって、昨日も来ましたっけ？それとも先週？よくわからなくなっちゃった。"
+      - if: "ayane_memory_confusion >= 2"
+        text: "あれ、{{player_name}}さんとは初めて会うんでしたっけ？なんだか前にも会ったような..."
+      - else:
+        text: "あれ、今日は何曜日でしたっけ？"
+    choices:
+      - text: "昨日も会ったよ"
+        next: ayane_memory_confirmation
+      - text: "初めて会うよ"
+        next: ayane_memory_correction
+      - text: "覚えてない？"
+        next: ayane_memory_problem
+
+  # 赤いマフラーへの言及
+  - id: ayane_red_scarf_topic
+    text: "このマフラー、"
+    conditions:
+      - if: "ayane_scarf_mentions >= 3"
+        text: "このマフラー、{{player_name}}さんにあげたいな。でも、あげちゃダメなの。大切なものだから。"
+      - if: "ayane_scarf_mentions >= 1"
+        text: "このマフラー、きれいでしょう？赤いの。お気に入りなんです。"
+      - else:
+        text: "このマフラー、あったかいんですよ。"
+    choices:
+      - text: "似合ってるね"
+        next: ayane_compliment_response
+      - text: "どこで買ったの？"
+        next: ayane_scarf_origin
+      - text: "大切なもの？"
+        next: ayane_scarf_importance
+
+  # プレイヤーの優しさレベルによる反応
+  - id: ayane_kindness_response
+    text: "{{player_name}}さんって、"
+    conditions:
+      - if: "player_empathy_level >= 5"
+        text: "{{player_name}}さんって、本当に優しいですね。でも、優しすぎる人は騙されちゃうから気をつけてください。"
+      - if: "player_empathy_level >= 3"
+        text: "{{player_name}}さんって、優しい人なんですね。私、優しい人は好きです。"
+      - if: "player_empathy_level >= 1"
+        text: "{{player_name}}さんって、いい人そうですね。"
+      - else:
+        text: "{{player_name}}さんって、どんな人なんですか？"
+    choices:
+      - text: "君も優しいよ"
+        next: ayane_mutual_kindness
+      - text: "騙されるって？"
+        next: ayane_deception_warning
+      - text: "普通の人だよ"
+        next: ayane_ordinary_person
+
+  # 夜の進行による変化
+  - id: ayane_night_awareness
+    text: "夜って、"
+    conditions:
+      - if: "night_progression >= 7"
+        text: "夜って、怖いですね。でも、怖いものって、なんだかワクワクしませんか？"
+      - if: "night_progression >= 5"
+        text: "夜って、昼間とは違うことが起こりそうで楽しいです。"
+      - if: "night_progression >= 3"
+        text: "夜って、静かですね。でも、本当は静かじゃないんですよ。"
+      - else:
+        text: "夜って、きれいですね。"
+    choices:
+      - text: "何がワクワクするの？"
+        next: ayane_night_excitement
+      - text: "本当は静かじゃない？"
+        next: ayane_night_sounds
+      - text: "怖くない？"
+        next: ayane_fear_response
+
+  # 訪問回数による親密度変化
+  - id: ayane_familiarity_level
+    text: "{{player_name}}さんは、"
+    conditions:
+      - if: "total_visits >= 20"
+        text: "{{player_name}}さんは、もう家族みたいですね。でも、家族って何でしょうね？"
+      - if: "total_visits >= 10"
+        text: "{{player_name}}さんは、お友達ですね。お友達って、ずっと一緒にいられるのかな？"
+      - if: "total_visits >= 5"
+        text: "{{player_name}}さんは、よく来てくれますね。嬉しいです。"
+      - else:
+        text: "{{player_name}}さんは、新しいお友達ですね。"
+    choices:
+      - text: "ずっと一緒にいたい"
+        next: ayane_eternal_friendship
+      - text: "家族みたい？"
+        next: ayane_family_concept
+      - text: "友達でいよう"
+        next: ayane_friendship_agreement
+
+  # 複合条件での不安定さ
+  - id: ayane_instability_moment
+    text: "あ、"
+    conditions:
+      - if: "ayane_memory_confusion >= 3 && ayane_innocence_level >= 3"
+        text: "あ、{{player_name}}さん...あれ？今、何を話してたんでしたっけ？楽しいことだったような、そうでもないような..."
+      - if: "ayane_scarf_mentions >= 2 && total_visits >= 15"
+        text: "あ、{{player_name}}さん。このマフラー、前にも見せましたっけ？同じ話を何回もしてるような気がして。"
+      - if: "player_silence_count >= 5 && ayane_trust_level >= 3"
+        text: "あ、{{player_name}}さん。いつも静かですね。私のおしゃべり、うるさくないですか？"
+      - else:
+        text: "あ、{{player_name}}さん。なんだか今日は変な気分です。"
+    choices:
+      - text: "大丈夫？"
+        next: ayane_concern_response
+      - text: "何を話してたかって？"
+        next: ayane_conversation_recall
+      - text: "うるさくないよ"
+        next: ayane_reassurance_response
+
+  # 信頼度による秘密の共有
+  - id: ayane_trust_secret
+    text: "{{player_name}}さんにだけ、"
+    conditions:
+      - if: "ayane_trust_level >= 5"
+        text: "{{player_name}}さんにだけ、秘密を教えてあげます。でも、誰にも言わないでくださいね。"
+      - if: "ayane_trust_level >= 3"
+        text: "{{player_name}}さんにだけ、内緒のお話があります。"
+      - if: "ayane_trust_level >= 1"
+        text: "{{player_name}}さんにだけ、ちょっと言いたいことがあります。"
+      - else:
+        text: "{{player_name}}さんって、秘密を守れる人ですか？"
+    choices:
+      - text: "絶対に秘密にする"
+        next: ayane_secret_revelation
+      - text: "どんな秘密？"
+        next: ayane_secret_curiosity
+      - text: "話したくなければ無理しなくていい"
+        next: ayane_no_pressure
+
+  # 天気への反応（現実認識の歪み）
+  - id: ayane_weather_perception
+    text: "今日の天気、"
+    conditions:
+      - if: "ayane_reality_distortion >= 3"
+        text: "今日の天気、雨ですね。でも、雨なのに濡れないんです。不思議ですね。"
+      - if: "ayane_reality_distortion >= 1"
+        text: "今日の天気、晴れですね。でも、太陽が見えません。どこにあるのかな？"
+      - else:
+        text: "今日の天気、どうですか？"
+    choices:
+      - text: "雨は降ってないよ"
+        next: ayane_reality_correction
+      - text: "太陽は沈んだからね"
+        next: ayane_time_explanation
+      - text: "不思議だね"
+        next: ayane_mystery_agreement
+
+  # 継続ノード例
+  - id: ayane_energy_response
+    text: "元気ですよ！でも、なんで元気なのかよくわからないんです。元気って何でしょうね？"
+    effects:
+      - type: increment
+        variable: ayane_innocence_level
+        value: 1
+    choices:
+      - text: "嬉しいから元気なんじゃない？"
+        next: ayane_happiness_source
+      - text: "元気なのはいいことだよ"
+        next: ayane_positive_affirmation
+      - text: "考えすぎだよ"
+        next: ayane_overthinking_response
+
+  - id: ayane_play_suggestion
+    text: "遊びましょう！でも、何して遊びましょうか？かくれんぼ？おにごっこ？それとも...違う遊び？"
+    effects:
+      - type: increment
+        variable: ayane_playfulness
+        value: 1
+    choices:
+      - text: "かくれんぼをしよう"
+        next: ayane_hide_and_seek
+      - text: "違う遊びって？"
+        next: ayane_different_game
+      - text: "ここでは遊べないよ"
+        next: ayane_location_limitation
+
+  - id: ayane_memory_confirmation
+    text: "そうでしたっけ？なんだか夢の中の出来事みたいで、本当にあったことなのかわからなくなっちゃいます。"
+    effects:
+      - type: increment
+        variable: ayane_memory_confusion
+        value: 1
+    choices:
+      - text: "夢じゃないよ、現実だよ"
+        next: ayane_reality_assurance
+      - text: "夢と現実の区別がつかない？"
+        next: ayane_dream_reality_confusion
+      - text: "大丈夫？"
+        next: ayane_concern_check
+
+  - id: ayane_scarf_origin
+    text: "買ったんじゃないんです。誰かがくれたんです。でも、誰だったかな...？思い出せません。"
+    effects:
+      - type: increment
+        variable: ayane_scarf_mentions
+        value: 1
+    choices:
+      - text: "大切な人からの贈り物？"
+        next: ayane_precious_gift
+      - text: "思い出そうとしなくてもいいよ"
+        next: ayane_memory_pressure_release
+      - text: "きっと大切な人だったんだね"
+        next: ayane_important_person

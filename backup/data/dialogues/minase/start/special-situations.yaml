@@ -1,0 +1,69 @@
+character: minase
+nodes:
+  - id: minase_start_late_visitor
+    text: 今日は遅いわね。17分遅れよ。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: greater_than
+        value: 5
+      - type: environment
+        name: timeOfDay
+        value: late_night
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: そんなに正確に？
+        next: minase_start_late_visitor_extended_conversation
+      - text: 用事があって
+        next: minase_start_late_visitor_extended_conversation
+      - text: ...
+        next: minase_start_late_visitor_extended_conversation
+  - id: minase_start_weather_prediction
+    text: 今日は雨が降るって知ってたけど、あなたは来ると思ってた。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: greater_than
+        value: 3
+      - type: environment
+        name: weather
+        value: rainy
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: なぜそう思ったんですか？
+        next: minase_start_weather_prediction_extended_conversation
+      - text: 雨でも来たくなりました
+        next: minase_start_weather_prediction_extended_conversation
+      - text: ...
+        next: minase_start_weather_prediction_extended_conversation
+  - id: minase_start_anomaly_detection
+    text: あら？今日のあなた、いつもと違うわね。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: greater_than
+        value: 10
+      - type: custom
+        handler: player_behavior_analysis
+        params:
+          deviation_threshold: 0.6
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: 何が違うんですか？
+        next: minase_start_anomaly_detection_extended_conversation
+      - text: そうですか？
+        next: minase_start_anomaly_detection_extended_conversation
+      - text: ...
+        next: minase_start_anomaly_detection_extended_conversation
+  - id: minase_foggy_silence
+    text: ……霧の中の静寂。詩的ね。
+    next: contextual_end
+  - id: minase_anomaly_silence
+    text: ……変化を受け入れる沈黙。
+    next: minase_acceptance_silence

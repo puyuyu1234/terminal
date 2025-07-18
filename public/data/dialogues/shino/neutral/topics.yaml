@@ -1,0 +1,60 @@
+dialogues:
+  - id: shino_neutral_bridge
+    text: "分からないんです。でも、何かがあるような気がして。いつか確かめに行きたいです。"
+    choices:
+      - text: "一緒に行ってみよう"
+        next: shino_neutral_together
+      - text: "きっと素敵なものがあるよ"
+        next: shino_neutral_hope
+      - text: "もう帰ろうか"
+        next: shino_end_goodbye
+
+  - id: shino_neutral_reason
+    text: "ここは落ち着くんです。時間がゆっくり流れているような気がして。"
+    choices:
+      - text: "確かに静かで落ち着くね"
+        next: shino_neutral_peaceful
+      - text: "時間を忘れそうだね"
+        next: shino_neutral_time
+      - text: "帰る時間だよ"
+        next: shino_end_goodbye
+
+  - id: shino_neutral_together
+    text: "本当ですか？でも、まだ勇気が出ないんです。もう少し待っていてもいいですか？"
+    choices:
+      - text: "急がなくていいよ"
+        next: shino_neutral_patience
+      - text: "いつでも一緒に行くから"
+        next: shino_end_goodbye
+
+  - id: shino_neutral_hope
+    text: "はい、私もそう思います。きっと、今まで見たことのない景色があるはずです。"
+    choices:
+      - text: "楽しみだね"
+        next: shino_neutral_anticipation
+      - text: "いつか見に行こう"
+        next: shino_end_goodbye
+
+  - id: shino_neutral_peaceful
+    text: "はい、騒がしい世界から離れて、自分と向き合えるんです。"
+    choices:
+      - text: "大切な時間だね"
+        next: shino_end_goodbye
+
+  - id: shino_neutral_time
+    text: "そうですね。でも、それがいいんです。急ぐ必要のない時間って、貴重だと思います。"
+    choices:
+      - text: "君と一緒だと時間を忘れる"
+        next: shino_end_goodbye
+
+  - id: shino_neutral_patience
+    text: "ありがとうございます。そう言ってもらえると安心します。"
+    choices:
+      - text: "また明日も来るよ"
+        next: shino_end_goodbye
+
+  - id: shino_neutral_anticipation
+    text: "はい、でも今はまだ、想像している時間も楽しいんです。"
+    choices:
+      - text: "想像も楽しいものだね"
+        next: shino_end_goodbye

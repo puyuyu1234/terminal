@@ -1,0 +1,173 @@
+character: shino
+nodes:
+  # 定期的な訪問の会話
+  - id: shino_start_regular_evening_extended_conversation
+    text: 慣れてくれたなら良かった。最初は、誰かが来るなんて思ってもみなかったから。
+    choices:
+      - text: 最初は緊張してましたか？
+        next: shino_regular_initial_tension
+      - text: 一人の時間は大切ですね
+        next: shino_regular_alone_time_value
+      - text: 僕が来て迷惑じゃありませんか？
+        next: shino_regular_welcome_reassurance
+
+  - id: shino_regular_initial_tension
+    text: 緊張...そうですね。久しぶりに誰かと話すことになって、何を話せばいいのか分からなくて。
+    choices:
+      - text: 今は自然に話せますね
+        next: shino_regular_natural_conversation
+      - text: 僕も最初は緊張しました
+        next: shino_regular_mutual_nervousness
+      - text: 無理に話さなくても大丈夫ですよ
+        next: shino_regular_conversation_pressure
+
+  - id: shino_regular_alone_time_value
+    text: 一人の時間は...確かに大切。でも、誰かと過ごす時間も悪くないと思えるようになりました。
+    choices:
+      - text: 両方とも大切ですね
+        next: shino_regular_balance_appreciation
+      - text: 変化を感じますか？
+        next: shino_regular_personal_change
+      - text: 一緒にいて楽しいです
+        next: shino_regular_companionship_joy
+
+  - id: shino_regular_welcome_reassurance
+    text: 迷惑なんてとんでもない。むしろ...来てくれるのを楽しみにしている自分がいます。
+    choices:
+      - text: 僕も楽しみにしています
+        next: shino_regular_mutual_anticipation
+      - text: 嬉しいです
+        next: shino_regular_happiness_sharing
+      - text: 待っていてくれてありがとう
+        next: shino_regular_gratitude_exchange
+
+  - id: shino_regular_natural_conversation
+    text: 自然に...そうですね。気がつけば、あなたと話していることが普通に感じられるようになりました。
+    choices:
+      - text: 良い関係が築けましたね
+        next: trust_end
+      - text: 僕も自然に感じます
+        next: emotional_end
+      - text: これからもよろしくお願いします
+        next: contextual_end
+
+  - id: shino_regular_mutual_nervousness
+    text: あなたも...お互い様だったんですね。でも今は、そんな緊張も懐かしく感じます。
+    choices:
+      - text: 良い思い出になりましたね
+        next: emotional_end
+      - text: 成長できましたね
+        next: deep_end
+      - text: 今が一番自然です
+        next: contextual_end
+
+  - id: shino_regular_conversation_pressure
+    text: 無理に話さなくても...そう言ってもらえると安心します。沈黙も、一緒に過ごす時間の一部ですね。
+    choices:
+      - text: 沈黙も大切な時間です
+        next: deep_end
+      - text: 一緒にいるだけで十分です
+        next: emotional_end
+      - text: お互いのペースで話しましょう
+        next: trust_end
+
+  - id: shino_regular_balance_appreciation
+    text: バランス...そうですね。一人でいる時間があるから、誰かと過ごす時間が特別に感じられるのかもしれません。
+    choices:
+      - text: 特別な時間を過ごしていますね
+        next: emotional_end
+      - text: 深い洞察ですね
+        next: deep_end
+      - text: 僕も同じように感じます
+        next: contextual_end
+
+  - id: shino_regular_personal_change
+    text: 変化...はい、確実に。前は誰かが来ることを想像もしていなかったけれど、今は自然に受け入れられています。
+    choices:
+      - text: 良い変化ですね
+        next: emotional_end
+      - text: 人は変わっていくものですね
+        next: deep_end
+      - text: 受け入れてくれてありがとう
+        next: trust_end
+
+  - id: shino_regular_companionship_joy
+    text: 楽しい...そう言ってもらえると嬉しいです。私も、あなたと過ごす時間が楽しいと思えるようになりました。
+    choices:
+      - text: お互い楽しめて良かったです
+        next: emotional_end
+      - text: 素晴らしい関係ですね
+        next: trust_end
+      - text: これからも楽しい時間を過ごしましょう
+        next: contextual_end
+
+  - id: shino_regular_mutual_anticipation
+    text: 楽しみにしてくれているなんて...こんな気持ちになるのは久しぶりです。待つ時間も幸せに感じます。
+    choices:
+      - text: 待つ時間も大切ですね
+        next: emotional_end
+      - text: 幸せな気持ちですね
+        next: trust_end
+      - text: 僕も待つ時間が楽しいです
+        next: contextual_end
+
+  - id: shino_regular_happiness_sharing
+    text: 嬉しいと言ってもらえると...心が温かくなります。幸せを分かち合えるなんて、素晴らしいことですね。
+    choices:
+      - text: 分かち合えて嬉しいです
+        next: emotional_end
+      - text: 心が通じ合いますね
+        next: trust_end
+      - text: 素晴らしい瞬間ですね
+        next: contextual_end
+
+  - id: shino_regular_gratitude_exchange
+    text: 待っていて...そんな風に思ってもらえるなんて。こちらこそ、来てくれてありがとうございます。
+    choices:
+      - text: お互いに感謝ですね
+        next: emotional_end
+      - text: 素敵な関係が築けました
+        next: trust_end
+      - text: これからもよろしくお願いします
+        next: contextual_end
+
+  # 温かい関係の会話
+  - id: shino_start_warm_relationship_extended_conversation
+    text: 嬉しいなんて...自分でもびっくりしています。誰かを待っている自分がいるなんて。
+    choices:
+      - text: 待っていてくれて嬉しいです
+        next: shino_warm_mutual_joy
+      - text: 変化を感じますか？
+        next: shino_warm_personal_growth
+      - text: 素敵な気持ちですね
+        next: shino_warm_feeling_appreciation
+
+  - id: shino_warm_mutual_joy
+    text: お互いに嬉しいなんて...こんな気持ちを共有できるのは、本当に特別なことですね。
+    choices:
+      - text: 特別な関係ですね
+        next: emotional_end
+      - text: 共有できて良かったです
+        next: trust_end
+      - text: 心が繋がっていますね
+        next: contextual_end
+
+  - id: shino_warm_personal_growth
+    text: 変化...はい、確実に。以前の私だったら、誰かを待つなんて考えもしなかったでしょうね。
+    choices:
+      - text: 良い変化ですね
+        next: emotional_end
+      - text: 人は変わっていくものですね
+        next: deep_end
+      - text: 成長していますね
+        next: contextual_end
+
+  - id: shino_warm_feeling_appreciation
+    text: 素敵な気持ち...そうですね。こんな温かい気持ちになれるなんて、あなたに出会えて良かったです。
+    choices:
+      - text: 僕も出会えて良かったです
+        next: emotional_end
+      - text: 温かい気持ちになります
+        next: trust_end
+      - text: 大切な出会いですね
+        next: contextual_end

@@ -1,0 +1,263 @@
+character: tomo
+nodes:
+  # Second meeting extended conversations
+  - id: tomo_start_second_meet_extended_conversation
+    text: 二度目にここに来ました。前回とは違う時間帯だったので、また違った雰囲気を感じています。同じ場所でも、時間や状況で全く違って見えるんですね。
+    choices:
+      - text: 違った雰囲気を一緒に感じたいです
+        next: tomo_second_meet_different_atmosphere
+      - text: 同じ場所の違う表情を教えてください
+        next: tomo_second_meet_different_expressions
+      - text: 時間や状況で変わる感じ方を理解したいです
+        next: tomo_second_meet_changing_perceptions
+
+  - id: tomo_second_meet_different_atmosphere
+    text: 違う雰囲気...朝の清々しさ、昼の活気、夕方の穏やかさ、夜の静寂。同じ場所でも、時間帯によって全く違う物語を語ってくれます。
+    choices:
+      - text: 時間帯ごとの物語を聞きたいです
+        next: tomo_second_meet_time_stories
+      - text: 朝の清々しさを一緒に感じたいです
+        next: tomo_second_meet_morning_freshness
+      - text: 夜の静寂を一緒に味わいたいです
+        next: tomo_second_meet_night_silence
+
+  - id: tomo_second_meet_different_expressions
+    text: 場所の表情...人と同じように、場所にも表情があります。喜んでいる時、悲しんでいる時、穏やかな時、活気に満ちている時。
+    choices:
+      - text: 場所の感情を感じ取りたいです
+        next: tomo_second_meet_place_emotions
+      - text: 喜んでいる場所を一緒に見たいです
+        next: tomo_second_meet_joyful_place
+      - text: 穏やかな場所を一緒に体験したいです
+        next: tomo_second_meet_peaceful_place
+
+  - id: tomo_second_meet_changing_perceptions
+    text: 変わる感じ方...同じものを見ても、自分の心の状態や経験によって全く違って見えます。それが人生の面白さかもしれません。
+    choices:
+      - text: 心の状態による見え方の違いを理解したいです
+        next: tomo_second_meet_mental_state_perception
+      - text: 経験による見え方の変化を感じたいです
+        next: tomo_second_meet_experience_change
+      - text: 人生の面白さを一緒に発見したいです
+        next: tomo_second_meet_life_interest
+
+  - id: tomo_second_meet_time_stories
+    text: 時間の物語...各時間帯には、それぞれの物語があります。朝は希望の物語、昼は活動の物語、夕方は反省の物語、夜は静寂の物語。
+    choices:
+      - text: 希望の物語を聞きたいです
+        next: emotional_end
+      - text: 活動の物語を一緒に作りたいです
+        next: trust_end
+      - text: 静寂の物語を一緒に体験したいです
+        next: contextual_end
+
+  - id: tomo_second_meet_morning_freshness
+    text: 朝の清々しさ...新しい一日の始まり、空気の透明感、鳥のさえずり。すべてが新鮮で、エネルギーに満ちています。
+    choices:
+      - text: 新しい一日の始まりを大切にしたいです
+        next: deep_end
+      - text: エネルギーに満ちた時間を一緒に過ごしたいです
+        next: emotional_end
+      - text: 空気の透明感を一緒に感じたいです
+        next: trust_end
+
+  - id: tomo_second_meet_night_silence
+    text: 夜の静寂...昼間の騒音が消えて、心の声が聞こえやすくなります。自分と向き合う時間として、とても大切です。
+    choices:
+      - text: 心の声を聞く時間を大切にしたいです
+        next: emotional_end
+      - text: 自分と向き合う時間を一緒に過ごしたいです
+        next: trust_end
+      - text: 夜の静寂を一緒に味わいたいです
+        next: contextual_end
+
+  - id: tomo_second_meet_place_emotions
+    text: 場所の感情...場所は生きているように感じることがあります。その時々の状況や、そこにいる人々の感情を映し出しているようです。
+    choices:
+      - text: 生きている場所を感じたいです
+        next: deep_end
+      - text: 場所が映し出す感情を理解したいです
+        next: emotional_end
+      - text: 場所と人の感情のつながりを感じたいです
+        next: trust_end
+
+  - id: tomo_second_meet_joyful_place
+    text: 喜びの場所...晴れた日の午後、そよ風が吹いて、光が美しく差し込む時。場所全体が喜びに満ちているように感じられます。
+    choices:
+      - text: 喜びに満ちた場所を一緒に体験したいです
+        next: emotional_end
+      - text: 光が美しく差し込む瞬間を一緒に見たいです
+        next: trust_end
+      - text: 場所の喜びを感じる心を持ちたいです
+        next: contextual_end
+
+  - id: tomo_second_meet_peaceful_place
+    text: 穏やかな場所...争いも慌ただしさもない、ただ静かで平和な時間。心が落ち着いて、深い平安を感じられます。
+    choices:
+      - text: 深い平安を一緒に感じたいです
+        next: emotional_end
+      - text: 心が落ち着く時間を大切にしたいです
+        next: trust_end
+      - text: 静かで平和な時間を共有したいです
+        next: contextual_end
+
+  - id: tomo_second_meet_mental_state_perception
+    text: 心の状態と知覚...楽しい時は何でも美しく見え、悲しい時は何でも暗く見えます。でも、それも人間らしさの一部だと思います。
+    choices:
+      - text: 人間らしさを大切にしたいです
+        next: deep_end
+      - text: 心の状態を理解する方法を教えてください
+        next: emotional_end
+      - text: 美しく見える時を一緒に増やしたいです
+        next: trust_end
+
+  - id: tomo_second_meet_experience_change
+    text: 経験による変化...たくさんの経験を積むと、物事の見方が変わります。より深く、より広く、より豊かに見えるようになります。
+    choices:
+      - text: 物事を深く見る方法を学びたいです
+        next: emotional_end
+      - text: より豊かに見える視点を教えてください
+        next: trust_end
+      - text: 経験を積む意味を理解したいです
+        next: contextual_end
+
+  - id: tomo_second_meet_life_interest
+    text: 人生の面白さ...同じ人生でも、見方によって全く違って見えます。それが人生の面白さであり、深さでもあると思います。
+    choices:
+      - text: 人生の深さを一緒に探りたいです
+        next: deep_end
+      - text: 見方を変える楽しさを体験したいです
+        next: emotional_end
+      - text: 人生の面白さを一緒に発見したいです
+        next: trust_end
+
+  # Frequent visitor extended conversations
+  - id: tomo_start_frequent_visitor_extended_conversation
+    text: 何度も来ているうちに、この場所の様々な表情を知ることができました。季節の変化、時間の流れ、人々の動き。すべてに意味があるように感じます。
+    choices:
+      - text: 場所の様々な表情を教えてください
+        next: tomo_frequent_visitor_place_expressions
+      - text: 季節の変化を一緒に感じたいです
+        next: tomo_frequent_visitor_seasonal_changes
+      - text: すべてに意味があることを理解したいです
+        next: tomo_frequent_visitor_meaningful_everything
+
+  - id: tomo_frequent_visitor_place_expressions
+    text: 場所の表情...明るい日と暗い日、にぎやかな時と静かな時、活気のある時と穏やかな時。どの表情も美しく、それぞれに価値があります。
+    choices:
+      - text: すべての表情を美しいと感じる心を持ちたいです
+        next: tomo_frequent_visitor_appreciate_all
+      - text: 明るい日と暗い日の価値を理解したいです
+        next: tomo_frequent_visitor_light_dark_value
+      - text: 活気と穏やかさの両方を大切にしたいです
+        next: tomo_frequent_visitor_activity_calm
+
+  - id: tomo_frequent_visitor_seasonal_changes
+    text: 季節の変化...春の新緑、夏の緑陰、秋の紅葉、冬の静寂。それぞれの季節が、異なる美しさと意味を持っています。
+    choices:
+      - text: 春の新緑を一緒に楽しみたいです
+        next: tomo_frequent_visitor_spring_green
+      - text: 秋の紅葉を一緒に見たいです
+        next: tomo_frequent_visitor_autumn_leaves
+      - text: 冬の静寂を一緒に味わいたいです
+        next: tomo_frequent_visitor_winter_silence
+
+  - id: tomo_frequent_visitor_meaningful_everything
+    text: すべてに意味...偶然に見えることも、実は深い意味があるのかもしれません。人の出会い、天候の変化、時間の流れ。すべてがつながっているように感じます。
+    choices:
+      - text: 偶然に見えることの意味を理解したいです
+        next: tomo_frequent_visitor_hidden_meaning
+      - text: すべてがつながっている感覚を体験したいです
+        next: tomo_frequent_visitor_connection_feeling
+      - text: 深い意味を一緒に発見したいです
+        next: tomo_frequent_visitor_discover_meaning
+
+  - id: tomo_frequent_visitor_appreciate_all
+    text: すべてを美しく感じる心...良い時も悪い時も、明るい時も暗い時も、それぞれに価値があることを知ると、人生がより豊かになります。
+    choices:
+      - text: 人生をより豊かにしたいです
+        next: emotional_end
+      - text: 悪い時にも価値を見つけたいです
+        next: trust_end
+      - text: すべてを受け入れる心を持ちたいです
+        next: contextual_end
+
+  - id: tomo_frequent_visitor_light_dark_value
+    text: 明暗の価値...明るい時があるから暗い時の価値がわかり、暗い時があるから明るい時の価値がわかります。対比があるから美しいんです。
+    choices:
+      - text: 対比の美しさを理解したいです
+        next: deep_end
+      - text: 明るい時の価値を大切にしたいです
+        next: emotional_end
+      - text: 暗い時の価値も認めたいです
+        next: trust_end
+
+  - id: tomo_frequent_visitor_activity_calm
+    text: 活気と穏やかさ...どちらも人生には必要です。活気は成長と発展を、穏やかさは休息と内省を与えてくれます。
+    choices:
+      - text: 成長と発展を求めたいです
+        next: emotional_end
+      - text: 休息と内省を大切にしたいです
+        next: trust_end
+      - text: 両方のバランスを学びたいです
+        next: contextual_end
+
+  - id: tomo_frequent_visitor_spring_green
+    text: 春の新緑...新しい生命の始まり、希望の象徴、成長の予感。見ているだけで、心が軽やかになります。
+    choices:
+      - text: 新しい生命の始まりを感じたいです
+        next: emotional_end
+      - text: 希望の象徴を一緒に見たいです
+        next: trust_end
+      - text: 心が軽やかになる感覚を共有したいです
+        next: contextual_end
+
+  - id: tomo_frequent_visitor_autumn_leaves
+    text: 秋の紅葉...美しい終わり、成熟の証、次の季節への準備。散りゆく美しさの中に、深い意味を感じます。
+    choices:
+      - text: 美しい終わりを理解したいです
+        next: deep_end
+      - text: 成熟の証を一緒に見たいです
+        next: emotional_end
+      - text: 散りゆく美しさを一緒に味わいたいです
+        next: trust_end
+
+  - id: tomo_frequent_visitor_winter_silence
+    text: 冬の静寂...すべてが静まり返って、内省の時間。春に向けての準備期間として、とても大切な時間です。
+    choices:
+      - text: 内省の時間を大切にしたいです
+        next: emotional_end
+      - text: 春に向けての準備を一緒にしたいです
+        next: trust_end
+      - text: 静まり返った時間を共有したいです
+        next: contextual_end
+
+  - id: tomo_frequent_visitor_hidden_meaning
+    text: 隠された意味...表面的には偶然に見えることも、深く考えると必然だったりします。人生の不思議さと奥深さを感じます。
+    choices:
+      - text: 人生の不思議さを一緒に探りたいです
+        next: deep_end
+      - text: 必然を見つける目を養いたいです
+        next: emotional_end
+      - text: 奥深さを理解したいです
+        next: trust_end
+
+  - id: tomo_frequent_visitor_connection_feeling
+    text: つながりの感覚...すべてのものが見えない糸で結ばれているような感覚。それを感じると、孤独感が消えて、世界との一体感を得られます。
+    choices:
+      - text: 世界との一体感を体験したいです
+        next: emotional_end
+      - text: 見えない糸を感じたいです
+        next: trust_end
+      - text: 孤独感を消す方法を教えてください
+        next: contextual_end
+
+  - id: tomo_frequent_visitor_discover_meaning
+    text: 意味の発見...日常の中に隠された意味を発見するのは、宝探しのようなものです。見つけた時の喜びは、何物にも代えがたいものです。
+    choices:
+      - text: 宝探しのような発見を一緒にしたいです
+        next: emotional_end
+      - text: 何物にも代えがたい喜びを感じたいです
+        next: trust_end
+      - text: 日常の中の意味を一緒に見つけたいです
+        next: contextual_end

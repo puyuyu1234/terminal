@@ -1,0 +1,656 @@
+character: tomo
+nodes:
+  # Evening first meeting extended conversations
+  - id: tomo_start_first_meet_evening_extended_conversation
+    text: この夕暮れの駅に初めて来たとき、何か特別な感じがしたんです。時間がゆっくり流れて、いろんなことを考えられる場所だなって。
+    choices:
+      - text: 特別な感じとはどんなものですか？
+        next: tomo_evening_first_special_feeling
+      - text: 時間がゆっくり流れる場所を大切にしたいです
+        next: tomo_evening_first_slow_time
+      - text: いろんなことを考えられる場所を教えてください
+        next: tomo_evening_first_thinking_place
+
+  - id: tomo_evening_first_special_feeling
+    text: 特別な感じ...言葉で説明するのは難しいんですけど、心が軽くなるような、でも同時に深く考えられるような。矛盾してるかもしれませんが。
+    choices:
+      - text: 心が軽くなる感覚を理解したいです
+        next: tomo_evening_first_light_heart
+      - text: 深く考えられる場所の魅力を感じます
+        next: tomo_evening_first_deep_thinking
+      - text: 矛盾することが同時に存在する不思議さを感じます
+        next: tomo_evening_first_contradiction
+
+  - id: tomo_evening_first_slow_time
+    text: 時間がゆっくり流れる...都市の忙しさから離れて、自分のペースで物事を考えられるんです。急がなくていい時間って、とても貴重ですよね。
+    choices:
+      - text: 自分のペースで考えることを大切にしたいです
+        next: tomo_evening_first_own_pace
+      - text: 急がなくていい時間の貴重さを感じます
+        next: tomo_evening_first_no_rush
+      - text: 都市の忙しさから離れることの意味を教えてください
+        next: tomo_evening_first_escape_city
+
+  - id: tomo_evening_first_thinking_place
+    text: 考えられる場所...ここにいると、普段気づかないことに気づけるんです。小さな発見とか、新しい視点とか。そういうのが面白いんです。
+    choices:
+      - text: 普段気づかないことに気づく体験をしたいです
+        next: tomo_evening_first_unnoticed_things
+      - text: 小さな発見を一緒に楽しみたいです
+        next: tomo_evening_first_small_discoveries
+      - text: 新しい視点を得ることの面白さを教えてください
+        next: tomo_evening_first_new_perspectives
+
+  - id: tomo_evening_first_light_heart
+    text: 心が軽くなる...重い気持ちを抱えていても、ここにいると少し楽になるんです。風景とか音とか、すべてが優しく感じられます。
+    choices:
+      - text: 重い気持ちが楽になる場所を大切にしたいです
+        next: emotional_end
+      - text: 風景や音の優しさを一緒に感じたいです
+        next: trust_end
+      - text: すべてが優しく感じられる理由を知りたいです
+        next: contextual_end
+
+  - id: tomo_evening_first_deep_thinking
+    text: 深く考えられる...表面的な思考じゃなくて、本当に大切なことについて考えられるんです。自分の心の奥底を見つめることができます。
+    choices:
+      - text: 本当に大切なことについて一緒に考えたいです
+        next: deep_end
+      - text: 心の奥底を見つめることを学びたいです
+        next: emotional_end
+      - text: 表面的でない思考を大切にしたいです
+        next: trust_end
+
+  - id: tomo_evening_first_contradiction
+    text: 矛盾の同時存在...軽さと深さ、静けさと豊かさ。一見矛盾するものが、ここでは自然に共存しているんです。それが不思議で魅力的です。
+    choices:
+      - text: 矛盾するものの共存を理解したいです
+        next: emotional_end
+      - text: 不思議で魅力的な場所を一緒に味わいたいです
+        next: trust_end
+      - text: 自然な共存の秘密を知りたいです
+        next: contextual_end
+
+  - id: tomo_evening_first_own_pace
+    text: 自分のペース...他人に合わせる必要がない、自分だけの時間。そういう時間があるからこそ、人と一緒の時間も大切にできるんです。
+    choices:
+      - text: 自分だけの時間を大切にしたいです
+        next: emotional_end
+      - text: 人と一緒の時間を大切にする心を学びたいです
+        next: trust_end
+      - text: 自分のペースで過ごす意味を理解したいです
+        next: contextual_end
+
+  - id: tomo_evening_first_no_rush
+    text: 急がない時間...現代社会では貴重な時間ですよね。ゆっくりと味わって、じっくりと考えて、深く感じることができます。
+    choices:
+      - text: ゆっくりと味わう時間を大切にしたいです
+        next: deep_end
+      - text: じっくりと考える時間を共有したいです
+        next: emotional_end
+      - text: 深く感じることの価値を学びたいです
+        next: trust_end
+
+  - id: tomo_evening_first_escape_city
+    text: 都市からの離脱...物理的な距離じゃなくて、心の距離です。都市の騒音から離れて、自分の内なる声を聞くことができます。
+    choices:
+      - text: 心の距離を作ることを学びたいです
+        next: emotional_end
+      - text: 内なる声を聞く方法を教えてください
+        next: trust_end
+      - text: 都市の騒音から離れる意味を理解したいです
+        next: contextual_end
+
+  - id: tomo_evening_first_unnoticed_things
+    text: 気づかないこと...日常に埋もれてしまっている美しいものや、大切なもの。ここにいると、そういうものが見えてくるんです。
+    choices:
+      - text: 日常に埋もれた美しいものを一緒に見つけたいです
+        next: deep_end
+      - text: 大切なものを見つける目を養いたいです
+        next: emotional_end
+      - text: 見えてくるものを共有したいです
+        next: trust_end
+
+  - id: tomo_evening_first_small_discoveries
+    text: 小さな発見...大きな発見も素晴らしいですが、小さな発見の積み重ねも大切です。毎日の生活を豊かにしてくれるものです。
+    choices:
+      - text: 小さな発見を積み重ねたいです
+        next: emotional_end
+      - text: 毎日の生活を豊かにする方法を学びたいです
+        next: trust_end
+      - text: 小さな発見の価値を一緒に感じたいです
+        next: contextual_end
+
+  - id: tomo_evening_first_new_perspectives
+    text: 新しい視点...同じものでも、違う角度から見ると全く違って見えるんです。それが面白くて、いろんな角度から物事を見るようになりました。
+    choices:
+      - text: 違う角度から見る面白さを体験したいです
+        next: emotional_end
+      - text: いろんな角度から物事を見る方法を教えてください
+        next: trust_end
+      - text: 新しい視点を一緒に発見したいです
+        next: contextual_end
+
+  # Night first meeting extended conversations
+  - id: tomo_start_first_meet_night_extended_conversation
+    text: 夜のこの駅は、昼間とは全く違う表情を見せてくれます。静寂の中で、自分の心の声がよく聞こえるんです。
+    choices:
+      - text: 夜の駅の違う表情を教えてください
+        next: tomo_night_first_different_face
+      - text: 静寂の中で心の声を聞く体験をしたいです
+        next: tomo_night_first_inner_voice
+      - text: 昼間と夜の違いを感じたいです
+        next: tomo_night_first_day_night_difference
+
+  - id: tomo_night_first_different_face
+    text: 夜の表情...月明かりと街灯の光が作る影、風の音、遠くの電車の音。すべてが神秘的で、心を落ち着かせてくれます。
+    choices:
+      - text: 月明かりと街灯の光を一緒に見たいです
+        next: tomo_night_first_moonlight
+      - text: 風の音や電車の音を聞いて心を落ち着かせたいです
+        next: tomo_night_first_calming_sounds
+      - text: 神秘的な雰囲気を一緒に味わいたいです
+        next: tomo_night_first_mystical_atmosphere
+
+  - id: tomo_night_first_inner_voice
+    text: 心の声...昼間は他の音に埋もれて聞こえない、自分の本当の気持ち。夜の静寂の中で、やっと聞くことができるんです。
+    choices:
+      - text: 自分の本当の気持ちを聞く方法を教えてください
+        next: tomo_night_first_true_feelings
+      - text: 昼間埋もれてしまう心の声を大切にしたいです
+        next: tomo_night_first_buried_voice
+      - text: 夜の静寂の価値を理解したいです
+        next: tomo_night_first_night_silence
+
+  - id: tomo_night_first_day_night_difference
+    text: 昼と夜の違い...昼間は外向きのエネルギー、夜は内向きのエネルギー。どちらも大切で、バランスが必要ですね。
+    choices:
+      - text: 外向きと内向きのエネルギーを理解したいです
+        next: tomo_night_first_energy_types
+      - text: エネルギーのバランスを学びたいです
+        next: tomo_night_first_energy_balance
+      - text: 昼と夜の役割を教えてください
+        next: tomo_night_first_day_night_roles
+
+  - id: tomo_night_first_moonlight
+    text: 月明かり...優しくて、でも神秘的。月明かりの下で考えることは、太陽の下で考えることとは違うんです。より深く、より静かに。
+    choices:
+      - text: 月明かりの下で深く考える体験をしたいです
+        next: deep_end
+      - text: 優しくて神秘的な光を一緒に感じたいです
+        next: emotional_end
+      - text: 太陽の下との違いを理解したいです
+        next: trust_end
+
+  - id: tomo_night_first_calming_sounds
+    text: 心を落ち着かせる音...夜の音は、昼間の音とは違って、内面に響くんです。心を整えて、明日への準備をしてくれます。
+    choices:
+      - text: 内面に響く音を一緒に聞きたいです
+        next: emotional_end
+      - text: 心を整える音の力を感じたいです
+        next: trust_end
+      - text: 明日への準備を一緒にしたいです
+        next: contextual_end
+
+  - id: tomo_night_first_mystical_atmosphere
+    text: 神秘的な雰囲気...理屈では説明できない、でも確かに感じられる特別な空気。そういうものを大切にしたいんです。
+    choices:
+      - text: 理屈では説明できない特別さを感じたいです
+        next: emotional_end
+      - text: 確かに感じられる空気を共有したいです
+        next: trust_end
+      - text: 神秘的なものを大切にする心を学びたいです
+        next: contextual_end
+
+  - id: tomo_night_first_true_feelings
+    text: 本当の気持ち...建前や見栄を取り払った、ありのままの自分の気持ち。それを知ることが、自分を理解する第一歩です。
+    choices:
+      - text: ありのままの自分を理解したいです
+        next: deep_end
+      - text: 建前や見栄を取り払う方法を教えてください
+        next: emotional_end
+      - text: 自分を理解する第一歩を踏み出したいです
+        next: trust_end
+
+  - id: tomo_night_first_buried_voice
+    text: 埋もれてしまう声...忙しい日常の中で、大切なことを見失いがちです。でも、静かな時間があれば、また聞こえてくるんです。
+    choices:
+      - text: 大切なことを見失わない方法を学びたいです
+        next: emotional_end
+      - text: 静かな時間を大切にしたいです
+        next: trust_end
+      - text: 埋もれた声を再発見したいです
+        next: contextual_end
+
+  - id: tomo_night_first_night_silence
+    text: 夜の静寂...それは空虚な静けさではなく、豊かな静けさです。たくさんの可能性と、深い思索を含んでいます。
+    choices:
+      - text: 豊かな静けさを体験したいです
+        next: deep_end
+      - text: たくさんの可能性を感じたいです
+        next: emotional_end
+      - text: 深い思索を一緒に楽しみたいです
+        next: trust_end
+
+  - id: tomo_night_first_energy_types
+    text: エネルギーの種類...外向きは行動と創造、内向きは反省と成長。どちらも人間には必要で、時と場合によって使い分けるものです。
+    choices:
+      - text: 行動と創造のエネルギーを学びたいです
+        next: emotional_end
+      - text: 反省と成長のエネルギーを大切にしたいです
+        next: trust_end
+      - text: エネルギーの使い分けを教えてください
+        next: contextual_end
+
+  - id: tomo_night_first_energy_balance
+    text: エネルギーのバランス...一方に偏りすぎると疲れてしまいます。適度に外向きになり、適度に内向きになる。それが健康的だと思います。
+    choices:
+      - text: 適度なバランスを見つけたいです
+        next: emotional_end
+      - text: 健康的なエネルギーの使い方を学びたいです
+        next: trust_end
+      - text: 偏りすぎない方法を教えてください
+        next: contextual_end
+
+  - id: tomo_night_first_day_night_roles
+    text: 昼と夜の役割...昼は社会との関わり、夜は自分との関わり。どちらも人生には欠かせない大切な時間です。
+    choices:
+      - text: 社会との関わりを大切にしたいです
+        next: emotional_end
+      - text: 自分との関わりを深めたいです
+        next: trust_end
+      - text: 両方の時間を大切にする方法を教えてください
+        next: contextual_end
+
+  # Late night first meeting extended conversations
+  - id: tomo_start_first_meet_late_night_extended_conversation
+    text: こんな遅い時間にここに来るなんて...でも、時々深夜にここに来ると、昼間とは全く違う自分に出会えるんです。
+    choices:
+      - text: 深夜に出会う違う自分について教えてください
+        next: tomo_late_night_first_different_self
+      - text: 昼間とは全く違う体験をしたいです
+        next: tomo_late_night_first_different_experience
+      - text: 深夜のこの場所の特別さを感じたいです
+        next: tomo_late_night_first_special_place
+
+  - id: tomo_late_night_first_different_self
+    text: 違う自分...昼間の社会的な自分ではなく、より本質的な自分。深夜の静寂の中で、本当の自分と向き合うことができます。
+    choices:
+      - text: 本質的な自分を知りたいです
+        next: tomo_late_night_first_essential_self
+      - text: 社会的な自分と本質的な自分の違いを理解したいです
+        next: tomo_late_night_first_self_difference
+      - text: 本当の自分と向き合う方法を教えてください
+        next: tomo_late_night_first_self_confrontation
+
+  - id: tomo_late_night_first_different_experience
+    text: 違う体験...深夜の時間は、時が止まったような感覚になります。急ぐ必要がない、プレッシャーもない、純粋に存在している時間です。
+    choices:
+      - text: 時が止まったような感覚を体験したいです
+        next: tomo_late_night_first_time_stop
+      - text: 急ぐ必要がない時間を大切にしたいです
+        next: tomo_late_night_first_no_hurry
+      - text: 純粋に存在している時間を理解したいです
+        next: tomo_late_night_first_pure_existence
+
+  - id: tomo_late_night_first_special_place
+    text: 深夜の特別な場所...昼間は多くの人で賑わう場所も、深夜には静寂に包まれます。その静寂の中で、心の奥底の声を聞くことができます。
+    choices:
+      - text: 静寂に包まれた場所を一緒に味わいたいです
+        next: tomo_late_night_first_wrapped_silence
+      - text: 心の奥底の声を聞く体験をしたいです
+        next: tomo_late_night_first_deepest_voice
+      - text: 昼間と深夜の場所の違いを感じたいです
+        next: tomo_late_night_first_place_difference
+
+  - id: tomo_late_night_first_essential_self
+    text: 本質的な自分...役割や肩書きを取り払った、ありのままの自分。それを知ることで、人生の方向性が見えてきます。
+    choices:
+      - text: ありのままの自分を受け入れたいです
+        next: emotional_end
+      - text: 人生の方向性を見つけたいです
+        next: trust_end
+      - text: 役割や肩書きを取り払う方法を教えてください
+        next: contextual_end
+
+  - id: tomo_late_night_first_self_difference
+    text: 自分の違い...昼間は外向きの自分、深夜は内向きの自分。どちらも本当の自分で、どちらも大切です。
+    choices:
+      - text: 外向きと内向きの自分を理解したいです
+        next: deep_end
+      - text: どちらも本当の自分だと受け入れたいです
+        next: emotional_end
+      - text: 両方の自分を大切にする方法を教えてください
+        next: trust_end
+
+  - id: tomo_late_night_first_self_confrontation
+    text: 自分との対峙...誰にも邪魔されない時間の中で、自分の心と向き合うこと。時に辛いですが、成長には必要なことです。
+    choices:
+      - text: 自分の心と向き合う勇気を持ちたいです
+        next: emotional_end
+      - text: 辛いことも成長に必要だと理解したいです
+        next: trust_end
+      - text: 誰にも邪魔されない時間を大切にしたいです
+        next: contextual_end
+
+  - id: tomo_late_night_first_time_stop
+    text: 時間の停止...物理的に時間が止まるわけではないけれど、心の中では時間が止まったような感覚。とても貴重な体験です。
+    choices:
+      - text: 心の中で時間が止まる体験をしたいです
+        next: deep_end
+      - text: 貴重な体験を一緒に味わいたいです
+        next: emotional_end
+      - text: 時間の感覚について教えてください
+        next: trust_end
+
+  - id: tomo_late_night_first_no_hurry
+    text: 急がない時間...現代社会では忘れがちな、ゆっくりとした時間の流れ。それを思い出すことで、心に余裕が生まれます。
+    choices:
+      - text: ゆっくりとした時間の流れを思い出したいです
+        next: emotional_end
+      - text: 心に余裕を持つ方法を教えてください
+        next: trust_end
+      - text: 急がない時間を一緒に過ごしたいです
+        next: contextual_end
+
+  - id: tomo_late_night_first_pure_existence
+    text: 純粋な存在...何かをする必要がない、ただ存在しているだけの時間。そこに価値を見出すことで、生きることの意味が見えてきます。
+    choices:
+      - text: ただ存在することの価値を理解したいです
+        next: deep_end
+      - text: 生きることの意味を一緒に考えたいです
+        next: emotional_end
+      - text: 純粋な存在を体験したいです
+        next: trust_end
+
+  - id: tomo_late_night_first_wrapped_silence
+    text: 包まれる静寂...外的な静寂だけでなく、内的な静寂も感じられます。心の騒音が止まって、真の平安を得られます。
+    choices:
+      - text: 内的な静寂を体験したいです
+        next: emotional_end
+      - text: 心の騒音を止める方法を教えてください
+        next: trust_end
+      - text: 真の平安を一緒に感じたいです
+        next: contextual_end
+
+  - id: tomo_late_night_first_deepest_voice
+    text: 心の奥底の声...表面的な思考の奥にある、本当の気持ち。それを聞くことで、自分の真の願いが分かります。
+    choices:
+      - text: 自分の真の願いを知りたいです
+        next: deep_end
+      - text: 表面的な思考を超える方法を教えてください
+        next: emotional_end
+      - text: 心の奥底の声を聞く体験をしたいです
+        next: trust_end
+
+  - id: tomo_late_night_first_place_difference
+    text: 場所の違い...同じ場所でも、時間によって全く違う表情を見せます。昼間は活動的、深夜は瞑想的。どちらも美しいです。
+    choices:
+      - text: 活動的と瞑想的の違いを理解したいです
+        next: emotional_end
+      - text: どちらも美しいと感じる心を持ちたいです
+        next: trust_end
+      - text: 場所の違う表情を一緒に楽しみたいです
+        next: contextual_end
+
+  # Rainy first meeting extended conversations
+  - id: tomo_start_first_meet_rainy_extended_conversation
+    text: 雨の日のこの駅は、また違った美しさがあります。雨音が心を落ち着かせて、内省的な気持ちになれるんです。
+    choices:
+      - text: 雨の日の美しさを教えてください
+        next: tomo_rainy_first_beauty
+      - text: 雨音が心を落ち着かせる理由を知りたいです
+        next: tomo_rainy_first_calming_rain
+      - text: 内省的な気持ちになることを体験したいです
+        next: tomo_rainy_first_introspective_mood
+
+  - id: tomo_rainy_first_beauty
+    text: 雨の日の美しさ...水滴が作る景色、雨に濡れた大地の香り、霧に包まれた風景。普段見えないものが見えてくるんです。
+    choices:
+      - text: 水滴が作る景色を一緒に見たいです
+        next: tomo_rainy_first_water_drops
+      - text: 雨に濡れた大地の香りを感じたいです
+        next: tomo_rainy_first_earth_scent
+      - text: 普段見えないものを発見したいです
+        next: tomo_rainy_first_hidden_things
+
+  - id: tomo_rainy_first_calming_rain
+    text: 雨音の効果...一定のリズムで降る雨の音は、心のリズムを整えてくれます。自然の音楽のようなものですね。
+    choices:
+      - text: 心のリズムを整えることを学びたいです
+        next: tomo_rainy_first_heart_rhythm
+      - text: 自然の音楽を一緒に聞きたいです
+        next: tomo_rainy_first_natural_music
+      - text: 一定のリズムが持つ力を理解したいです
+        next: tomo_rainy_first_rhythm_power
+
+  - id: tomo_rainy_first_introspective_mood
+    text: 内省的な気持ち...雨の日は外に出るのが億劫になりがちですが、それが逆に内面と向き合う良い機会になります。
+    choices:
+      - text: 内面と向き合う機会を大切にしたいです
+        next: tomo_rainy_first_face_inner_self
+      - text: 雨の日の過ごし方を教えてください
+        next: tomo_rainy_first_rainy_day_spending
+      - text: 内省的な時間の価値を理解したいです
+        next: tomo_rainy_first_introspective_value
+
+  - id: tomo_rainy_first_water_drops
+    text: 水滴の景色...窓や葉っぱに付いた水滴、それが作る小さな世界。よく見ると、とても美しくて神秘的です。
+    choices:
+      - text: 小さな世界の美しさを発見したいです
+        next: emotional_end
+      - text: 神秘的な水滴の世界を一緒に見たいです
+        next: trust_end
+      - text: よく見ることの大切さを学びたいです
+        next: contextual_end
+
+  - id: tomo_rainy_first_earth_scent
+    text: 大地の香り...雨に濡れた土の匂い、植物の香り。都市にいると忘れがちな、自然の香りを思い出させてくれます。
+    choices:
+      - text: 自然の香りを思い出したいです
+        next: deep_end
+      - text: 都市で忘れがちなものを大切にしたいです
+        next: emotional_end
+      - text: 植物の香りを一緒に感じたいです
+        next: trust_end
+
+  - id: tomo_rainy_first_hidden_things
+    text: 隠されたもの...晴れた日には見えない、雨の日だけの特別な景色。そういうものを発見するのが楽しいんです。
+    choices:
+      - text: 特別な景色を一緒に発見したいです
+        next: emotional_end
+      - text: 雨の日だけの楽しみを教えてください
+        next: trust_end
+      - text: 隠されたものを見つける目を養いたいです
+        next: contextual_end
+
+  - id: tomo_rainy_first_heart_rhythm
+    text: 心のリズム...忙しい日常で乱れがちな心のリズムを、雨音が自然に整えてくれます。とても癒される体験です。
+    choices:
+      - text: 心のリズムを整える方法を学びたいです
+        next: deep_end
+      - text: 癒される体験を一緒に味わいたいです
+        next: emotional_end
+      - text: 自然に整えられることの素晴らしさを感じたいです
+        next: trust_end
+
+  - id: tomo_rainy_first_natural_music
+    text: 自然の音楽...人工的な音楽とは違う、自然が奏でる音楽。それには人の心を癒す不思議な力があります。
+    choices:
+      - text: 自然が奏でる音楽を聞きたいです
+        next: emotional_end
+      - text: 人の心を癒す力を理解したいです
+        next: trust_end
+      - text: 不思議な力を一緒に感じたいです
+        next: contextual_end
+
+  - id: tomo_rainy_first_rhythm_power
+    text: リズムの力...一定のリズムには、混乱した心を落ち着かせる力があります。雨音はその最も身近な例かもしれません。
+    choices:
+      - text: 混乱した心を落ち着かせる方法を学びたいです
+        next: emotional_end
+      - text: リズムの力を理解したいです
+        next: trust_end
+      - text: 雨音の効果を一緒に体験したいです
+        next: contextual_end
+
+  - id: tomo_rainy_first_face_inner_self
+    text: 内面との対話...外の世界が雨で遮られた時、自然と内面に向かいます。そこで新しい発見があることが多いです。
+    choices:
+      - text: 内面での新しい発見を体験したいです
+        next: deep_end
+      - text: 内面との対話を大切にしたいです
+        next: emotional_end
+      - text: 外の世界が遮られた時の過ごし方を教えてください
+        next: trust_end
+
+  - id: tomo_rainy_first_rainy_day_spending
+    text: 雨の日の過ごし方...急ぐ必要がない、ゆっくりとした時間。読書をしたり、考え事をしたり、心を休めたり。
+    choices:
+      - text: ゆっくりとした時間を大切にしたいです
+        next: emotional_end
+      - text: 心を休める方法を教えてください
+        next: trust_end
+      - text: 雨の日の楽しみを一緒に見つけたいです
+        next: contextual_end
+
+  - id: tomo_rainy_first_introspective_value
+    text: 内省の価値...自分を見つめ直すこと、自分の気持ちを整理すること。それは人生を豊かにする大切な時間です。
+    choices:
+      - text: 自分を見つめ直す方法を学びたいです
+        next: deep_end
+      - text: 人生を豊かにする時間を大切にしたいです
+        next: emotional_end
+      - text: 自分の気持ちを整理したいです
+        next: trust_end
+
+  # Foggy first meeting extended conversations
+  - id: tomo_start_first_meet_foggy_extended_conversation
+    text: 霧のかかった駅は、まるで別世界のようです。現実と非現実の境界が曖昧になって、想像力が刺激されるんです。
+    choices:
+      - text: 別世界のような体験をしたいです
+        next: tomo_foggy_first_other_world
+      - text: 現実と非現実の境界について教えてください
+        next: tomo_foggy_first_reality_boundary
+      - text: 想像力が刺激される感覚を体験したいです
+        next: tomo_foggy_first_imagination_stimulation
+
+  - id: tomo_foggy_first_other_world
+    text: 別世界の体験...霧が作る神秘的な空間の中で、日常とは違う感覚を味わえます。時間の流れも違って感じられます。
+    choices:
+      - text: 神秘的な空間を一緒に体験したいです
+        next: tomo_foggy_first_mystical_space
+      - text: 日常とは違う感覚を味わいたいです
+        next: tomo_foggy_first_different_sensation
+      - text: 時間の流れの違いを感じたいです
+        next: tomo_foggy_first_time_flow
+
+  - id: tomo_foggy_first_reality_boundary
+    text: 現実の境界...霧の中では、はっきりと見えるものと見えないものがあります。それが想像力を働かせる余地を作ってくれます。
+    choices:
+      - text: 見えるものと見えないものの境界を理解したいです
+        next: tomo_foggy_first_visible_invisible
+      - text: 想像力を働かせる余地を大切にしたいです
+        next: tomo_foggy_first_imagination_space
+      - text: 霧の中での感覚を体験したいです
+        next: tomo_foggy_first_fog_sensation
+
+  - id: tomo_foggy_first_imagination_stimulation
+    text: 想像力の刺激...見えない部分を想像で補うことで、創造性が活発になります。霧は天然の想像力トレーニングかもしれません。
+    choices:
+      - text: 創造性を活発にする方法を学びたいです
+        next: tomo_foggy_first_creativity_activation
+      - text: 想像力トレーニングを一緒にしたいです
+        next: tomo_foggy_first_imagination_training
+      - text: 見えない部分を想像で補う楽しさを体験したいです
+        next: tomo_foggy_first_imagination_completion
+
+  - id: tomo_foggy_first_mystical_space
+    text: 神秘的な空間...霧に包まれた空間は、特別な力があるように感じられます。心が開放されて、新しいアイデアが浮かんできます。
+    choices:
+      - text: 特別な力を感じる空間を体験したいです
+        next: emotional_end
+      - text: 心が開放される感覚を味わいたいです
+        next: trust_end
+      - text: 新しいアイデアを一緒に見つけたいです
+        next: contextual_end
+
+  - id: tomo_foggy_first_different_sensation
+    text: 違う感覚...普段使っている感覚とは違う感覚が研ぎ澄まされます。聴覚や触覚、直感などが敏感になります。
+    choices:
+      - text: 研ぎ澄まされた感覚を体験したいです
+        next: deep_end
+      - text: 聴覚や触覚を敏感にする方法を教えてください
+        next: emotional_end
+      - text: 直感を大切にしたいです
+        next: trust_end
+
+  - id: tomo_foggy_first_time_flow
+    text: 時間の流れ...霧の中では、時間の感覚が変わります。過去と現在と未来が溶け合って、永遠の瞬間を体験できます。
+    choices:
+      - text: 永遠の瞬間を体験したいです
+        next: emotional_end
+      - text: 過去と現在と未来が溶け合う感覚を理解したいです
+        next: trust_end
+      - text: 時間の感覚の変化を一緒に感じたいです
+        next: contextual_end
+
+  - id: tomo_foggy_first_visible_invisible
+    text: 見えるものと見えないもの...霧の中では、物理的に見えるものと、心の目で見えるものがあります。後者の方が大切かもしれません。
+    choices:
+      - text: 心の目で見ることを学びたいです
+        next: deep_end
+      - text: 見えないものの大切さを理解したいです
+        next: emotional_end
+      - text: 物理的な視覚を超えた感覚を体験したいです
+        next: trust_end
+
+  - id: tomo_foggy_first_imagination_space
+    text: 想像の余地...すべてがはっきりと見えてしまうと、想像の余地がなくなります。霧は適度な曖昧さを与えてくれます。
+    choices:
+      - text: 適度な曖昧さの価値を理解したいです
+        next: emotional_end
+      - text: 想像の余地を大切にしたいです
+        next: trust_end
+      - text: 曖昧さを楽しむ心を学びたいです
+        next: contextual_end
+
+  - id: tomo_foggy_first_fog_sensation
+    text: 霧の中での感覚...肌に触れる霧の感触、音の反響の仕方、匂いの感じ方。すべてが普段とは違って、新鮮に感じられます。
+    choices:
+      - text: 霧の感触を一緒に感じたいです
+        next: emotional_end
+      - text: 音の反響の違いを体験したいです
+        next: trust_end
+      - text: 新鮮な感覚を一緒に味わいたいです
+        next: contextual_end
+
+  - id: tomo_foggy_first_creativity_activation
+    text: 創造性の活性化...見えない部分を想像で補うことで、脳の創造的な部分が活発になります。それは日常生活にも役立ちます。
+    choices:
+      - text: 脳の創造的な部分を活発にしたいです
+        next: deep_end
+      - text: 日常生活に役立つ創造性を身につけたいです
+        next: emotional_end
+      - text: 創造性を活発にする方法を教えてください
+        next: trust_end
+
+  - id: tomo_foggy_first_imagination_training
+    text: 想像力のトレーニング...見えない部分を想像することで、想像力が鍛えられます。それは問題解決能力の向上にもつながります。
+    choices:
+      - text: 想像力を鍛える方法を学びたいです
+        next: emotional_end
+      - text: 問題解決能力を向上させたいです
+        next: trust_end
+      - text: 想像力トレーニングを一緒に続けたいです
+        next: contextual_end
+
+  - id: tomo_foggy_first_imagination_completion
+    text: 想像での補完...見えない部分を心で描くことで、現実よりも豊かな世界が生まれます。それは芸術的な体験でもあります。
+    choices:
+      - text: 現実よりも豊かな世界を体験したいです
+        next: emotional_end
+      - text: 芸術的な体験を一緒に味わいたいです
+        next: trust_end
+      - text: 心で描くことの楽しさを学びたいです
+        next: contextual_end

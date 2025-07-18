@@ -1,0 +1,11 @@
+character: tomo
+nodes:
+  - id: tomo_soul_frequency
+    text: 魂の振動数。同じ周波数の人とは、心が共鳴する。
+    next: tomo_session_end
+  - id: tomo_kinship_feeling
+    text: 親近感は、魂の家族の証拠。血より濃いつながり。
+    next: tomo_session_end
+  - id: tomo_heart_color
+    text: 優しい青。時々、温かい金色が混じる。
+    next: tomo_session_end

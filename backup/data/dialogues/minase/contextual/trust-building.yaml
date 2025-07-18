@@ -1,0 +1,282 @@
+character: minase
+nodes:
+  - id: minase_trust_development
+    text: あなた、私の話を疑わなくなったわね。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: greater_than
+        value: 8
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: minase
+          operator: greater_than
+          value: 60
+    effects:
+      - type: set_flag
+        flag: minase_trusted_by_player
+    choices:
+      - text: 信頼するようになりました
+        next: minase_trust_development_extended_conversation
+      - text: 慣れただけです
+        next: minase_trust_development_extended_conversation
+      - text: 疑う理由がありません
+        next: minase_trust_development_extended_conversation
+      - text: ...
+        next: minase_trust_development_extended_conversation
+  - id: minase_emotional_breakthrough
+    text: 不思議ね。あなたといると、感情が動くのよ。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: greater_than
+        value: 18
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: minase
+          operator: greater_than
+          value: 85
+    effects:
+      - type: set_flag
+        flag: minase_emotional_awakening
+    choices:
+      - text: それは良いことですね
+        next: minase_emotional_breakthrough_extended_conversation
+      - text: 僕も同じです
+        next: minase_emotional_breakthrough_extended_conversation
+      - text: 感情って大切です
+        next: minase_emotional_breakthrough_extended_conversation
+      - text: ...
+        next: minase_emotional_breakthrough_extended_conversation
+  - id: minase_trust_appreciation
+    text: 信頼は、最も貴重な贈り物よ。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 25
+    next: trust_end
+  - id: minase_familiarity_trust
+    text: 慣れも、信頼の一形態よ。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 18
+    next: contextual_end
+  - id: minase_logical_trust
+    text: 論理的な信頼。それも美しいわ。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: contextual_end
+  - id: minase_trust_silence
+    text: ……言葉を超えた信頼。最も深いもの。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    next: trust_end
+  - id: minase_trust_development_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: minase_emotional_breakthrough_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_emotional_breakthrough_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_trust_development_to_trust_end_trust_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_trust_development_to_trust_end_trust_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_trust_development_to_trust_end_trust_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_emotional_breakthrough_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_emotional_breakthrough_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_emotional_breakthrough_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_emotional_breakthrough_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    choices:
+      - text: 一緒に進んでいきましょう
+        next: minase_trust_shared_journey
+      - text: 新しい発見がありそうです
+        next: minase_trust_discovery_anticipation
+      - text: 希望が見えてきました
+        next: minase_trust_emerging_hope
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end
+  - id: minase_trust_development_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: &a2
+      - text: 協力的な探求ですね
+        next: trust_end
+      - text: 新しい発見がありました
+        next: deep_end
+      - text: 心が通じ合います
+        next: emotional_end
+  - id: minase_emotional_breakthrough_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: gentle_listening
+    text: 話を聞いてくれる人がいるというのは、とても心強いものです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: emotional_end
+      - text: いつでも話してください
+        next: trust_end
+      - text: 支え合えますね
+        next: contextual_end
+  - id: minase_trust_shared_journey
+    text: 一緒に進む道...音楽も一人で演奏するより、時には合奏の方が美しいものです。
+    choices:
+      - text: 合奏の美しさを体験したいです
+        next: hopeful_end
+      - text: 一緒に歩む道を大切にしたいです
+        next: trust_end
+      - text: 音楽のような関係を築きたいです
+        next: emotional_end
+  - id: minase_trust_discovery_anticipation
+    text: 新しい発見への期待...楽譜を初めて見る時のような、わくわくした気持ちです。
+    choices:
+      - text: 楽譜を見る時のような気持ちを体験したいです
+        next: hopeful_end
+      - text: わくわくした気持ちを大切にしたいです
+        next: trust_end
+      - text: 期待を膨らませたいです
+        next: emotional_end
+  - id: minase_trust_emerging_hope
+    text: 見えてきた希望...暗い曲でも、最後には光が差すような瞬間があります。
+    choices:
+      - text: 光が差す瞬間を感じたいです
+        next: hopeful_end
+      - text: 希望を一緒に育てたいです
+        next: trust_end
+      - text: 暗い曲の美しさも理解したいです
+        next: emotional_end

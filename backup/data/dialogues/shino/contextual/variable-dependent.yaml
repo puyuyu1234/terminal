@@ -1,0 +1,209 @@
+conversations:
+  # 信頼度による分岐
+  - id: shino_trust_greeting
+    text: "{{player_name}}さん..."
+    conditions:
+      - if: "shino_trust_level >= 5"
+        text: "{{player_name}}さん、今日も来てくれたんですね。嬉しいです。"
+      - if: "shino_trust_level >= 3"
+        text: "{{player_name}}さん、また会えましたね。"
+      - if: "shino_trust_level >= 1"
+        text: "{{player_name}}さん、こんばんは。"
+      - else:
+        text: "あ、えっと...こんばんは。"
+    choices:
+      - text: "今日はどうしたの？"
+        next: shino_trust_how_are_you
+      - text: "..."
+        next: shino_silence_response
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+
+  - id: shino_trust_how_are_you
+    text: "今日は..."
+    conditions:
+      - if: "shino_trust_level >= 4"
+        text: "今日は、少し頭がぼんやりしてるんです。いつものことですけど..."
+      - if: "shino_trust_level >= 2"
+        text: "今日は、なんだか記憶が曖昧で。昨日何をしたか思い出せなくて。"
+      - else:
+        text: "今日は、天気がいいですね。"
+    effects:
+      - type: increment
+        variable: shino_trust_level
+        value: 1
+    choices:
+      - text: "大丈夫？"
+        next: shino_concern_response
+      - text: "よくあることなの？"
+        next: shino_memory_frequency
+
+  # 沈黙回数による反応
+  - id: shino_silence_response
+    text: "..."
+    conditions:
+      - if: "player_silence_count >= 5"
+        text: "{{player_name}}さんは、いつも静かですね。私と同じ...何か考えてるんですか？"
+      - if: "player_silence_count >= 3"
+        text: "無理に話さなくても大丈夫ですよ。静かな時間も悪くないです。"
+      - if: "player_silence_count >= 1"
+        text: "あ、えっと...何か話しましょうか？"
+      - else:
+        text: "..."
+    choices:
+      - text: "君と同じように、誰かを待ってるんだ"
+        next: shino_waiting_connection
+      - text: "ただ、ここが落ち着くから"
+        next: shino_peaceful_place
+      - text: "..."
+        next: shino_mutual_silence
+
+  # 訪問回数による変化
+  - id: shino_visit_recognition
+    text: "{{player_name}}さんは..."
+    conditions:
+      - if: "total_visits >= 15"
+        text: "{{player_name}}さんは、もう何回も来てくれてますね。私のこと、覚えててくれるんですか？"
+      - if: "total_visits >= 10"
+        text: "{{player_name}}さんは、よくここに来られるんですね。"
+      - if: "total_visits >= 5"
+        text: "{{player_name}}さんは、前にもここに来たことがありますよね？"
+      - else:
+        text: "{{player_name}}さんは、初めてここに来られたんですか？"
+    choices:
+      - text: "君のことは覚えてる"
+        next: shino_memory_relief
+        effects:
+          - type: increment
+            variable: shino_trust_level
+            value: 1
+      - text: "このへんをよく通るから"
+        next: shino_casual_encounter
+      - text: "なんとなく"
+        next: shino_vague_response
+
+  # 共感レベルによる反応
+  - id: shino_empathy_response
+    text: "{{player_name}}さんは..."
+    conditions:
+      - if: "player_empathy_level >= 4"
+        text: "{{player_name}}さんは、とても優しい人ですね。私のような人にも親切にしてくれて。"
+      - if: "player_empathy_level >= 2"
+        text: "{{player_name}}さんは、人の気持ちがわかる人なんですね。"
+      - else:
+        text: "{{player_name}}さんは、どんな人なんでしょうね。"
+    choices:
+      - text: "君も優しい人だと思う"
+        next: shino_mutual_kindness
+      - text: "ただ、放っておけないだけ"
+        next: shino_protective_instinct
+      - text: "わからない"
+        next: shino_mystery_acceptance
+
+  # 夜の進行による変化
+  - id: shino_night_progression
+    text: "もう、"
+    conditions:
+      - if: "night_progression >= 8"
+        text: "もう、とても遅い時間ですね。こんな時間まで起きてると、変なことを考えちゃいます。"
+      - if: "night_progression >= 5"
+        text: "もう、夜も深くなってきましたね。夜って、不思議な時間です。"
+      - if: "night_progression >= 3"
+        text: "もう、結構遅い時間ですね。"
+      - else:
+        text: "もう、日が暮れてきましたね。"
+    choices:
+      - text: "どんなことを考えるの？"
+        next: shino_late_night_thoughts
+      - text: "君は夜が好き？"
+        next: shino_night_preference
+      - text: "そろそろ帰ろうか"
+        next: shino_departure_suggestion
+
+  # 複合条件の例
+  - id: shino_complex_condition
+    text: "{{player_name}}さん、"
+    conditions:
+      - if: "shino_trust_level >= 3 && total_visits >= 10"
+        text: "{{player_name}}さん、もう何回もお話しして、だんだん慣れてきました。でも、まだ話せないことがあります。"
+      - if: "shino_trust_level >= 2 && player_empathy_level >= 2"
+        text: "{{player_name}}さんは優しくて、話しやすいです。でも、私の本当の気持ちは...まだ。"
+      - if: "player_silence_count >= 3 && shino_trust_level >= 1"
+        text: "{{player_name}}さんは静かな人ですね。私も、あまり話すのは得意じゃないんです。"
+      - else:
+        text: "{{player_name}}さんと話していると、なんだか不思議な気持ちになります。"
+    choices:
+      - text: "話したくない時は無理しなくていい"
+        next: shino_understanding_response
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+      - text: "いつでも聞くよ"
+        next: shino_patient_listener
+      - text: "僕も同じような気持ちだ"
+        next: shino_shared_feeling
+
+  # 継続ノード例
+  - id: shino_concern_response
+    text: "大丈夫...かどうか、よくわからないんです。でも、{{player_name}}さんが心配してくれるなら、大丈夫かもしれません。"
+    effects:
+      - type: increment
+        variable: shino_trust_level
+        value: 1
+    choices:
+      - text: "何か手伝えることはある？"
+        next: shino_help_offer
+      - text: "無理しないで"
+        next: shino_gentle_advice
+      - text: "..."
+        next: shino_comfortable_silence
+
+  - id: shino_memory_frequency
+    text: "最近、よくあるんです。昨日のことも、今朝のことも、ぼんやりしてて...時々、今が何日なのかもわからなくなります。"
+    effects:
+      - type: increment
+        variable: shino_memory_issues
+        value: 1
+    choices:
+      - text: "医者に診てもらったほうがいいかも"
+        next: shino_medical_suggestion
+      - text: "疲れてるのかも"
+        next: shino_fatigue_explanation
+      - text: "僕も時々そうなる"
+        next: shino_shared_experience
+
+  - id: shino_waiting_connection
+    text: "そうなんですか...{{player_name}}さんも、誰かを待ってるんですね。いつから、待ってるんですか？"
+    effects:
+      - type: increment
+        variable: shino_trust_level
+        value: 2
+    choices:
+      - text: "もう長いこと"
+        next: shino_long_wait_sympathy
+      - text: "君と同じくらいかな"
+        next: shino_similar_timeline
+      - text: "覚えてない"
+        next: shino_forgotten_beginning
+
+  - id: shino_mutual_silence
+    text: "..."
+    auto_continue: true
+    next: shino_silence_comfort
+    effects:
+      - type: increment
+        variable: shino_comfort_level
+        value: 1
+
+  - id: shino_silence_comfort
+    text: "こうやって、静かに過ごすのも悪くないですね。言葉がなくても、なんとなく...わかりあえるような気がします。"
+    choices:
+      - text: "そうだね"
+        next: common_peaceful_ending
+      - text: "君といると落ち着く"
+        next: shino_comforting_presence
+      - text: "..."
+        next: common_comfortable_silence_ending

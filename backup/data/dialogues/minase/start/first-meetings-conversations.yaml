@@ -1,0 +1,656 @@
+character: minase
+nodes:
+  # First meeting evening extended conversations
+  - id: minase_start_first_meet_evening_extended_conversation
+    text: 新しい人との出会いは、新しい視点を与えてくれます。未来がより明確に見えてきそうです。
+    choices:
+      - text: 未来について教えてください
+        next: minase_evening_future_exploration
+      - text: 新しい視点とは？
+        next: minase_evening_perspective_discussion
+      - text: 何が見えているんですか？
+        next: minase_evening_vision_sharing
+
+  - id: minase_evening_future_exploration
+    text: 未来は可能性の集合体です。あなたの選択次第で、様々な道筋が開かれています。
+    choices:
+      - text: どんな可能性が見えますか？
+        next: minase_evening_possibility_details
+      - text: 選択の重要性を感じます
+        next: minase_evening_choice_significance
+      - text: 道筋を一緒に探りましょう
+        next: minase_evening_path_exploration
+
+  - id: minase_evening_perspective_discussion
+    text: 新しい視点...それは他者の目を通して世界を見ることです。一人では気づけない真実が見えてきます。
+    choices:
+      - text: 真実を知りたいです
+        next: minase_evening_truth_seeking
+      - text: 他者の視点は大切ですね
+        next: minase_evening_perspective_value
+      - text: 一緒に世界を見てみましょう
+        next: minase_evening_world_observation
+
+  - id: minase_evening_vision_sharing
+    text: 見えているもの...それは時間の流れと、人の心の動きです。すべてがつながっているのが分かります。
+    choices:
+      - text: つながりを感じます
+        next: minase_evening_connection_awareness
+      - text: 心の動きとは？
+        next: minase_evening_heart_movement
+      - text: 時間の流れを教えてください
+        next: minase_evening_time_flow
+
+  - id: minase_evening_possibility_details
+    text: 可能性は無限大です。創造的な道、学びの道、つながりの道...あなたならどれを選びますか？
+    choices:
+      - text: 創造的な道に興味があります
+        next: trust_end
+      - text: 学びの道を歩みたいです
+        next: deep_end
+      - text: つながりの道を選びます
+        next: emotional_end
+
+  - id: minase_evening_choice_significance
+    text: 選択の重要性...そうですね。小さな選択も、大きな変化をもたらすことがあります。
+    choices:
+      - text: 小さな選択も大切にします
+        next: trust_end
+      - text: 変化を恐れずに進みます
+        next: deep_end
+      - text: 慎重に選択していきます
+        next: contextual_end
+
+  - id: minase_evening_path_exploration
+    text: 道筋を一緒に探る...それは素晴らしいアイデアです。二人で見つけた道は、より確実になります。
+    choices:
+      - text: 確実な道を歩みたいです
+        next: trust_end
+      - text: 一緒に探すのが楽しいです
+        next: emotional_end
+      - text: 新しい発見がありそうです
+        next: deep_end
+
+  - id: minase_evening_truth_seeking
+    text: 真実を求める心...それは最も美しい人間の特質の一つです。真実は時に厳しいですが、必要なものです。
+    choices:
+      - text: 厳しい真実も受け入れます
+        next: deep_end
+      - text: 美しい心を持ちたいです
+        next: emotional_end
+      - text: 必要な真実を教えてください
+        next: trust_end
+
+  - id: minase_evening_perspective_value
+    text: 他者の視点の価値...それを理解できるあなたは、既に大きな一歩を踏み出しています。
+    choices:
+      - text: 一歩ずつ進んでいきます
+        next: trust_end
+      - text: 大きな変化を感じます
+        next: deep_end
+      - text: 理解し合えて嬉しいです
+        next: emotional_end
+
+  - id: minase_evening_world_observation
+    text: 世界を一緒に見る...それは共有する体験です。同じものを見ても、感じることは違うかもしれません。
+    choices:
+      - text: 違いを楽しみましょう
+        next: emotional_end
+      - text: 共有する体験は貴重です
+        next: trust_end
+      - text: 新しい発見がありそうです
+        next: deep_end
+
+  - id: minase_evening_connection_awareness
+    text: つながりの意識...すべてが糸で結ばれているように、私たちも見えない糸でつながっています。
+    choices:
+      - text: 見えない糸を感じます
+        next: emotional_end
+      - text: つながりを大切にします
+        next: trust_end
+      - text: 糸の意味を知りたいです
+        next: deep_end
+
+  - id: minase_evening_heart_movement
+    text: 心の動き...それは波のように、時に穏やかで、時に激しく変化します。あなたの心も美しく動いています。
+    choices:
+      - text: 心の波を感じます
+        next: emotional_end
+      - text: 美しい動きを大切にします
+        next: trust_end
+      - text: 変化を受け入れます
+        next: deep_end
+
+  - id: minase_evening_time_flow
+    text: 時間の流れ...それは川のように、絶えず流れています。立ち止まることも、急ぐこともできません。
+    choices:
+      - text: 流れに身を任せます
+        next: deep_end
+      - text: 時間を大切にします
+        next: trust_end
+      - text: 流れの美しさを感じます
+        next: emotional_end
+
+  # First meeting prediction extended conversations
+  - id: minase_start_first_meet_prediction_extended_conversation
+    text: 予知について驚かれる方は多いですが、実はとても自然なことです。未来の片鱗は、現在の中に隠されています。
+    choices:
+      - text: どのように見えるのですか？
+        next: minase_prediction_method_explanation
+      - text: 自然なことなんですね
+        next: minase_prediction_naturalness
+      - text: 現在の中の未来とは？
+        next: minase_prediction_present_future
+
+  - id: minase_prediction_method_explanation
+    text: 見方は人によって違います。私の場合は、小さな兆候や変化が組み合わさって、一つの絵を描くような感覚です。
+    choices:
+      - text: 絵を描くような感覚とは？
+        next: minase_prediction_artistic_vision
+      - text: 小さな兆候に気づくのは素晴らしいです
+        next: minase_prediction_detail_awareness
+      - text: 変化を感じ取る力がすごいです
+        next: minase_prediction_change_sensitivity
+
+  - id: minase_prediction_naturalness
+    text: 自然なこと...そうです。動物が雨を予感するように、人間にも本来備わっている能力なのかもしれません。
+    choices:
+      - text: 本能的な能力なんですね
+        next: minase_prediction_instinctive_ability
+      - text: 動物と人間の共通点は興味深いです
+        next: minase_prediction_animal_human_connection
+      - text: 能力を開発できるのでしょうか
+        next: minase_prediction_ability_development
+
+  - id: minase_prediction_present_future
+    text: 現在の中の未来...それは種の中の花のようなものです。今この瞬間に、すべての可能性が含まれています。
+    choices:
+      - text: 種から花への変化は美しいです
+        next: minase_prediction_transformation_beauty
+      - text: 可能性がすべて含まれているなんて驚きです
+        next: minase_prediction_infinite_possibilities
+      - text: 今この瞬間を大切にします
+        next: minase_prediction_present_moment
+
+  - id: minase_prediction_artistic_vision
+    text: 芸術的な視覚...そうですね。論理的な分析というより、直感的な理解に近いものがあります。
+    choices:
+      - text: 直感的な理解は深いですね
+        next: deep_end
+      - text: 芸術的な感性を大切にします
+        next: emotional_end
+      - text: 理解の仕方は人それぞれですね
+        next: trust_end
+
+  - id: minase_prediction_detail_awareness
+    text: 細部への注意...それは観察力の賜物です。多くの人が見過ごすことに気づくことで、全体像が見えてきます。
+    choices:
+      - text: 観察力を身につけたいです
+        next: trust_end
+      - text: 全体像を理解したいです
+        next: deep_end
+      - text: 細部の美しさに気づきます
+        next: emotional_end
+
+  - id: minase_prediction_change_sensitivity
+    text: 変化への敏感さ...それは時に負担になることもありますが、世界の動きを感じられる貴重な感覚です。
+    choices:
+      - text: 貴重な感覚を大切にしてください
+        next: emotional_end
+      - text: 世界の動きを感じてみたいです
+        next: trust_end
+      - text: 負担と恩恵の両面がありますね
+        next: deep_end
+
+  - id: minase_prediction_instinctive_ability
+    text: 本能的な能力...失われつつあるものかもしれませんが、完全に消えることはありません。
+    choices:
+      - text: 失われつつあるのは残念です
+        next: deep_end
+      - text: 完全に消えないのは希望的です
+        next: emotional_end
+      - text: 本能を大切にしたいです
+        next: trust_end
+
+  - id: minase_prediction_animal_human_connection
+    text: 動物と人間の共通点...私たちは自然の一部であることを忘れがちですが、根本的には同じ生命体です。
+    choices:
+      - text: 自然の一部であることを忘れません
+        next: deep_end
+      - text: 生命体としての共通点を感じます
+        next: emotional_end
+      - text: 自然との関係を大切にします
+        next: trust_end
+
+  - id: minase_prediction_ability_development
+    text: 能力の開発...可能だと思います。ただし、無理に開発しようとするより、自然に開花するのを待つ方が良いでしょう。
+    choices:
+      - text: 自然な開花を待ちます
+        next: trust_end
+      - text: 無理をしない方が良いですね
+        next: deep_end
+      - text: 開発の可能性に希望を感じます
+        next: emotional_end
+
+  - id: minase_prediction_transformation_beauty
+    text: 変化の美しさ...それは生命の本質です。変化を恐れずに受け入れることで、真の美しさが現れます。
+    choices:
+      - text: 変化を恐れずに受け入れます
+        next: deep_end
+      - text: 生命の本質を感じます
+        next: emotional_end
+      - text: 真の美しさを追求します
+        next: trust_end
+
+  - id: minase_prediction_infinite_possibilities
+    text: 無限の可能性...それは恐ろしくもあり、希望に満ちてもいます。選択の自由があるということです。
+    choices:
+      - text: 選択の自由を大切にします
+        next: trust_end
+      - text: 希望に満ちた未来を選びます
+        next: emotional_end
+      - text: 可能性の無限さに驚きます
+        next: deep_end
+
+  - id: minase_prediction_present_moment
+    text: 現在の瞬間...それは過去と未来が交差する点です。今を大切にすることで、より良い未来が開けます。
+    choices:
+      - text: 今を大切に生きます
+        next: trust_end
+      - text: より良い未来を目指します
+        next: emotional_end
+      - text: 時間の交差点を意識します
+        next: deep_end
+
+  # First meeting rainy extended conversations
+  - id: minase_start_first_meet_rainy_extended_conversation
+    text: 雨の中での出会いは特別な意味があります。雨は浄化と再生の象徴です。新しい始まりを予感させます。
+    choices:
+      - text: 浄化と再生の意味を教えてください
+        next: minase_rainy_purification_meaning
+      - text: 新しい始まりを感じます
+        next: minase_rainy_new_beginning
+      - text: 雨の特別な意味に興味があります
+        next: minase_rainy_symbolic_meaning
+
+  - id: minase_rainy_purification_meaning
+    text: 浄化と再生...雨は古いものを洗い流し、新しい命を育みます。心の中の不要なものも、同じように洗い流されます。
+    choices:
+      - text: 心の浄化を体験してみたいです
+        next: minase_rainy_heart_purification
+      - text: 新しい命を育むのは美しいです
+        next: minase_rainy_life_nurturing
+      - text: 不要なものを手放したいです
+        next: minase_rainy_letting_go
+
+  - id: minase_rainy_new_beginning
+    text: 新しい始まり...雨上がりの空気は清々しく、すべてが新鮮に見えます。あなたの人生にも、そんな瞬間が訪れるでしょう。
+    choices:
+      - text: 清々しい気持ちになります
+        next: minase_rainy_refreshing_feeling
+      - text: 新鮮な視点を持ちたいです
+        next: minase_rainy_fresh_perspective
+      - text: 人生の新しい瞬間を楽しみにします
+        next: minase_rainy_life_anticipation
+
+  - id: minase_rainy_symbolic_meaning
+    text: 雨の象徴的意味...それは文化や個人によって異なりますが、多くの場合、変化と成長を表します。
+    choices:
+      - text: 変化と成長を受け入れます
+        next: minase_rainy_change_growth
+      - text: 文化的な意味に興味があります
+        next: minase_rainy_cultural_meaning
+      - text: 個人的な解釈も大切ですね
+        next: minase_rainy_personal_interpretation
+
+  - id: minase_rainy_heart_purification
+    text: 心の浄化...それは自分自身と向き合うことから始まります。雨音が心を落ち着かせ、本当の自分が見えてきます。
+    choices:
+      - text: 自分自身と向き合います
+        next: deep_end
+      - text: 雨音に心を委ねます
+        next: emotional_end
+      - text: 本当の自分を知りたいです
+        next: trust_end
+
+  - id: minase_rainy_life_nurturing
+    text: 命を育む力...雨は植物に水を与え、生命を支えます。私たちも、何かを育てる力を持っています。
+    choices:
+      - text: 何かを育てる力を大切にします
+        next: trust_end
+      - text: 生命を支える美しさを感じます
+        next: emotional_end
+      - text: 育む力について教えてください
+        next: deep_end
+
+  - id: minase_rainy_letting_go
+    text: 手放すこと...それは勇気のいる行為です。しかし、手放すことで、新しいものを受け入れる余地が生まれます。
+    choices:
+      - text: 勇気を持って手放します
+        next: deep_end
+      - text: 新しいものを受け入れる準備をします
+        next: trust_end
+      - text: 手放すことの大切さを学びます
+        next: emotional_end
+
+  - id: minase_rainy_refreshing_feeling
+    text: 清々しい気持ち...それは心が軽やかになる感覚です。重荷を下ろし、自由に呼吸できるようになります。
+    choices:
+      - text: 心が軽やかになります
+        next: emotional_end
+      - text: 重荷を下ろしたいです
+        next: trust_end
+      - text: 自由に呼吸したいです
+        next: deep_end
+
+  - id: minase_rainy_fresh_perspective
+    text: 新鮮な視点...それは古い考えから解放されることです。雨に洗われた世界のように、すべてが新しく見えます。
+    choices:
+      - text: 古い考えから解放されたいです
+        next: deep_end
+      - text: 新しい世界を見たいです
+        next: emotional_end
+      - text: 視点を変えることは大切ですね
+        next: trust_end
+
+  - id: minase_rainy_life_anticipation
+    text: 人生への期待...それは希望の灯火です。雨の後には必ず晴れ間が来るように、困難の後には喜びが待っています。
+    choices:
+      - text: 希望の灯火を大切にします
+        next: emotional_end
+      - text: 晴れ間を楽しみにしています
+        next: trust_end
+      - text: 困難も受け入れて進みます
+        next: deep_end
+
+  - id: minase_rainy_change_growth
+    text: 変化と成長...それは生きている証拠です。雨に打たれることで、植物が強く美しく育つように、私たちも成長します。
+    choices:
+      - text: 成長を続けたいです
+        next: trust_end
+      - text: 強く美しく育ちたいです
+        next: emotional_end
+      - text: 変化を恐れずに進みます
+        next: deep_end
+
+  - id: minase_rainy_cultural_meaning
+    text: 文化的意味...雨は多くの文化で神聖視されています。恵みの雨、浄化の雨、祝福の雨...様々な解釈があります。
+    choices:
+      - text: 神聖な意味を感じます
+        next: deep_end
+      - text: 恵みとして受け取ります
+        next: emotional_end
+      - text: 祝福として理解します
+        next: trust_end
+
+  - id: minase_rainy_personal_interpretation
+    text: 個人的解釈...それは最も大切なものです。あなたにとって雨は何を意味しますか？その答えが、あなたの真実です。
+    choices:
+      - text: 自分の真実を見つけます
+        next: deep_end
+      - text: 個人的な意味を大切にします
+        next: trust_end
+      - text: 雨の意味を考えてみます
+        next: emotional_end
+
+  # First meeting foggy extended conversations
+  - id: minase_start_first_meet_foggy_extended_conversation
+    text: 霧の中での出会いは神秘的ですね。霧は現実と夢の境界を曖昧にし、普段見えないものを見せてくれます。
+    choices:
+      - text: 神秘的な体験を感じます
+        next: minase_foggy_mystical_experience
+      - text: 現実と夢の境界とは？
+        next: minase_foggy_reality_dream_boundary
+      - text: 普段見えないものを見たいです
+        next: minase_foggy_invisible_things
+
+  - id: minase_foggy_mystical_experience
+    text: 神秘的体験...それは日常の向こう側にある世界への扉です。霧の中では、時間も空間も違った意味を持ちます。
+    choices:
+      - text: 日常の向こう側に興味があります
+        next: minase_foggy_beyond_ordinary
+      - text: 時間と空間の意味を教えてください
+        next: minase_foggy_time_space_meaning
+      - text: 世界への扉を開きたいです
+        next: minase_foggy_world_gateway
+
+  - id: minase_foggy_reality_dream_boundary
+    text: 現実と夢の境界...それは意識の深いところにあります。霧の中では、その境界が薄くなり、新しい認識が生まれます。
+    choices:
+      - text: 意識の深いところを探りたいです
+        next: minase_foggy_consciousness_depth
+      - text: 新しい認識に興味があります
+        next: minase_foggy_new_perception
+      - text: 境界が薄くなる感覚を体験したいです
+        next: minase_foggy_boundary_experience
+
+  - id: minase_foggy_invisible_things
+    text: 見えないもの...それは目に見える世界の背後にある真実です。霧は視界を遮りますが、代わりに心の目を開かせます。
+    choices:
+      - text: 心の目を開かせたいです
+        next: minase_foggy_inner_vision
+      - text: 背後の真実を知りたいです
+        next: minase_foggy_hidden_truth
+      - text: 見えない世界を感じたいです
+        next: minase_foggy_invisible_world
+
+  - id: minase_foggy_beyond_ordinary
+    text: 日常の向こう側...それは非日常的な体験や洞察の領域です。普段の生活では感じられない深い理解が得られます。
+    choices:
+      - text: 非日常的な体験を求めます
+        next: deep_end
+      - text: 深い理解を得たいです
+        next: trust_end
+      - text: 洞察の領域に興味があります
+        next: emotional_end
+
+  - id: minase_foggy_time_space_meaning
+    text: 時間と空間の意味...霧の中では距離感が変わり、時間の流れも違って感じられます。これは意識の変化を表しています。
+    choices:
+      - text: 意識の変化を体験したいです
+        next: deep_end
+      - text: 時間の流れを違った角度から見ます
+        next: emotional_end
+      - text: 距離感の変化を感じます
+        next: trust_end
+
+  - id: minase_foggy_world_gateway
+    text: 世界への扉...霧は一つの通路のようなものです。普通の状態では入れない領域への入り口を提供してくれます。
+    choices:
+      - text: 通路を通りたいです
+        next: trust_end
+      - text: 特別な領域に興味があります
+        next: emotional_end
+      - text: 入り口を探してみます
+        next: deep_end
+
+  - id: minase_foggy_consciousness_depth
+    text: 意識の深さ...それは海の深さのようなものです。表面では見えないものも、深く潜れば見つけることができます。
+    choices:
+      - text: 深く潜る勇気を持ちます
+        next: deep_end
+      - text: 見つけるものを期待します
+        next: emotional_end
+      - text: 意識の海を探索します
+        next: trust_end
+
+  - id: minase_foggy_new_perception
+    text: 新しい認識...それは既存の枠組みを超えた理解です。霧の中での体験は、その枠組みを柔らかくしてくれます。
+    choices:
+      - text: 枠組みを超えた理解を求めます
+        next: deep_end
+      - text: 既存の考えを柔らかくします
+        next: trust_end
+      - text: 新しい体験を大切にします
+        next: emotional_end
+
+  - id: minase_foggy_boundary_experience
+    text: 境界の体験...それは自分と世界の境界が曖昧になることです。個人的な体験が普遍的な体験となります。
+    choices:
+      - text: 普遍的な体験を求めます
+        next: deep_end
+      - text: 自分と世界の境界を感じます
+        next: emotional_end
+      - text: 個人的な体験を大切にします
+        next: trust_end
+
+  - id: minase_foggy_inner_vision
+    text: 心の目...それは直感と洞察力の象徴です。外界が見えない時、内なる世界がより鮮明になります。
+    choices:
+      - text: 内なる世界を探求します
+        next: deep_end
+      - text: 直感を信じます
+        next: trust_end
+      - text: 洞察力を磨きたいです
+        next: emotional_end
+
+  - id: minase_foggy_hidden_truth
+    text: 隠された真実...それは日常の表面下にあるものです。霧は物理的な視界を遮りますが、真実への道は開かれています。
+    choices:
+      - text: 真実への道を歩みます
+        next: trust_end
+      - text: 表面下の世界を探ります
+        next: deep_end
+      - text: 隠された真実を大切にします
+        next: emotional_end
+
+  - id: minase_foggy_invisible_world
+    text: 見えない世界...それは感覚を超えた領域です。霧の中では、そうした世界との境界が薄くなります。
+    choices:
+      - text: 感覚を超えた体験を求めます
+        next: deep_end
+      - text: 見えない世界を感じます
+        next: emotional_end
+      - text: 境界の薄さを体験します
+        next: trust_end
+
+  # First meeting late extended conversations
+  - id: minase_start_first_meet_late_extended_conversation
+    text: 深夜の出会いは運命的です。この時間帯は、昼間では見えない未来の可能性が最も明確に現れます。
+    choices:
+      - text: 運命的な出会いを感じます
+        next: minase_late_fateful_meeting
+      - text: 未来の可能性を知りたいです
+        next: minase_late_future_possibilities
+      - text: 深夜の特別な意味を教えてください
+        next: minase_late_night_significance
+
+  - id: minase_late_fateful_meeting
+    text: 運命的な出会い...それは偶然のようでいて、実は必然です。すべてがこの瞬間に向けて準備されていました。
+    choices:
+      - text: 必然性を感じます
+        next: minase_late_inevitability
+      - text: 準備されていたとは驚きです
+        next: minase_late_preparation
+      - text: この瞬間を大切にします
+        next: minase_late_precious_moment
+
+  - id: minase_late_future_possibilities
+    text: 未来の可能性...深夜は意識が最も研ぎ澄まされる時間です。その時に見える未来は、最も確実性が高いものです。
+    choices:
+      - text: 意識の研ぎ澄まされる感覚を体験したいです
+        next: minase_late_consciousness_sharpening
+      - text: 確実性の高い未来を見たいです
+        next: minase_late_certain_future
+      - text: 深夜の特別な力を感じます
+        next: minase_late_nighttime_power
+
+  - id: minase_late_night_significance
+    text: 深夜の意味...それは変化と変容の時間です。古い自分が死に、新しい自分が生まれる境界の時間でもあります。
+    choices:
+      - text: 変化と変容を受け入れます
+        next: minase_late_transformation_acceptance
+      - text: 新しい自分に興味があります
+        next: minase_late_new_self
+      - text: 境界の時間を体験したいです
+        next: minase_late_boundary_time
+
+  - id: minase_late_inevitability
+    text: 必然性...すべての出来事は、見えない糸によって織り成されています。私たちの出会いも、その糸の一部です。
+    choices:
+      - text: 見えない糸を感じます
+        next: emotional_end
+      - text: 織り成される物語を大切にします
+        next: trust_end
+      - text: 出会いの意味を深く考えます
+        next: deep_end
+
+  - id: minase_late_preparation
+    text: 準備...宇宙は長い時間をかけて、この瞬間を準備してきました。あなたの選択、私の選択、すべてが意味を持っています。
+    choices:
+      - text: 宇宙の準備を感じます
+        next: deep_end
+      - text: すべての選択に意味があると信じます
+        next: trust_end
+      - text: この瞬間の特別さを感じます
+        next: emotional_end
+
+  - id: minase_late_precious_moment
+    text: 大切な瞬間...時間は流れ続けますが、この瞬間だけは永遠に記憶の中に残ります。
+    choices:
+      - text: 永遠に記憶します
+        next: emotional_end
+      - text: 時間の流れを意識します
+        next: deep_end
+      - text: この瞬間を心に刻みます
+        next: trust_end
+
+  - id: minase_late_consciousness_sharpening
+    text: 意識の研ぎ澄まし...深夜は雑念が消え、心が最も純粋な状態になります。その時の洞察は、最も価値があります。
+    choices:
+      - text: 純粋な状態を体験したいです
+        next: deep_end
+      - text: 価値のある洞察を求めます
+        next: trust_end
+      - text: 雑念を消したいです
+        next: emotional_end
+
+  - id: minase_late_certain_future
+    text: 確実な未来...それは既に種として存在しています。適切な条件が整えば、必ず花開くでしょう。
+    choices:
+      - text: 種を大切に育てます
+        next: trust_end
+      - text: 花開く日を楽しみにします
+        next: emotional_end
+      - text: 適切な条件を整えたいです
+        next: deep_end
+
+  - id: minase_late_nighttime_power
+    text: 深夜の力...それは静寂と暗闇がもたらす集中力です。昼間では感じられない、深い理解が得られます。
+    choices:
+      - text: 深い理解を求めます
+        next: deep_end
+      - text: 静寂の力を感じます
+        next: emotional_end
+      - text: 集中力を高めたいです
+        next: trust_end
+
+  - id: minase_late_transformation_acceptance
+    text: 変容の受け入れ...それは勇気のいることです。しかし、変容を受け入れることで、真の成長が始まります。
+    choices:
+      - text: 勇気を持って変容を受け入れます
+        next: deep_end
+      - text: 真の成長を目指します
+        next: trust_end
+      - text: 変容の美しさを感じます
+        next: emotional_end
+
+  - id: minase_late_new_self
+    text: 新しい自分...それは既にあなたの中に存在しています。深夜の静寂の中で、その声を聞くことができるでしょう。
+    choices:
+      - text: 内なる声を聞きたいです
+        next: deep_end
+      - text: 新しい自分を発見したいです
+        next: emotional_end
+      - text: 静寂の中で成長します
+        next: trust_end
+
+  - id: minase_late_boundary_time
+    text: 境界の時間...昨日と今日の境界、意識と無意識の境界、すべてが曖昧になる特別な時間です。
+    choices:
+      - text: 境界の曖昧さを体験します
+        next: deep_end
+      - text: 特別な時間を大切にします
+        next: emotional_end
+      - text: 意識の境界を探ります
+        next: trust_end

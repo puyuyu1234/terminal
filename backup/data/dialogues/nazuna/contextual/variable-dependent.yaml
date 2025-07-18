@@ -1,0 +1,235 @@
+conversations:
+  # 録音機の使用頻度による変化
+  - id: nazuna_recorder_usage
+    text: "..."
+    conditions:
+      - if: "nazuna_recorder_usage >= 5"
+        text: "...(録音機を操作する音)...カチッ。今のも録音しました。"
+      - if: "nazuna_recorder_usage >= 3"
+        text: "...(録音機を見つめている)...カチッ。"
+      - if: "nazuna_recorder_usage >= 1"
+        text: "...(録音機を手に持っている)..."
+      - else:
+        text: "...(黙って座っている)..."
+    choices:
+      - text: "何を録音してるの？"
+        next: nazuna_recording_purpose
+      - text: "古い録音機だね"
+        next: nazuna_recorder_observation
+      - text: "..."
+        next: nazuna_mutual_silence
+
+  # 電車の音への反応度
+  - id: nazuna_train_reaction
+    text: "..."
+    conditions:
+      - if: "nazuna_train_sensitivity >= 4"
+        text: "...(遠くの電車の音に身を震わせる)...ダメ...ダメ..."
+      - if: "nazuna_train_sensitivity >= 2"
+        text: "...(電車の音に顔を上げる)...あ..."
+      - if: "nazuna_train_sensitivity >= 1"
+        text: "...(電車の音に耳を澄ます)..."
+      - else:
+        text: "...(電車の音が聞こえる)..."
+    choices:
+      - text: "電車の音が怖い？"
+        next: nazuna_train_fear
+      - text: "大丈夫？"
+        next: nazuna_comfort_attempt
+      - text: "..."
+        next: nazuna_silent_support
+
+  # 信頼度による発話の変化
+  - id: nazuna_trust_speech
+    text: "..."
+    conditions:
+      - if: "nazuna_trust_level >= 5"
+        text: "...あなた...優しい...録音機...聞きます？"
+      - if: "nazuna_trust_level >= 3"
+        text: "...いつも...来てくれる...ありがとう..."
+      - if: "nazuna_trust_level >= 1"
+        text: "...あなた...また来た..."
+      - else:
+        text: "...(こちらを見る)..."
+    choices:
+      - text: "聞かせて"
+        next: nazuna_playback_offer
+      - text: "話さなくてもいいよ"
+        next: nazuna_no_pressure
+      - text: "うん、また来たよ"
+        next: nazuna_return_acknowledgment
+
+  # 夜の進行による変化
+  - id: nazuna_night_behavior
+    text: "..."
+    conditions:
+      - if: "night_progression >= 8"
+        text: "...(録音機を強く握りしめる)...夜...深い...声...聞こえる..."
+      - if: "night_progression >= 6"
+        text: "...(録音機のボタンを何度も押す)...夜...変わる..."
+      - if: "night_progression >= 4"
+        text: "...(録音機を見つめる)...夜...静か..."
+      - else:
+        text: "...(録音機を膝に置いている)..."
+    choices:
+      - text: "どんな声？"
+        next: nazuna_night_voices
+      - text: "怖くない？"
+        next: nazuna_night_fear
+      - text: "一緒にいるよ"
+        next: nazuna_presence_comfort
+
+  # プレイヤーの沈黙回数による反応
+  - id: nazuna_silence_connection
+    text: "..."
+    conditions:
+      - if: "player_silence_count >= 7"
+        text: "...(録音機を向ける)...静か...同じ...録音...します..."
+      - if: "player_silence_count >= 5"
+        text: "...(うなずく)...静か...いい..."
+      - if: "player_silence_count >= 3"
+        text: "...(安心したような表情)..."
+      - else:
+        text: "...(少し緊張している)..."
+    choices:
+      - text: "静かなのが好き？"
+        next: nazuna_silence_preference
+      - text: "僕の声も録音するの？"
+        next: nazuna_voice_recording
+      - text: "..."
+        next: nazuna_comfortable_silence
+
+  # 訪問回数による慣れ
+  - id: nazuna_familiarity_growth
+    text: "..."
+    conditions:
+      - if: "total_visits >= 15"
+        text: "...(録音機を見せる)...いつも...ここ...あなたも...録音...したい..."
+      - if: "total_visits >= 10"
+        text: "...(小さく手を振る)...また...来た..."
+      - if: "total_visits >= 5"
+        text: "...(認識している様子)...あ..."
+      - else:
+        text: "...(警戒している)..."
+    choices:
+      - text: "僕も録音したい？"
+        next: nazuna_recording_invitation
+      - text: "覚えてくれてるんだね"
+        next: nazuna_memory_confirmation
+      - text: "怖がらなくていいよ"
+        next: nazuna_reassurance
+
+  # 複合条件での特別な反応
+  - id: nazuna_special_moment
+    text: "..."
+    conditions:
+      - if: "nazuna_trust_level >= 4 && nazuna_recorder_usage >= 5"
+        text: "...(録音機を差し出す)...聞いて...大切...声..."
+      - if: "nazuna_trust_level >= 3 && player_silence_count >= 5"
+        text: "...(録音機を膝に置く)...静か...一緒...いい..."
+      - if: "nazuna_train_sensitivity >= 3 && total_visits >= 10"
+        text: "...(録音機を握る)...電車...怖い...でも...あなた...いる..."
+      - else:
+        text: "...(録音機を操作している)..."
+    choices:
+      - text: "大切な声？"
+        next: nazuna_precious_voice
+      - text: "一緒にいるよ"
+        next: nazuna_companionship
+      - text: "電車は怖くない"
+        next: nazuna_train_reassurance
+
+  # 録音機の内容への言及
+  - id: nazuna_recording_content
+    text: "..."
+    conditions:
+      - if: "nazuna_trust_level >= 5"
+        text: "...(録音機を操作)...カチッ...『なずな...大丈夫...』...声...いつも...聞く..."
+      - if: "nazuna_trust_level >= 3"
+        text: "...(録音機から音が漏れる)...『...大丈夫...』...誰か...声..."
+      - else:
+        text: "...(録音機を耳に当てる)..."
+    choices:
+      - text: "誰の声？"
+        next: nazuna_voice_identity
+      - text: "大切な人の声？"
+        next: nazuna_important_person
+      - text: "..."
+        next: nazuna_respectful_silence
+
+  # 感情表現の変化
+  - id: nazuna_emotional_expression
+    text: "..."
+    conditions:
+      - if: "nazuna_trust_level >= 4"
+        text: "...(小さく笑う)...嬉しい...また...会える..."
+      - if: "nazuna_trust_level >= 2"
+        text: "...(安心している)...良い...人..."
+      - if: "nazuna_trust_level >= 1"
+        text: "...(少し緊張が解けている)..."
+      - else:
+        text: "...(表情を読み取れない)..."
+    choices:
+      - text: "嬉しいって言ってくれた"
+        next: nazuna_happiness_acknowledgment
+      - text: "僕も嬉しい"
+        next: nazuna_mutual_happiness
+      - text: "リラックスして"
+        next: nazuna_relaxation_encouragement
+
+  # 継続ノード例
+  - id: nazuna_recording_purpose
+    text: "...(録音機を見つめる)...大切...声...なくならない...ように..."
+    effects:
+      - type: increment
+        variable: nazuna_recorder_usage
+        value: 1
+    choices:
+      - text: "大切な声なんだね"
+        next: nazuna_voice_importance
+      - text: "なくなっちゃうの？"
+        next: nazuna_voice_loss_fear
+      - text: "..."
+        next: nazuna_understanding_silence
+
+  - id: nazuna_train_fear
+    text: "...(首を振る)...音...大きい...怖い...でも...止まらない..."
+    effects:
+      - type: increment
+        variable: nazuna_train_sensitivity
+        value: 1
+    choices:
+      - text: "一緒にいるよ"
+        next: nazuna_protective_presence
+      - text: "耳を塞ごうか"
+        next: nazuna_sound_blocking
+      - text: "電車は通り過ぎるよ"
+        next: nazuna_temporary_comfort
+
+  - id: nazuna_playback_offer
+    text: "...(録音機を操作)...カチッ...『...なずな...元気？...』...昔...声..."
+    effects:
+      - type: increment
+        variable: nazuna_trust_level
+        value: 1
+    choices:
+      - text: "懐かしい声？"
+        next: nazuna_nostalgic_voice
+      - text: "誰の声？"
+        next: nazuna_voice_mystery
+      - text: "ありがとう、聞かせてくれて"
+        next: nazuna_gratitude_response
+
+  - id: nazuna_mutual_silence
+    text: "...(録音機を操作)...カチッ...『...』...静か...一緒..."
+    effects:
+      - type: increment
+        variable: nazuna_comfort_level
+        value: 1
+    choices:
+      - text: "静かな時間もいいね"
+        next: nazuna_silence_appreciation
+      - text: "録音してるの？"
+        next: nazuna_recording_confirmation
+      - text: "..."
+        next: nazuna_continued_silence

@@ -1,0 +1,205 @@
+conversations:
+  # 現実改変能力の認識レベル
+  - id: tomo_power_understanding_levels
+    text: "...(落書き帳を見る)..."
+    conditions:
+      - if: "tomo_reality_awareness >= 6 && tomo_trust_level >= 5"
+        text: "...(落書き帳を見る)...力...強くなった...でも...怖い...世界...壊れる..."
+      - if: "tomo_reality_awareness >= 4"
+        text: "...(落書き帳を見る)...書くと...変わる...でも...予想と...違う..."
+      - if: "tomo_reality_awareness >= 2"
+        text: "...(落書き帳を見る)...不思議...書いたこと...起こる..."
+      - else:
+        text: "...(落書き帳を見る)..."
+    choices:
+      - text: "世界が壊れる？"
+        next: tomo_world_destruction_fear
+      - text: "予想と違う？"
+        next: tomo_unintended_consequences
+      - text: "力をコントロールできる？"
+        next: tomo_power_control_inquiry
+
+  # 記憶の混乱度による自己認識
+  - id: tomo_memory_identity_crisis
+    text: "...(落書き帳をめくる)..."
+    conditions:
+      - if: "tomo_memory_confusion >= 5 && tomo_identity_confusion >= 3"
+        text: "...(落書き帳をめくる)...書いた...記憶...本当の...記憶...どっち...私？"
+      - if: "tomo_memory_confusion >= 3"
+        text: "...(落書き帳をめくる)...昨日...何した...覚えてない...書いてない..."
+      - if: "tomo_memory_confusion >= 1"
+        text: "...(落書き帳をめくる)...記憶...曖昧..."
+      - else:
+        text: "...(落書き帳をめくる)..."
+    choices:
+      - text: "書いた記憶と本当の記憶？"
+        next: tomo_memory_reality_distinction
+      - text: "書いてないから覚えてない？"
+        next: tomo_memory_dependency
+      - text: "今の記憶は本物だよ"
+        next: tomo_present_memory_validation
+
+  # 孤独感レベルによる依存度
+  - id: tomo_loneliness_dependency
+    text: "...(落書き帳を抱える)..."
+    conditions:
+      - if: "tomo_loneliness_level >= 5 && tomo_notebook_usage >= 6"
+        text: "...(落書き帳を抱える)...これだけ...友達...話し相手...でも...答えない..."
+      - if: "tomo_loneliness_level >= 3"
+        text: "...(落書き帳を抱える)...一人...長い...でも...これがある..."
+      - if: "tomo_loneliness_level >= 1"
+        text: "...(落書き帳を抱える)...寂しい...時もある..."
+      - else:
+        text: "...(落書き帳を抱える)..."
+    choices:
+      - text: "落書き帳が友達？"
+        next: tomo_notebook_friendship
+      - text: "答えないから寂しい？"
+        next: tomo_one_sided_conversation
+      - text: "僕がいるよ"
+        next: tomo_human_connection_offer
+
+  # 他キャラクターとの関係性認識
+  - id: tomo_character_power_comparison
+    text: "...(落書き帳に書く)..."
+    conditions:
+      - if: "character_encounter_count.minase >= 2 && tomo_trust_level >= 4"
+        text: "...(落書き帳に書く)...あの人...未来...見る...私...現実...変える...似てる？"
+      - if: "character_encounter_count.shino >= 3"
+        text: "...(落書き帳に書く)...あの人...薬...現実...変える...私...書いて...変える..."
+      - if: "has_met_all_characters == true"
+        text: "...(落書き帳に書く)...みんな...特別...でも...私...一番...危険..."
+      - else:
+        text: "...(落書き帳に書く)..."
+    choices:
+      - text: "似てるって思うの？"
+        next: tomo_power_similarity
+      - text: "なぜ一番危険？"
+        next: tomo_danger_recognition
+      - text: "特別な人たちが集まる場所"
+        next: tomo_special_gathering
+
+  # 現実と想像の境界崩壊
+  - id: tomo_reality_boundary_collapse
+    text: "...(落書き帳を開く)..."
+    conditions:
+      - if: "tomo_world_damage >= 3 && tomo_reality_awareness >= 5"
+        text: "...(落書き帳を開く)...境界...ない...書いた世界...現実...混じった...戻せない..."
+      - if: "tomo_world_damage >= 2"
+        text: "...(落書き帳を開く)...現実...変わった...元の...世界...わからない..."
+      - if: "tomo_world_damage >= 1"
+        text: "...(落書き帳を開く)...何か...おかしい...書きすぎた..."
+      - else:
+        text: "...(落書き帳を開く)..."
+    choices:
+      - text: "境界がない？"
+        next: tomo_no_boundary
+      - text: "元の世界に戻りたい？"
+        next: tomo_original_world_desire
+      - text: "新しい世界を作ろう"
+        next: tomo_new_world_creation
+
+  # 時間経過による力の変化
+  - id: tomo_power_evolution
+    text: "...(落書き帳に書く)..."
+    conditions:
+      - if: "session_duration >= 30 && tomo_power_control >= 3"
+        text: "...(落書き帳に書く)...長く...話すと...力...強くなる...でも...制御...難しい..."
+      - if: "session_duration >= 20"
+        text: "...(落書き帳に書く)...時間...経つと...書きたくなる...衝動..."
+      - if: "session_duration >= 15"
+        text: "...(落書き帳に書く)...話してると...安心...書く必要...ない..."
+      - else:
+        text: "...(落書き帳に書く)..."
+    choices:
+      - text: "制御が難しい？"
+        next: tomo_control_difficulty
+      - text: "書きたい衝動？"
+        next: tomo_writing_compulsion
+      - text: "話すと安心？"
+        next: tomo_conversation_comfort
+
+  # 継続ノード
+  - id: tomo_world_destruction_fear
+    text: "...(落書き帳を閉じる)...書きすぎると...現実...壊れる...みんな...消える..."
+    effects:
+      - type: increment
+        variable: tomo_destruction_anxiety
+        value: 1
+    choices:
+      - text: "みんな消えちゃう？"
+        next: tomo_erasure_fear
+      - text: "書くのをやめれば？"
+        next: tomo_cessation_suggestion
+      - text: "壊れた世界も直せる？"
+        next: tomo_repair_possibility
+
+  - id: tomo_memory_reality_distinction
+    text: "...(落書き帳を見る)...書いた...記憶...鮮明...でも...嘘...本当の...記憶...薄い..."
+    effects:
+      - type: increment
+        variable: tomo_memory_distortion
+        value: 1
+    choices:
+      - text: "本当の記憶を思い出そう"
+        next: tomo_real_memory_recovery
+      - text: "書いた記憶も君の一部"
+        next: tomo_created_memory_acceptance
+      - text: "どちらも大切"
+        next: tomo_memory_value_equality
+
+  - id: tomo_notebook_friendship
+    text: "...(落書き帳を見せる)...友達...でも...一方的...私...話す...でも...答えない..."
+    effects:
+      - type: increment
+        variable: tomo_one_way_relationship
+        value: 1
+    choices:
+      - text: "答えがほしい？"
+        next: tomo_response_desire
+      - text: "一方的でも大切？"
+        next: tomo_one_sided_value
+      - text: "僕が答えるよ"
+        next: tomo_human_response_offer
+
+  - id: tomo_power_similarity
+    text: "...(落書き帳に書く)...特別な...力...でも...使い方...違う...私...危険..."
+    effects:
+      - type: increment
+        variable: tomo_power_awareness
+        value: 1
+    choices:
+      - text: "なぜ危険？"
+        next: tomo_danger_explanation
+      - text: "力の使い方を学ぼう"
+        next: tomo_power_training
+      - text: "危険でも君は君"
+        next: tomo_identity_acceptance
+
+  - id: tomo_no_boundary
+    text: "...(落書き帳を見る)...現実...想像...混じった...どこまで...本当？"
+    effects:
+      - type: increment
+        variable: tomo_reality_confusion
+        value: 1
+    choices:
+      - text: "今ここは現実"
+        next: tomo_present_reality_anchor
+      - text: "混じっても大丈夫"
+        next: tomo_mixed_reality_acceptance
+      - text: "境界を作り直そう"
+        next: tomo_boundary_reconstruction
+
+  - id: tomo_control_difficulty
+    text: "...(落書き帳を握る)...力...大きくなると...思うだけで...現実...変わる..."
+    effects:
+      - type: increment
+        variable: tomo_involuntary_power
+        value: 1
+    choices:
+      - text: "思うだけで？"
+        next: tomo_thought_power
+      - text: "制御する方法を探そう"
+        next: tomo_control_method_search
+      - text: "怖くない、一緒にいる"
+        next: tomo_power_support

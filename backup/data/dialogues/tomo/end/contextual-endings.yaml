@@ -1,0 +1,451 @@
+character: tomo
+nodes:
+  # 創造・芸術関連の終了ノード
+  - id: tomo_creative_inspiration
+    text: "新しいインスピレーションが湧いてきた。ありがとう。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_artistic_revelation
+    text: "アートの新しい可能性を感じる。心が躍ってる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_visualization_magic
+    text: "視覚化の魔法で、世界が変わって見える。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_creative_breathing
+    text: "創造することが呼吸のように自然になってる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_visual_necessity
+    text: "視覚的表現の必要性を、改めて感じる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 色彩・感情関連の終了ノード
+  - id: tomo_emotional_chemistry
+    text: "感情の化学反応が、色彩となって現れる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_chromatic_conversation
+    text: "色彩での会話って、言葉を超えた表現かもしれない。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_infinite_transparency
+    text: "無限の透明性の中で、真実が見えてくる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_color_emotion_bridge
+    text: "色と感情の橋が、心の中に架かった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 道具・技術関連の終了ノード
+  - id: tomo_tool_personality
+    text: "道具にも個性があるって、面白い発見だった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_emotional_instrument
+    text: "感情を奏でる楽器のように、道具を使いたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_mental_freedom
+    text: "心の中での描画は、究極の自由だと思う。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_technique_evolution
+    text: "技術の進化が、表現の可能性を広げてくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 変化・成長関連の終了ノード
+  - id: tomo_movement_life
+    text: "動きこそが生命の証拠。停滞は死を意味する。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_fearful_growth
+    text: "恐れも成長の一部。それを受け入れることから始めよう。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_subtle_transformation
+    text: "微細な変化の積み重ねが、大きな変容を生む。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_multiple_realities
+    text: "複数の現実が存在する。それぞれに価値がある。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_quiet_power
+    text: "静かな力が、世界を変えていく。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 協働・創造関連の終了ノード
+  - id: tomo_shared_canvas
+    text: "共有のキャンバスで、一緒に創造していこう。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_collaborative_art
+    text: "協働的な芸術が、新しい表現を生み出す。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_creative_partnership
+    text: "創造的なパートナーシップが築けそうだ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 時間・夜関連の終了ノード
+  - id: tomo_night_depth
+    text: "夜の深さが、創造力を掻き立ててくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_night_introspection
+    text: "夜の内省が、新しいアイデアを生む。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_spiral_time
+    text: "時間は螺旋状に進む。過去と未来が交差する。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_creative_time
+    text: "創造的な時間は、通常の時間とは違う流れ方をする。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_temporal_faces
+    text: "時間にも様々な表情がある。それを描いてみたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 知識・探求関連の終了ノード
+  - id: tomo_shared_exploration
+    text: "一緒に探求することで、新しい発見がある。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_question_encouragement
+    text: "質問することを奨励してくれて、嬉しい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_silent_curiosity
+    text: "静かな好奇心が、心の中で燃えている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_listener_value
+    text: "聞き手の価値を理解してくれて、ありがたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_heart_eloquence
+    text: "心の雄弁さが、言葉を超えた表現を可能にする。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 静寂・理解関連の終了ノード
+  - id: tomo_wordless_bond
+    text: "言葉のない絆が、最も深いつながりかもしれない。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_silent_agreement
+    text: "静かな同意が、心の中で交わされている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_contemplative_creation
+    text: "瞑想的な創造が、最も純粋な表現を生む。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 洞察・理解関連の終了ノード
+  - id: tomo_character_insight
+    text: "人格への洞察が、新しい理解を生む。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_authentic_self
+    text: "真の自分を表現することの大切さを感じる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_pattern_recognition
+    text: "パターンを認識することで、新しい視点が開ける。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 特別な芸術関連の終了ノード
+  - id: tomo_heart_art
+    text: "心の芸術が、最も美しい表現だと思う。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_reality_art
+    text: "現実を芸術に変える力を、感じている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_ineffable_special
+    text: "言葉では表現できない特別さを、感じている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 力・能力関連の終了ノード
+  - id: tomo_amazement_joy
+    text: "驚きと喜びが、創造力を高めてくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_intuitive_power
+    text: "直感的な力が、最も純粋な表現を生む。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_felt_power
+    text: "感じられる力が、作品に生命を吹き込む。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 励まし・支援関連の終了ノード
+  - id: tomo_word_preservation
+    text: "言葉を大切に保存してくれて、ありがたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_universal_creativity
+    text: "創造性は普遍的な能力。誰もが持っている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_ability_encouragement
+    text: "能力を励ましてくれて、自信が湧いてくる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 影響・変化関連の終了ノード
+  - id: tomo_reality_softening
+    text: "現実が柔らかくなって、可能性が広がる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_vivid_influence
+    text: "鮮明な影響力が、心に刻まれている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_subtle_influence
+    text: "微細な影響が、大きな変化を生む。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_hopeful_art
+    text: "希望に満ちた芸術が、未来を照らす。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_lightened_heart
+    text: "心が軽やかになって、創造力が自由になる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_beautiful_change
+    text: "美しい変化が、心の中で起こっている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 環境・創造関連の終了ノード
+  - id: tomo_environmental_creation
+    text: "環境が創造に与える影響を、実感している。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_secret_acceptance
+    text: "秘密を受け入れることで、新しい扉が開く。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_shared_reality
+    text: "共有された現実が、新しい創造を生む。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_heart_art_praise
+    text: "心の芸術を褒めてくれて、嬉しい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_pure_creation
+    text: "純粋な創造が、最も美しい表現だと思う。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_miracle_creation
+    text: "奇跡的な創造が、可能だと感じている。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 脆弱性・癒し関連の終了ノード
+  - id: tomo_healing_quiet
+    text: "癒しの静寂が、心を包んでくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_vulnerability_strength
+    text: "脆弱性が強さになることを、理解している。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 信頼・創造関連の終了ノード
+  - id: tomo_faith_based_creation
+    text: "信頼に基づいた創造が、最も力強い。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: tomo_trust_inspiration
+    text: "信頼がインスピレーションを与えてくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

@@ -1,0 +1,220 @@
+conversations:
+  # 全体的な緊張度による雰囲気の変化
+  - id: global_tension_atmosphere
+    text: "何だか..."
+    conditions:
+      - if: "overall_tension >= 8"
+        text: "何だか、空気が重いですね...不安な気持ちが伝わってくるような..."
+      - if: "overall_tension >= 6"
+        text: "何だか、緊張した雰囲気がありますね。"
+      - if: "overall_tension >= 4"
+        text: "何だか、少し不安になるような気がします。"
+      - if: "overall_tension >= 2"
+        text: "何だか、落ち着かない感じがします。"
+      - else:
+        text: "何だか、静かで平和な感じがしますね。"
+    choices:
+      - text: "どんな不安？"
+        next: tension_source_inquiry
+      - text: "大丈夫、安全だよ"
+        next: tension_reassurance
+      - text: "僕も同じ感じがする"
+        next: tension_shared_feeling
+
+  # 神秘的要素の蓄積による世界観の変化
+  - id: global_mystery_accumulation
+    text: "この場所は..."
+    conditions:
+      - if: "mystery_level >= 10"
+        text: "この場所は、現実と幻想の境界が曖昧になっているような...普通じゃない何かがあります。"
+      - if: "mystery_level >= 8"
+        text: "この場所は、不思議な力が働いているような気がします。"
+      - if: "mystery_level >= 6"
+        text: "この場所は、何か秘密があるような雰囲気ですね。"
+      - if: "mystery_level >= 4"
+        text: "この場所は、少し神秘的な感じがします。"
+      - else:
+        text: "この場所は、静かで落ち着きますね。"
+    choices:
+      - text: "どんな力？"
+        next: mystery_power_inquiry
+      - text: "普通じゃない？"
+        next: mystery_abnormality_question
+      - text: "特別な場所だね"
+        next: mystery_special_acknowledgment
+
+  # 感情的深度による会話の質の変化
+  - id: global_emotional_depth_quality
+    text: "話していると..."
+    conditions:
+      - if: "emotional_depth >= 10"
+        text: "話していると、心の奥底まで見透かされているような、でも安心できるような不思議な感覚になります。"
+      - if: "emotional_depth >= 8"
+        text: "話していると、とても深いところでつながっているような気がします。"
+      - if: "emotional_depth >= 6"
+        text: "話していると、心が軽くなるような感じがします。"
+      - if: "emotional_depth >= 4"
+        text: "話していると、安心できます。"
+      - else:
+        text: "話していると、楽しいですね。"
+    choices:
+      - text: "心の奥底まで？"
+        next: emotional_depth_inquiry
+      - text: "深いつながりを感じる"
+        next: emotional_connection_acknowledgment
+      - text: "安心できる関係だね"
+        next: emotional_comfort_confirmation
+
+  # 時間歪曲イベントの蓄積
+  - id: global_time_distortion_events
+    text: "時間が..."
+    conditions:
+      - if: "time_distortion_events >= 5"
+        text: "時間が、まるで意味を失ったかのようですね。過去も未来も、今も、すべて同じ瞬間にあるような..."
+      - if: "time_distortion_events >= 3"
+        text: "時間が、普通とは違う流れ方をしているような気がします。"
+      - if: "time_distortion_events >= 1"
+        text: "時間が、少し不思議な感じがしますね。"
+      - else:
+        text: "時間が、静かに流れていますね。"
+    choices:
+      - text: "時間の意味を失った？"
+        next: time_meaninglessness
+      - text: "普通じゃない流れ？"
+        next: time_abnormal_flow
+      - text: "時間を感じなくなった"
+        next: time_loss_experience
+
+  # 環境変化の認識
+  - id: global_environmental_changes
+    text: "周りの環境が..."
+    conditions:
+      - if: "environmental_changes >= 4"
+        text: "周りの環境が、目に見えて変化しているような...でも、何が変わったのかはっきりしません。"
+      - if: "environmental_changes >= 2"
+        text: "周りの環境が、微妙に変化しているような気がします。"
+      - if: "environmental_changes >= 1"
+        text: "周りの環境が、少し違って見えますね。"
+      - else:
+        text: "周りの環境は、いつもと同じですね。"
+    choices:
+      - text: "何が変わった？"
+        next: environmental_change_inquiry
+      - text: "気のせいかも"
+        next: environmental_change_dismissal
+      - text: "変化を感じる"
+        next: environmental_change_acknowledgment
+
+  # メタ的な認識の蓄積
+  - id: global_meta_awareness
+    text: "この状況は..."
+    conditions:
+      - if: "fourth_wall_breaks >= 3 && game_awareness >= 2"
+        text: "この状況は、まるで物語の中にいるような...でも、これが現実なのか、それとも..."
+      - if: "fourth_wall_breaks >= 2"
+        text: "この状況は、どこか非現実的な感じがしますね。"
+      - if: "fourth_wall_breaks >= 1"
+        text: "この状況は、少し変わった感じがします。"
+      - else:
+        text: "この状況は、自然な感じがしますね。"
+    choices:
+      - text: "物語の中？"
+        next: meta_story_recognition
+      - text: "現実か幻想か？"
+        next: meta_reality_question
+      - text: "非現実的？"
+        next: meta_unreality_inquiry
+
+  # 複合的な状態による特別な反応
+  - id: global_complex_state_response
+    text: "全体的に..."
+    conditions:
+      - if: "overall_tension >= 6 && mystery_level >= 6 && emotional_depth >= 6"
+        text: "全体的に、この場所と時間は特別な意味を持っているような気がします。偶然ではない何かが働いている..."
+      - if: "time_distortion_events >= 3 && environmental_changes >= 3"
+        text: "全体的に、現実が不安定になっているような感覚があります。"
+      - if: "emotional_depth >= 8 && mystery_level >= 4"
+        text: "全体的に、深い体験をしているような気がします。"
+      - else:
+        text: "全体的に、良い時間を過ごしていますね。"
+    choices:
+      - text: "特別な意味？"
+        next: global_special_meaning
+      - text: "偶然じゃない？"
+        next: global_non_coincidence
+      - text: "深い体験？"
+        next: global_profound_experience
+
+  # 継続ノード
+  - id: tension_source_inquiry
+    text: "はっきりとはわからないのですが...何か、見えない重圧のようなものを感じます。"
+    effects:
+      - type: increment
+        variable: player_awareness
+        value: 1
+    choices:
+      - text: "見えない重圧？"
+        next: invisible_pressure_exploration
+      - text: "一緒に耐えよう"
+        next: shared_burden_support
+      - text: "きっと大丈夫"
+        next: optimistic_reassurance
+
+  - id: mystery_power_inquiry
+    text: "言葉では説明しにくいのですが...この場所には、普通の場所にはない何かがあるような気がします。"
+    effects:
+      - type: increment
+        variable: mystery_level
+        value: 1
+    choices:
+      - text: "どんな何か？"
+        next: mystery_nature_exploration
+      - text: "僕も感じる"
+        next: mystery_shared_perception
+      - text: "特別な場所だから"
+        next: mystery_special_place_acceptance
+
+  - id: emotional_depth_inquiry
+    text: "言葉以上のもので通じ合っているような...心が透明になっているような感覚です。"
+    effects:
+      - type: increment
+        variable: emotional_depth
+        value: 1
+    choices:
+      - text: "心が透明？"
+        next: emotional_transparency
+      - text: "言葉以上のもの？"
+        next: emotional_beyond_words
+      - text: "深いつながりだね"
+        next: emotional_deep_connection
+
+  - id: time_meaninglessness
+    text: "過去に起こったことが今起こっているような、未来のことが既に起こったような...時間の概念が崩れているような感覚です。"
+    effects:
+      - type: increment
+        variable: time_distortion_events
+        value: 1
+    choices:
+      - text: "時間の概念が崩れてる？"
+        next: time_concept_collapse
+      - text: "不思議な感覚だね"
+        next: time_strange_sensation
+      - text: "今この瞬間を大切に"
+        next: time_present_focus
+
+  - id: global_special_meaning
+    text: "この出会いも、この会話も、すべて必然のような気がします。偶然が重なって起こることではない..."
+    effects:
+      - type: increment
+        variable: mystery_level
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 1
+    choices:
+      - text: "必然？"
+        next: global_necessity_exploration
+      - text: "運命的な出会い？"
+        next: global_fateful_encounter
+      - text: "特別な時間だね"
+        next: global_special_time_acknowledgment

@@ -1,0 +1,222 @@
+character: minase
+nodes:
+  # Regular evening extended conversations
+  - id: minase_start_regular_evening_extended_conversation
+    text: 規則正しい習慣は、未来への道筋を明確にします。あなたの意志の強さが、運命を形作っているのを感じます。
+    choices:
+      - text: 意志の強さを感じますか？
+        next: minase_regular_will_strength
+      - text: 運命について教えてください
+        next: minase_regular_fate_discussion
+      - text: 習慣の力について聞きたいです
+        next: minase_regular_habit_power
+
+  - id: minase_regular_will_strength
+    text: 意志の強さ...それは小さな選択の積み重ねです。毎日同じ時間に来るという選択が、あなたの性格を物語っています。
+    choices:
+      - text: 小さな選択が大切なんですね
+        next: minase_regular_small_choices
+      - text: 性格が表れるとは興味深いです
+        next: minase_regular_character_reflection
+      - text: 積み重ねの力を信じます
+        next: minase_regular_accumulation_power
+
+  - id: minase_regular_fate_discussion
+    text: 運命...それは固定されたものではありません。日々の習慣によって、少しずつ軌道修正されていきます。
+    choices:
+      - text: 軌道修正できるのは希望的です
+        next: minase_regular_course_correction
+      - text: 習慣が運命を変えるのですね
+        next: minase_regular_habit_destiny
+      - text: 固定されていないなら安心です
+        next: minase_regular_flexible_fate
+
+  - id: minase_regular_habit_power
+    text: 習慣の力...それは水が石を削るようなものです。目に見えない変化が、確実に積み重なっています。
+    choices:
+      - text: 水が石を削るように
+        next: minase_regular_gradual_change
+      - text: 目に見えない変化を感じたいです
+        next: minase_regular_invisible_change
+      - text: 確実な積み重ねを信じます
+        next: minase_regular_steady_accumulation
+
+  - id: minase_regular_small_choices
+    text: 小さな選択...それぞれが未来の一部を決定します。今日の選択が、明日のあなたを作り上げているのです。
+    choices:
+      - text: 未来を決定する責任を感じます
+        next: minase_regular_future_responsibility
+      - text: 明日の自分を意識して選択します
+        next: minase_regular_tomorrow_consciousness
+      - text: 今日の選択を大切にします
+        next: minase_regular_today_value
+
+  - id: minase_regular_character_reflection
+    text: 性格の反映...行動は心の鏡です。あなたの一貫性は、内面の安定を表しています。
+    choices:
+      - text: 内面の安定を保ちたいです
+        next: minase_regular_inner_stability
+      - text: 心の鏡として行動を見つめます
+        next: minase_regular_heart_mirror
+      - text: 一貫性を大切にします
+        next: minase_regular_consistency_value
+
+  - id: minase_regular_accumulation_power
+    text: 積み重ねの力...それは複利のように作用します。小さな努力が、時間と共に大きな成果を生み出します。
+    choices:
+      - text: 複利の効果を実感したいです
+        next: minase_regular_compound_effect
+      - text: 小さな努力を続けます
+        next: minase_regular_small_effort
+      - text: 大きな成果を楽しみにします
+        next: minase_regular_great_result
+
+  - id: minase_regular_course_correction
+    text: 軌道修正...それは船の舵のようなものです。小さな調整が、最終的な到達点を大きく変えることができます。
+    choices:
+      - text: 小さな調整を大切にします
+        next: emotional_end
+      - text: 最終的な到達点を意識します
+        next: trust_end
+      - text: 船の舵のように導いてください
+        next: deep_end
+
+  - id: minase_regular_habit_destiny
+    text: 習慣と運命...それらは密接に関わっています。毎日の選択が、人生の方向性を決めているのです。
+    choices:
+      - text: 人生の方向性を考えます
+        next: trust_end
+      - text: 毎日の選択を意識します
+        next: emotional_end
+      - text: 密接な関わりを感じます
+        next: deep_end
+
+  - id: minase_regular_flexible_fate
+    text: 柔軟な運命...それは可能性に満ちています。固定されていないからこそ、希望を持つことができるのです。
+    choices:
+      - text: 可能性に満ちた未来を歩みます
+        next: emotional_end
+      - text: 希望を持ち続けます
+        next: trust_end
+      - text: 柔軟性を大切にします
+        next: deep_end
+
+  - id: minase_regular_gradual_change
+    text: 徐々なる変化...それは自然の摂理です。急激な変化よりも、穏やかな変化の方が確実で持続的です。
+    choices:
+      - text: 自然の摂理を受け入れます
+        next: deep_end
+      - text: 穏やかな変化を選びます
+        next: trust_end
+      - text: 確実で持続的な成長を目指します
+        next: emotional_end
+
+  - id: minase_regular_invisible_change
+    text: 見えない変化...それは最も重要な変化です。心の成長、理解の深化、関係性の発展...目に見えないものが最も価値があります。
+    choices:
+      - text: 心の成長を感じます
+        next: emotional_end
+      - text: 理解が深まることを実感します
+        next: trust_end
+      - text: 関係性の発展を大切にします
+        next: deep_end
+
+  - id: minase_regular_steady_accumulation
+    text: 着実な積み重ね...それは信頼の基盤です。一日一日の積み重ねが、揺るぎない自信を生み出します。
+    choices:
+      - text: 揺るぎない自信を築きます
+        next: trust_end
+      - text: 信頼の基盤を大切にします
+        next: emotional_end
+      - text: 着実に歩み続けます
+        next: deep_end
+
+  - id: minase_regular_future_responsibility
+    text: 未来への責任...それは重いですが、同時に力強いものです。自分の人生を自分で創造できるという証拠です。
+    choices:
+      - text: 自分の人生を創造します
+        next: emotional_end
+      - text: 責任を力に変えます
+        next: trust_end
+      - text: 力強く歩んでいきます
+        next: deep_end
+
+  - id: minase_regular_tomorrow_consciousness
+    text: 明日への意識...それは今日を意味あるものにします。未来の自分に対する思いやりが、現在の行動を導くのです。
+    choices:
+      - text: 未来の自分を思いやります
+        next: emotional_end
+      - text: 現在の行動を大切にします
+        next: trust_end
+      - text: 意味のある今日を過ごします
+        next: deep_end
+
+  - id: minase_regular_today_value
+    text: 今日の価値...それは永遠に失われることのない宝物です。今日という日は、二度と戻ってこないのですから。
+    choices:
+      - text: 今日を宝物として大切にします
+        next: emotional_end
+      - text: 永遠の価値を意識します
+        next: trust_end
+      - text: 二度とない今日を生きます
+        next: deep_end
+
+  - id: minase_regular_inner_stability
+    text: 内面の安定...それは嵐の中でも動かない灯台のようなものです。外界がどんなに変化しても、中心は静かです。
+    choices:
+      - text: 嵐の中でも動かない強さを持ちます
+        next: deep_end
+      - text: 灯台のように導く存在になります
+        next: trust_end
+      - text: 静かな中心を保ちます
+        next: emotional_end
+
+  - id: minase_regular_heart_mirror
+    text: 心の鏡...それは真実を映し出します。行動を通じて、自分の本当の姿を知ることができるのです。
+    choices:
+      - text: 真実を受け入れます
+        next: deep_end
+      - text: 本当の姿を知りたいです
+        next: emotional_end
+      - text: 行動を通じて成長します
+        next: trust_end
+
+  - id: minase_regular_consistency_value
+    text: 一貫性の価値...それは信頼を築く基石です。言葉と行動が一致している人は、人々から尊敬されます。
+    choices:
+      - text: 言葉と行動を一致させます
+        next: trust_end
+      - text: 尊敬される人になりたいです
+        next: emotional_end
+      - text: 信頼を築く基石を大切にします
+        next: deep_end
+
+  - id: minase_regular_compound_effect
+    text: 複利の効果...それは時間という最高の味方です。忍耐強く続けることで、想像以上の成果が得られます。
+    choices:
+      - text: 時間を味方にします
+        next: trust_end
+      - text: 忍耐強く続けます
+        next: emotional_end
+      - text: 想像以上の成果を期待します
+        next: deep_end
+
+  - id: minase_regular_small_effort
+    text: 小さな努力...それは種のようなものです。毎日水をやり続けることで、やがて大きな木に育ちます。
+    choices:
+      - text: 種を大切に育てます
+        next: emotional_end
+      - text: 毎日の水やりを続けます
+        next: trust_end
+      - text: 大きな木に育つことを信じます
+        next: deep_end
+
+  - id: minase_regular_great_result
+    text: 大きな成果...それは突然現れるものではありません。地道な努力の積み重ねが、ある日花開くのです。
+    choices:
+      - text: 花開く日を楽しみにします
+        next: emotional_end
+      - text: 地道な努力を続けます
+        next: trust_end
+      - text: 積み重ねを信じます
+        next: deep_end

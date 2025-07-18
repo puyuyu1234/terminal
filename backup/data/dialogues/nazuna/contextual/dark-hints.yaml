@@ -1,0 +1,298 @@
+conversations:
+  # 轢死体験の暗示（低確率）
+  - id: nazuna_train_trauma_hint
+    text: "...(電車の音を聞いて震える)...あの音...思い出す...痛い..."
+    probability: 0.12
+    conditions:
+      - if: "nazuna_trust_level >= 4 && nazuna_train_sensitivity >= 3"
+    effects:
+      - type: increment
+        variable: nazuna_trauma_hints
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "何を思い出すの？"
+        next: nazuna_trauma_memory
+      - text: "痛い記憶？"
+        next: nazuna_pain_memory
+      - text: "大丈夫、もう安全だよ"
+        next: nazuna_safety_assurance
+
+  - id: nazuna_accident_detail
+    text: "...(録音機を強く握る)...線路...光...とても痛くて...でも...死ねなかった..."
+    probability: 0.08
+    conditions:
+      - if: "nazuna_trauma_hints >= 1"
+    effects:
+      - type: increment
+        variable: nazuna_accident_memory
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "事故にあったの？"
+        next: nazuna_accident_confirmation
+      - text: "死ねなかった？"
+        next: nazuna_survival_guilt
+      - text: "辛かったね"
+        next: nazuna_trauma_sympathy
+
+  # 録音機の中身（遺言・最後の言葉）
+  - id: nazuna_recording_dark_content
+    text: "...(録音機を見せる)...最後の...言葉...大切な人の...最後..."
+    probability: 0.10
+    conditions:
+      - if: "nazuna_trust_level >= 5 && nazuna_recorder_usage >= 4"
+    effects:
+      - type: increment
+        variable: nazuna_recording_darkness
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 2
+    choices:
+      - text: "誰の最後の言葉？"
+        next: nazuna_voice_owner
+      - text: "聞かせてもらえる？"
+        next: nazuna_playback_request
+      - text: "辛い記録だね"
+        next: nazuna_painful_memory
+
+  - id: nazuna_suicide_recording
+    text: "...(録音機から微かに)...『なずな...ごめん...もう...』...お母さん...声..."
+    probability: 0.06
+    conditions:
+      - if: "nazuna_recording_darkness >= 1"
+    effects:
+      - type: increment
+        variable: nazuna_suicide_context
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 2
+    choices:
+      - text: "お母さんの声？"
+        next: nazuna_mother_identity
+      - text: "何があったの？"
+        next: nazuna_family_tragedy
+      - text: "聞くのが辛い"
+        next: nazuna_listening_pain
+
+  # 失語症の原因
+  - id: nazuna_speech_loss_cause
+    text: "...(録音機に向かって)...話せない...あの日から...声...出ない..."
+    probability: 0.09
+    conditions:
+      - if: "nazuna_trust_level >= 4 && nazuna_trauma_hints >= 2"
+    effects:
+      - type: increment
+        variable: nazuna_speech_trauma
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 1
+    choices:
+      - text: "あの日に何があった？"
+        next: nazuna_traumatic_day
+      - text: "ショックで声が出なくなった？"
+        next: nazuna_shock_response
+      - text: "無理して話さなくていい"
+        next: nazuna_speech_pressure_relief
+
+  - id: nazuna_witness_horror
+    text: "...(震える)...見た...血...たくさん...お母さん...動かない..."
+    probability: 0.07
+    conditions:
+      - if: "nazuna_speech_trauma >= 1"
+    effects:
+      - type: increment
+        variable: nazuna_witness_trauma
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "何を見たの？"
+        next: nazuna_scene_description
+      - text: "一人で見つけたの？"
+        next: nazuna_discovery_alone
+      - text: "もう思い出さなくていい"
+        next: nazuna_memory_protection
+
+  # 音声収集の異常な執着
+  - id: nazuna_collection_obsession
+    text: "...(録音機を複数取り出す)...最後の...言葉...集めてる...みんなの...最後..."
+    probability: 0.05
+    conditions:
+      - if: "nazuna_trust_level >= 6 && nazuna_recording_darkness >= 2"
+    effects:
+      - type: increment
+        variable: nazuna_collection_habit
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "みんなの最後？"
+        next: nazuna_multiple_recordings
+      - text: "どうやって集めるの？"
+        next: nazuna_collection_method
+      - text: "なぜ集めるの？"
+        next: nazuna_collection_reason
+
+  - id: nazuna_death_sounds
+    text: "...(録音機を操作)...死ぬ時の...音...きれい...でも...悲しい..."
+    probability: 0.04
+    conditions:
+      - if: "nazuna_collection_habit >= 1"
+    effects:
+      - type: increment
+        variable: nazuna_death_fascination
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "きれいな音？"
+        next: nazuna_death_beauty
+      - text: "怖くない？"
+        next: nazuna_death_fear
+      - text: "それは異常だよ"
+        next: nazuna_abnormality_recognition
+
+  # 生存者の罪悪感
+  - id: nazuna_survivor_guilt
+    text: "...(録音機を握る)...私だけ...生きてる...ごめんなさい...ごめんなさい..."
+    probability: 0.08
+    conditions:
+      - if: "nazuna_accident_memory >= 1"
+    effects:
+      - type: increment
+        variable: nazuna_guilt_level
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 2
+    choices:
+      - text: "誰に謝ってるの？"
+        next: nazuna_apology_target
+      - text: "生きてることは悪いことじゃない"
+        next: nazuna_life_affirmation
+      - text: "何があったの？"
+        next: nazuna_guilt_source
+
+  # 継続ノード
+  - id: nazuna_trauma_memory
+    text: "...(録音機を耳に当てる)...あの日...電車...お母さん...飛び込んだ..."
+    effects:
+      - type: increment
+        variable: nazuna_family_suicide
+        value: 1
+    choices:
+      - text: "お母さんが飛び込んだ？"
+        next: nazuna_mother_suicide
+      - text: "見てたの？"
+        next: nazuna_witness_confirmation
+      - text: "一人で抱えてたんだね"
+        next: nazuna_burden_acknowledgment
+
+  - id: nazuna_accident_confirmation
+    text: "...(うなずく)...一緒に...いた...でも...私だけ...助かった..."
+    effects:
+      - type: increment
+        variable: nazuna_survival_story
+        value: 1
+    choices:
+      - text: "一緒に飛び込んだの？"
+        next: nazuna_joint_attempt
+      - text: "助かったのは奇跡だよ"
+        next: nazuna_miracle_survival
+      - text: "辛かったね"
+        next: nazuna_pain_understanding
+
+  - id: nazuna_voice_owner
+    text: "...(録音機を見つめる)...家族...友達...知らない人...みんな...最後..."
+    effects:
+      - type: increment
+        variable: nazuna_voice_collection
+        value: 1
+    choices:
+      - text: "どうやって録音したの？"
+        next: nazuna_recording_circumstances
+      - text: "知らない人の声も？"
+        next: nazuna_stranger_voices
+      - text: "なぜ最後の言葉を？"
+        next: nazuna_last_words_fascination
+
+  - id: nazuna_mother_identity
+    text: "...(泣きながら)...お母さん...一人で...苦しんでた...私...気づかなかった..."
+    effects:
+      - type: increment
+        variable: nazuna_maternal_guilt
+        value: 1
+    choices:
+      - text: "お母さんは病気だったの？"
+        next: nazuna_mother_illness
+      - text: "気づけなくても仕方ない"
+        next: nazuna_guilt_relief
+      - text: "お母さんは君を愛してた"
+        next: nazuna_love_assurance
+
+  - id: nazuna_traumatic_day
+    text: "...(録音機を操作)...『なずな...ごめんね...』...そのあと...ガタンガタン...音..."
+    effects:
+      - type: increment
+        variable: nazuna_day_details
+        value: 1
+    choices:
+      - text: "一緒にいたの？"
+        next: nazuna_presence_confirmation
+      - text: "止められなかった？"
+        next: nazuna_prevention_failure
+      - text: "一人で背負わなくていい"
+        next: nazuna_burden_sharing
+
+  - id: nazuna_multiple_recordings
+    text: "...(録音機を並べる)...十個...二十個...もっと...集めてる..."
+    effects:
+      - type: increment
+        variable: nazuna_collection_scale
+        value: 1
+    choices:
+      - text: "どこで集めるの？"
+        next: nazuna_collection_locations
+      - text: "なぜそんなに？"
+        next: nazuna_compulsive_collection
+      - text: "それは健全じゃない"
+        next: nazuna_unhealthy_behavior
+
+  - id: nazuna_death_beauty
+    text: "...(録音機を聞く)...最後の...息...きれい...でも...寂しい..."
+    effects:
+      - type: increment
+        variable: nazuna_death_aesthetic
+        value: 1
+    choices:
+      - text: "寂しいなら聞かない方がいい"
+        next: nazuna_listening_advice
+      - text: "美しいって感じるの？"
+        next: nazuna_beauty_perception
+      - text: "生きてる音の方がきれい"
+        next: nazuna_life_sounds
+
+  - id: nazuna_apology_target
+    text: "...(録音機に向かって)...お母さん...みんな...死んだ人...ごめんなさい..."
+    effects:
+      - type: increment
+        variable: nazuna_apology_compulsion
+        value: 1
+    choices:
+      - text: "なぜ謝るの？"
+        next: nazuna_apology_reason
+      - text: "君は悪くない"
+        next: nazuna_innocence_assertion
+      - text: "許してもらえてるよ"
+        next: nazuna_forgiveness_assurance

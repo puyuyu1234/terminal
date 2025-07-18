@@ -1,0 +1,25 @@
+character: minase
+nodes:
+  - id: minase_start_regular_evening
+    text: 毎回同じ時間に来るのね。規則正しいこと。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: greater_than
+        value: 7
+      - type: environment
+        name: timeOfDay
+        value: evening
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: 習慣になりました
+        next: minase_start_regular_evening_extended_conversation
+      - text: この時間が好きです
+        next: minase_start_regular_evening_extended_conversation
+      - text: ...
+        next: minase_start_regular_evening_extended_conversation
+  - id: minase_regular_silence
+    text: ……規則正しい沈黙。
+    next: silence_end

@@ -1,0 +1,279 @@
+# キャラクター固有変数定義
+# 各キャラクターの状態や関係性を管理
+
+characters:
+  # 詩乃（しの）
+  shino:
+    # 基本的な関係性
+    trust_level:
+      type: integer
+      initial_value: 0
+      description: "詩乃との信頼度"
+      
+    comfort_level:
+      type: integer
+      initial_value: 0
+      description: "詩乃がプレイヤーに感じる安心度"
+      
+    # 詩乃特有の状態
+    memory_issues:
+      type: integer
+      initial_value: 0
+      description: "記憶の問題の深刻度"
+      
+    medication_hints:
+      type: integer
+      initial_value: 0
+      description: "薬物関連の暗示レベル"
+      
+    anxiety_level:
+      type: integer
+      initial_value: 0
+      description: "不安レベル"
+      
+    waiting_person_mentions:
+      type: integer
+      initial_value: 0
+      description: "待っている人への言及回数"
+
+  # ミナセ
+  minase:
+    # 基本的な関係性
+    trust_level:
+      type: integer
+      initial_value: 0
+      description: "ミナセとの信頼度"
+      
+    # ミナセ特有の状態
+    prophecy_count:
+      type: integer
+      initial_value: 0
+      description: "予言した回数"
+      
+    time_distortion:
+      type: integer
+      initial_value: 0
+      description: "時間歪曲の言及度"
+      
+    accuracy_rate:
+      type: integer
+      initial_value: 0
+      description: "予言の正確性（パーセント）"
+      
+    death_hints:
+      type: integer
+      initial_value: 0
+      description: "死に関する暗示レベル"
+      
+    future_knowledge:
+      type: integer
+      initial_value: 0
+      description: "未来知識の深度"
+      
+    night_insights:
+      type: integer
+      initial_value: 0
+      description: "夜の洞察力"
+
+  # あやね
+  ayane:
+    # 基本的な関係性
+    trust_level:
+      type: integer
+      initial_value: 0
+      description: "あやねとの信頼度"
+      
+    # あやね特有の状態
+    innocence_level:
+      type: integer
+      initial_value: 3
+      description: "無邪気さレベル"
+      
+    memory_confusion:
+      type: integer
+      initial_value: 0
+      description: "記憶の混乱度"
+      
+    scarf_mentions:
+      type: integer
+      initial_value: 0
+      description: "赤いマフラーへの言及回数"
+      
+    personality_hints:
+      type: integer
+      initial_value: 0
+      description: "多重人格の暗示レベル"
+      
+    reality_distortion:
+      type: integer
+      initial_value: 0
+      description: "現実認識の歪み"
+      
+    playfulness:
+      type: integer
+      initial_value: 2
+      description: "遊び心レベル"
+      
+    dark_hints:
+      type: integer
+      initial_value: 0
+      description: "暗い面の暗示レベル"
+
+  # なずな
+  nazuna:
+    # 基本的な関係性
+    trust_level:
+      type: integer
+      initial_value: 0
+      description: "なずなとの信頼度"
+      
+    comfort_level:
+      type: integer
+      initial_value: 0
+      description: "なずなの安心度"
+      
+    # なずな特有の状態
+    recorder_usage:
+      type: integer
+      initial_value: 0
+      description: "録音機の使用頻度"
+      
+    train_sensitivity:
+      type: integer
+      initial_value: 0
+      description: "電車の音への感受性"
+      
+    speech_frequency:
+      type: integer
+      initial_value: 0
+      description: "発話の頻度"
+      
+    recording_content_level:
+      type: integer
+      initial_value: 0
+      description: "録音内容の開示レベル"
+      
+    emotional_expression:
+      type: integer
+      initial_value: 0
+      description: "感情表現の豊かさ"
+
+  # トモ
+  tomo:
+    # 基本的な関係性
+    trust_level:
+      type: integer
+      initial_value: 0
+      description: "トモとの信頼度"
+      
+    # トモ特有の状態
+    notebook_usage:
+      type: integer
+      initial_value: 0
+      description: "落書き帳の使用頻度"
+      
+    reality_awareness:
+      type: integer
+      initial_value: 0
+      description: "現実操作能力への認識度"
+      
+    name_avoidance:
+      type: integer
+      initial_value: 0
+      description: "名前を避ける度合い"
+      
+    memory_confusion:
+      type: integer
+      initial_value: 0
+      description: "記憶の混乱度"
+      
+    loneliness_level:
+      type: integer
+      initial_value: 2
+      description: "孤独感レベル"
+      
+    power_control:
+      type: integer
+      initial_value: 0
+      description: "力のコントロール度"
+      
+    existence_fear:
+      type: integer
+      initial_value: 1
+      description: "存在することへの恐怖"
+
+# キャラクター間の関係性変数
+relationships:
+  character_encounter_count:
+    type: object
+    initial_value: 
+      shino: 0
+      minase: 0
+      ayane: 0
+      nazuna: 0
+      tomo: 0
+    description: "各キャラクターとの遭遇回数"
+    
+  character_preference:
+    type: object
+    initial_value:
+      shino: 0
+      minase: 0
+      ayane: 0
+      nazuna: 0
+      tomo: 0
+    description: "各キャラクターへの好感度"
+    
+  character_understanding:
+    type: object
+    initial_value:
+      shino: 0
+      minase: 0
+      ayane: 0
+      nazuna: 0
+      tomo: 0
+    description: "各キャラクターへの理解度"
+
+# 特殊な状態フラグ
+special_states:
+  # 各キャラクターの特別な状態
+  shino_medication_revealed:
+    type: boolean
+    initial_value: false
+    description: "詩乃の薬物使用が明らかになったか"
+    
+  minase_time_loop_hinted:
+    type: boolean
+    initial_value: false
+    description: "ミナセの時間ループが暗示されたか"
+    
+  ayane_personality_shift_observed:
+    type: boolean
+    initial_value: false
+    description: "あやねの人格変化が観察されたか"
+    
+  nazuna_recording_content_heard:
+    type: boolean
+    initial_value: false
+    description: "なずなの録音内容を聞いたか"
+    
+  tomo_reality_alteration_witnessed:
+    type: boolean
+    initial_value: false
+    description: "トモの現実改変能力を目撃したか"
+    
+  # 複合的な状態
+  deep_connection_established:
+    type: boolean
+    initial_value: false
+    description: "誰かと深いつながりが確立されたか"
+    
+  unsettling_truth_glimpsed:
+    type: boolean
+    initial_value: false
+    description: "不安な真実を垣間見たか"
+    
+  multiple_character_crossover:
+    type: boolean
+    initial_value: false
+    description: "複数キャラクターの言及があったか"

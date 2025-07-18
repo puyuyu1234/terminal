@@ -1,0 +1,525 @@
+character: shino
+nodes:
+  # 信頼関係構築の会話
+  - id: starting_point
+    text: 新しい始まり...そうですね。これから何が始まるのでしょうか。
+    choices:
+      - text: 良い関係が始まりそうですね
+        next: shino_trust_good_beginning
+      - text: 一歩ずつ進んでいきましょう
+        next: shino_trust_step_by_step
+      - text: 希望に満ちた始まりですね
+        next: shino_trust_hopeful_start
+
+  - id: shino_trust_good_beginning
+    text: 良い関係が...そう思ってもらえると嬉しいです。最初の一歩を踏み出すのは勇気がいりますが、あなたとなら大丈夫そうです。
+    choices:
+      - text: 僕も大丈夫だと思います
+        next: shino_trust_mutual_confidence
+      - text: 勇気を出してくれてありがとう
+        next: shino_trust_courage_appreciation
+      - text: 一緒なら心強いです
+        next: shino_trust_together_strength
+
+  - id: shino_trust_step_by_step
+    text: 一歩ずつ...そうですね。急がず、無理をせず、自然なペースで進んでいけたらいいですね。
+    choices:
+      - text: 自然なペースが一番ですね
+        next: shino_trust_natural_pace
+      - text: 焦る必要はありませんね
+        next: shino_trust_no_rush
+      - text: お互いのペースを大切にしましょう
+        next: shino_trust_mutual_pace
+
+  - id: shino_trust_hopeful_start
+    text: 希望に満ちた...そんな風に言ってもらえると、未来が明るく見えます。希望を持つことは大切ですね。
+    choices:
+      - text: 希望は力になりますね
+        next: shino_trust_hope_power
+      - text: 明るい未来を一緒に歩みましょう
+        next: shino_trust_bright_future
+      - text: 希望を共有できて嬉しいです
+        next: shino_trust_shared_hope
+
+  - id: shino_trust_mutual_confidence
+    text: お互いに大丈夫...そんな風に思い合えるなんて、素晴らしいことですね。信頼の芽生えを感じます。
+    choices:
+      - text: 信頼の芽生えは大切ですね
+        next: trust_end
+      - text: 素晴らしい関係の始まりですね
+        next: emotional_end
+      - text: お互いを信じられますね
+        next: contextual_end
+
+  - id: shino_trust_courage_appreciation
+    text: 勇気を認めてもらえて...心強いです。一人では踏み出せなかった一歩も、あなたがいれば踏み出せます。
+    choices:
+      - text: 一緒に歩んでいきましょう
+        next: trust_end
+      - text: 支え合える関係ですね
+        next: emotional_end
+      - text: 勇気を分け合いましょう
+        next: contextual_end
+
+  - id: shino_trust_together_strength
+    text: 一緒なら心強い...そうですね。一人だと不安なことも、二人なら乗り越えられそうです。
+    choices:
+      - text: 二人の力は強いですね
+        next: trust_end
+      - text: 支え合って進みましょう
+        next: emotional_end
+      - text: 心強い関係ですね
+        next: contextual_end
+
+  - id: shino_trust_natural_pace
+    text: 自然なペース...それが一番ですね。無理をすると疲れてしまいますし、関係も長続きしません。
+    choices:
+      - text: 長続きする関係を築きましょう
+        next: trust_end
+      - text: 自然体が一番ですね
+        next: emotional_end
+      - text: 無理のない関係が理想です
+        next: contextual_end
+
+  - id: shino_trust_no_rush
+    text: 焦る必要はない...そうですね。時間をかけて、じっくりと関係を深めていけばいいのです。
+    choices:
+      - text: 時間をかけて深めていきましょう
+        next: trust_end
+      - text: じっくりと関係を築きましょう
+        next: emotional_end
+      - text: 深い関係を目指しましょう
+        next: contextual_end
+
+  - id: shino_trust_mutual_pace
+    text: お互いのペース...そうですね。相手を思いやり、尊重することが大切です。
+    choices:
+      - text: 思いやりは大切ですね
+        next: emotional_end
+      - text: 尊重し合える関係ですね
+        next: trust_end
+      - text: お互いを大切にしましょう
+        next: contextual_end
+
+  - id: shino_trust_hope_power
+    text: 希望の力...確かにそうですね。希望があると、困難も乗り越えられるような気がします。
+    choices:
+      - text: 希望を持ち続けましょう
+        next: hopeful_end
+      - text: 困難も一緒に乗り越えましょう
+        next: trust_end
+      - text: 希望の力を信じましょう
+        next: emotional_end
+
+  - id: shino_trust_bright_future
+    text: 明るい未来...一緒に歩める未来があると思うと、心が温かくなります。
+    choices:
+      - text: 温かい未来を歩みましょう
+        next: emotional_end
+      - text: 一緒に未来を築きましょう
+        next: trust_end
+      - text: 明るい未来が楽しみです
+        next: hopeful_end
+
+  - id: shino_trust_shared_hope
+    text: 共有する希望...一人で抱く希望よりも、分かち合う希望の方が強い気がします。
+    choices:
+      - text: 分かち合う希望は強いですね
+        next: hopeful_end
+      - text: 共有できて嬉しいです
+        next: emotional_end
+      - text: 希望を育てていきましょう
+        next: trust_end
+
+  # Trust development extended conversations
+  - id: shino_trust_development_extended_conversation
+    text: 時間が経つにつれて、心の壁が少しずつ薄くなってきた気がします。不思議なものですね。
+    choices:
+      - text: 自然な変化ですね
+        next: shino_trust_natural_change
+      - text: 心の壁が薄くなるのは良いことです
+        next: shino_trust_barrier_thinning
+      - text: 時間の力は大きいですね
+        next: shino_trust_time_power
+
+  - id: shino_trust_natural_change
+    text: 自然な変化...そうですね。無理に変わろうとしなくても、自然に心が開いていくものなのかもしれません。
+    choices:
+      - text: 自然体が一番ですね
+        next: shino_trust_natural_state
+      - text: 心の成長を感じます
+        next: shino_trust_growth_feeling
+      - text: 変化を受け入れることは大切です
+        next: shino_trust_accepting_change
+
+  - id: shino_trust_barrier_thinning
+    text: 心の壁...以前は必要だと思っていました。でも今は、壁があることで失うものもあるのかもしれないと思います。
+    choices:
+      - text: 壁がなくても大丈夫ですよ
+        next: shino_trust_safe_vulnerability
+      - text: 失うものと得るもの、どちらも大切ですね
+        next: shino_trust_balance_consideration
+      - text: 勇気を出して壁を薄くしていきましょう
+        next: shino_trust_courage_encouragement
+
+  - id: shino_trust_time_power
+    text: 時間の力...確かに時間が解決してくれることもありますね。でも、一緒に過ごしてくれる人がいるから意味があるのかもしれません。
+    choices:
+      - text: 一緒に時間を過ごせて幸せです
+        next: shino_trust_shared_time_happiness
+      - text: 時間を共有することに意味がありますね
+        next: shino_trust_meaningful_sharing
+      - text: 支え合って時間を過ごしましょう
+        next: shino_trust_mutual_support
+
+  - id: shino_trust_natural_state
+    text: 自然体...そうですね。飾らない自分でいられるって、本当に楽になります。
+    choices:
+      - text: 自然な自分が一番魅力的です
+        next: emotional_end
+      - text: 楽になれて良かったです
+        next: trust_end
+      - text: 自然体で過ごしましょう
+        next: contextual_end
+
+  - id: shino_trust_growth_feeling
+    text: 心の成長...以前の自分と比べて、少し強くなった気がします。一人じゃできなかったことかもしれません。
+    choices:
+      - text: 一緒に成長していきましょう
+        next: emotional_end
+      - text: 強くなったあなたを見ていて嬉しいです
+        next: trust_end
+      - text: 成長は素晴らしいことです
+        next: contextual_end
+
+  - id: shino_trust_accepting_change
+    text: 変化を受け入れる...怖いけれど、必要なことなのかもしれませんね。
+    choices:
+      - text: 変化は成長の証です
+        next: deep_end
+      - text: 一緒に変化を受け入れましょう
+        next: emotional_end
+      - text: 勇気を持って進んでいきましょう
+        next: trust_end
+
+  - id: shino_trust_safe_vulnerability
+    text: 大丈夫...そう言ってもらえると、少し勇気が湧いてきます。守られているような安心感があります。
+    choices:
+      - text: いつでも支えます
+        next: emotional_end
+      - text: 安心してください
+        next: trust_end
+      - text: 勇気を持って進みましょう
+        next: contextual_end
+
+  - id: shino_trust_balance_consideration
+    text: バランス...確かにそうですね。全てを失うわけでも、全てを得るわけでもない。少しずつ調整していけばいいのかもしれません。
+    choices:
+      - text: 少しずつ進んでいきましょう
+        next: trust_end
+      - text: バランスを取りながら成長しましょう
+        next: emotional_end
+      - text: 調整しながら関係を築いていきましょう
+        next: contextual_end
+
+  - id: shino_trust_courage_encouragement
+    text: 勇気...そうですね。一人だと怖いけれど、一緒にいてくれる人がいると勇気が出ます。
+    choices:
+      - text: 勇気を分け合いましょう
+        next: emotional_end
+      - text: いつでも一緒にいます
+        next: trust_end
+      - text: 勇気を持って歩んでいきましょう
+        next: contextual_end
+
+  - id: shino_trust_shared_time_happiness
+    text: 幸せ...そう言ってもらえると、私も本当に幸せです。時間を共有できることの価値を感じます。
+    choices:
+      - text: 幸せを分け合えますね
+        next: emotional_end
+      - text: 時間を共有できて嬉しいです
+        next: trust_end
+      - text: 価値のある時間を過ごしています
+        next: contextual_end
+
+  - id: shino_trust_meaningful_sharing
+    text: 意味のある共有...一人では感じられない、特別な時間を過ごしているような気がします。
+    choices:
+      - text: 特別な時間を大切にしましょう
+        next: emotional_end
+      - text: 共有することに意味がありますね
+        next: trust_end
+      - text: 特別な関係を築いていますね
+        next: contextual_end
+
+  - id: shino_trust_mutual_support
+    text: 支え合い...そうですね。お互いに支え合える関係になれたら、それは本当に素晴らしいことですね。
+    choices:
+      - text: 素晴らしい関係を築きましょう
+        next: emotional_end
+      - text: お互いに支え合いましょう
+        next: trust_end
+      - text: 支え合える関係は貴重です
+        next: contextual_end
+
+  # Vulnerability moment extended conversations
+  - id: shino_vulnerability_moment_extended_conversation
+    text: 怖い気持ちを素直に話せるなんて...以前の私だったら絶対に言えませんでした。
+    choices:
+      - text: 素直に話してくれてありがとう
+        next: shino_vulnerability_gratitude_response
+      - text: 成長を感じます
+        next: shino_vulnerability_growth_recognition
+      - text: 信頼してくれて嬉しいです
+        next: shino_vulnerability_trust_appreciation
+
+  - id: shino_vulnerability_gratitude_response
+    text: こちらこそ、ありがとうございます。受け入れてもらえる安心感があるから、素直になれるのかもしれません。
+    choices:
+      - text: いつでも受け入れます
+        next: shino_vulnerability_unconditional_acceptance
+      - text: 安心感は大切ですね
+        next: shino_vulnerability_security_importance
+      - text: 素直なあなたが素敵です
+        next: shino_vulnerability_authentic_beauty
+
+  - id: shino_vulnerability_growth_recognition
+    text: 成長...そうですね。怖がりな自分も、弱い自分も、全部含めて成長していけるのかもしれません。
+    choices:
+      - text: 全ての自分を受け入れることが成長です
+        next: shino_vulnerability_self_acceptance
+      - text: 弱さも強さの一部ですね
+        next: shino_vulnerability_strength_in_weakness
+      - text: 一緒に成長していきましょう
+        next: shino_vulnerability_mutual_growth
+
+  - id: shino_vulnerability_trust_appreciation
+    text: 信頼...そんな風に思ってもらえるなんて、本当に嬉しいです。信頼できる人がいるって、心強いですね。
+    choices:
+      - text: 信頼関係を大切にしましょう
+        next: shino_vulnerability_trust_value
+      - text: 心強さを分け合いましょう
+        next: shino_vulnerability_mutual_strength
+      - text: 信頼してもらえて光栄です
+        next: shino_vulnerability_honor_feeling
+
+  - id: shino_vulnerability_unconditional_acceptance
+    text: 無条件に受け入れてもらえる...そんな経験は初めてかもしれません。温かい気持ちになります。
+    choices:
+      - text: 温かい関係を築けて嬉しいです
+        next: emotional_end
+      - text: 受け入れ合える関係ですね
+        next: trust_end
+      - text: 温かい気持ちを共有しましょう
+        next: contextual_end
+
+  - id: shino_vulnerability_security_importance
+    text: 安心感の大切さ...確かにそうですね。安心できる場所があるから、冒険もできるのかもしれません。
+    choices:
+      - text: 安心できる場所を提供したいです
+        next: emotional_end
+      - text: 冒険も一緒にしましょう
+        next: trust_end
+      - text: 安心感を大切にしましょう
+        next: contextual_end
+
+  - id: shino_vulnerability_authentic_beauty
+    text: 素敵...そう言ってもらえると、素直でいることに自信が持てます。
+    choices:
+      - text: 素直なあなたが大好きです
+        next: emotional_end
+      - text: 自信を持って素直でいてください
+        next: trust_end
+      - text: 素直さは美しいです
+        next: contextual_end
+
+  - id: shino_vulnerability_self_acceptance
+    text: 自分を受け入れる...全部の自分を愛せるようになれたら、それは素晴らしいことですね。
+    choices:
+      - text: 全ての自分を愛しましょう
+        next: deep_end
+      - text: 自分を受け入れることから始めましょう
+        next: emotional_end
+      - text: 素晴らしい自分になっていきましょう
+        next: trust_end
+
+  - id: shino_vulnerability_strength_in_weakness
+    text: 弱さも強さの一部...そんな風に考えたことはありませんでした。新しい視点をもらえました。
+    choices:
+      - text: 新しい視点を一緒に探しましょう
+        next: deep_end
+      - text: 弱さも大切な部分ですね
+        next: emotional_end
+      - text: 視点を共有できて嬉しいです
+        next: trust_end
+
+  - id: shino_vulnerability_mutual_growth
+    text: 一緒に成長...そうですね。一人では気づけなかったことも、一緒にいると見えてくるものがあります。
+    choices:
+      - text: 一緒に発見していきましょう
+        next: emotional_end
+      - text: 成長を共有できて嬉しいです
+        next: trust_end
+      - text: 新しい発見を楽しみにしています
+        next: contextual_end
+
+  - id: shino_vulnerability_trust_value
+    text: 信頼関係の価値...本当に大切なものですね。時間をかけて築いてきた関係を、これからも大切にしていきたいです。
+    choices:
+      - text: 大切な関係を続けていきましょう
+        next: emotional_end
+      - text: 信頼関係を育てていきましょう
+        next: trust_end
+      - text: 時間をかけて築いた関係は貴重です
+        next: contextual_end
+
+  - id: shino_vulnerability_mutual_strength
+    text: 心強さを分け合う...そうですね。お互いが支えになれる関係って、本当に素晴らしいものですね。
+    choices:
+      - text: 支え合える関係を築きましょう
+        next: emotional_end
+      - text: お互いの強さを分け合いましょう
+        next: trust_end
+      - text: 素晴らしい関係ですね
+        next: contextual_end
+
+  - id: shino_vulnerability_honor_feeling
+    text: 光栄...そんな風に思ってもらえるなんて、信頼してもらえて本当に嬉しいです。
+    choices:
+      - text: 信頼し合える関係ですね
+        next: emotional_end
+      - text: 光栄に思います
+        next: trust_end
+      - text: 嬉しい気持ちを共有しましょう
+        next: contextual_end
+
+  # Deep question extended conversations
+  - id: shino_deep_question_extended_conversation
+    text: 存在について考える...哲学的な話になってしまいますが、一緒に考えてくれる人がいるのは心強いです。
+    choices:
+      - text: 哲学的な話も楽しいですね
+        next: shino_deep_philosophical_enjoyment
+      - text: 存在の意味を一緒に考えましょう
+        next: shino_deep_meaning_exploration
+      - text: 心強い存在になりたいです
+        next: shino_deep_support_offering
+
+  - id: shino_deep_philosophical_enjoyment
+    text: 哲学的な話を楽しいと思ってもらえるなんて...同じような関心を持つ人がいるのは嬉しいですね。
+    choices:
+      - text: 知的な会話を楽しみましょう
+        next: shino_deep_intellectual_conversation
+      - text: 関心を共有できて嬉しいです
+        next: shino_deep_shared_interest
+      - text: 深い話ができる関係ですね
+        next: shino_deep_meaningful_relationship
+
+  - id: shino_deep_meaning_exploration
+    text: 存在の意味...一人で考えていると暗い気持ちになることもありますが、一緒に考えると希望が見えてきます。
+    choices:
+      - text: 希望を一緒に見つけましょう
+        next: shino_deep_hope_discovery
+      - text: 暗い気持ちも共有しましょう
+        next: shino_deep_darkness_sharing
+      - text: 一緒に考えることで見えるものがありますね
+        next: shino_deep_collaborative_insight
+
+  - id: shino_deep_support_offering
+    text: 心強い存在...そうなってもらえたら、こんなに嬉しいことはありません。お互いに支え合えたらいいですね。
+    choices:
+      - text: お互いに支え合いましょう
+        next: shino_deep_mutual_support
+      - text: 心強い存在になります
+        next: shino_deep_reliable_presence
+      - text: 支え合える関係は素晴らしいですね
+        next: shino_deep_wonderful_relationship
+
+  - id: shino_deep_intellectual_conversation
+    text: 知的な会話...頭だけでなく、心も使って話せるのは贅沢な時間ですね。
+    choices:
+      - text: 心と頭を使った会話は貴重です
+        next: deep_end
+      - text: 贅沢な時間を過ごしていますね
+        next: emotional_end
+      - text: 知的で心温まる会話ですね
+        next: trust_end
+
+  - id: shino_deep_shared_interest
+    text: 関心を共有...同じようなことを考えている人がいるなんて、不思議で嬉しい偶然ですね。
+    choices:
+      - text: 素晴らしい偶然ですね
+        next: emotional_end
+      - text: 運命的な出会いかもしれませんね
+        next: trust_end
+      - text: 共通の関心は絆を深めますね
+        next: contextual_end
+
+  - id: shino_deep_meaningful_relationship
+    text: 深い関係...表面的ではない、本当の意味での関係を築けているような気がします。
+    choices:
+      - text: 本当の関係を築きましょう
+        next: emotional_end
+      - text: 深い関係は貴重です
+        next: trust_end
+      - text: 意味のある関係ですね
+        next: contextual_end
+
+  - id: shino_deep_hope_discovery
+    text: 希望を見つける...一緒に探してくれる人がいるなんて、それだけで希望になります。
+    choices:
+      - text: 希望を共有しましょう
+        next: emotional_end
+      - text: 一緒に希望を見つけましょう
+        next: trust_end
+      - text: 希望は大切ですね
+        next: contextual_end
+
+  - id: shino_deep_darkness_sharing
+    text: 暗い気持ちも共有...そうですね。一人で抱え込まなくてもいいのかもしれません。
+    choices:
+      - text: 一人で抱え込む必要はありません
+        next: emotional_end
+      - text: 暗い気持ちも分け合いましょう
+        next: trust_end
+      - text: 共有することで軽くなりますね
+        next: contextual_end
+
+  - id: shino_deep_collaborative_insight
+    text: 共同で得る洞察...一人では見えなかった角度から物事を見られるのは、本当に価値のあることですね。
+    choices:
+      - text: 新しい角度を一緒に見つけましょう
+        next: deep_end
+      - text: 価値のある洞察を共有しましょう
+        next: emotional_end
+      - text: 共同で考えることの価値を感じます
+        next: trust_end
+
+  - id: shino_deep_mutual_support
+    text: 相互支援...そんな関係になれたら、どんな困難も乗り越えられそうです。
+    choices:
+      - text: 困難を一緒に乗り越えましょう
+        next: emotional_end
+      - text: 支え合える関係は強いですね
+        next: trust_end
+      - text: 相互支援の関係を築きましょう
+        next: contextual_end
+
+  - id: shino_deep_reliable_presence
+    text: 頼れる存在...そんな風に思ってもらえるよう、私も頑張りたいと思います。
+    choices:
+      - text: お互いに頼り合いましょう
+        next: emotional_end
+      - text: 頼れる存在になりましょう
+        next: trust_end
+      - text: 頑張りを応援します
+        next: contextual_end
+
+  - id: shino_deep_wonderful_relationship
+    text: 素晴らしい関係...本当にそうですね。こんな関係を築けるなんて、幸せなことです。
+    choices:
+      - text: 幸せな関係ですね
+        next: emotional_end
+      - text: 素晴らしい関係を続けましょう
+        next: trust_end
+      - text: 築いた関係を大切にしましょう
+        next: contextual_end

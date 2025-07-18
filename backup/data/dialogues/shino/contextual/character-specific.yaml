@@ -1,0 +1,754 @@
+character: shino
+nodes:
+  - id: shino_remembers_silence
+    text: 前回、あまり話さなかったね……
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 1
+      - type: variable
+        name: silence_count
+        operator: greater_than
+        value: 3
+    choices:
+      - text: 話すのが苦手で
+        next: shino_remembers_silence_extended_conversation
+      - text: 今日は話したい気分です
+        next: shino_remembers_silence_extended_conversation
+      - text: ...
+        next: shino_remembers_silence_extended_conversation
+  - id: shino_remembers_kindness
+    text: 前に、優しい言葉をかけてくれたよね……
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 1
+      - type: custom
+        handler: choice_history_check
+        params:
+          pattern: kind_responses
+          minimum: 2
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 10
+    choices:
+      - text: 覚えてくれてたんですね
+        next: shino_remembers_kindness_extended_conversation
+      - text: 当然のことです
+        next: shino_remembers_kindness_extended_conversation
+      - text: ...
+        next: shino_remembers_kindness_extended_conversation
+  - id: shino_pattern_recognition
+    text: あなたって、いつも同じような選択をするね……
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 4
+      - type: custom
+        handler: choice_pattern_check
+        params:
+          pattern: consistent
+          threshold: 0.7
+    choices:
+      - text: そうですか？
+        next: shino_pattern_recognition_extended_conversation
+      - text: 僕の癖ですかね
+        next: shino_pattern_recognition_extended_conversation
+      - text: ...
+        next: shino_pattern_recognition_extended_conversation
+  - id: shino_meta_awareness
+    text: あれ……この会話、前にもしたような……
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 15
+      - type: custom
+        handler: conversation_loop_detection
+        params:
+          threshold: 3
+    effects:
+      - type: set_flag
+        flag: shino_notices_loops
+    choices:
+      - text: そうかもしれません
+        next: shino_loop_acknowledgment
+      - text: 初めてですよ
+        next: shino_loop_denial
+      - text: 大切な話だから
+        next: shino_repetition_value
+      - text: ...
+        next: shino_loop_silence
+  - id: shino_time_anomaly
+    text: 時間がおかしい……同じ夕方が何度も来てる
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 20
+      - type: flag
+        name: shino_notices_loops
+      - type: custom
+        handler: temporal_pattern_recognition
+        params:
+          anomaly_level: high
+    effects:
+      - type: set_flag
+        flag: shino_temporal_awareness
+    choices:
+      - text: 気づいたんですね
+        next: shino_awareness_validation
+      - text: 僕も感じています
+        next: shino_shared_perception
+      - text: それでも会いに来ます
+        next: shino_commitment_despite_loop
+      - text: ...
+        next: shino_temporal_silence
+  - id: shino_breaking_pattern
+    text: 今日は……いつもと違う気がする
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 25
+      - type: flag
+        name: shino_temporal_awareness
+      - type: custom
+        handler: player_choice_deviation
+        params:
+          deviation_threshold: 0.8
+    effects:
+      - type: set_flag
+        flag: shino_pattern_break
+    choices:
+      - text: 何が違うんですか？
+        next: shino_change_explanation
+      - text: 変化を感じますか？
+        next: shino_transformation_awareness
+      - text: 僕も同じです
+        next: shino_mutual_transformation
+      - text: ...
+        next: shino_breaking_pattern_extended_conversation
+  - id: shino_name_intimacy
+    text: 名前で呼んでくれるのって……嬉しいな
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 12
+      - type: custom
+        handler: name_usage_frequency
+        params:
+          minimum: 5
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    choices:
+      - text: しのさんって呼びやすいです
+        next: shino_name_comfort
+      - text: 特別な響きですね
+        next: shino_name_special
+      - text: ...
+        next: shino_name_intimacy_extended_conversation
+  - id: shino_mood_shift
+    text: 気分が変わるって……いいことだね
+    next: contextual_end
+  - id: shino_consistent_silence_pattern
+    text: ……それでも、伝わってる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    next: contextual_end
+  - id: shino_memory_appreciation
+    text: 覚えてくれてる……それだけで、嬉しい
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: memory_end
+  - id: shino_humility_response
+    text: 当然なんかじゃないよ……ありがとう
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 18
+    next: emotional_end
+  - id: shino_kindness_silence
+    text: ……言葉より、行動の方が大切だね
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 22
+    next: contextual_end
+  - id: shino_pattern_explanation
+    text: 人って、無意識に同じことを選ぶらしいよ
+    next: contextual_end
+  - id: shino_habit_acknowledgment
+    text: 癖……でも、悪い癖じゃない
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 8
+    next: shino_habit_acceptance
+  - id: shino_pattern_silence
+    text: ……パターンがあるって、安心する
+    next: shino_predictability_comfort
+  - id: shino_time_heals
+    text: 時間……不思議な力があるのかな
+    next: shino_temporal_healing
+  - id: shino_reassurance_gratitude
+    text: その言葉……信じてもいい？
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 50
+    next: trust_end
+  - id: shino_empathy_connection
+    text: わかってくれる人がいるって……
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 45
+    next: contextual_end
+  - id: shino_existence_affirmation
+    text: そう言ってくれると……少し安心する
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 60
+    next: shino_existence_relief
+  - id: shino_visibility_confirmation
+    text: 見えてる……それなら、大丈夫
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 58
+    next: shino_visibility_comfort
+  - id: shino_philosophical_partnership
+    text: 一緒に考える……それって、素敵だね
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 65
+    next: shino_intellectual_intimacy
+  - id: shino_existential_silence
+    text: ……存在するって、こういうことかな
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 70
+    next: contextual_end
+  - id: shino_being_realization
+    text: 存在するって……感じること、なのかも
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 75
+    choices:
+      - text: 感じることが証明
+        next: shino_being_realization_extended_conversation
+      - text: 存在の実感
+        next: shino_being_realization_extended_conversation
+      - text: ...
+        next: shino_being_realization_extended_conversation
+  - id: shino_communication_breakthrough
+    text: 言葉が……通じ合えてる気がする
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    choices:
+      - text: 心が通じてる
+        next: shino_communication_breakthrough_extended_conversation
+      - text: 理解し合えてる
+        next: shino_communication_breakthrough_extended_conversation
+      - text: ...
+        next: shino_communication_breakthrough_extended_conversation
+  - id: shino_nonverbal_communication
+    text: 言葉がなくても……伝わってる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 35
+    choices:
+      - text: 心で対話してる
+        next: shino_nonverbal_communication_extended_conversation
+      - text: 無言の理解
+        next: shino_nonverbal_communication_extended_conversation
+      - text: ...
+        next: shino_nonverbal_communication_extended_conversation
+  - id: shino_memory_value
+    text: 記憶って……大切な宝物なんだ
+    choices:
+      - text: 一つ一つが貴重
+        next: shino_memory_value_extended_conversation
+      - text: 心の財産
+        next: shino_memory_value_extended_conversation
+      - text: ...
+        next: shino_memory_value_extended_conversation
+  - id: shino_action_appreciation
+    text: 行動で示してくれること……嬉しい
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 28
+    choices:
+      - text: 言葉より行動
+        next: shino_action_appreciation_extended_conversation
+      - text: 気持ちを形にする
+        next: shino_action_appreciation_extended_conversation
+      - text: ...
+        next: shino_action_appreciation_extended_conversation
+  - id: shino_intuitive_understanding
+    text: 直感的な理解……深いところで繋がってる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 45
+    choices:
+      - text: 魂レベルの繋がり
+        next: shino_intuitive_understanding_extended_conversation
+      - text: 説明できない理解
+        next: shino_intuitive_understanding_extended_conversation
+      - text: ...
+        next: shino_intuitive_understanding_extended_conversation
+  - id: shino_faith_question
+    text: 信じてもいい……？本当に？
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 55
+    choices:
+      - text: 絶対に信じて
+        next: shino_faith_question_extended_conversation
+      - text: 疑いながらでも
+        next: shino_faith_question_extended_conversation
+      - text: ...
+        next: shino_faith_question_extended_conversation
+  - id: shino_understanding_value
+    text: 理解してもらえること……こんなに嬉しいなんて
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 50
+    choices:
+      - text: 理解は愛の形
+        next: shino_understanding_value_extended_conversation
+      - text: 孤独の終わり
+        next: shino_understanding_value_extended_conversation
+      - text: ...
+        next: shino_understanding_value_extended_conversation
+  - id: shino_existence_sensation
+    text: 存在の実感……今、ここにいる
+    next: shino_session_end
+  - id: shino_existential_peace
+    text: ……存在への平和
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 80
+    next: shino_session_end
+  - id: shino_mutual_comprehension
+    text: 理解し合えてる……嬉しい発見
+    next: shino_session_end
+  - id: shino_silent_understanding
+    text: ……言葉なしでも、わかる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 35
+    next: shino_session_end
+  - id: shino_natural_fluctuation
+    text: 自然な変化……受け入れてみる
+    next: shino_session_end
+  - id: shino_change_acceptance
+    text: ……変化も、悪くない
+    next: shino_session_end
+  - id: shino_wordless_understanding
+    text: 無言の理解……一番深い
+    next: shino_session_end
+  - id: shino_transcendent_silence
+    text: ……超越した静寂
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 45
+    next: shino_session_end
+  - id: shino_precious_memories
+    text: 一つ一つが貴重……大切にしたい
+    next: shino_session_end
+  - id: shino_mental_treasure
+    text: 心の財産……失くしたくない
+    next: shino_session_end
+  - id: shino_memory_reverence
+    text: ……記憶への敬意
+    next: shino_session_end
+  - id: shino_mutual_gratitude
+    text: 同じ気持ち……嬉しいな
+    next: shino_session_end
+  - id: shino_overwhelming_thanks
+    text: ……言葉にできない感謝
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    next: shino_session_end
+  - id: shino_deeds_over_words
+    text: 言葉より行動……本当にそう
+    next: shino_session_end
+  - id: shino_silent_appreciation
+    text: ……行動が語ってくれる
+    next: shino_session_end
+  - id: shino_inexplicable_knowing
+    text: 説明できない理解……でも確実
+    next: shino_session_end
+  - id: shino_profound_unity
+    text: ……深い一体感
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 55
+    next: shino_session_end
+  - id: shino_cautious_faith
+    text: 疑いながらでも……それも一つの信頼
+    next: shino_session_end
+  - id: shino_vulnerable_hope
+    text: ……脆くても、希望を持つ
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 65
+    next: shino_session_end
+  - id: shino_understanding_love
+    text: 理解は愛の形……そうかもしれない
+    next: shino_session_end
+  - id: shino_loneliness_end
+    text: 孤独の終わり……もう一人じゃない
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 70
+    next: shino_session_end
+  - id: shino_grateful_silence
+    text: ……感謝で胸がいっぱい
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 55
+    next: shino_session_end
+  - id: shino_remembers_silence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: shino_remembers_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_kindness_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_kindness_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_kindness_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_pattern_recognition_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_pattern_recognition_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_breaking_pattern_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_name_intimacy_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_being_realization_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_communication_breakthrough_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_nonverbal_communication_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_nonverbal_communication_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_memory_value_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_memory_value_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_action_appreciation_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_intuitive_understanding_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_intuitive_understanding_to_deep_end_deep_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_faith_question_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_faith_question_to_hopeful_end_hope_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_understanding_value_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_understanding_value_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_silence_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_silence_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_silence_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_silence_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_kindness_to_memory_end_memory_bridge_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_kindness_to_memory_end_memory_bridge_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_remembers_kindness_to_memory_end_memory_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_intuitive_understanding_to_deep_end_deep_bridge_to_deep_end_deep_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_intuitive_understanding_to_deep_end_deep_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_intuitive_understanding_to_deep_end_deep_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_faith_question_to_trust_end_trust_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_faith_question_to_trust_end_trust_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_faith_question_to_trust_end_trust_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_faith_question_to_hopeful_end_hope_bridge_to_hopeful_end_hope_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_faith_question_to_hopeful_end_hope_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_faith_question_to_hopeful_end_hope_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    next: hopeful_end
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end
+  - id: shino_remembers_silence_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: &a2
+      - text: 協力的な探求ですね
+        next: trust_end
+      - text: 新しい発見がありました
+        next: deep_end
+      - text: 心が通じ合います
+        next: emotional_end
+  - id: shino_remembers_kindness_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_pattern_recognition_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_breaking_pattern_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_name_intimacy_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_being_realization_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_communication_breakthrough_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_nonverbal_communication_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_memory_value_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_action_appreciation_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_intuitive_understanding_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_faith_question_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: shino_understanding_value_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: gentle_listening
+    text: 話を聞いてくれる人がいるというのは、とても心強いものです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: emotional_end
+      - text: いつでも話してください
+        next: trust_end
+      - text: 支え合えますね
+        next: contextual_end

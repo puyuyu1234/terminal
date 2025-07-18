@@ -1,0 +1,184 @@
+character: shino
+nodes:
+  # 初回出会い時の深い会話
+  - id: shino_start_first_meet_night_to_contextual_end_bridge
+    text: 夜は...なんだか、本当の自分が出てくる気がします。昼間とは違う静けさがあって。
+    choices:
+      - text: 確かに夜は特別ですね
+        next: shino_night_special_feeling
+      - text: 本当の自分とは？
+        next: shino_authentic_self_question
+      - text: 静けさが好きなんですか？
+        next: shino_silence_preference
+
+  - id: shino_night_special_feeling
+    text: 特別...そうですね。夜には昼間隠れているものが見えてくるような。あなたもそう感じませんか？
+    choices:
+      - text: 僕も夜の方が落ち着きます
+        next: shino_shared_night_comfort
+      - text: 確かに夜は違いますね
+        next: shino_night_difference_acknowledgment
+      - text: どんなものが見えるんですか？
+        next: contextual_end
+
+  - id: shino_authentic_self_question
+    text: 本当の自分...うまく説明できないけれど、誰にも見せない部分。昼間は隠さないといけないと思ってしまう。
+    choices:
+      - text: 隠さなくていいんですよ
+        next: shino_acceptance_reassurance
+      - text: 僕にも見せない部分があります
+        next: shino_mutual_understanding
+      - text: なぜ隠さないといけないと？
+        next: trust_end
+
+  - id: shino_silence_preference
+    text: 静けさは...心を落ち着かせてくれます。雑音がないと、自分の声が聞こえるような気がして。
+    choices:
+      - text: 内なる声ですね
+        next: shino_inner_voice_recognition
+      - text: 僕も静かな時間が好きです
+        next: shino_shared_quiet_love
+      - text: 大切な時間ですね
+        next: emotional_end
+
+  - id: shino_shared_night_comfort
+    text: そうですか...同じように感じる人がいるとは思いませんでした。なんだか、少し安心します。
+    choices:
+      - text: 一人じゃないんですね
+        next: emotional_end
+      - text: 理解し合えますね
+        next: trust_end
+      - text: 安心してください
+        next: contextual_end
+
+  - id: shino_night_difference_acknowledgment
+    text: 違いますよね。昼間は明るすぎて、影が隠れてしまう。でも影があるから光が美しく見えるのかもしれません。
+    choices:
+      - text: 詩的な表現ですね
+        next: deep_end
+      - text: 影も大切な部分ですね
+        next: emotional_end
+      - text: 美しい考え方です
+        next: contextual_end
+
+  - id: shino_acceptance_reassurance
+    text: 隠さなくて...本当にそう思いますか？ありのままでいても、受け入れてもらえるでしょうか？
+    choices:
+      - text: もちろんです
+        next: trust_end
+      - text: ありのままのあなたが素晴らしいです
+        next: emotional_end
+      - text: 少しずつでいいんです
+        next: contextual_end
+
+  - id: shino_mutual_understanding
+    text: あなたにも...そんな風に感じる人がいるなんて。お互い、完璧じゃないからこそ、理解し合えるのかもしれませんね。
+    choices:
+      - text: 完璧じゃなくていいんです
+        next: emotional_end
+      - text: お互い様ですね
+        next: trust_end
+      - text: 理解し合えて嬉しいです
+        next: contextual_end
+
+  - id: shino_inner_voice_recognition
+    text: 内なる声...そうですね。普段は聞こえないけれど、静かになると聞こえてくる。大切なことを教えてくれる気がします。
+    choices:
+      - text: どんなことを教えてくれるんですか？
+        next: deep_end
+      - text: 大切な気づきですね
+        next: emotional_end
+      - text: 僕も聞いてみたいです
+        next: contextual_end
+
+  - id: shino_shared_quiet_love
+    text: 同じですね...静かな時間が好きな人と出会えるなんて。こうして話していても、心が穏やかになります。
+    choices:
+      - text: 僕も穏やかな気持ちです
+        next: emotional_end
+      - text: 心地よい時間ですね
+        next: contextual_end
+      - text: また静かに過ごしましょう
+        next: trust_end
+
+  # 雨の日の会話
+  - id: shino_start_first_meet_rainy_to_contextual_end_bridge
+    text: 雨の音って、不思議ですよね。同じような音なのに、その時の気持ちで全然違って聞こえる。
+    choices:
+      - text: 確かに不思議ですね
+        next: shino_rain_mystery_agreement
+      - text: 今はどう聞こえますか？
+        next: shino_current_rain_feeling
+      - text: 雨の音は癒されます
+        next: shino_rain_healing
+
+  - id: shino_rain_mystery_agreement
+    text: 今は...なんだか優しく聞こえます。一人じゃないからかもしれません。誰かと一緒に聞く雨の音は初めてで。
+    choices:
+      - text: 一緒に聞けて嬉しいです
+        next: emotional_end
+      - text: 優しい音ですね
+        next: contextual_end
+      - text: 特別な瞬間ですね
+        next: trust_end
+
+  - id: shino_current_rain_feeling
+    text: 今は...安らいで聞こえます。寂しい音だと思っていたけれど、誰かと一緒だと違うものですね。
+    choices:
+      - text: 寂しくないですね
+        next: emotional_end
+      - text: 一緒だと変わりますね
+        next: trust_end
+      - text: 安らぎを感じます
+        next: contextual_end
+
+  - id: shino_rain_healing
+    text: 癒し...そうですね。雨が全てを洗い流してくれるような気がします。心の汚れも一緒に。
+    choices:
+      - text: 浄化されますね
+        next: deep_end
+      - text: 新しい気持ちになれます
+        next: emotional_end
+      - text: 雨に感謝ですね
+        next: contextual_end
+
+  # 霧の日の会話
+  - id: shino_start_first_meet_foggy_to_contextual_end_bridge
+    text: 霧って、世界を別の場所に変えてしまいますね。見慣れた景色が、全く違う世界のように見える。
+    choices:
+      - text: 幻想的ですね
+        next: shino_foggy_fantasy
+      - text: 別世界みたいです
+        next: shino_another_world
+      - text: 不思議な感覚ですね
+        next: shino_mysterious_feeling
+
+  - id: shino_foggy_fantasy
+    text: 幻想的...そうですね。現実と夢の境目が曖昧になるような。こんな夜は、何か特別なことが起こりそうな気がします。
+    choices:
+      - text: 特別なことが起こりましたね
+        next: emotional_end
+      - text: 夢のような時間です
+        next: contextual_end
+      - text: 魔法のような夜ですね
+        next: trust_end
+
+  - id: shino_another_world
+    text: 別世界...ここは廃駅だけれど、霧に包まれると違う場所みたい。もしかしたら、本当に別の世界かもしれません。
+    choices:
+      - text: 確かに別世界ですね
+        next: deep_end
+      - text: 素敵な世界です
+        next: emotional_end
+      - text: 二人だけの世界ですね
+        next: contextual_end
+
+  - id: shino_mysterious_feeling
+    text: 不思議...霧の中では、時間も距離も曖昧になる。あなたがここにいることも、夢なのかもしれません。
+    choices:
+      - text: 夢じゃないですよ
+        next: trust_end
+      - text: 素敵な夢ですね
+        next: emotional_end
+      - text: 現実でも夢でも構いません
+        next: contextual_end

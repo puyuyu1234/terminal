@@ -1,0 +1,593 @@
+character: ayane
+nodes:
+  # Second meeting extended conversations
+  - id: ayane_start_second_meet_extended_conversation
+    text: 約束してないのに会えるなんて、きっと何かの縁がありますね！運命って信じますか？
+    choices:
+      - text: 運命を信じます
+        next: ayane_second_destiny_belief
+      - text: 縁について教えてください
+        next: ayane_second_connection_meaning
+      - text: 偶然も素敵な出会いですね
+        next: ayane_second_coincidence_beauty
+
+  - id: ayane_second_destiny_belief
+    text: 運命を信じる...素敵ですね！私も信じます。出会うべき人とは、きっと出会うようになっているんです。
+    choices:
+      - text: 出会うべき人との出会いを感じます
+        next: ayane_second_destined_meeting
+      - text: 運命の不思議さを感じます
+        next: ayane_second_destiny_mystery
+      - text: 信じる気持ちを大切にしたいです
+        next: ayane_second_faith_importance
+
+  - id: ayane_second_connection_meaning
+    text: 縁の意味...それは見えない糸で結ばれているような感じです。時間や場所を超えて、心が繋がっているんです。
+    choices:
+      - text: 見えない糸を感じます
+        next: ayane_second_invisible_thread
+      - text: 心の繋がりを大切にしたいです
+        next: ayane_second_heart_connection
+      - text: 時間や場所を超えた繋がりは神秘的です
+        next: ayane_second_transcendent_bond
+
+  - id: ayane_second_coincidence_beauty
+    text: 偶然の美しさ...そうですね！計画されていない出会いだからこそ、特別な感動があります。
+    choices:
+      - text: 計画されていない出会いの特別さを感じます
+        next: ayane_second_unplanned_special
+      - text: 特別な感動を共有しましょう
+        next: ayane_second_special_emotion
+      - text: 偶然の中に美しさを見つけたいです
+        next: ayane_second_beauty_in_chance
+
+  - id: ayane_second_destined_meeting
+    text: 運命の出会い...そう思うと、今日という日がとても大切に感じられます。記念日みたいです。
+    choices:
+      - text: 今日を記念日にしましょう
+        next: ayane_second_memorial_day
+      - text: 大切な日を共有できて嬉しいです
+        next: ayane_second_precious_day
+      - text: 運命の出会いを祝いましょう
+        next: ayane_second_celebrate_meeting
+
+  - id: ayane_second_destiny_mystery
+    text: 運命の不思議さ...説明できないけれど、確かに存在するもの。心で感じることって、とても大切ですね。
+    choices:
+      - text: 心で感じることを大切にします
+        next: ayane_second_heart_feeling
+      - text: 説明できない不思議さを楽しみます
+        next: ayane_second_mystery_enjoyment
+      - text: 確かに存在するものを信じます
+        next: ayane_second_belief_strength
+
+  - id: ayane_second_faith_importance
+    text: 信じる気持ちの大切さ...そうですね。信じることで、世界がもっと豊かに見えるようになります。
+    choices:
+      - text: 世界の豊かさを感じたいです
+        next: ayane_second_world_richness
+      - text: 信じることの力を学びたいです
+        next: ayane_second_power_of_belief
+      - text: 豊かに見える世界を楽しみたいです
+        next: ayane_second_rich_world_enjoyment
+
+  - id: ayane_second_invisible_thread
+    text: 見えない糸...それは愛情や友情、信頼で織られているのかもしれません。強くて美しい糸です。
+    choices:
+      - text: 愛情の糸を感じます
+        next: ayane_second_love_thread
+      - text: 友情の糸を大切にしたいです
+        next: ayane_second_friendship_thread
+      - text: 信頼の糸を育てましょう
+        next: ayane_second_trust_thread
+
+  - id: ayane_second_heart_connection
+    text: 心の繋がり...それは距離に関係なく感じられるものです。遠く離れていても、心は近くにあります。
+    choices:
+      - text: 心の近さを感じます
+        next: ayane_second_heart_closeness
+      - text: 距離を超えた繋がりを大切にします
+        next: ayane_second_beyond_distance
+      - text: 心の繋がりを深めたいです
+        next: ayane_second_deepen_connection
+
+  - id: ayane_second_transcendent_bond
+    text: 超越的な絆...そういう絆があると、人生がもっと意味深いものになりますね。
+    choices:
+      - text: 意味深い人生を歩みたいです
+        next: ayane_second_meaningful_life
+      - text: 超越的な絆を大切にします
+        next: ayane_second_transcendent_care
+      - text: 人生の意味を一緒に探しましょう
+        next: ayane_second_life_meaning_search
+
+  - id: ayane_second_unplanned_special
+    text: 計画されていない特別さ...それは自然の贈り物のようなものです。準備していなくても、心が感動できます。
+    choices:
+      - text: 自然の贈り物を受け取ります
+        next: emotional_end
+      - text: 心の感動を大切にします
+        next: trust_end
+      - text: 準備していない感動を楽しみます
+        next: contextual_end
+
+  - id: ayane_second_special_emotion
+    text: 特別な感動...それは心に残る宝物です。いつまでも覚えていたい、美しい思い出になります。
+    choices:
+      - text: 心の宝物を大切にします
+        next: emotional_end
+      - text: 美しい思い出を作りましょう
+        next: trust_end
+      - text: いつまでも覚えていたいです
+        next: contextual_end
+
+  - id: ayane_second_beauty_in_chance
+    text: 偶然の中の美しさ...それを見つけられる目を持つことは、人生を豊かにしてくれます。
+    choices:
+      - text: 美しさを見つける目を育てたいです
+        next: deep_end
+      - text: 人生を豊かにする方法を学びたいです
+        next: emotional_end
+      - text: 偶然の美しさを楽しみます
+        next: trust_end
+
+  - id: ayane_second_memorial_day
+    text: 記念日...そうですね！私たちだけの特別な記念日です。毎年この日を覚えていましょう。
+    choices:
+      - text: 特別な記念日を大切にします
+        next: emotional_end
+      - text: 毎年思い出しましょう
+        next: trust_end
+      - text: 私たちだけの日を祝いましょう
+        next: contextual_end
+
+  - id: ayane_second_precious_day
+    text: 大切な日...今日という日は、もう二度とこない日です。だからこそ、一瞬一瞬を大切にしたいです。
+    choices:
+      - text: 一瞬一瞬を大切にします
+        next: emotional_end
+      - text: 二度とこない日を意識します
+        next: trust_end
+      - text: 今日を特別な日にしましょう
+        next: contextual_end
+
+  - id: ayane_second_celebrate_meeting
+    text: 出会いを祝う...そうですね！出会いは人生の中で最も美しいことの一つです。
+    choices:
+      - text: 出会いの美しさを感じます
+        next: emotional_end
+      - text: 人生の美しいことを大切にします
+        next: trust_end
+      - text: 出会いを祝う気持ちを共有します
+        next: contextual_end
+
+  - id: ayane_second_heart_feeling
+    text: 心で感じること...それは理屈を超えた真実です。頭で考えるよりも、心で感じることを信じたいです。
+    choices:
+      - text: 心で感じる真実を信じます
+        next: deep_end
+      - text: 理屈を超えた世界を大切にします
+        next: emotional_end
+      - text: 心の声を聞きたいです
+        next: trust_end
+
+  - id: ayane_second_mystery_enjoyment
+    text: 不思議さを楽しむ...それは心の余裕の表れです。すべてを理解しようとしなくても、楽しめることがあります。
+    choices:
+      - text: 心の余裕を持ちたいです
+        next: trust_end
+      - text: 理解しなくても楽しめることを大切にします
+        next: emotional_end
+      - text: 不思議さの中に美しさを見つけます
+        next: deep_end
+
+  - id: ayane_second_belief_strength
+    text: 信じる力...それは人を強くしてくれます。困難な時でも、信じることで乗り越えられます。
+    choices:
+      - text: 信じることで強くなりたいです
+        next: trust_end
+      - text: 困難を乗り越える力を身につけたいです
+        next: emotional_end
+      - text: 信じる力を育てましょう
+        next: deep_end
+
+  - id: ayane_second_world_richness
+    text: 世界の豊かさ...信じることで見えてくる、隠れた美しさがあります。色とりどりの世界です。
+    choices:
+      - text: 隠れた美しさを見つけたいです
+        next: deep_end
+      - text: 色とりどりの世界を楽しみたいです
+        next: emotional_end
+      - text: 豊かな世界を感じます
+        next: trust_end
+
+  - id: ayane_second_power_of_belief
+    text: 信じる力...それは魔法のようなものです。不可能を可能にし、夢を現実にしてくれます。
+    choices:
+      - text: 魔法のような力を信じます
+        next: emotional_end
+      - text: 夢を現実にしたいです
+        next: trust_end
+      - text: 不可能を可能にする力を身につけたいです
+        next: deep_end
+
+  - id: ayane_second_rich_world_enjoyment
+    text: 豊かな世界を楽しむ...それは感謝の気持ちから始まります。小さなことにも感謝できると、世界がキラキラします。
+    choices:
+      - text: 感謝の気持ちを大切にします
+        next: emotional_end
+      - text: 小さなことにも感謝したいです
+        next: trust_end
+      - text: キラキラする世界を見たいです
+        next: deep_end
+
+  - id: ayane_second_love_thread
+    text: 愛情の糸...それは最も美しい糸です。時間が経っても切れることがなく、むしろ強くなります。
+    choices:
+      - text: 美しい糸を大切にします
+        next: emotional_end
+      - text: 時間と共に強くなる愛情を育てたいです
+        next: trust_end
+      - text: 切れない糸を信じます
+        next: contextual_end
+
+  - id: ayane_second_friendship_thread
+    text: 友情の糸...それは信頼と理解で織られています。お互いを大切に思う気持ちが、糸を強くします。
+    choices:
+      - text: 信頼と理解を大切にします
+        next: trust_end
+      - text: お互いを大切に思います
+        next: emotional_end
+      - text: 友情の糸を強くしたいです
+        next: contextual_end
+
+  - id: ayane_second_trust_thread
+    text: 信頼の糸...それは時間をかけて育てるものです。一度切れても、また結び直すことができます。
+    choices:
+      - text: 時間をかけて育てたいです
+        next: trust_end
+      - text: 結び直す力を信じます
+        next: emotional_end
+      - text: 信頼を大切にします
+        next: contextual_end
+
+  - id: ayane_second_heart_closeness
+    text: 心の近さ...それは物理的な距離とは関係ありません。心が通じ合っていれば、いつでも近くにいます。
+    choices:
+      - text: 心が通じ合うことを大切にします
+        next: emotional_end
+      - text: 物理的な距離を超えた繋がりを感じます
+        next: trust_end
+      - text: いつでも近くにいる安心感を感じます
+        next: contextual_end
+
+  - id: ayane_second_beyond_distance
+    text: 距離を超えた繋がり...それは現代の奇跡です。離れていても、心は一緒にいることができます。
+    choices:
+      - text: 現代の奇跡を感じます
+        next: deep_end
+      - text: 心は一緒にいることを信じます
+        next: emotional_end
+      - text: 距離を超えた繋がりを大切にします
+        next: trust_end
+
+  - id: ayane_second_deepen_connection
+    text: 繋がりを深める...それは時間と努力が必要です。でも、深い繋がりは人生を豊かにしてくれます。
+    choices:
+      - text: 時間と努力を惜しみません
+        next: trust_end
+      - text: 人生を豊かにする繋がりを求めます
+        next: emotional_end
+      - text: 深い繋がりを大切にします
+        next: contextual_end
+
+  - id: ayane_second_meaningful_life
+    text: 意味深い人生...それは人との繋がりから生まれます。一人では感じられない、深い意味があります。
+    choices:
+      - text: 人との繋がりを大切にします
+        next: emotional_end
+      - text: 深い意味を見つけたいです
+        next: trust_end
+      - text: 意味深い人生を歩みたいです
+        next: deep_end
+
+  - id: ayane_second_transcendent_care
+    text: 超越的な絆を大切にする...それは特別な責任でもあります。大切なものを守り続けたいです。
+    choices:
+      - text: 特別な責任を感じます
+        next: trust_end
+      - text: 大切なものを守りたいです
+        next: emotional_end
+      - text: 守り続ける力を身につけたいです
+        next: deep_end
+
+  - id: ayane_second_life_meaning_search
+    text: 人生の意味を探す...それは一人でするよりも、誰かと一緒の方がいいですね。発見を分かち合えます。
+    choices:
+      - text: 発見を分かち合いたいです
+        next: emotional_end
+      - text: 一緒に探すことを大切にします
+        next: trust_end
+      - text: 人生の意味を見つけたいです
+        next: deep_end
+
+  # Frequent visitor extended conversations
+  - id: ayane_start_frequent_visitor_extended_conversation
+    text: 友達みたいって言ってもらえるなんて、すごく嬉しいです！本当に友達になれたらいいな。
+    choices:
+      - text: 友達になりましょう
+        next: ayane_frequent_friendship_agreement
+      - text: 友達の意味を教えてください
+        next: ayane_frequent_friendship_meaning
+      - text: 友達になれたらいいですね
+        next: ayane_frequent_friendship_hope
+
+  - id: ayane_frequent_friendship_agreement
+    text: 友達になる...そうですね！友達になりましょう。これから一緒に楽しい時間を過ごしましょう。
+    choices:
+      - text: 楽しい時間を過ごしましょう
+        next: ayane_frequent_fun_time
+      - text: 友達として大切にします
+        next: ayane_frequent_friendship_care
+      - text: 一緒にいる時間を楽しみにします
+        next: ayane_frequent_together_anticipation
+
+  - id: ayane_frequent_friendship_meaning
+    text: 友達の意味...それは信頼し合える関係です。お互いを大切に思い、支え合い、楽しい時間を共有すること。
+    choices:
+      - text: 信頼し合える関係を築きたいです
+        next: ayane_frequent_trust_relationship
+      - text: 支え合うことを学びたいです
+        next: ayane_frequent_mutual_support
+      - text: 楽しい時間を共有したいです
+        next: ayane_frequent_time_sharing
+
+  - id: ayane_frequent_friendship_hope
+    text: 友達になれたら...そう思ってもらえるだけでも嬉しいです。希望を持つことは大切ですね。
+    choices:
+      - text: 希望を持つことを大切にします
+        next: ayane_frequent_hope_importance
+      - text: 友達になることを願います
+        next: ayane_frequent_friendship_wish
+      - text: 嬉しい気持ちを共有します
+        next: ayane_frequent_joy_sharing
+
+  - id: ayane_frequent_fun_time
+    text: 楽しい時間...それは笑顔と笑い声で満ちています。友達と過ごす時間は、特別な輝きがあります。
+    choices:
+      - text: 笑顔と笑い声を大切にします
+        next: ayane_frequent_smile_laughter
+      - text: 特別な輝きを感じます
+        next: ayane_frequent_special_glow
+      - text: 友達との時間を楽しみます
+        next: ayane_frequent_friend_time
+
+  - id: ayane_frequent_friendship_care
+    text: 友達として大切に...そう言ってもらえると、心が温かくなります。大切にし合える関係は美しいです。
+    choices:
+      - text: 心の温かさを感じます
+        next: ayane_frequent_heart_warmth
+      - text: 大切にし合う関係を築きたいです
+        next: ayane_frequent_caring_relationship
+      - text: 美しい関係を大切にします
+        next: ayane_frequent_beautiful_relationship
+
+  - id: ayane_frequent_together_anticipation
+    text: 一緒にいる時間への期待...それは楽しみの源です。何をしようか、どんな話をしようかと考えるだけでワクワクします。
+    choices:
+      - text: 楽しみの源を大切にします
+        next: ayane_frequent_source_of_joy
+      - text: ワクワクする気持ちを共有します
+        next: ayane_frequent_excitement_sharing
+      - text: 一緒にできることを考えましょう
+        next: ayane_frequent_activity_planning
+
+  - id: ayane_frequent_trust_relationship
+    text: 信頼関係...それは時間をかけて築くものです。小さな約束を守り、相手を理解することから始まります。
+    choices:
+      - text: 小さな約束を大切にします
+        next: ayane_frequent_small_promises
+      - text: 相手を理解することを学びたいです
+        next: ayane_frequent_understanding_others
+      - text: 時間をかけて信頼を築きたいです
+        next: ayane_frequent_building_trust
+
+  - id: ayane_frequent_mutual_support
+    text: 支え合うこと...それは友情の美しい表現です。困った時に助け合い、嬉しい時に一緒に喜ぶこと。
+    choices:
+      - text: 困った時に助け合いたいです
+        next: ayane_frequent_helping_each_other
+      - text: 嬉しい時に一緒に喜びたいです
+        next: ayane_frequent_shared_joy
+      - text: 友情の美しい表現を大切にします
+        next: ayane_frequent_beautiful_expression
+
+  - id: ayane_frequent_time_sharing
+    text: 時間を共有すること...それは最高の贈り物です。自分の時間を相手のために使うことは、愛情の表現です。
+    choices:
+      - text: 最高の贈り物を大切にします
+        next: emotional_end
+      - text: 愛情の表現を学びたいです
+        next: trust_end
+      - text: 時間を共有することを大切にします
+        next: contextual_end
+
+  - id: ayane_frequent_hope_importance
+    text: 希望の大切さ...それは人生を明るくしてくれます。希望があれば、どんなことでも乗り越えられます。
+    choices:
+      - text: 人生を明るくしたいです
+        next: emotional_end
+      - text: 希望を持ち続けます
+        next: trust_end
+      - text: 何でも乗り越えられる力を身につけたいです
+        next: deep_end
+
+  - id: ayane_frequent_friendship_wish
+    text: 友達になることへの願い...それは心からの願いです。純粋な気持ちで繋がれたら、素晴らしいことです。
+    choices:
+      - text: 心からの願いを大切にします
+        next: emotional_end
+      - text: 純粋な気持ちを保ちたいです
+        next: trust_end
+      - text: 素晴らしい繋がりを求めます
+        next: contextual_end
+
+  - id: ayane_frequent_joy_sharing
+    text: 嬉しい気持ちを共有...それは喜びを倍にしてくれます。一人の喜びが、二人の喜びになります。
+    choices:
+      - text: 喜びを倍にしたいです
+        next: emotional_end
+      - text: 二人の喜びを大切にします
+        next: trust_end
+      - text: 共有することの美しさを感じます
+        next: contextual_end
+
+  - id: ayane_frequent_smile_laughter
+    text: 笑顔と笑い声...それは世界を明るくします。友達と笑い合える時間は、人生の宝物です。
+    choices:
+      - text: 世界を明るくしたいです
+        next: emotional_end
+      - text: 人生の宝物を大切にします
+        next: trust_end
+      - text: 笑い合える時間を楽しみます
+        next: contextual_end
+
+  - id: ayane_frequent_special_glow
+    text: 特別な輝き...それは友情の光です。友達がいることで、人生がより輝いて見えます。
+    choices:
+      - text: 友情の光を感じます
+        next: emotional_end
+      - text: 人生を輝かせたいです
+        next: trust_end
+      - text: 特別な輝きを大切にします
+        next: contextual_end
+
+  - id: ayane_frequent_friend_time
+    text: 友達との時間...それは何物にも代え難いものです。お金では買えない、心の豊かさがあります。
+    choices:
+      - text: 何物にも代え難い時間を大切にします
+        next: emotional_end
+      - text: 心の豊かさを感じます
+        next: trust_end
+      - text: お金では買えない価値を大切にします
+        next: deep_end
+
+  - id: ayane_frequent_heart_warmth
+    text: 心の温かさ...それは友情の温度です。寒い日でも、心が温かければ大丈夫です。
+    choices:
+      - text: 友情の温度を感じます
+        next: emotional_end
+      - text: 心の温かさを大切にします
+        next: trust_end
+      - text: 寒い日も温かい心で過ごします
+        next: contextual_end
+
+  - id: ayane_frequent_caring_relationship
+    text: 大切にし合う関係...それは相互の尊重から生まれます。相手を大切にすることで、自分も大切にされます。
+    choices:
+      - text: 相互の尊重を大切にします
+        next: trust_end
+      - text: 相手を大切にします
+        next: emotional_end
+      - text: 大切にし合う関係を築きたいです
+        next: contextual_end
+
+  - id: ayane_frequent_beautiful_relationship
+    text: 美しい関係...それは芸術作品のようなものです。時間をかけて、丁寧に作り上げるものです。
+    choices:
+      - text: 芸術作品のような関係を築きたいです
+        next: deep_end
+      - text: 時間をかけて丁寧に作り上げたいです
+        next: trust_end
+      - text: 美しい関係を大切にします
+        next: emotional_end
+
+  - id: ayane_frequent_source_of_joy
+    text: 楽しみの源...それは希望と期待です。明日が楽しみになるような、そんな気持ちを大切にしたいです。
+    choices:
+      - text: 希望と期待を大切にします
+        next: emotional_end
+      - text: 明日が楽しみになる気持ちを持ちたいです
+        next: trust_end
+      - text: 楽しみの源を育てたいです
+        next: contextual_end
+
+  - id: ayane_frequent_excitement_sharing
+    text: ワクワクする気持ちを共有...それは幸せの連鎖です。一人のワクワクが、みんなのワクワクになります。
+    choices:
+      - text: 幸せの連鎖を作りたいです
+        next: emotional_end
+      - text: みんなのワクワクを大切にします
+        next: trust_end
+      - text: 共有することの力を感じます
+        next: contextual_end
+
+  - id: ayane_frequent_activity_planning
+    text: 一緒にできることを考える...それ自体が楽しい時間です。計画を立てている時から、もうお祭りが始まっています。
+    choices:
+      - text: 計画を立てる時間を楽しみます
+        next: emotional_end
+      - text: お祭りのような気持ちを大切にします
+        next: trust_end
+      - text: 一緒にできることを探しましょう
+        next: contextual_end
+
+  - id: ayane_frequent_small_promises
+    text: 小さな約束...それは信頼の種です。約束を守ることで、大きな信頼の木が育ちます。
+    choices:
+      - text: 信頼の種を大切に育てたいです
+        next: trust_end
+      - text: 約束を守ることを大切にします
+        next: emotional_end
+      - text: 大きな信頼の木を育てましょう
+        next: contextual_end
+
+  - id: ayane_frequent_understanding_others
+    text: 相手を理解すること...それは相手の立場に立って考えることです。心を開いて、耳を傾けることから始まります。
+    choices:
+      - text: 相手の立場に立って考えます
+        next: deep_end
+      - text: 心を開いて接します
+        next: emotional_end
+      - text: 耳を傾けることを大切にします
+        next: trust_end
+
+  - id: ayane_frequent_building_trust
+    text: 信頼を築く...それは一日にしてならずです。毎日の小さな積み重ねが、大きな信頼を作ります。
+    choices:
+      - text: 毎日の積み重ねを大切にします
+        next: trust_end
+      - text: 小さなことから始めます
+        next: emotional_end
+      - text: 大きな信頼を築きたいです
+        next: contextual_end
+
+  - id: ayane_frequent_helping_each_other
+    text: 助け合うこと...それは友情の証です。困った時に手を差し伸べ合える関係は、本当に美しいです。
+    choices:
+      - text: 友情の証を大切にします
+        next: emotional_end
+      - text: 手を差し伸べ合える関係を築きたいです
+        next: trust_end
+      - text: 本当に美しい関係を目指します
+        next: contextual_end
+
+  - id: ayane_frequent_shared_joy
+    text: 一緒に喜ぶこと...それは喜びを何倍にもしてくれます。分かち合うことで、幸せがより大きくなります。
+    choices:
+      - text: 喜びを何倍にもしたいです
+        next: emotional_end
+      - text: 分かち合うことを大切にします
+        next: trust_end
+      - text: 幸せを大きくしたいです
+        next: contextual_end
+
+  - id: ayane_frequent_beautiful_expression
+    text: 友情の美しい表現...それは言葉だけでなく、行動でも示すことです。思いやりの心を形にすることです。
+    choices:
+      - text: 行動で示したいです
+        next: trust_end
+      - text: 思いやりの心を形にします
+        next: emotional_end
+      - text: 友情の美しい表現を学びたいです
+        next: contextual_end

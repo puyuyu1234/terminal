@@ -1,0 +1,10 @@
+dialogues:
+  - id: ayane_start_greeting
+    text: "あ、また来てくれたんですね。この廃駅で待つのも、最近は慣れてきました。"
+    choices:
+      - text: "いつもここで何をしているの？"
+        next: ayane_neutral_activity
+      - text: "電車を待っているの？"
+        next: ayane_neutral_train
+      - text: "少し話していこうか"
+        next: ayane_neutral_sunset

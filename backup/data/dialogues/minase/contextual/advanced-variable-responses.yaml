@@ -1,0 +1,205 @@
+conversations:
+  # 予言の正確性による自己認識の変化
+  - id: minase_accuracy_self_doubt
+    text: "私の予言..."
+    conditions:
+      - if: "minase_accuracy_rate >= 90 && minase_prophecy_count >= 10"
+        text: "私の予言、当たりすぎてるわね。これは能力なの？それとも、私が現実を操作してるの？"
+      - if: "minase_accuracy_rate >= 70"
+        text: "私の予言、結構当たってるけど...時々、自分で未来を作ってるような気がするの。"
+      - if: "minase_accuracy_rate <= 30"
+        text: "私の予言、全然当たらないわね。でも、それで救われた人がいるかもしれない。"
+      - else:
+        text: "私の予言、どうかしら？"
+    choices:
+      - text: "現実を操作してる？"
+        next: minase_reality_manipulation
+      - text: "予言が外れる方がいい？"
+        next: minase_failure_preference
+      - text: "能力の正体がわからない？"
+        next: minase_power_mystery
+
+  # 時間感覚の歪みによる孤独感
+  - id: minase_temporal_isolation
+    text: "時間の流れが違うと..."
+    conditions:
+      - if: "minase_time_distortion >= 6 && total_visits >= 15"
+        text: "時間の流れが違うと、誰とも本当の意味でつながれないのね。私だけが早送りで生きてるみたい。"
+      - if: "minase_time_distortion >= 4"
+        text: "時間の流れが違うと、会話がずれるのよね。あなたの一言に、私は何年も考えてしまう。"
+      - if: "minase_time_distortion >= 2"
+        text: "時間の流れが違うと、寂しいものね。"
+      - else:
+        text: "時間の流れ、感じます？"
+    choices:
+      - text: "孤独なんだね"
+        next: minase_temporal_loneliness
+      - text: "時間を合わせようとしてみる"
+        next: minase_time_synchronization
+      - text: "つながりは時間を超える"
+        next: minase_timeless_connection
+
+  # 他キャラクターとの関係性認識
+  - id: minase_character_relationships
+    text: "ここに来る人たちは..."
+    conditions:
+      - if: "has_met_all_characters == true && minase_trust_level >= 6"
+        text: "ここに来る人たちは、みんな時間に囚われてるのね。過去に縛られた子、未来を恐れる子..."
+      - if: "character_encounter_count.shino >= 3 && minase_trust_level >= 4"
+        text: "ここに来る人たちは、あの薬を飲んでる子みたいに、現実から逃げてる人が多いわね。"
+      - if: "character_encounter_count.ayane >= 2"
+        text: "ここに来る人たちは、無邪気な子みたいに、本当の自分を隠してる人もいるのね。"
+      - else:
+        text: "ここに来る人たちは、どんな人なのかしら？"
+    choices:
+      - text: "時間に囚われてる？"
+        next: minase_time_prisoners
+      - text: "みんな何かから逃げてる？"
+        next: minase_escape_analysis
+      - text: "君はどう？"
+        next: minase_self_reflection
+
+  # 夜の進行による能力の変化
+  - id: minase_night_power_fluctuation
+    text: "夜が深くなると..."
+    conditions:
+      - if: "night_progression >= 9 && minase_death_sight >= 2"
+        text: "夜が深くなると、死の匂いが強くなるの。生と死の境界が薄くなって、見えないものが見えてくる。"
+      - if: "night_progression >= 7 && minase_time_distortion >= 4"
+        text: "夜が深くなると、時間の歪みが激しくなるわね。過去と未来が混じり合って..."
+      - if: "night_progression >= 5"
+        text: "夜が深くなると、視界がクリアになるの。昼間は見えないものが見えるようになる。"
+      - else:
+        text: "夜が深くなると、静かになりますね。"
+    choices:
+      - text: "死の匂い？"
+        next: minase_death_perception
+      - text: "過去と未来が混じる？"
+        next: minase_temporal_mixing
+      - text: "何が見えるの？"
+        next: minase_night_visions
+
+  # プレイヤーの未来への関与度
+  - id: minase_player_future_involvement
+    text: "あなたの未来は..."
+    conditions:
+      - if: "player_empathy_level >= 6 && minase_trust_level >= 7"
+        text: "あなたの未来は、人を救うことに関わってるわね。でも、救えない人もいることを知って苦しむ。"
+      - if: "player_protective_instinct >= 5"
+        text: "あなたの未来は、誰かを守ることに費やされるの。でも、一番守りたい人は守れない。"
+      - if: "player_curiosity_level >= 6"
+        text: "あなたの未来は、知らない方がいいことを知ってしまうことね。真実は時として残酷よ。"
+      - else:
+        text: "あなたの未来は、まだ見えないわね。"
+    choices:
+      - text: "救えない人がいる？"
+        next: minase_救済の限界
+      - text: "一番守りたい人は？"
+        next: minase_protection_failure
+      - text: "知らない方がいいこと？"
+        next: minase_dangerous_truth
+
+  # 感情的深度による能力への影響
+  - id: minase_emotion_power_interaction
+    text: "感情が高ぶると..."
+    conditions:
+      - if: "emotional_depth >= 8 && minase_despair_level >= 2"
+        text: "感情が高ぶると、見たくない未来まで見えてしまうの。絶望的な未来が、津波のように押し寄せてくる。"
+      - if: "emotional_depth >= 6 && minase_death_burden >= 2"
+        text: "感情が高ぶると、死の予感が強くなるの。愛する人ほど、死期がはっきり見えてしまう。"
+      - if: "emotional_depth >= 4"
+        text: "感情が高ぶると、予言の精度が変わるのよね。"
+      - else:
+        text: "感情が高ぶると、どうなるのかしら？"
+    choices:
+      - text: "見たくない未来？"
+        next: minase_unwanted_visions
+      - text: "愛する人の死期？"
+        next: minase_loved_ones_death
+      - text: "感情をコントロールできる？"
+        next: minase_emotional_control
+
+  # 継続ノード
+  - id: minase_reality_manipulation
+    text: "もしかしたら、私の予言が現実を変えてるのかもしれないわね。観測者効果みたいに。"
+    effects:
+      - type: increment
+        variable: minase_reality_doubt
+        value: 1
+    choices:
+      - text: "予言が現実を作る？"
+        next: minase_prophecy_reality_creation
+      - text: "それは可能なの？"
+        next: minase_possibility_question
+      - text: "観測者効果？"
+        next: minase_quantum_reference
+
+  - id: minase_temporal_loneliness
+    text: "そうね...私だけが違う時間を生きてるの。みんなが一秒の間に、私は一年を体験してる。"
+    effects:
+      - type: increment
+        variable: minase_isolation_level
+        value: 1
+    choices:
+      - text: "一年も体験してるの？"
+        next: minase_time_expansion
+      - text: "辛い能力だね"
+        next: minase_power_burden
+      - text: "今この瞬間は共有できてる"
+        next: minase_shared_moment
+
+  - id: minase_time_prisoners
+    text: "過去に囚われた人は同じことを繰り返し、未来を恐れる人は前に進めない。時間って、監獄なのよね。"
+    effects:
+      - type: increment
+        variable: minase_time_philosophy
+        value: 1
+    choices:
+      - text: "時間から解放される方法は？"
+        next: minase_time_liberation
+      - text: "君も時間の囚人？"
+        next: minase_self_imprisonment
+      - text: "時間は味方にもなる"
+        next: minase_time_ally
+
+  - id: minase_death_perception
+    text: "死は匂いがあるのよ。甘くて、懐かしくて、でも恐ろしい匂い。生きてる人には感じられないけど。"
+    effects:
+      - type: increment
+        variable: minase_death_sensitivity
+        value: 1
+    choices:
+      - text: "君は死んでるの？"
+        next: minase_death_status
+      - text: "生と死の境界にいる？"
+        next: minase_boundary_existence
+      - text: "その匂いは今もする？"
+        next: minase_current_death_scent
+
+  - id: minase_救済の限界
+    text: "救いたくても救えない人がいるの。運命は変えられないことが多いから。"
+    effects:
+      - type: increment
+        variable: minase_救済_frustration
+        value: 1
+    choices:
+      - text: "運命は絶対？"
+        next: minase_fate_absoluteness
+      - text: "それでも救おうとする？"
+        next: minase_救済_persistence
+      - text: "救えないのも運命？"
+        next: minase_救済_paradox
+
+  - id: minase_unwanted_visions
+    text: "愛する人の死、世界の終わり、希望の消失...見たくない未来ばかりが鮮明に見えるの。"
+    effects:
+      - type: increment
+        variable: minase_tragic_visions
+        value: 1
+    choices:
+      - text: "世界の終わり？"
+        next: minase_apocalypse_vision
+      - text: "希望の消失？"
+        next: minase_despair_future
+      - text: "良い未来は見えない？"
+        next: minase_positive_future_absence

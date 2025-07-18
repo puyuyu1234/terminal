@@ -1,0 +1,394 @@
+character: nazuna
+nodes:
+  # Second meeting extended conversations
+  - id: nazuna_start_second_meet_extended_conversation
+    text: 二度目の出会い...偶然にしては、運命的な気がします。音も、人も、繰り返すことで意味を持つのかもしれません。
+    choices:
+      - text: 運命的な出会いを感じます
+        next: nazuna_second_destiny_feeling
+      - text: 繰り返しに意味を見つけたいです
+        next: nazuna_second_repetition_meaning
+      - text: 音の繰り返しについて教えてください
+        next: nazuna_second_sound_repetition
+
+  - id: nazuna_second_destiny_feeling
+    text: 運命的な出会い...録音機で音を集めていると、同じ場所に何度も来ることがあります。でも、人との出会いは特別です。
+    choices:
+      - text: 特別な出会いを大切にしたいです
+        next: nazuna_second_special_meeting
+      - text: 同じ場所に来る理由を教えてください
+        next: nazuna_second_place_reason
+      - text: 人との出会いの特別さを感じます
+        next: nazuna_second_human_connection
+
+  - id: nazuna_second_repetition_meaning
+    text: 繰り返しの意味...同じ音を何度も聞くと、最初は聞こえなかった細かい音が聞こえてきます。人との関係も同じかもしれません。
+    choices:
+      - text: 細かい音を聞き取りたいです
+        next: nazuna_second_detailed_sound
+      - text: 人との関係の深まりを感じたいです
+        next: nazuna_second_relationship_depth
+      - text: 繰り返しで見えてくるものを教えてください
+        next: nazuna_second_revealed_truth
+
+  - id: nazuna_second_sound_repetition
+    text: 音の繰り返し...同じ音でも、聞くたびに違って聞こえます。気持ちや環境が変わると、音の聞こえ方も変わります。
+    choices:
+      - text: 気持ちで変わる音を体験したいです
+        next: nazuna_second_emotion_sound
+      - text: 環境による音の変化を教えてください
+        next: nazuna_second_environment_sound
+      - text: 同じ音が違って聞こえる不思議さを感じます
+        next: nazuna_second_sound_mystery
+
+  - id: nazuna_second_special_meeting
+    text: 特別な出会い...音には録音できるものと、録音できないものがあります。人との出会いは、録音できない音のようなものです。
+    choices:
+      - text: 録音できない音について教えてください
+        next: emotional_end
+      - text: 人との出会いの特別さを理解したいです
+        next: trust_end
+      - text: 録音できない音を心で聞きたいです
+        next: contextual_end
+
+  - id: nazuna_second_place_reason
+    text: 同じ場所に来る理由...その場所だけの音があります。風の通り道、建物の響き、時間帯による音の変化。すべてが違います。
+    choices:
+      - text: 場所だけの音を聞き分けたいです
+        next: deep_end
+      - text: 風の通り道の音を教えてください
+        next: emotional_end
+      - text: 時間帯による音の変化を感じたいです
+        next: trust_end
+
+  - id: nazuna_second_human_connection
+    text: 人との出会いの特別さ...人の声は、その人だけの音です。同じ言葉でも、違う音になります。とても貴重な音です。
+    choices:
+      - text: 人だけの音を大切にしたいです
+        next: emotional_end
+      - text: 声の違いを聞き分けたいです
+        next: trust_end
+      - text: 貴重な音を心に留めたいです
+        next: contextual_end
+
+  - id: nazuna_second_detailed_sound
+    text: 細かい音...最初は気づかない小さな音、重なった音、隠れた音。繰り返し聞くことで、音の世界が広がります。
+    choices:
+      - text: 音の世界を広げたいです
+        next: deep_end
+      - text: 隠れた音を見つけたいです
+        next: emotional_end
+      - text: 小さな音に耳を傾けたいです
+        next: trust_end
+
+  - id: nazuna_second_relationship_depth
+    text: 人との関係の深まり...最初は表面的な音しか聞こえませんが、時間が経つと、心の音が聞こえてきます。
+    choices:
+      - text: 心の音を聞かせてください
+        next: emotional_end
+      - text: 表面的な音から深い音への変化を感じたいです
+        next: trust_end
+      - text: 時間と共に深まる関係を大切にしたいです
+        next: contextual_end
+
+  - id: nazuna_second_revealed_truth
+    text: 繰り返しで見えてくるもの...それは真実です。音の真実、人の真実、自分の真実。隠れていたものが見えてきます。
+    choices:
+      - text: 音の真実を知りたいです
+        next: deep_end
+      - text: 人の真実を理解したいです
+        next: emotional_end
+      - text: 自分の真実を見つけたいです
+        next: trust_end
+
+  - id: nazuna_second_emotion_sound
+    text: 気持ちで変わる音...悲しい時は音も暗く聞こえ、嬉しい時は音も明るく聞こえます。音は心の鏡です。
+    choices:
+      - text: 音が心の鏡である意味を教えてください
+        next: emotional_end
+      - text: 感情による音の変化を体験したいです
+        next: trust_end
+      - text: 心と音のつながりを感じたいです
+        next: contextual_end
+
+  - id: nazuna_second_environment_sound
+    text: 環境による音の変化...同じ場所でも、季節、天候、時間で音が変わります。環境が音を作り出しています。
+    choices:
+      - text: 環境が作る音を聞きたいです
+        next: deep_end
+      - text: 季節の音の変化を感じたいです
+        next: emotional_end
+      - text: 天候による音の違いを教えてください
+        next: trust_end
+
+  - id: nazuna_second_sound_mystery
+    text: 音の不思議さ...同じ音が違って聞こえる理由は、完全には分からません。でも、その不思議さが音の魅力です。
+    choices:
+      - text: 音の魅力を一緒に探りたいです
+        next: emotional_end
+      - text: 不思議さを楽しむ心を持ちたいです
+        next: trust_end
+      - text: 音の謎を一緒に解きたいです
+        next: contextual_end
+
+  # Frequent visitor extended conversations
+  - id: nazuna_start_frequent_visitor_extended_conversation
+    text: 何度も会うようになって...あなたの声も、私の音のコレクションの一部になりました。特別な音として、心に残っています。
+    choices:
+      - text: 音のコレクションの一部になれて光栄です
+        next: nazuna_frequent_collection_honor
+      - text: 特別な音として残ることを嬉しく思います
+        next: nazuna_frequent_special_sound
+      - text: 心に残る音について教えてください
+        next: nazuna_frequent_memorable_sound
+
+  - id: nazuna_frequent_collection_honor
+    text: 音のコレクションの一部...それは私にとって宝物です。人の声は、その人の心を表す音。とても貴重です。
+    choices:
+      - text: 宝物にしてくれてありがとうございます
+        next: nazuna_frequent_treasure_gratitude
+      - text: 心を表す音の意味を教えてください
+        next: nazuna_frequent_heart_sound
+      - text: 貴重な音を大切にしたいです
+        next: nazuna_frequent_precious_sound
+
+  - id: nazuna_frequent_special_sound
+    text: 特別な音...あなたの声には、優しさと温かさが込められています。録音機では捉えられない、心の音です。
+    choices:
+      - text: 心の音を感じてもらえて嬉しいです
+        next: nazuna_frequent_heart_sound_joy
+      - text: 優しさと温かさを伝えたいです
+        next: nazuna_frequent_warmth_sharing
+      - text: 録音機では捉えられない音を教えてください
+        next: nazuna_frequent_uncapturable_sound
+
+  - id: nazuna_frequent_memorable_sound
+    text: 心に残る音...それは感情と一緒に記憶される音です。その音を聞くと、その時の気持ちが蘇ります。
+    choices:
+      - text: 感情と一緒に記憶される音を大切にしたいです
+        next: nazuna_frequent_emotional_memory
+      - text: その時の気持ちを共有したいです
+        next: nazuna_frequent_feeling_share
+      - text: 心に残る音を作り続けたいです
+        next: nazuna_frequent_continuous_memory
+
+  - id: nazuna_frequent_treasure_gratitude
+    text: 宝物への感謝...音は時間と共に消えてしまいますが、心に残った音は永遠に続きます。あなたの音もそうです。
+    choices:
+      - text: 永遠に続く音を大切にしたいです
+        next: emotional_end
+      - text: 心に残る音の永続性を感じます
+        next: trust_end
+      - text: 時間を超えた音の価値を教えてください
+        next: contextual_end
+
+  - id: nazuna_frequent_heart_sound
+    text: 心を表す音...声の調子、話すリズム、間の取り方。すべてが、その人の心を表現しています。
+    choices:
+      - text: 心を表現する音を学びたいです
+        next: deep_end
+      - text: 自分の心の音を知りたいです
+        next: emotional_end
+      - text: 間の取り方に込められた意味を教えてください
+        next: trust_end
+
+  - id: nazuna_frequent_precious_sound
+    text: 貴重な音...一度しか聞けない音、その瞬間にしか存在しない音。それが人の声の特別さです。
+    choices:
+      - text: 一度しか聞けない音を大切にしたいです
+        next: emotional_end
+      - text: その瞬間にしか存在しない音を感じたいです
+        next: trust_end
+      - text: 人の声の特別さを心に留めたいです
+        next: contextual_end
+
+  - id: nazuna_frequent_heart_sound_joy
+    text: 心の音を感じる喜び...それは音を聞く人にとって最高の喜びです。技術では捉えられない、心だけが聞ける音。
+    choices:
+      - text: 心だけが聞ける音を大切にしたいです
+        next: emotional_end
+      - text: 技術では捉えられない音の価値を感じます
+        next: trust_end
+      - text: 音を聞く人の喜びを共有したいです
+        next: contextual_end
+
+  - id: nazuna_frequent_warmth_sharing
+    text: 優しさと温かさの共有...音を通して、気持ちが伝わることがあります。それは言葉以上に深い伝達です。
+    choices:
+      - text: 音を通した気持ちの伝達を体験したいです
+        next: emotional_end
+      - text: 言葉以上に深い伝達を学びたいです
+        next: trust_end
+      - text: 音による気持ちの共有を大切にしたいです
+        next: contextual_end
+
+  - id: nazuna_frequent_uncapturable_sound
+    text: 録音機では捉えられない音...それは感情の音、心の音、魂の音。機械では記録できない、生きた音です。
+    choices:
+      - text: 生きた音を感じたいです
+        next: deep_end
+      - text: 魂の音を理解したいです
+        next: emotional_end
+      - text: 機械では記録できない音を大切にしたいです
+        next: trust_end
+
+  - id: nazuna_frequent_emotional_memory
+    text: 感情と記憶の音...嬉しい時の音、悲しい時の音、驚いた時の音。すべてが心の中で響き続けます。
+    choices:
+      - text: 心の中で響く音を大切にしたいです
+        next: emotional_end
+      - text: 感情の音を理解したいです
+        next: trust_end
+      - text: 記憶の音を一緒に聞きたいです
+        next: contextual_end
+
+  - id: nazuna_frequent_feeling_share
+    text: 気持ちの共有...音を通して、お互いの気持ちを理解し合えることがあります。それは深い絆を生みます。
+    choices:
+      - text: 音を通した理解を深めたいです
+        next: emotional_end
+      - text: 深い絆を大切にしたいです
+        next: trust_end
+      - text: お互いの気持ちを理解し合いたいです
+        next: contextual_end
+
+  - id: nazuna_frequent_continuous_memory
+    text: 継続的な記憶...何度も会うことで、音の記憶が積み重なります。それは美しい音の歴史になります。
+    choices:
+      - text: 美しい音の歴史を一緒に作りたいです
+        next: emotional_end
+      - text: 音の記憶の積み重ねを大切にしたいです
+        next: trust_end
+      - text: 継続的な記憶を共有したいです
+        next: contextual_end
+
+  # Regular visitor extended conversations
+  - id: nazuna_start_regular_visitor_extended_conversation
+    text: 定期的に会うようになって...あなたの音は、私の日常の音の一部になりました。安心できる音として、心に響いています。
+    choices:
+      - text: 日常の音の一部になれて嬉しいです
+        next: nazuna_regular_daily_sound
+      - text: 安心できる音として認識されて光栄です
+        next: nazuna_regular_comfort_sound
+      - text: 心に響く音について教えてください
+        next: nazuna_regular_resonant_sound
+
+  - id: nazuna_regular_daily_sound
+    text: 日常の音の一部...毎日聞く音は、生活のリズムを作ります。あなたの音も、私の生活リズムの一部になりました。
+    choices:
+      - text: 生活のリズムを作る音を大切にしたいです
+        next: nazuna_regular_life_rhythm
+      - text: 生活リズムの一部になれて嬉しいです
+        next: nazuna_regular_rhythm_joy
+      - text: 日常の音の価値を教えてください
+        next: nazuna_regular_daily_value
+
+  - id: nazuna_regular_comfort_sound
+    text: 安心できる音...知っている音、慣れ親しんだ音。それは心の支えになります。孤独感を和らげてくれます。
+    choices:
+      - text: 心の支えになる音を大切にしたいです
+        next: nazuna_regular_heart_support
+      - text: 孤独感を和らげる音の力を感じます
+        next: nazuna_regular_loneliness_relief
+      - text: 慣れ親しんだ音の温かさを教えてください
+        next: nazuna_regular_familiar_warmth
+
+  - id: nazuna_regular_resonant_sound
+    text: 心に響く音...それは心の深いところに届く音です。表面的な音ではなく、魂に響く音。とても特別です。
+    choices:
+      - text: 魂に響く音を理解したいです
+        next: nazuna_regular_soul_resonance
+      - text: 心の深いところに届く音を感じたいです
+        next: nazuna_regular_deep_heart
+      - text: 表面的でない音の特別さを教えてください
+        next: nazuna_regular_deep_sound
+
+  - id: nazuna_regular_life_rhythm
+    text: 生活のリズム...朝の音、昼の音、夜の音。それぞれが生活を彩る音です。あなたの音も、その一部になりました。
+    choices:
+      - text: 生活を彩る音を大切にしたいです
+        next: emotional_end
+      - text: 朝昼夜の音の違いを教えてください
+        next: trust_end
+      - text: 生活リズムの音を一緒に聞きたいです
+        next: contextual_end
+
+  - id: nazuna_regular_rhythm_joy
+    text: リズムの一部になる喜び...それは音楽のように美しいものです。生活が音楽になる瞬間です。
+    choices:
+      - text: 生活が音楽になる美しさを感じたいです
+        next: emotional_end
+      - text: 音楽のような生活を共有したいです
+        next: trust_end
+      - text: 美しいリズムを一緒に作りたいです
+        next: contextual_end
+
+  - id: nazuna_regular_daily_value
+    text: 日常の音の価値...特別ではないけれど、なくてはならない音。それが日常の音の価値です。
+    choices:
+      - text: なくてはならない音を大切にしたいです
+        next: emotional_end
+      - text: 日常の音の大切さを理解したいです
+        next: trust_end
+      - text: 特別ではない音の価値を感じたいです
+        next: contextual_end
+
+  - id: nazuna_regular_heart_support
+    text: 心の支えになる音...それは安定した音、信頼できる音です。不安な時に、心を落ち着かせてくれます。
+    choices:
+      - text: 心を落ち着かせる音を学びたいです
+        next: emotional_end
+      - text: 信頼できる音を大切にしたいです
+        next: trust_end
+      - text: 安定した音の力を感じたいです
+        next: contextual_end
+
+  - id: nazuna_regular_loneliness_relief
+    text: 孤独感を和らげる音...一人でいても、その音があると、誰かがそばにいる感じがします。とても心強い音です。
+    choices:
+      - text: 心強い音を大切にしたいです
+        next: emotional_end
+      - text: 誰かがそばにいる感じを共有したいです
+        next: trust_end
+      - text: 孤独感を和らげる音の力を感じます
+        next: contextual_end
+
+  - id: nazuna_regular_familiar_warmth
+    text: 慣れ親しんだ音の温かさ...それは家族のような音、友達のような音です。安心と温かさを同時に与えてくれます。
+    choices:
+      - text: 家族のような音を大切にしたいです
+        next: emotional_end
+      - text: 友達のような音の温かさを感じます
+        next: trust_end
+      - text: 安心と温かさを同時に感じたいです
+        next: contextual_end
+
+  - id: nazuna_regular_soul_resonance
+    text: 魂に響く音...それは理屈では説明できない音です。心の奥底から響いてくる、特別な音。
+    choices:
+      - text: 理屈では説明できない音を感じたいです
+        next: deep_end
+      - text: 心の奥底からの響きを理解したいです
+        next: emotional_end
+      - text: 特別な音を一緒に聞きたいです
+        next: trust_end
+
+  - id: nazuna_regular_deep_heart
+    text: 心の深いところに届く音...それは表面的な聞こえ方ではなく、心の中で響く音です。とても貴重な体験です。
+    choices:
+      - text: 心の中で響く音を体験したいです
+        next: emotional_end
+      - text: 貴重な体験を共有したいです
+        next: trust_end
+      - text: 表面的でない聞こえ方を学びたいです
+        next: contextual_end
+
+  - id: nazuna_regular_deep_sound
+    text: 表面的でない音...それは深い音、本質的な音です。聞く人の心に直接届く、純粋な音。
+    choices:
+      - text: 本質的な音を理解したいです
+        next: deep_end
+      - text: 心に直接届く音を感じたいです
+        next: emotional_end
+      - text: 純粋な音を一緒に聞きたいです
+        next: trust_end

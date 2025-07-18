@@ -1,0 +1,132 @@
+character: tomo
+nodes:
+  # Regular visitor extended conversations
+  - id: tomo_start_regular_visitor_extended_conversation
+    text: 定期的にここに来るようになって、この場所が私の心の一部になりました。安らぎを見つけられる特別な場所として、とても大切にしています。
+    choices:
+      - text: 心の一部になった場所を大切にしたいです
+        next: tomo_regular_visitor_heart_place
+      - text: 安らぎを見つけられる場所について教えてください
+        next: tomo_regular_visitor_peaceful_place
+      - text: 特別な場所を一緒に大切にしたいです
+        next: tomo_regular_visitor_special_place
+
+  - id: tomo_regular_visitor_heart_place
+    text: 心の一部になる場所...それは物理的な場所以上の意味を持ちます。思い出や感情、成長の記録が刻まれた、心の中の特別な空間です。
+    choices:
+      - text: 物理的な場所以上の意味を理解したいです
+        next: tomo_regular_visitor_beyond_physical
+      - text: 思い出や感情が刻まれた場所を大切にしたいです
+        next: tomo_regular_visitor_memories_emotions
+      - text: 成長の記録を一緒に作りたいです
+        next: tomo_regular_visitor_growth_record
+
+  - id: tomo_regular_visitor_peaceful_place
+    text: 安らぎの場所...日常の忙しさから離れて、心を静めることができる場所。そういう場所があることで、人生のバランスが保たれます。
+    choices:
+      - text: 心を静める方法を学びたいです
+        next: tomo_regular_visitor_calm_heart
+      - text: 人生のバランスを保つ方法を教えてください
+        next: tomo_regular_visitor_life_balance
+      - text: 日常の忙しさから離れる時間を大切にしたいです
+        next: tomo_regular_visitor_escape_busyness
+
+  - id: tomo_regular_visitor_special_place
+    text: 特別な場所...多くの人にとっては普通の場所でも、自分にとっては特別な意味を持つ場所。そういう場所を持つことは幸せなことです。
+    choices:
+      - text: 普通の場所が特別になる理由を知りたいです
+        next: tomo_regular_visitor_ordinary_special
+      - text: 特別な意味を持つ場所を大切にしたいです
+        next: tomo_regular_visitor_meaningful_place
+      - text: 特別な場所を持つ幸せを感じたいです
+        next: tomo_regular_visitor_happiness_place
+
+  - id: tomo_regular_visitor_beyond_physical
+    text: 物理的な場所を超えて...場所は建物や風景だけではありません。そこで感じた気持ち、考えた思い、体験した出来事。すべてが場所の一部です。
+    choices:
+      - text: 場所に込められた感情を理解したいです
+        next: emotional_end
+      - text: 体験した出来事を大切にしたいです
+        next: trust_end
+      - text: 場所の本当の意味を教えてください
+        next: contextual_end
+
+  - id: tomo_regular_visitor_memories_emotions
+    text: 記憶と感情...この場所には、たくさんの記憶と感情が重なっています。喜び、悲しみ、驚き、平安。すべてが混ざり合って、豊かな場所になっています。
+    choices:
+      - text: 重なった記憶と感情を大切にしたいです
+        next: deep_end
+      - text: 豊かな場所を一緒に作りたいです
+        next: emotional_end
+      - text: 様々な感情が混ざり合う美しさを感じたいです
+        next: trust_end
+
+  - id: tomo_regular_visitor_growth_record
+    text: 成長の記録...この場所に来るたびに、少しずつ成長している自分を感じます。過去の自分と今の自分、そして未来の自分をつなぐ場所です。
+    choices:
+      - text: 成長している自分を感じたいです
+        next: emotional_end
+      - text: 過去と今と未来をつなぐ場所を理解したいです
+        next: trust_end
+      - text: 成長の記録を一緒に作りたいです
+        next: contextual_end
+
+  - id: tomo_regular_visitor_calm_heart
+    text: 心を静める方法...深呼吸をして、周りの音に耳を傾けて、今この瞬間に集中する。シンプルですが、とても効果的です。
+    choices:
+      - text: 今この瞬間に集中する方法を学びたいです
+        next: deep_end
+      - text: 周りの音に耳を傾ける体験をしたいです
+        next: emotional_end
+      - text: シンプルで効果的な方法を教えてください
+        next: trust_end
+
+  - id: tomo_regular_visitor_life_balance
+    text: 人生のバランス...活動と休息、外向きと内向き、緊張と弛緩。すべてのバランスが大切です。一方に偏りすぎないように気をつけています。
+    choices:
+      - text: 活動と休息のバランスを学びたいです
+        next: emotional_end
+      - text: 外向きと内向きのバランスを理解したいです
+        next: trust_end
+      - text: 偏りすぎない生き方を教えてください
+        next: contextual_end
+
+  - id: tomo_regular_visitor_escape_busyness
+    text: 忙しさからの離脱...忙しい日常から一歩離れることで、本当に大切なことが見えてきます。忙しさに埋もれてしまわないように、意識的に時間を作っています。
+    choices:
+      - text: 本当に大切なことを見つけたいです
+        next: deep_end
+      - text: 忙しさに埋もれない方法を教えてください
+        next: emotional_end
+      - text: 意識的に時間を作ることを学びたいです
+        next: trust_end
+
+  - id: tomo_regular_visitor_ordinary_special
+    text: 普通から特別へ...場所が特別になるのは、そこでの体験や感情によるものです。同じ場所でも、人によって全く違う意味を持ちます。
+    choices:
+      - text: 体験や感情が与える意味を理解したいです
+        next: emotional_end
+      - text: 人によって違う意味を持つ不思議さを感じます
+        next: trust_end
+      - text: 場所に意味を与える方法を教えてください
+        next: contextual_end
+
+  - id: tomo_regular_visitor_meaningful_place
+    text: 意味のある場所...ただの空間ではなく、自分の人生にとって意味のある場所。そういう場所を持つことで、心の支えになります。
+    choices:
+      - text: 人生にとって意味のある場所を大切にしたいです
+        next: emotional_end
+      - text: 心の支えになる場所を一緒に作りたいです
+        next: trust_end
+      - text: 意味のある場所を見つける方法を教えてください
+        next: contextual_end
+
+  - id: tomo_regular_visitor_happiness_place
+    text: 特別な場所の幸せ...自分だけの特別な場所を持つことは、心の豊かさにつながります。そこに行けば安心できる、そんな場所があることの幸せ。
+    choices:
+      - text: 心の豊かさを感じたいです
+        next: deep_end
+      - text: 安心できる場所を一緒に大切にしたいです
+        next: emotional_end
+      - text: 特別な場所を持つ幸せを共有したいです
+        next: trust_end

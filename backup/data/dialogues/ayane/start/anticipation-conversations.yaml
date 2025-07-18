@@ -1,0 +1,42 @@
+character: ayane
+nodes:
+  # Anticipation joy conversations
+  - id: ayane_anticipation_joy_to_first_meet_end_first_bridge
+    text: 会えるのが嬉しい...その気持ちって、とても純粋で美しいですね。出会いの瞬間に込められた希望を感じます。
+    choices:
+      - text: 出会いの瞬間は特別ですね
+        next: ayane_meeting_moment_special
+      - text: 純粋な気持ちを大切にしたいです
+        next: ayane_pure_feelings_treasured
+      - text: 希望を一緒に感じたいです
+        next: ayane_shared_hope_feeling
+
+  - id: ayane_meeting_moment_special
+    text: 出会いの特別さ...初めて会った時の気持ちって、忘れられないものですよね。新しい世界の扉が開かれる瞬間です。
+    choices:
+      - text: 新しい世界の扉を開きたいです
+        next: emotional_end
+      - text: 忘れられない気持ちを大切にしたいです
+        next: trust_end
+      - text: 初めて会った時の気持ちを思い出したいです
+        next: contextual_end
+
+  - id: ayane_pure_feelings_treasured
+    text: 純粋な気持ちの価値...心に偽りのない気持ちって、本当に美しいものです。それを大切にできる人は、素敵だと思います。
+    choices:
+      - text: 心に偽りのない気持ちを持ち続けたいです
+        next: emotional_end
+      - text: 美しい気持ちを一緒に大切にしたいです
+        next: trust_end
+      - text: 素敵な人になりたいです
+        next: contextual_end
+
+  - id: ayane_shared_hope_feeling
+    text: 共有される希望...一人で感じる希望も素敵ですが、誰かと分かち合う希望は、もっと大きくて温かいものになります。
+    choices:
+      - text: 大きくて温かい希望を感じたいです
+        next: deep_end
+      - text: 誰かと分かち合う喜びを体験したいです
+        next: emotional_end
+      - text: 一人の希望と共有する希望の違いを理解したいです
+        next: trust_end

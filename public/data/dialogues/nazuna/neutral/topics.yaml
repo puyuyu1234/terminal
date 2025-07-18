@@ -1,0 +1,60 @@
+dialogues:
+  - id: nazuna_neutral_recording
+    text: "夕日の色とか、風の音とか、小さな変化を書き留めているんです。忘れたくないから。"
+    choices:
+      - text: "どんな変化があった？"
+        next: nazuna_neutral_changes
+      - text: "記録を見せてもらえる？"
+        next: nazuna_neutral_show
+      - text: "もう帰ろうか"
+        next: nazuna_end_goodbye
+
+  - id: nazuna_neutral_loneliness
+    text: "最初は寂しかったけど、今は慣れました。一人でも、色々なことを感じられるんです。"
+    choices:
+      - text: "どんなことを感じるの？"
+        next: nazuna_neutral_feelings
+      - text: "一緒にいてもいい？"
+        next: nazuna_neutral_together
+      - text: "帰る時間だよ"
+        next: nazuna_end_goodbye
+
+  - id: nazuna_neutral_changes
+    text: "昨日は雲が薄いピンク色でした。今日は少し濃いオレンジ色です。毎日違うんですよ。"
+    choices:
+      - text: "詳しく観察してるんだね"
+        next: nazuna_neutral_observation
+      - text: "今日の夕日はどう？"
+        next: nazuna_end_goodbye
+
+  - id: nazuna_neutral_show
+    text: "はい、でも字が汚いので恥ずかしいです...。でも、読んでくれるなら嬉しいです。"
+    choices:
+      - text: "きっと素敵な記録だよ"
+        next: nazuna_neutral_encouragement
+      - text: "今度ゆっくり読ませて"
+        next: nazuna_end_goodbye
+
+  - id: nazuna_neutral_feelings
+    text: "風の冷たさとか、夕日の暖かさとか、時間の流れとか...言葉にするのは難しいですが。"
+    choices:
+      - text: "感性豊かなんだね"
+        next: nazuna_end_goodbye
+
+  - id: nazuna_neutral_together
+    text: "はい、一緒にいてくれると嬉しいです。でも、あなたには帰る場所があるでしょう？"
+    choices:
+      - text: "また明日も来るよ"
+        next: nazuna_end_goodbye
+
+  - id: nazuna_neutral_observation
+    text: "小さなことでも、よく見ていると色々な発見があるんです。"
+    choices:
+      - text: "今度一緒に観察しよう"
+        next: nazuna_end_goodbye
+
+  - id: nazuna_neutral_encouragement
+    text: "ありがとうございます...そう言ってもらえると、記録を続ける励みになります。"
+    choices:
+      - text: "頑張って続けてね"
+        next: nazuna_end_goodbye

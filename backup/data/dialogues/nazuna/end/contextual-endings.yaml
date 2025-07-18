@@ -1,0 +1,298 @@
+character: nazuna
+nodes:
+  # 不安・恐怖関連の終了ノード
+  - id: nazuna_fear_understanding
+    text: "......怖い気持ちを、分かってくれる。それだけで、少し楽になる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_anxiety_relief
+    text: "......不安が、少しだけ和らいだ。ありがとう。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_comfort_acceptance
+    text: "......慰めを受け入れるのは、難しいけど...でも、嬉しい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_safety_feeling
+    text: "......ここは安全だって、そう感じられる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_protection_gratitude
+    text: "......守ってくれる気持ちが、心に染みる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 記憶・記録関連の終了ノード
+  - id: nazuna_memory_preservation
+    text: "......記憶を大切にしてくれる。それが、とても嬉しい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_recording_value
+    text: "......記録することの意味を、理解してくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_documentation_purpose
+    text: "......記録する理由を、受け入れてくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_preservation_hope
+    text: "......残したいものがある。それを分かってくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 孤独・つながり関連の終了ノード
+  - id: nazuna_connection_surprise
+    text: "......つながりを感じるなんて、思わなかった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_companionship_warmth
+    text: "......一人じゃないって、温かい気持ちになる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_understanding_bridge
+    text: "......理解の橋が、架けられた気がする。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_empathy_recognition
+    text: "......共感してくれる人がいる。信じられない。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 時間・夜関連の終了ノード
+  - id: nazuna_night_comfort
+    text: "......夜の時間を、一緒に過ごしてくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_darkness_acceptance
+    text: "......暗闇も、悪くないって思える。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_temporal_peace
+    text: "......時間の流れに、静かに身を委ねてる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_evening_kinship
+    text: "......夕暮れの仲間が、いるみたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 変化・成長関連の終了ノード
+  - id: nazuna_change_acceptance
+    text: "......変化も、悪くないのかもしれない。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_growth_recognition
+    text: "......成長してるって、そう言ってもらえると嬉しい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_progress_acknowledgment
+    text: "......進歩を認めてくれる。それが、励みになる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_transformation_hope
+    text: "......変わっていけるかもしれない。そう思える。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 静寂・内省関連の終了ノード
+  - id: nazuna_contemplative_silence
+    text: "......考える時間を、大切にしてくれる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_peaceful_quiet
+    text: "......平和な静けさの中で、心も休んでる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_introspective_moment
+    text: "......内省の時間も、必要だと思う。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_meditative_state
+    text: "......瞑想的な状態で、心が落ち着いてる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 希望・未来関連の終了ノード
+  - id: nazuna_hope_flickering
+    text: "......希望が、かすかに灯ってる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_future_possibility
+    text: "......未来に可能性があるって、思えるかもしれない。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_optimism_seeds
+    text: "......楽観的な気持ちの種が、心に蒔かれた。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_light_glimpse
+    text: "......光の一瞥を、見た気がする。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 受容・理解関連の終了ノード
+  - id: nazuna_acceptance_learning
+    text: "......受け入れることを、学んでる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_understanding_gratitude
+    text: "......理解してくれることに、感謝してる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_patience_appreciation
+    text: "......待ってくれる優しさに、心が温まる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_tolerance_recognition
+    text: "......寛容さを示してくれる。それが嬉しい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 脆弱性・信頼関連の終了ノード
+  - id: nazuna_vulnerability_sharing
+    text: "......弱さを見せても、大丈夫だと思える。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_trust_building
+    text: "......信頼を築くことの意味を、理解してる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_openness_courage
+    text: "......心を開く勇気を、もらった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_emotional_safety
+    text: "......感情的に安全だと、感じられる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 特別な瞬間関連の終了ノード
+  - id: nazuna_precious_moment
+    text: "......貴重な時間を、一緒に過ごしてくれた。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_meaningful_encounter
+    text: "......意味のある出会いだった。忘れない。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_gentle_conclusion
+    text: "......優しい終わり方で、心が安らぐ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: nazuna_quiet_gratitude
+    text: "......静かな感謝の気持ちで、心がいっぱい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

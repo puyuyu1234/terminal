@@ -1,0 +1,60 @@
+dialogues:
+  - id: tomo_neutral_good_day
+    text: "それは良かったです。いい一日があると、明日もきっと良い日になりますよね。"
+    choices:
+      - text: "君がいると安心する"
+        next: tomo_neutral_comfort
+      - text: "明日も楽しみだ"
+        next: tomo_neutral_tomorrow
+      - text: "もう帰ろうか"
+        next: tomo_end_goodbye
+
+  - id: tomo_neutral_tired
+    text: "お疲れ様でした。ここで少し休んでいってください。疲れが取れるまで、一緒にいます。"
+    choices:
+      - text: "ありがとう、君がいると癒される"
+        next: tomo_neutral_healing
+      - text: "少し休ませてもらうよ"
+        next: tomo_neutral_rest
+      - text: "家で休むよ"
+        next: tomo_end_goodbye
+
+  - id: tomo_neutral_comfort
+    text: "私も、あなたがいると嬉しいです。こんな場所でも、一人じゃないって思えるから。"
+    choices:
+      - text: "いつも一緒にいるよ"
+        next: tomo_neutral_together
+      - text: "君は一人じゃない"
+        next: tomo_end_goodbye
+
+  - id: tomo_neutral_tomorrow
+    text: "はい、明日もきっと素敵な日になりますよ。私、そう信じています。"
+    choices:
+      - text: "一緒に明日を迎えよう"
+        next: tomo_end_goodbye
+
+  - id: tomo_neutral_healing
+    text: "そう言ってもらえると、私も嬉しいです。お役に立てているなら良かった。"
+    choices:
+      - text: "いつも支えてくれてありがとう"
+        next: tomo_end_goodbye
+
+  - id: tomo_neutral_rest
+    text: "はい、ゆっくり休んでください。急ぐ必要はありませんから。"
+    choices:
+      - text: "君と一緒だと落ち着く"
+        next: tomo_neutral_peaceful
+      - text: "もう少しだけ"
+        next: tomo_end_goodbye
+
+  - id: tomo_neutral_together
+    text: "ありがとうございます。そう言ってもらえると、ずっと待っていて良かったと思います。"
+    choices:
+      - text: "また明日も来るよ"
+        next: tomo_end_goodbye
+
+  - id: tomo_neutral_peaceful
+    text: "それは良かったです。平和な時間を過ごせているなら、私も嬉しいです。"
+    choices:
+      - text: "今度はもっと長く一緒にいよう"
+        next: tomo_end_goodbye

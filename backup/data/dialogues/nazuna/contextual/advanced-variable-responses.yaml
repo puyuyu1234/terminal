@@ -1,0 +1,221 @@
+conversations:
+  # 録音機の内容による心理状態の変化
+  - id: nazuna_recording_psychological_state
+    text: "...(録音機を見つめる)..."
+    conditions:
+      - if: "nazuna_recording_darkness >= 3 && nazuna_trust_level >= 5"
+        text: "...(録音機を見つめる)...たくさん...集めた...でも...苦しい...聞くたび...思い出す..."
+      - if: "nazuna_recording_darkness >= 2"
+        text: "...(録音機を見つめる)...声...大切...でも...怖い...消えちゃう..."
+      - if: "nazuna_recording_darkness >= 1"
+        text: "...(録音機を見つめる)...声...残ってる...ここに..."
+      - else:
+        text: "...(録音機を見つめる)..."
+    choices:
+      - text: "苦しいなら聞かなくてもいい"
+        next: nazuna_listening_choice
+      - text: "怖いのに聞くの？"
+        next: nazuna_fear_compulsion
+      - text: "大切な声だから残したいんだね"
+        next: nazuna_preservation_desire
+
+  # 電車への恐怖度合いによる反応
+  - id: nazuna_train_fear_levels
+    text: "...(遠くの電車音)..."
+    conditions:
+      - if: "nazuna_train_sensitivity >= 5 && nazuna_trauma_hints >= 3"
+        text: "...(遠くの電車音)...ダメ...また...来る...あの日...戻る...お母さん..."
+      - if: "nazuna_train_sensitivity >= 3"
+        text: "...(遠くの電車音)...怖い...音...でも...慣れた...毎日...聞いてる..."
+      - if: "nazuna_train_sensitivity >= 1"
+        text: "...(遠くの電車音)...あ...電車..."
+      - else:
+        text: "...(遠くの電車音)..."
+    choices:
+      - text: "お母さんのことを思い出す？"
+        next: nazuna_mother_memory_trigger
+      - text: "毎日聞いてるの？"
+        next: nazuna_daily_trauma
+      - text: "大丈夫、遠くの音だよ"
+        next: nazuna_distance_reassurance
+
+  # 発話頻度による関係性の変化
+  - id: nazuna_communication_evolution
+    text: "..."
+    conditions:
+      - if: "nazuna_speech_frequency >= 4 && nazuna_trust_level >= 6"
+        text: "...(小さな声で)...話す...練習...してる...あなたと...話したい..."
+      - if: "nazuna_speech_frequency >= 2"
+        text: "...(つぶやく)...言葉...出る...少し..."
+      - if: "nazuna_speech_frequency >= 1"
+        text: "...(口を動かす)...あ..."
+      - else:
+        text: "..."
+    choices:
+      - text: "話す練習してるの？"
+        next: nazuna_speech_practice
+      - text: "無理しなくていいよ"
+        next: nazuna_pressure_relief
+      - text: "少しずつでいいから"
+        next: nazuna_gradual_communication
+
+  # 夜の深さによる録音機の反応
+  - id: nazuna_night_recording_behavior
+    text: "...(録音機を操作)..."
+    conditions:
+      - if: "night_progression >= 8 && nazuna_collection_habit >= 2"
+        text: "...(録音機を操作)...夜...深い...声...よく聞こえる...死んだ人...近い..."
+      - if: "night_progression >= 6"
+        text: "...(録音機を操作)...夜...静か...録音...クリア..."
+      - if: "night_progression >= 4"
+        text: "...(録音機を操作)...夜...いい...録音..."
+      - else:
+        text: "...(録音機を操作)..."
+    choices:
+      - text: "死んだ人が近い？"
+        next: nazuna_death_proximity
+      - text: "夜の方が声がよく聞こえる？"
+        next: nazuna_night_clarity
+      - text: "何を録音してるの？"
+        next: nazuna_current_recording
+
+  # 感情表現の進歩
+  - id: nazuna_emotional_progress
+    text: "..."
+    conditions:
+      - if: "nazuna_emotional_expression >= 4 && nazuna_trust_level >= 5"
+        text: "...(微笑む)...嬉しい...あなた...いる...寂しく...ない..."
+      - if: "nazuna_emotional_expression >= 3"
+        text: "...(安心した表情)...大丈夫...あなた...優しい..."
+      - if: "nazuna_emotional_expression >= 2"
+        text: "...(小さくうなずく)...うん..."
+      - if: "nazuna_emotional_expression >= 1"
+        text: "...(表情が少し柔らかくなる)..."
+      - else:
+        text: "..."
+    choices:
+      - text: "嬉しいって言ってくれた"
+        next: nazuna_happiness_acknowledgment
+      - text: "僕も嬉しい"
+        next: nazuna_mutual_joy
+      - text: "表情が柔らかくなったね"
+        next: nazuna_expression_observation
+
+  # 他キャラクターとの比較認識
+  - id: nazuna_character_comparison
+    text: "..."
+    conditions:
+      - if: "character_encounter_count.ayane >= 2 && nazuna_trust_level >= 4"
+        text: "...(録音機を見る)...あの子...よく話す...私...話せない...でも...録音...ある..."
+      - if: "character_encounter_count.shino >= 3"
+        text: "...(録音機を握る)...あの人...薬...飲む...私...声...聞く...同じ...かも..."
+      - if: "has_met_all_characters == true"
+        text: "...(録音機を見る)...みんな...違う...でも...悲しい...同じ..."
+      - else:
+        text: "..."
+    choices:
+      - text: "あの子とは違う方法で話してるね"
+        next: nazuna_communication_difference
+      - text: "みんな悲しいの？"
+        next: nazuna_shared_sadness
+      - text: "君は君のやり方でいい"
+        next: nazuna_method_acceptance
+
+  # 継続ノード
+  - id: nazuna_listening_choice
+    text: "...(録音機を抱える)...でも...忘れちゃう...声...消える...それも...怖い..."
+    effects:
+      - type: increment
+        variable: nazuna_memory_fear
+        value: 1
+    choices:
+      - text: "忘れても大丈夫"
+        next: nazuna_forgetting_permission
+      - text: "大切な記憶は心に残る"
+        next: nazuna_heart_memory
+      - text: "一緒に覚えてあげる"
+        next: nazuna_shared_memory
+
+  - id: nazuna_mother_memory_trigger
+    text: "...(うなずく)...お母さん...最後...言葉...『なずな...ごめん...』...毎日...聞いてる..."
+    effects:
+      - type: increment
+        variable: nazuna_daily_trauma
+        value: 1
+    choices:
+      - text: "毎日聞いてるの？"
+        next: nazuna_daily_listening
+      - text: "お母さんは謝らなくていい"
+        next: nazuna_mother_forgiveness
+      - text: "辛いね"
+        next: nazuna_pain_recognition
+
+  - id: nazuna_speech_practice
+    text: "...(小さくうなずく)...練習...してる...でも...難しい...言葉...出ない..."
+    effects:
+      - type: increment
+        variable: nazuna_speech_effort
+        value: 1
+    choices:
+      - text: "どんな練習？"
+        next: nazuna_practice_method
+      - text: "少しずつ上達してる"
+        next: nazuna_progress_recognition
+      - text: "一緒に練習しよう"
+        next: nazuna_practice_support
+
+  - id: nazuna_death_proximity
+    text: "...(録音機を見る)...夜...境界...薄い...死んだ人...生きてる人...近い..."
+    effects:
+      - type: increment
+        variable: nazuna_death_sensitivity
+        value: 1
+    choices:
+      - text: "境界が薄い？"
+        next: nazuna_boundary_thinning
+      - text: "怖くない？"
+        next: nazuna_death_fear
+      - text: "生きてる人の方が大切"
+        next: nazuna_life_priority
+
+  - id: nazuna_happiness_acknowledgment
+    text: "...(小さく笑う)...嬉しい...言葉...出た...あなた...聞いてくれる..."
+    effects:
+      - type: increment
+        variable: nazuna_communication_joy
+        value: 1
+    choices:
+      - text: "君の声が聞けて嬉しい"
+        next: nazuna_voice_appreciation
+      - text: "もっと話そう"
+        next: nazuna_conversation_encouragement
+      - text: "いつでも聞いてる"
+        next: nazuna_listening_promise
+
+  - id: nazuna_communication_difference
+    text: "...(録音機を見せる)...これ...私の...言葉...違う...でも...同じ...気持ち..."
+    effects:
+      - type: increment
+        variable: nazuna_communication_confidence
+        value: 1
+    choices:
+      - text: "録音機が君の言葉？"
+        next: nazuna_recording_voice
+      - text: "同じ気持ちなんだね"
+        next: nazuna_emotional_connection
+      - text: "どんな方法でも伝わる"
+        next: nazuna_communication_validation
+
+  - id: nazuna_shared_sadness
+    text: "...(うなずく)...悲しい...でも...一人じゃない...みんな...ここに...来る..."
+    effects:
+      - type: increment
+        variable: nazuna_community_awareness
+        value: 1
+    choices:
+      - text: "みんな一人じゃない"
+        next: nazuna_community_comfort
+      - text: "悲しみを分かち合える"
+        next: nazuna_shared_grief
+      - text: "ここは特別な場所"
+        next: nazuna_special_place

@@ -1,0 +1,137 @@
+character: shino
+nodes:
+  - id: shino_start_first_meet_evening
+    text: ……誰？
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: evening
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: neutral_response
+        text: ただの通りすがり
+        next: shino_first_meet_evening_deep_talk
+      - id: silent_response
+        text: ...
+        next: shino_first_meet_evening_deep_talk
+      - id: gentle_response
+        text: すみません、驚かせて
+        next: shino_first_meet_evening_deep_talk
+
+  - id: shino_first_meet_evening_deep_talk
+    text: 通りすがり...でも、こんな場所に来る人は珍しいです。何か探しているものでも？
+    choices:
+      - text: 特に何も
+        next: shino_first_meet_evening_nothing_special
+      - text: 静かな場所を探してました
+        next: shino_first_meet_evening_quiet_place
+      - text: あなたは何をしているんですか？
+        next: shino_first_meet_evening_what_doing
+
+  - id: shino_first_meet_evening_nothing_special
+    text: 特に何も...でも、こんな場所に足が向くということは、何かあるのかもしれませんね。心の奥で。
+    choices:
+      - text: そうかもしれません
+        next: contextual_end
+      - text: 無意識に来たのかも
+        next: deep_end
+      - text: あなたはなぜここに？
+        next: trust_end
+
+  - id: shino_first_meet_evening_quiet_place
+    text: 静かな場所...ここは確かに静かです。音といえば、風の音と、遠くの街の音だけ。私も静けさが好きです。
+    choices:
+      - text: 落ち着きますね
+        next: emotional_end
+      - text: 一緒に静かに過ごしましょう
+        next: trust_end
+      - text: 静けさの中に何を見つけますか？
+        next: deep_end
+
+  - id: shino_first_meet_evening_what_doing
+    text: 私は...ただここにいるだけです。時間が止まったような、この場所にいると安心するんです。
+    choices:
+      - text: 安心できる場所は大切ですね
+        next: emotional_end
+      - text: 時間が止まったような？
+        next: deep_end
+      - text: 一人でいることが多いんですか？
+        next: contextual_end
+
+  - id: shino_start_first_meet_night
+    text: こんな夜に……誰かいるの？
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: night
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: apologetic_response
+        text: 夜遅くてすみません
+        next: shino_start_first_meet_night_to_contextual_end_bridge
+      - id: casual_response
+        text: 散歩してました
+        next: shino_start_first_meet_night_to_contextual_end_bridge
+      - id: silent_response
+        text: ...
+        next: shino_start_first_meet_night_to_contextual_end_bridge
+
+  - id: shino_start_first_meet_rainy
+    text: 雨の音で気づかなかった……
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: rainy
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: weather_comment
+        text: 濡れませんか？
+        next: shino_start_first_meet_rainy_to_contextual_end_bridge
+      - id: neutral_response
+        text: こんばんは
+        next: shino_start_first_meet_rainy_to_contextual_end_bridge
+      - id: silent_response
+        text: ...
+        next: shino_start_first_meet_rainy_to_contextual_end_bridge
+
+  - id: shino_start_first_meet_foggy
+    text: 霧で見えなくて……びっくりした
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: foggy
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: fog_comment
+        text: すごい霧ですね
+        next: shino_start_first_meet_foggy_to_contextual_end_bridge
+      - id: apologetic_response
+        text: 驚かせてしまって
+        next: shino_start_first_meet_foggy_to_contextual_end_bridge
+      - id: silent_response
+        text: ...
+        next: shino_start_first_meet_foggy_to_contextual_end_bridge

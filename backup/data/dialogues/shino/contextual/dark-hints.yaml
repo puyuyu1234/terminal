@@ -1,0 +1,266 @@
+conversations:
+  # 薬物依存の暗示（低確率）
+  - id: shino_medication_dependency_hint
+    text: "最近、頭痛薬が手放せないんです...一日に何度も飲んでしまって。"
+    probability: 0.15
+    conditions:
+      - if: "shino_trust_level >= 4 && total_visits >= 10"
+    effects:
+      - type: increment
+        variable: shino_medication_hints
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 1
+    choices:
+      - text: "頭痛がひどいの？"
+        next: shino_medication_escalation
+      - text: "医者に相談したほうがいいかも"
+        next: shino_medical_avoidance
+      - text: "無理しないで"
+        next: shino_gentle_concern
+
+  - id: shino_medication_escalation
+    text: "最初は一錠で効いてたんですけど...今は三錠、四錠...でも、まだ足りないような..."
+    probability: 0.1
+    conditions:
+      - if: "shino_medication_hints >= 1"
+    effects:
+      - type: increment
+        variable: shino_medication_hints
+        value: 2
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "それは危険じゃない？"
+        next: shino_danger_recognition
+      - text: "やめた方がいいよ"
+        next: shino_withdrawal_fear
+      - text: "..."
+        next: shino_uncomfortable_silence
+
+  # 記憶の混乱（事故の記憶）
+  - id: shino_accident_memory_fragment
+    text: "時々、車のライトが...とても眩しくて。でも、いつのことだったか思い出せないんです。"
+    probability: 0.12
+    conditions:
+      - if: "shino_trust_level >= 5 && shino_memory_issues >= 2"
+    effects:
+      - type: increment
+        variable: shino_accident_hints
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+    choices:
+      - text: "事故にあったことがあるの？"
+        next: shino_accident_confusion
+      - text: "怖い記憶？"
+        next: shino_fear_fragment
+      - text: "思い出さなくてもいいよ"
+        next: shino_memory_protection
+
+  - id: shino_accident_confusion
+    text: "わからないんです...夢なのか現実なのか。でも、その後から薬を飲むようになって..."
+    probability: 0.08
+    conditions:
+      - if: "shino_accident_hints >= 1"
+    effects:
+      - type: increment
+        variable: shino_accident_hints
+        value: 1
+      - type: increment
+        variable: shino_medication_hints
+        value: 1
+    choices:
+      - text: "薬と関係があるの？"
+        next: shino_trauma_medication
+      - text: "辛い記憶を忘れるため？"
+        next: shino_intentional_forgetting
+      - text: "無理して思い出さなくていい"
+        next: shino_protective_response
+
+  # 待っている人の正体（不穏な暗示）
+  - id: shino_waiting_person_darkness
+    text: "待ってる人...実は、もう来ないってわかってるんです。でも、待ってしまうんです。"
+    probability: 0.1
+    conditions:
+      - if: "shino_trust_level >= 6 && shino_waiting_person_mentions >= 3"
+    effects:
+      - type: increment
+        variable: shino_dark_knowledge
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 2
+    choices:
+      - text: "なぜ来ないとわかるの？"
+        next: shino_dark_certainty
+      - text: "それでも待つ理由は？"
+        next: shino_compulsive_waiting
+      - text: "辛いね"
+        next: shino_pain_acknowledgment
+
+  - id: shino_dark_certainty
+    text: "その人は...私のせいで、もう..."
+    probability: 0.05
+    conditions:
+      - if: "shino_dark_knowledge >= 1"
+    effects:
+      - type: increment
+        variable: shino_guilt_hints
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "何があったの？"
+        next: shino_guilt_revelation
+      - text: "自分を責めないで"
+        next: shino_guilt_comfort
+      - text: "..."
+        next: shino_heavy_silence
+
+  # 解離性の症状暗示
+  - id: shino_dissociation_hint
+    text: "時々、自分が自分じゃないような...上から自分を見てるような感覚になるんです。"
+    probability: 0.08
+    conditions:
+      - if: "shino_trust_level >= 5 && shino_medication_hints >= 2"
+    effects:
+      - type: increment
+        variable: shino_dissociation_hints
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+    choices:
+      - text: "それはいつから？"
+        next: shino_dissociation_timeline
+      - text: "怖い感覚？"
+        next: shino_dissociation_fear
+      - text: "薬の影響かも"
+        next: shino_medication_side_effects
+
+  - id: shino_multiple_voices
+    text: "頭の中で、いろんな声が聞こえるんです...私の声じゃない声も..."
+    probability: 0.06
+    conditions:
+      - if: "shino_dissociation_hints >= 1 && night_progression >= 6"
+    effects:
+      - type: increment
+        variable: shino_dissociation_hints
+        value: 2
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "どんな声？"
+        next: shino_voice_details
+      - text: "怖くない？"
+        next: shino_voice_comfort
+      - text: "一人じゃないよ"
+        next: shino_reality_anchor
+
+  # 継続ノード
+  - id: shino_medical_avoidance
+    text: "医者は...怖いんです。本当のことを言わなきゃいけないから。"
+    effects:
+      - type: increment
+        variable: shino_avoidance_behavior
+        value: 1
+    choices:
+      - text: "本当のことって？"
+        next: shino_hidden_truth
+      - text: "怖がらなくていいよ"
+        next: shino_medical_comfort
+      - text: "一人で抱え込まないで"
+        next: shino_support_offer
+
+  - id: shino_withdrawal_fear
+    text: "やめたら...また思い出しちゃいそうで。思い出したくないことを。"
+    effects:
+      - type: increment
+        variable: shino_avoidance_behavior
+        value: 1
+    choices:
+      - text: "思い出したくないこと？"
+        next: shino_suppressed_memory
+      - text: "少しずつ減らしていこう"
+        next: shino_gradual_recovery
+      - text: "一緒にいるから大丈夫"
+        next: shino_supportive_presence
+
+  - id: shino_danger_recognition
+    text: "危険...わかってます。でも、やめられないんです。やめたら、全部崩れちゃいそうで。"
+    effects:
+      - type: increment
+        variable: shino_self_awareness
+        value: 1
+    choices:
+      - text: "何が崩れちゃうの？"
+        next: shino_fragile_balance
+      - text: "助けを求めてもいい"
+        next: shino_help_acceptance
+      - text: "君は一人じゃない"
+        next: shino_connection_affirmation
+
+  - id: shino_trauma_medication
+    text: "薬を飲むと...痛みが和らぐんです。心の痛みも、体の痛みも。"
+    effects:
+      - type: increment
+        variable: shino_pain_management
+        value: 1
+    choices:
+      - text: "他に痛みを和らげる方法はない？"
+        next: shino_alternative_healing
+      - text: "痛みを受け入れることも大切"
+        next: shino_pain_acceptance
+      - text: "一緒に痛みを分かち合おう"
+        next: shino_shared_burden
+
+  - id: shino_intentional_forgetting
+    text: "忘れたいんです...でも、忘れちゃいけないことまで忘れてしまって。"
+    effects:
+      - type: increment
+        variable: shino_memory_confusion
+        value: 1
+    choices:
+      - text: "忘れちゃいけないこと？"
+        next: shino_important_memory
+      - text: "選択的に忘れることはできない"
+        next: shino_memory_reality
+      - text: "記憶と向き合う手伝いをする"
+        next: shino_memory_support
+
+  - id: shino_guilt_revelation
+    text: "あの時...私が止めていれば...止められたのに..."
+    effects:
+      - type: increment
+        variable: shino_guilt_hints
+        value: 2
+      - type: increment
+        variable: emotional_depth
+        value: 2
+    choices:
+      - text: "何を止めたかったの？"
+        next: shino_specific_guilt
+      - text: "自分を責めすぎないで"
+        next: shino_guilt_relief
+      - text: "..."
+        next: shino_supportive_silence
+
+  - id: shino_dissociation_timeline
+    text: "事故の後から...いえ、事故があったかどうかもわからないけど...その頃から。"
+    effects:
+      - type: increment
+        variable: shino_timeline_confusion
+        value: 1
+    choices:
+      - text: "事故があったの？"
+        next: shino_accident_uncertainty
+      - text: "記憶が曖昧？"
+        next: shino_memory_fog
+      - text: "今は安全だから大丈夫"
+        next: shino_present_safety

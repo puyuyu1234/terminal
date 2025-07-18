@@ -1,0 +1,862 @@
+character: nazuna
+nodes:
+  - id: nazuna_start_recording_session
+    text: ......録音中。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 3
+      - type: custom
+        handler: recording_in_progress
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: 邪魔しましたか？
+        next: nazuna_start_recording_session_extended_conversation
+      - text: 何を録音してるの？
+        next: nazuna_start_recording_session_extended_conversation
+      - text: ...
+        next: nazuna_start_recording_session_extended_conversation
+  - id: nazuna_start_weather_sensitivity
+    text: ......風の音、変わった。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 8
+      - type: custom
+        handler: weather_change_detection
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: どう変わりました？
+        next: nazuna_start_weather_sensitivity_extended_conversation
+      - text: 敏感ですね
+        next: nazuna_start_weather_sensitivity_extended_conversation
+      - text: ...
+        next: nazuna_start_weather_sensitivity_extended_conversation
+  - id: nazuna_start_comfortable_familiarity
+    text: ......いつもの時間。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 12
+      - type: custom
+        handler: regular_visit_pattern
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: 習慣になりました
+        next: nazuna_start_comfortable_familiarity_extended_conversation
+      - text: 安心しますね
+        next: nazuna_start_comfortable_familiarity_extended_conversation
+      - text: ...
+        next: nazuna_start_comfortable_familiarity_extended_conversation
+  - id: nazuna_start_deep_connection
+    text: ......あなたの足音、わかる。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: greater_than
+        value: 15
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: nazuna
+          operator: greater_than
+          value: 70
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: 覚えてくれたんですね
+        next: nazuna_start_deep_connection_extended_conversation
+      - text: そんなに特徴的？
+        next: nazuna_start_deep_connection_extended_conversation
+      - text: ...
+        next: nazuna_start_deep_connection_extended_conversation
+  - id: nazuna_first_greeting
+    text: ......こんにちは。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 8
+    next: first_meet_bridge
+  - id: nazuna_first_mutual_silence
+    text: ......静かな人。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: silence_end
+  - id: nazuna_first_recorder_question
+    text: ......これ？
+    effects:
+      - type: set_flag
+        flag: nazuna_notices_recorder_interest
+    next: contextual_end
+  - id: nazuna_insomnia_understanding
+    text: ......同じ。眠れない時、ここに来る。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: contextual_end
+  - id: nazuna_time_acknowledgment
+    text: ......時間、わからなくなる。
+    next: contextual_end
+  - id: nazuna_late_silence
+    text: ......深夜が一番、静か。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: contextual_end
+  - id: nazuna_rain_appreciation
+    text: ......そう。心地いい音。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    next: contextual_end
+  - id: nazuna_rain_concern
+    text: ......優しい人。でも、大丈夫。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: contextual_end
+  - id: nazuna_rain_silence
+    text: ......雨音、一緒に聞く？
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: contextual_end
+  - id: nazuna_fog_difficulty
+    text: ......でも、音は、はっきり。
+    next: contextual_end
+  - id: nazuna_fog_beauty
+    text: ......そう。幻想的。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 10
+    next: contextual_end
+  - id: nazuna_fog_silence
+    text: ......霧の中、二人だけ。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 18
+    next: contextual_end
+  - id: nazuna_memory_question
+    text: ......忘れない。大切な人。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: memory_end
+  - id: nazuna_intrusion_concern
+    text: ......邪魔じゃない。嬉しい。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    next: contextual_end
+  - id: nazuna_comfortable_silence
+    text: ......わかってる。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: contextual_end
+  - id: nazuna_counting_memory
+    text: ......数えてるわけじゃない。でも、覚えてる。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 10
+    next: memory_end
+  - id: nazuna_anticipation_response
+    text: ......私も。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 18
+    next: contextual_end
+  - id: nazuna_familiar_silence
+    text: ......慣れた静けさ。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 22
+    next: contextual_end
+  - id: nazuna_waiting_confirmation
+    text: ......いつも。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 25
+    next: contextual_end
+  - id: nazuna_gratitude_response
+    text: ......どういたしまして。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: contextual_end
+  - id: nazuna_expected_silence
+    text: ......いつもの。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    next: contextual_end
+  - id: nazuna_recording_interruption
+    text: ......大丈夫。音、止まった。
+    next: contextual_end
+  - id: nazuna_recording_inquiry
+    text: ......風の音。変化してる。
+    next: contextual_end
+  - id: nazuna_recording_silence
+    text: ......一緒に、聞こう。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 25
+    next: contextual_end
+  - id: nazuna_train_confirmation
+    text: ......うん。深夜の電車。
+    effects:
+      - type: set_flag
+        flag: nazuna_confirms_train_wait
+    next: contextual_end
+  - id: nazuna_faith_recognition
+    text: ......信じてる。来ると。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: trust_end
+  - id: nazuna_waiting_silence
+    text: ......一緒に、待つ？
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 28
+    next: contextual_end
+  - id: nazuna_sound_analysis
+    text: ......高い音が、増えた。
+    next: contextual_end
+  - id: nazuna_sensitivity_acknowledgment
+    text: ......音が、教えてくれる。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    next: contextual_end
+  - id: nazuna_listening_silence
+    text: ......聞こえる？
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: contextual_end
+  - id: nazuna_routine_comfort
+    text: ......安心する。決まった時間。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 18
+    next: contextual_end
+  - id: nazuna_comfort_shared
+    text: ......同じ気持ち。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 22
+    next: contextual_end
+  - id: nazuna_routine_silence
+    text: ......いつもの静けさ。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 35
+    next: contextual_end
+  - id: nazuna_recognition_joy
+    text: ......嬉しい。特別な音。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    next: special_end
+  - id: nazuna_uniqueness_confirmation
+    text: ......あなただけの音。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 28
+    next: contextual_end
+  - id: nazuna_intimate_silence
+    text: ......言葉、いらない。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 40
+    next: contextual_end
+  - id: nazuna_first_main
+    text: 私は......なずな。
+    choices:
+      - text: よろしく、なずな
+        next: nazuna_first_main_extended_conversation
+      - text: その録音機は？
+        next: nazuna_first_main_extended_conversation
+      - text: 小さな声だね
+        next: nazuna_first_main_extended_conversation
+      - text: ...
+        next: nazuna_first_main_extended_conversation
+  - id: nazuna_silence_appreciation
+    text: ......好き。静かな人。
+    effects:
+      - type: set_flag
+        flag: nazuna_appreciates_silence
+    next: silence_end
+  - id: nazuna_recorder_introduction
+    text: ......音を、集めてる。
+    effects:
+      - type: set_flag
+        flag: nazuna_explains_purpose
+    next: contextual_end
+  - id: nazuna_kinship_recognition
+    text: ......同じ、夜の人。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 25
+    next: nazuna_session_end
+  - id: nazuna_silence_bond
+    text: ......静かな人と、静かな時間。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    choices:
+      - text: 一緒にいましょう
+        next: nazuna_silence_bond_extended_conversation
+      - text: 静かでいいね
+        next: nazuna_silence_bond_extended_conversation
+      - text: ...
+        next: nazuna_silence_bond_extended_conversation
+  - id: nazuna_togetherness_acceptance
+    text: ......一緒。いい。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 22
+    next: nazuna_session_end
+  - id: nazuna_quiet_appreciation
+    text: ......静かな夜、好き。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 18
+    next: nazuna_session_end
+  - id: nazuna_perfect_silence
+    text: ......
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 30
+    next: nazuna_session_end
+  - id: nazuna_purpose_explanation
+    text: ......目的は、音を、保存すること。
+    choices:
+      - text: どんな音を？
+        next: nazuna_purpose_explanation_extended_conversation
+      - text: なぜ保存するの？
+        next: nazuna_purpose_explanation_extended_conversation
+      - text: ...
+        next: nazuna_purpose_explanation_extended_conversation
+  - id: nazuna_sound_types
+    text: ......大切な音。消えてしまう音。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    next: nazuna_session_end
+  - id: nazuna_preservation_reason
+    text: ......忘れたくない。記憶に、留めたい。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: nazuna_session_end
+  - id: nazuna_purpose_silence
+    text: ......わかってくれる？
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 18
+    next: nazuna_session_end
+  - id: nazuna_name_silence
+    text: ......名前、言わなくても、いい。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: nazuna_session_end
+  - id: nazuna_mutual_anticipation
+    text: ……お互いを、待ってる気持ち。
+    choices:
+      - text: 同じ気持ちです
+        next: nazuna_mutual_anticipation_extended_conversation
+      - text: 待つ時間も大切
+        next: nazuna_mutual_anticipation_extended_conversation
+      - text: ...
+        next: nazuna_mutual_anticipation_extended_conversation
+  - id: nazuna_comfortable_familiarity
+    text: ……慣れた静寂。心地いい。
+    choices:
+      - text: 居心地が良い
+        next: nazuna_comfortable_familiarity_extended_conversation
+      - text: 安心できる関係
+        next: nazuna_comfortable_familiarity_extended_conversation
+      - text: ...
+        next: nazuna_comfortable_familiarity_extended_conversation
+  - id: nazuna_loyal_waiting
+    text: ……忠実な待ち人。それが、あなた。
+    choices:
+      - text: 待つことに意味がある
+        next: nazuna_loyal_waiting_extended_conversation
+      - text: あなたも待ってる
+        next: nazuna_loyal_waiting_extended_conversation
+      - text: ...
+        next: nazuna_loyal_waiting_extended_conversation
+  - id: nazuna_shared_feeling
+    text: ……同じ気持ち。嬉しい。
+    next: nazuna_session_end
+  - id: nazuna_waiting_value
+    text: ……待つ時間。音を、聞く時間。
+    next: nazuna_session_end
+  - id: nazuna_comfortable_space
+    text: ……居心地のいい場所。ここが、そう。
+    next: nazuna_session_end
+  - id: nazuna_secure_bond
+    text: ……安心できる関係。貴重な、つながり。
+    next: nazuna_session_end
+  - id: nazuna_waiting_meaning
+    text: ……待つことの意味。静寂の中に、ある。
+    next: nazuna_session_end
+  - id: nazuna_mutual_waiting
+    text: ……お互いを待つ。同じ時間、同じ場所。
+    next: nazuna_session_end
+  - id: nazuna_humble_response
+    text: ……謙虚な人。好き。
+    choices:
+      - text: 素直な気持ちです
+        next: nazuna_humble_response_extended_conversation
+      - text: あなたの方が素敵
+        next: nazuna_humble_response_extended_conversation
+      - text: ...
+        next: nazuna_humble_response_extended_conversation
+  - id: nazuna_predictable_comfort
+    text: ……予想できる安心感。
+    choices:
+      - text: 安心できる関係
+        next: nazuna_predictable_comfort_extended_conversation
+      - text: 予想されてる？
+        next: nazuna_predictable_comfort_extended_conversation
+      - text: ...
+        next: nazuna_predictable_comfort_extended_conversation
+  - id: nazuna_recording_pause
+    text: ……録音、一時停止。
+    choices:
+      - text: 大丈夫です
+        next: nazuna_recording_pause_extended_conversation
+      - text: 気を遣わせて
+        next: nazuna_recording_pause_extended_conversation
+      - text: ...
+        next: nazuna_recording_pause_extended_conversation
+  - id: nazuna_honest_feeling
+    text: ……素直な気持ち。美しい。
+    next: nazuna_session_end
+  - id: nazuna_mutual_appreciation
+    text: ……お互いを、大切に思う。
+    next: nazuna_session_end
+  - id: nazuna_reliable_bond
+    text: ……信頼できる関係。珍しい。
+    next: nazuna_session_end
+  - id: nazuna_prediction_question
+    text: ……予想、嫌じゃない。安心できる。
+    next: nazuna_session_end
+  - id: nazuna_understanding_response
+    text: ……理解してくれる人。ありがたい。
+    next: nazuna_session_end
+  - id: nazuna_consideration_appreciation
+    text: ……気遣い。心に響く。
+    next: nazuna_session_end
+  - id: nazuna_wind_changes
+    text: ……風の変化。音で、わかる。
+    choices:
+      - text: 敏感ですね
+        next: nazuna_wind_changes_extended_conversation
+      - text: どう変わりましたか？
+        next: nazuna_wind_changes_extended_conversation
+      - text: ...
+        next: nazuna_wind_changes_extended_conversation
+  - id: nazuna_subtle_perception
+    text: ……微かな音。でも、確かに聞こえる。
+    choices:
+      - text: すごい聴力
+        next: nazuna_subtle_perception_extended_conversation
+      - text: 集中力が必要？
+        next: nazuna_subtle_perception_extended_conversation
+      - text: ...
+        next: nazuna_subtle_perception_extended_conversation
+  - id: nazuna_faith_strength
+    text: ……信念の強さ。音に現れる。
+    choices:
+      - text: 音に現れるんですか？
+        next: nazuna_faith_strength_extended_conversation
+      - text: 信念を感じる
+        next: nazuna_faith_strength_extended_conversation
+      - text: ...
+        next: nazuna_faith_strength_extended_conversation
+  - id: nazuna_sensitivity_recognition
+    text: ……敏感さ。ギフト。
+    next: nazuna_session_end
+  - id: nazuna_change_description
+    text: ……軽やか。希望の風。
+    next: nazuna_session_end
+  - id: nazuna_hearing_ability
+    text: ……聴力。心で聞く。
+    next: nazuna_session_end
+  - id: nazuna_concentration_need
+    text: ……集中。音との対話。
+    next: nazuna_session_end
+  - id: nazuna_sound_manifestation
+    text: ……音は正直。嘘つけない。
+    next: nazuna_session_end
+  - id: nazuna_belief_sensing
+    text: ……信念。音の奥にある。
+    next: nazuna_session_end
+  - id: nazuna_shared_waiting
+    text: ……一緒に待つ。同じ時間を、共有。
+    choices:
+      - text: 時間を共有する意味
+        next: nazuna_shared_waiting_extended_conversation
+      - text: 待つことの価値
+        next: nazuna_shared_waiting_extended_conversation
+      - text: ...
+        next: nazuna_shared_waiting_extended_conversation
+  - id: nazuna_time_sharing_meaning
+    text: ……時間を共有。心も、共有。
+    next: nazuna_session_end
+  - id: nazuna_waiting_value_deep
+    text: ……待つことの価値。静寂の中にある。
+    next: nazuna_session_end
+  - id: nazuna_start_recording_session_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: nazuna_start_recording_session_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_weather_sensitivity_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_weather_sensitivity_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_comfortable_familiarity_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_comfortable_familiarity_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_deep_connection_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_deep_connection_to_special_end_special_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_deep_connection_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_first_main_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_first_main_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_silence_bond_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_silence_bond_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_purpose_explanation_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_purpose_explanation_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_mutual_anticipation_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_mutual_anticipation_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_comfortable_familiarity_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_comfortable_familiarity_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_loyal_waiting_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_loyal_waiting_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_humble_response_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_humble_response_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_predictable_comfort_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_predictable_comfort_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_recording_pause_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_recording_pause_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_wind_changes_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_wind_changes_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_subtle_perception_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_subtle_perception_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_faith_strength_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_faith_strength_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_shared_waiting_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_shared_waiting_to_deep_end_deep_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_shared_waiting_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_recording_session_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_recording_session_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_recording_session_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_recording_session_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_deep_connection_to_special_end_special_bridge_to_special_end_special_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_deep_connection_to_special_end_special_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_start_deep_connection_to_special_end_special_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_mutual_anticipation_to_nazuna_session_end_bridge_to_nazuna_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_mutual_anticipation_to_nazuna_session_end_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_mutual_anticipation_to_nazuna_session_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_shared_waiting_to_deep_end_deep_bridge_to_deep_end_deep_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_shared_waiting_to_deep_end_deep_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_shared_waiting_to_deep_end_deep_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    next: hopeful_end
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end

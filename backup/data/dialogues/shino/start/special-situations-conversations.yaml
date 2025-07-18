@@ -1,0 +1,263 @@
+character: shino
+nodes:
+  # 深夜の特別な状況での会話
+  - id: shino_start_late_night_extended_conversation
+    text: こんな遅い時間に...お疲れ様です。深夜だからこそ話せることもありますね。
+    choices:
+      - text: 深夜の会話は特別ですね
+        next: shino_late_night_special_talk
+      - text: 夜更かしは体に悪いですが
+        next: shino_late_night_health_concern
+      - text: 静かで落ち着きます
+        next: shino_late_night_peaceful_atmosphere
+
+  - id: shino_late_night_special_talk
+    text: 特別...そうですね。昼間は言えないようなことも、夜の闇に包まれると自然に出てくるような気がします。
+    choices:
+      - text: 夜は心を開きやすいですね
+        next: shino_late_night_heart_opening
+      - text: 闇が守ってくれるのかもしれません
+        next: shino_late_night_protective_darkness
+      - text: 素直になれる時間ですね
+        next: shino_late_night_honest_time
+
+  - id: shino_late_night_health_concern
+    text: 体に悪い...確かにそうですね。でも時々、この時間でないと感じられないものがあるんです。
+    choices:
+      - text: 夜にしか感じられないものがあるんですね
+        next: shino_late_night_unique_feelings
+      - text: 大切な時間なんですね
+        next: shino_late_night_important_time
+      - text: 心配してくれてありがとう
+        next: shino_late_night_appreciation
+
+  - id: shino_late_night_peaceful_atmosphere
+    text: 静かで落ち着く...私もそう思います。世界が眠っている時間、私たちだけが起きているような感覚があります。
+    choices:
+      - text: 二人だけの世界ですね
+        next: shino_late_night_private_world
+      - text: 特別な時間を共有していますね
+        next: shino_late_night_shared_special_time
+      - text: 贅沢な時間の使い方ですね
+        next: shino_late_night_luxurious_time
+
+  - id: shino_late_night_heart_opening
+    text: 心を開きやすい...そうですね。昼間の警戒心が薄れて、本当の自分が現れやすくなるのかもしれません。
+    choices:
+      - text: 本当の自分を見せてくれてありがとう
+        next: emotional_end
+      - text: 自然体のあなたが素敵です
+        next: trust_end
+      - text: お互い素直になれますね
+        next: contextual_end
+
+  - id: shino_late_night_protective_darkness
+    text: 闇が守ってくれる...詩的な表現ですね。確かに、闇は秘密を守ってくれるような安心感があります。
+    choices:
+      - text: 秘密を共有できて嬉しいです
+        next: trust_end
+      - text: 安心感は大切ですね
+        next: emotional_end
+      - text: 闇も味方になってくれますね
+        next: contextual_end
+
+  - id: shino_late_night_honest_time
+    text: 素直になれる時間...そうですね。嘘をつく必要がない、飾らない会話ができます。
+    choices:
+      - text: 飾らない会話が一番ですね
+        next: trust_end
+      - text: 素直な気持ちを大切にしましょう
+        next: emotional_end
+      - text: 正直な関係が築けました
+        next: contextual_end
+
+  - id: shino_late_night_unique_feelings
+    text: 夜にしか感じられないもの...孤独感と安心感が同時に存在するような、複雑な気持ちです。
+    choices:
+      - text: 複雑な気持ちを理解します
+        next: deep_end
+      - text: 一人じゃないですよ
+        next: emotional_end
+      - text: 夜の感情は特別ですね
+        next: contextual_end
+
+  - id: shino_late_night_important_time
+    text: 大切な時間...そう言ってもらえると嬉しいです。この時間を大切に思ってくれる人がいるなんて。
+    choices:
+      - text: とても大切な時間です
+        next: emotional_end
+      - text: 一緒に過ごせて幸せです
+        next: trust_end
+      - text: 特別な時間を共有しています
+        next: contextual_end
+
+  - id: shino_late_night_appreciation
+    text: 心配してくれて...そんな風に思ってもらえるなんて、温かい気持ちになります。
+    choices:
+      - text: 大切な人だから心配します
+        next: emotional_end
+      - text: お互いを思いやりましょう
+        next: trust_end
+      - text: 温かい関係ですね
+        next: contextual_end
+
+  - id: shino_late_night_private_world
+    text: 二人だけの世界...そんな風に感じられるなんて、特別な瞬間ですね。秘密の時間のような。
+    choices:
+      - text: 秘密の時間を共有していますね
+        next: trust_end
+      - text: 特別な瞬間を大切にしましょう
+        next: emotional_end
+      - text: 二人だけの特別な世界ですね
+        next: contextual_end
+
+  - id: shino_late_night_shared_special_time
+    text: 特別な時間を共有...一人では作れない、二人だからこその時間。貴重な体験をしています。
+    choices:
+      - text: 貴重な体験を共有していますね
+        next: emotional_end
+      - text: 二人だからこその時間ですね
+        next: trust_end
+      - text: かけがえのない時間です
+        next: contextual_end
+
+  - id: shino_late_night_luxurious_time
+    text: 贅沢な時間...そうですね。時間を贅沢に使って、心を豊かにしている感じがします。
+    choices:
+      - text: 心の贅沢は最高ですね
+        next: emotional_end
+      - text: 豊かな時間を過ごしていますね
+        next: trust_end
+      - text: 贅沢な時間の使い方ですね
+        next: contextual_end
+
+  # 沈黙の後の会話
+  - id: shino_start_after_silence_extended_conversation
+    text: 沈黙の後に話すのは...なんだか新鮮な気持ちです。無理に話さなくても、一緒にいられるのは安心します。
+    choices:
+      - text: 沈黙も大切な時間ですね
+        next: shino_after_silence_value
+      - text: 安心してもらえて嬉しいです
+        next: shino_after_silence_comfort
+      - text: 新鮮な気持ちですね
+        next: shino_after_silence_fresh_feeling
+
+  - id: shino_after_silence_value
+    text: 沈黙の価値...そうですね。言葉がなくても、お互いの存在を感じられます。これも一つのコミュニケーションですね。
+    choices:
+      - text: 言葉以上のコミュニケーションですね
+        next: shino_after_silence_beyond_words
+      - text: 存在を感じられて嬉しいです
+        next: shino_after_silence_presence_joy
+      - text: 深いコミュニケーションですね
+        next: shino_after_silence_deep_connection
+
+  - id: shino_after_silence_comfort
+    text: 安心...そう感じてもらえるなんて、私も嬉しいです。居心地の良い関係を築けているようですね。
+    choices:
+      - text: 居心地の良い関係ですね
+        next: shino_after_silence_comfortable_bond
+      - text: お互いに安心できますね
+        next: shino_after_silence_mutual_ease
+      - text: 素晴らしい関係です
+        next: shino_after_silence_wonderful_bond
+
+  - id: shino_after_silence_fresh_feeling
+    text: 新鮮な気持ち...沈黙から言葉へ移る瞬間は、確かに特別な感覚がありますね。
+    choices:
+      - text: 特別な瞬間を共有していますね
+        next: shino_after_silence_special_moment
+      - text: 移り変わりが美しいですね
+        next: shino_after_silence_beautiful_transition
+      - text: 感覚を共有できて嬉しいです
+        next: shino_after_silence_shared_sensation
+
+  - id: shino_after_silence_beyond_words
+    text: 言葉以上の...そうですね。心と心で通じ合える関係になれたのかもしれません。
+    choices:
+      - text: 心で通じ合えますね
+        next: emotional_end
+      - text: 素晴らしい関係ですね
+        next: trust_end
+      - text: 深いつながりを感じます
+        next: contextual_end
+
+  - id: shino_after_silence_presence_joy
+    text: 存在を感じる喜び...お互いがここにいることの意味を、改めて感じられます。
+    choices:
+      - text: 存在の意味は大きいですね
+        next: deep_end
+      - text: 一緒にいる喜びを感じます
+        next: emotional_end
+      - text: 意味のある時間ですね
+        next: contextual_end
+
+  - id: shino_after_silence_deep_connection
+    text: 深いつながり...言葉を超えた部分でのつながりを感じます。これは貴重な体験ですね。
+    choices:
+      - text: 貴重な体験を共有していますね
+        next: emotional_end
+      - text: 深いつながりは大切ですね
+        next: trust_end
+      - text: 言葉を超えた関係ですね
+        next: contextual_end
+
+  - id: shino_after_silence_comfortable_bond
+    text: 居心地の良い関係...そんな関係を築けるなんて、本当に幸せなことですね。
+    choices:
+      - text: 幸せな関係ですね
+        next: emotional_end
+      - text: 居心地の良さは大切です
+        next: trust_end
+      - text: 素晴らしい関係を築けました
+        next: contextual_end
+
+  - id: shino_after_silence_mutual_ease
+    text: お互いに安心...そんな関係になれたことを、本当に感謝しています。
+    choices:
+      - text: 僕も感謝しています
+        next: emotional_end
+      - text: 感謝し合える関係ですね
+        next: trust_end
+      - text: 安心できる関係は貴重です
+        next: contextual_end
+
+  - id: shino_after_silence_wonderful_bond
+    text: 素晴らしい関係...そう言ってもらえると、これまでの時間が全て意味のあるものに感じられます。
+    choices:
+      - text: 意味のある時間を過ごしています
+        next: emotional_end
+      - text: 素晴らしい関係を続けていきましょう
+        next: trust_end
+      - text: 全ての時間が大切ですね
+        next: contextual_end
+
+  - id: shino_after_silence_special_moment
+    text: 特別な瞬間...一つ一つの瞬間が、かけがえのないものになっていますね。
+    choices:
+      - text: かけがえのない瞬間ですね
+        next: emotional_end
+      - text: 特別な瞬間を大切にしましょう
+        next: trust_end
+      - text: 一つ一つが貴重です
+        next: contextual_end
+
+  - id: shino_after_silence_beautiful_transition
+    text: 美しい移り変わり...沈黙から言葉へ、そしてまた沈黙へ。自然な流れが美しいですね。
+    choices:
+      - text: 自然な流れは美しいですね
+        next: deep_end
+      - text: 美しい時間を過ごしています
+        next: emotional_end
+      - text: 流れに身を任せましょう
+        next: contextual_end
+
+  - id: shino_after_silence_shared_sensation
+    text: 共有する感覚...同じものを感じ取れるなんて、不思議で嬉しいことですね。
+    choices:
+      - text: 不思議で嬉しいですね
+        next: emotional_end
+      - text: 感覚を共有できて幸せです
+        next: trust_end
+      - text: 同じものを感じ取れますね
+        next: contextual_end

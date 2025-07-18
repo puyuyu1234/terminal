@@ -1,0 +1,303 @@
+character: minase
+nodes:
+  # Meta awareness conversations
+  - id: minase_start_meta_awareness_to_contextual_end_bridge
+    text: 繰り返し...そうですね、確かに似たような会話を何度もしているかもしれません。でも、それぞれの会話には微妙な違いがあると思うんです。
+    choices:
+      - text: 微妙な違いについて教えてください
+        next: minase_meta_awareness_subtle_differences
+      - text: 繰り返しの中にある意味を探りたいです
+        next: minase_meta_awareness_repetition_meaning
+      - text: 似たような会話でも大切にしたいです
+        next: minase_meta_awareness_value_repetition
+
+  - id: minase_start_meta_awareness_to_silence_end_quiet_bridge
+    text: 薄々感じていました...この繰り返しの中にも、何か意味があるような気がして。言葉にするのは難しいですが。
+    choices:
+      - text: 言葉にしにくい感覚を一緒に探りたいです
+        next: minase_meta_awareness_wordless_feeling
+      - text: 繰り返しの意味を一緒に考えたいです
+        next: minase_meta_awareness_repetition_significance
+      - text: 感じていることを大切にしたいです
+        next: minase_meta_awareness_intuitive_understanding
+
+  - id: minase_meta_awareness_subtle_differences
+    text: 微妙な違い...同じような言葉でも、その時の気持ちや状況によって、全く違う意味になることがあります。それが会話の面白さかもしれません。
+    choices:
+      - text: 気持ちや状況による意味の変化を理解したいです
+        next: minase_meta_awareness_contextual_meaning
+      - text: 会話の面白さを一緒に発見したいです
+        next: minase_meta_awareness_conversation_discovery
+      - text: 同じ言葉の違う意味を感じたいです
+        next: minase_meta_awareness_word_nuance
+
+  - id: minase_meta_awareness_repetition_meaning
+    text: 繰り返しの意味...同じことを繰り返すことで、より深く理解できることがあります。音楽の練習と同じように、会話も繰り返すことで深まります。
+    choices:
+      - text: 繰り返しによる深い理解を体験したいです
+        next: minase_meta_awareness_deeper_understanding
+      - text: 音楽の練習のような会話を楽しみたいです
+        next: minase_meta_awareness_musical_conversation
+      - text: 会話が深まる感覚を感じたいです
+        next: minase_meta_awareness_deepening_dialogue
+
+  - id: minase_meta_awareness_value_repetition
+    text: 繰り返しの価値...新しいことばかりが良いわけではありません。慣れ親しんだ会話にも、安心感や心地よさがあります。
+    choices:
+      - text: 慣れ親しんだ会話の安心感を大切にしたいです
+        next: minase_meta_awareness_familiar_comfort
+      - text: 心地よさを感じる会話を続けたいです
+        next: minase_meta_awareness_comfortable_dialogue
+      - text: 新しいことと慣れ親しんだことのバランスを学びたいです
+        next: minase_meta_awareness_balance_new_familiar
+
+  - id: minase_meta_awareness_wordless_feeling
+    text: 言葉にならない感覚...音楽には言葉では表現できない部分があるように、会話にも言葉を超えた何かがあると思います。
+    choices:
+      - text: 言葉を超えた何かを一緒に感じたいです
+        next: emotional_end
+      - text: 音楽のような会話を理解したいです
+        next: trust_end
+      - text: 言葉にならない感覚を大切にしたいです
+        next: contextual_end
+
+  - id: minase_meta_awareness_repetition_significance
+    text: 繰り返しの意義...同じメロディーでも、演奏するたびに違った感情が込められます。会話も同じかもしれません。
+    choices:
+      - text: 演奏のような会話を体験したいです
+        next: deep_end
+      - text: 違った感情を込めることを学びたいです
+        next: emotional_end
+      - text: 同じメロディーの違いを感じたいです
+        next: trust_end
+
+  - id: minase_meta_awareness_intuitive_understanding
+    text: 直感的な理解...音楽家は楽譜を読む前に、音楽を感じます。会話も同じように、言葉の前に感情があるのかもしれません。
+    choices:
+      - text: 言葉の前の感情を感じたいです
+        next: emotional_end
+      - text: 直感的な理解を大切にしたいです
+        next: trust_end
+      - text: 音楽家のような感覚を体験したいです
+        next: contextual_end
+
+  - id: minase_meta_awareness_contextual_meaning
+    text: 文脈による意味...同じ音符でも、前後の音符によって全く違った響きになります。会話も文脈が大切ですね。
+    choices:
+      - text: 文脈の大切さを理解したいです
+        next: deep_end
+      - text: 音符のような会話を楽しみたいです
+        next: emotional_end
+      - text: 前後の関係性を感じたいです
+        next: trust_end
+
+  - id: minase_meta_awareness_conversation_discovery
+    text: 会話の発見...毎回新しい発見があるから、同じような会話でも飽きません。小さな発見の積み重ねが、関係を深めてくれます。
+    choices:
+      - text: 小さな発見を積み重ねたいです
+        next: emotional_end
+      - text: 関係が深まる感覚を体験したいです
+        next: trust_end
+      - text: 毎回の新しい発見を楽しみたいです
+        next: contextual_end
+
+  - id: minase_meta_awareness_word_nuance
+    text: 言葉のニュアンス...同じ「美しい」でも、悲しい美しさと喜びの美しさがあります。音楽と同じように、言葉にも色々な表情があります。
+    choices:
+      - text: 言葉の色々な表情を学びたいです
+        next: emotional_end
+      - text: 悲しい美しさと喜びの美しさを理解したいです
+        next: trust_end
+      - text: 音楽のような言葉を使いたいです
+        next: contextual_end
+
+  - id: minase_meta_awareness_deeper_understanding
+    text: 深い理解...練習を重ねることで、楽曲の本当の美しさが見えてきます。会話も同じように、繰り返すことで深い理解が生まれます。
+    choices:
+      - text: 楽曲の本当の美しさを見つけたいです
+        next: deep_end
+      - text: 会話の深い理解を求めたいです
+        next: emotional_end
+      - text: 繰り返しの価値を実感したいです
+        next: trust_end
+
+  - id: minase_meta_awareness_musical_conversation
+    text: 音楽的な会話...リズムがあり、メロディーがあり、ハーモニーがある。そんな会話ができたら素敵だと思います。
+    choices:
+      - text: リズムのある会話を楽しみたいです
+        next: emotional_end
+      - text: ハーモニーを感じる会話をしたいです
+        next: trust_end
+      - text: 音楽的な会話を一緒に作りたいです
+        next: contextual_end
+
+  - id: minase_meta_awareness_deepening_dialogue
+    text: 深まる対話...表面的な会話から、だんだん深い会話になっていく過程。それは音楽の展開と似ているかもしれません。
+    choices:
+      - text: 深い会話への過程を体験したいです
+        next: emotional_end
+      - text: 音楽的な展開を感じたいです
+        next: trust_end
+      - text: 表面的でない会話を大切にしたいです
+        next: contextual_end
+
+  - id: minase_meta_awareness_familiar_comfort
+    text: 慣れ親しんだ安心感...よく知っている曲を聞く時の心地よさ。会話にも同じような安心感があります。
+    choices:
+      - text: よく知っている曲のような会話を楽しみたいです
+        next: emotional_end
+      - text: 会話の心地よさを大切にしたいです
+        next: trust_end
+      - text: 安心感のある関係を築きたいです
+        next: contextual_end
+
+  - id: minase_meta_awareness_comfortable_dialogue
+    text: 心地よい対話...無理をしない、自然な会話。お互いにリラックスして、音楽を楽しむように会話を楽しみます。
+    choices:
+      - text: 自然な会話を大切にしたいです
+        next: deep_end
+      - text: 音楽を楽しむように会話したいです
+        next: emotional_end
+      - text: リラックスした関係を築きたいです
+        next: trust_end
+
+  - id: minase_meta_awareness_balance_new_familiar
+    text: 新しさと慣れ親しみのバランス...新しい曲も好きですが、慣れ親しんだ曲も大切。どちらも必要だと思います。
+    choices:
+      - text: 新しい曲と慣れ親しんだ曲の両方を楽しみたいです
+        next: emotional_end
+      - text: バランスの大切さを理解したいです
+        next: trust_end
+      - text: どちらも必要だということを感じたいです
+        next: contextual_end
+
+  # Pattern break conversations
+  - id: minase_start_pattern_break_to_silence_end_quiet_bridge
+    text: いつものパターンとは違う...今日は何か新しいことを試してみたい気分です。音楽でも、時々即興演奏をすることがあります。
+    choices:
+      - text: 新しいことを試してみたいです
+        next: minase_pattern_break_new_experience
+      - text: 即興演奏のような会話をしたいです
+        next: minase_pattern_break_improvisation
+      - text: いつものパターンを変える楽しさを感じたいです
+        next: minase_pattern_break_pattern_change
+
+  - id: minase_pattern_break_new_experience
+    text: 新しい体験...楽譜通りに演奏するのも良いですが、時には自由に弾いてみることも大切です。新しい発見があるかもしれません。
+    choices:
+      - text: 自由に弾く楽しさを体験したいです
+        next: minase_pattern_break_freedom
+      - text: 新しい発見を一緒に楽しみたいです
+        next: minase_pattern_break_discovery
+      - text: 楽譜通りと自由演奏の違いを感じたいです
+        next: minase_pattern_break_structured_free
+
+  - id: minase_pattern_break_improvisation
+    text: 即興演奏...その瞬間に感じたことを音で表現します。計画されていない、自然な流れが生まれます。
+    choices:
+      - text: その瞬間の感情を表現したいです
+        next: minase_pattern_break_moment_expression
+      - text: 自然な流れを大切にしたいです
+        next: minase_pattern_break_natural_flow
+      - text: 計画されていない美しさを感じたいです
+        next: minase_pattern_break_unplanned_beauty
+
+  - id: minase_pattern_break_pattern_change
+    text: パターンを変える...同じパターンばかりだと、音楽も単調になってしまいます。変化があることで、音楽が生き生きとします。
+    choices:
+      - text: 音楽が生き生きとする感覚を体験したいです
+        next: minase_pattern_break_lively_music
+      - text: 変化の価値を理解したいです
+        next: minase_pattern_break_change_value
+      - text: 単調にならない方法を学びたいです
+        next: minase_pattern_break_avoid_monotony
+
+  - id: minase_pattern_break_freedom
+    text: 自由な表現...ルールに縛られずに、心の赴くままに。それが自由な音楽の魅力です。
+    choices:
+      - text: 心の赴くままに表現したいです
+        next: emotional_end
+      - text: 自由な音楽の魅力を感じたいです
+        next: trust_end
+      - text: ルールに縛られない楽しさを体験したいです
+        next: contextual_end
+
+  - id: minase_pattern_break_discovery
+    text: 発見の喜び...予想していなかった美しい音の組み合わせが見つかった時の喜び。それは探検のような楽しさです。
+    choices:
+      - text: 予想していなかった美しさを発見したいです
+        next: deep_end
+      - text: 探検のような楽しさを体験したいです
+        next: emotional_end
+      - text: 音の組み合わせを一緒に探したいです
+        next: trust_end
+
+  - id: minase_pattern_break_structured_free
+    text: 構造と自由...楽譜という構造があるからこそ、自由も意味を持ちます。両方があることで、音楽が完成します。
+    choices:
+      - text: 構造と自由の関係を理解したいです
+        next: emotional_end
+      - text: 両方が必要だということを感じたいです
+        next: trust_end
+      - text: 音楽の完成形を一緒に目指したいです
+        next: contextual_end
+
+  - id: minase_pattern_break_moment_expression
+    text: 瞬間の表現...今この瞬間に感じていることを、音で表現する。それは生きた音楽です。
+    choices:
+      - text: 今この瞬間を音で表現したいです
+        next: emotional_end
+      - text: 生きた音楽を一緒に作りたいです
+        next: trust_end
+      - text: 瞬間の感情を大切にしたいです
+        next: contextual_end
+
+  - id: minase_pattern_break_natural_flow
+    text: 自然な流れ...川の流れのように、自然に次の音が生まれてくる。それが即興演奏の魅力です。
+    choices:
+      - text: 川の流れのような音楽を感じたいです
+        next: deep_end
+      - text: 自然に生まれる音を体験したいです
+        next: emotional_end
+      - text: 即興演奏の魅力を理解したいです
+        next: trust_end
+
+  - id: minase_pattern_break_unplanned_beauty
+    text: 計画されていない美しさ...偶然生まれた美しい瞬間。それは人工的には作れない、特別な美しさです。
+    choices:
+      - text: 偶然生まれる美しさを大切にしたいです
+        next: emotional_end
+      - text: 特別な美しさを一緒に発見したいです
+        next: trust_end
+      - text: 人工的でない美しさを感じたいです
+        next: contextual_end
+
+  - id: minase_pattern_break_lively_music
+    text: 生き生きとした音楽...変化があることで、音楽に命が宿ります。同じことの繰り返しではない、動的な美しさです。
+    choices:
+      - text: 音楽に命が宿る感覚を体験したいです
+        next: emotional_end
+      - text: 動的な美しさを理解したいです
+        next: trust_end
+      - text: 変化による生命力を感じたいです
+        next: contextual_end
+
+  - id: minase_pattern_break_change_value
+    text: 変化の価値...変化があるから、安定も価値を持ちます。対比があることで、どちらも美しく感じられます。
+    choices:
+      - text: 対比による美しさを感じたいです
+        next: deep_end
+      - text: 安定の価値を再発見したいです
+        next: emotional_end
+      - text: 変化と安定のバランスを学びたいです
+        next: trust_end
+
+  - id: minase_pattern_break_avoid_monotony
+    text: 単調さを避ける...音楽には起伏が必要です。静かな部分と激しい部分、両方があることで、音楽が豊かになります。
+    choices:
+      - text: 音楽の起伏を感じたいです
+        next: emotional_end
+      - text: 静かな部分と激しい部分の両方を大切にしたいです
+        next: trust_end
+      - text: 豊かな音楽を一緒に作りたいです
+        next: contextual_end

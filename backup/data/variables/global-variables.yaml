@@ -1,0 +1,114 @@
+# グローバル変数定義
+# プレイヤーの行動パターンや全体的な状態を管理
+
+variables:
+  # プレイヤーの基本行動パターン
+  player_silence_count:
+    type: integer
+    initial_value: 0
+    description: "プレイヤーが沈黙を選択した回数"
+    
+  player_empathy_level:
+    type: integer
+    initial_value: 0
+    description: "プレイヤーの共感的な選択の累積数"
+    
+  player_curiosity_level:
+    type: integer
+    initial_value: 0
+    description: "プレイヤーの好奇心を示す選択の累積数"
+    
+  player_protective_instinct:
+    type: integer
+    initial_value: 0
+    description: "プレイヤーの保護的な選択の累積数"
+
+  # セッション管理
+  total_visits:
+    type: integer
+    initial_value: 0
+    description: "プレイヤーの総訪問回数"
+    
+  night_progression:
+    type: integer
+    initial_value: 0
+    description: "夜の進行度（0=夕方、10=深夜）"
+    
+  session_duration:
+    type: integer
+    initial_value: 0
+    description: "現在のセッションの経過時間（分）"
+    
+  consecutive_visits:
+    type: integer
+    initial_value: 0
+    description: "連続訪問回数"
+
+  # 全体的な雰囲気変数
+  overall_tension:
+    type: integer
+    initial_value: 0
+    description: "全体的な緊張度（0=穏やか、10=緊張）"
+    
+  mystery_level:
+    type: integer
+    initial_value: 0
+    description: "神秘的な要素の蓄積度"
+    
+  emotional_depth:
+    type: integer
+    initial_value: 0
+    description: "会話の感情的な深さ"
+
+  # 特殊な状態フラグ
+  has_experienced_loop:
+    type: boolean
+    initial_value: false
+    description: "ループ体験をしたかどうか"
+    
+  has_met_all_characters:
+    type: boolean
+    initial_value: false
+    description: "全キャラクターと会ったかどうか"
+    
+  has_deep_conversation:
+    type: boolean
+    initial_value: false
+    description: "深い会話を体験したかどうか"
+    
+  has_unsettling_experience:
+    type: boolean
+    initial_value: false
+    description: "不安な体験をしたかどうか"
+
+  # 天候・環境要素
+  weather_mentions:
+    type: integer
+    initial_value: 0
+    description: "天候への言及回数"
+    
+  time_distortion_events:
+    type: integer
+    initial_value: 0
+    description: "時間の歪みを感じる出来事の回数"
+    
+  environmental_changes:
+    type: integer
+    initial_value: 0
+    description: "環境の変化を感じる回数"
+
+  # メタ要素
+  fourth_wall_breaks:
+    type: integer
+    initial_value: 0
+    description: "第四の壁を破る発言の回数"
+    
+  player_self_awareness:
+    type: integer
+    initial_value: 0
+    description: "プレイヤーの自己認識度"
+    
+  game_awareness:
+    type: integer
+    initial_value: 0
+    description: "ゲームとしての認識度"

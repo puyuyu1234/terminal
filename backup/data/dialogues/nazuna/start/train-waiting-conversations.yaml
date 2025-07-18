@@ -1,0 +1,132 @@
+character: nazuna
+nodes:
+  # Train waiting extended conversations
+  - id: nazuna_start_train_waiting_extended_conversation
+    text: 電車を待つ時間...私はその時間が好きです。何も決まっていない時間、何かが始まる前の時間。期待と不安が混ざった特別な時間です。
+    choices:
+      - text: 何も決まっていない時間を大切にしたいです
+        next: nazuna_train_waiting_open_time
+      - text: 期待と不安が混ざった感覚を理解したいです
+        next: nazuna_train_waiting_mixed_feelings
+      - text: 特別な時間を一緒に過ごしたいです
+        next: nazuna_train_waiting_special_sharing
+
+  - id: nazuna_train_waiting_open_time
+    text: 何も決まっていない時間...それは可能性に満ちた時間です。電車がどこに連れて行ってくれるかわからない、でもそれが楽しみです。
+    choices:
+      - text: 可能性に満ちた時間を楽しみたいです
+        next: nazuna_train_waiting_possibilities
+      - text: どこに連れて行ってくれるかわからない楽しみを感じます
+        next: nazuna_train_waiting_unknown_journey
+      - text: 決まっていないからこその楽しみを教えてください
+        next: nazuna_train_waiting_uncertain_joy
+
+  - id: nazuna_train_waiting_mixed_feelings
+    text: 期待と不安...それは人生の縮図のようなものです。新しいことが始まるとき、いつも感じる気持ち。それが電車を待つ時間に凝縮されています。
+    choices:
+      - text: 人生の縮図としての待ち時間を理解したいです
+        next: nazuna_train_waiting_life_microcosm
+      - text: 新しいことが始まる気持ちを共有したいです
+        next: nazuna_train_waiting_new_beginning
+      - text: 凝縮された感情を一緒に感じたいです
+        next: nazuna_train_waiting_condensed_emotions
+
+  - id: nazuna_train_waiting_special_sharing
+    text: 特別な時間の共有...一人で過ごす待ち時間も良いですが、誰かと一緒に過ごす待ち時間はもっと特別です。時間が豊かになります。
+    choices:
+      - text: 一緒に過ごす待ち時間を大切にしたいです
+        next: nazuna_train_waiting_shared_moments
+      - text: 時間が豊かになる感覚を体験したいです
+        next: nazuna_train_waiting_enriched_time
+      - text: 特別な時間を作り続けたいです
+        next: nazuna_train_waiting_continuing_special
+
+  - id: nazuna_train_waiting_possibilities
+    text: 可能性に満ちた時間...その時間は希望の時間です。何が起こるかわからないから、すべてが可能に思えます。
+    choices:
+      - text: 希望の時間を大切にしたいです
+        next: emotional_end
+      - text: すべてが可能に思える感覚を共有したいです
+        next: trust_end
+      - text: 可能性を信じる気持ちを教えてください
+        next: contextual_end
+
+  - id: nazuna_train_waiting_unknown_journey
+    text: 未知の旅...電車は決まった路線を走りますが、心の旅は自由です。どこに向かうかは、その時の気持ち次第です。
+    choices:
+      - text: 心の旅の自由さを感じたいです
+        next: deep_end
+      - text: 気持ち次第で変わる旅を楽しみたいです
+        next: emotional_end
+      - text: 未知の旅を一緒に楽しみたいです
+        next: trust_end
+
+  - id: nazuna_train_waiting_uncertain_joy
+    text: 不確実な楽しみ...それは計画された楽しみとは違います。予期しない出来事、偶然の出会い。そこに真の楽しみがあります。
+    choices:
+      - text: 予期しない出来事を楽しみたいです
+        next: emotional_end
+      - text: 偶然の出会いを大切にしたいです
+        next: trust_end
+      - text: 真の楽しみを一緒に見つけたいです
+        next: contextual_end
+
+  - id: nazuna_train_waiting_life_microcosm
+    text: 人生の縮図...電車を待つ短い時間に、人生の長い時間が重なります。過去を振り返り、未来を想像する。貴重な時間です。
+    choices:
+      - text: 過去を振り返る時間を大切にしたいです
+        next: emotional_end
+      - text: 未来を想像する楽しみを共有したいです
+        next: trust_end
+      - text: 貴重な時間を一緒に過ごしたいです
+        next: contextual_end
+
+  - id: nazuna_train_waiting_new_beginning
+    text: 新しい始まり...電車に乗ることは、新しい章の始まりです。どんな物語が待っているのか、期待が膨らみます。
+    choices:
+      - text: 新しい章の始まりを楽しみにしたいです
+        next: deep_end
+      - text: どんな物語が待っているか一緒に想像したいです
+        next: emotional_end
+      - text: 期待が膨らむ感覚を共有したいです
+        next: trust_end
+
+  - id: nazuna_train_waiting_condensed_emotions
+    text: 凝縮された感情...短い時間に、たくさんの感情が詰まっています。それを誰かと共有できるのは幸せなことです。
+    choices:
+      - text: たくさんの感情を一緒に感じたいです
+        next: emotional_end
+      - text: 共有できる幸せを大切にしたいです
+        next: trust_end
+      - text: 凝縮された時間を理解したいです
+        next: contextual_end
+
+  - id: nazuna_train_waiting_shared_moments
+    text: 共有される瞬間...一人では気づかない細かな変化、音、感情。誰かと一緒だと、すべてが鮮明になります。
+    choices:
+      - text: 細かな変化を一緒に感じたいです
+        next: emotional_end
+      - text: 音の変化を共有したいです
+        next: trust_end
+      - text: 感情が鮮明になる体験をしたいです
+        next: contextual_end
+
+  - id: nazuna_train_waiting_enriched_time
+    text: 豊かな時間...同じ時間でも、誰かと過ごすと密度が変わります。会話がなくても、存在を感じるだけで時間が深くなります。
+    choices:
+      - text: 時間の密度の変化を感じたいです
+        next: deep_end
+      - text: 存在を感じる時間を大切にしたいです
+        next: emotional_end
+      - text: 深い時間を一緒に作りたいです
+        next: trust_end
+
+  - id: nazuna_train_waiting_continuing_special
+    text: 継続する特別さ...一度特別な時間を経験すると、また同じような時間を求めるようになります。それが人とのつながりを深くします。
+    choices:
+      - text: 特別な時間を継続したいです
+        next: emotional_end
+      - text: 人とのつながりを深くしたいです
+        next: trust_end
+      - text: 同じような時間を求める気持ちを理解したいです
+        next: contextual_end

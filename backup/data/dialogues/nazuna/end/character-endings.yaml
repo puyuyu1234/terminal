@@ -1,0 +1,8 @@
+character: nazuna
+nodes:
+  - id: nazuna_session_end
+    text: "......今日も、ありがとう。心が、少し軽くなった。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

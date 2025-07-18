@@ -1,0 +1,656 @@
+character: nazuna
+nodes:
+  # Evening extended conversations
+  - id: nazuna_start_first_meet_evening_extended_conversation
+    text: 静寂の中で、人との出会いは特別な意味を持つものです。言葉少なでも、心は通じ合えるのかもしれません。
+    choices:
+      - text: 心で感じる出会いですね
+        next: nazuna_evening_heart_meeting
+      - text: 静寂の中の特別さを感じます
+        next: nazuna_evening_silence_special
+      - text: 言葉を超えた繋がりを大切にしたいです
+        next: nazuna_evening_beyond_words
+
+  - id: nazuna_evening_heart_meeting
+    text: 心で感じる出会い...そうですね。録音機を通して音を拾い集めているうちに、心も音に敏感になりました。
+    choices:
+      - text: 録音で心も変わるのですね
+        next: nazuna_evening_recording_heart
+      - text: 音への敏感さを教えてください
+        next: nazuna_evening_sound_sensitivity
+      - text: 心の変化について聞かせてください
+        next: nazuna_evening_heart_change
+
+  - id: nazuna_evening_silence_special
+    text: 静寂の特別さ...静寂にも色々な種類があります。孤独な静寂、平和な静寂、期待に満ちた静寂。
+    choices:
+      - text: 静寂の種類について詳しく教えてください
+        next: nazuna_evening_silence_types
+      - text: 今の静寂はどんな静寂ですか？
+        next: nazuna_evening_current_silence
+      - text: 静寂を聞き分けることができるのですね
+        next: nazuna_evening_silence_distinction
+
+  - id: nazuna_evening_beyond_words
+    text: 言葉を超えた繋がり...録音機で集めた音には、言葉にならない感情がたくさん込められています。
+    choices:
+      - text: 音に込められた感情を感じたいです
+        next: nazuna_evening_emotion_in_sound
+      - text: 言葉にならない感情の美しさを教えてください
+        next: nazuna_evening_wordless_beauty
+      - text: 録音機で何を集めているのですか？
+        next: nazuna_evening_recording_collection
+
+  - id: nazuna_evening_recording_heart
+    text: 録音を続けていると、音の向こうにある心の動きが見えてくるようになります。とても不思議な体験です。
+    choices:
+      - text: 心の動きを感じる体験をしたいです
+        next: emotional_end
+      - text: 音を通して人を理解することの素晴らしさを感じます
+        next: trust_end
+      - text: 不思議な体験を共有してくれてありがとうございます
+        next: contextual_end
+
+  - id: nazuna_evening_sound_sensitivity
+    text: 音への敏感さ...小さな音、遠くの音、重なり合う音。すべてが意味を持って聞こえるようになりました。
+    choices:
+      - text: 音の意味を教えてください
+        next: deep_end
+      - text: 敏感に聞こえる音の世界を共有したいです
+        next: emotional_end
+      - text: 音の重なりの美しさを感じます
+        next: trust_end
+
+  - id: nazuna_evening_heart_change
+    text: 心の変化...以前より、人や物事に対して深く感じるようになりました。録音機がそうさせてくれたのかもしれません。
+    choices:
+      - text: 深く感じることの豊かさを教えてください
+        next: emotional_end
+      - text: 録音機との出会いが人生を変えたのですね
+        next: trust_end
+      - text: 感じる力の成長を共有したいです
+        next: contextual_end
+
+  - id: nazuna_evening_silence_types
+    text: 静寂の種類...寂しい静寂は冷たく、平和な静寂は温かく、期待の静寂は軽やかです。それぞれ違う音がします。
+    choices:
+      - text: 静寂の音を聞き分けたいです
+        next: deep_end
+      - text: 温かい静寂を一緒に感じましょう
+        next: emotional_end
+      - text: 期待の静寂の軽やかさを共有したいです
+        next: trust_end
+
+  - id: nazuna_evening_current_silence
+    text: 今の静寂...これは新しい出会いへの静寂です。少し緊張していて、でも希望に満ちています。
+    choices:
+      - text: 新しい出会いへの静寂を大切にしたいです
+        next: emotional_end
+      - text: 希望に満ちた静寂を共有させてください
+        next: trust_end
+      - text: 緊張と希望の両方を感じます
+        next: contextual_end
+
+  - id: nazuna_evening_silence_distinction
+    text: 静寂の聞き分け...長い間一人で過ごしていると、自然と身につく能力なのかもしれません。
+    choices:
+      - text: 一人の時間が教えてくれることを学びたいです
+        next: deep_end
+      - text: 自然と身につく能力の素晴らしさを感じます
+        next: emotional_end
+      - text: 静寂を聞き分ける技術を教えてください
+        next: trust_end
+
+  - id: nazuna_evening_emotion_in_sound
+    text: 音に込められた感情...風の音には寂しさが、鳥の鳴き声には喜びが、雨の音には懐かしさが込められています。
+    choices:
+      - text: 音に込められた感情を読み取りたいです
+        next: emotional_end
+      - text: 自然の音の感情を教えてください
+        next: trust_end
+      - text: 音の感情を一緒に聞いてみませんか
+        next: contextual_end
+
+  - id: nazuna_evening_wordless_beauty
+    text: 言葉にならない感情の美しさ...それは言葉では表現できないからこそ、純粋で美しいのです。
+    choices:
+      - text: 純粋な美しさを感じたいです
+        next: emotional_end
+      - text: 言葉を超えた美しさを共有しましょう
+        next: trust_end
+      - text: 表現できない感情の価値を学びたいです
+        next: deep_end
+
+  - id: nazuna_evening_recording_collection
+    text: 録音機で集めるもの...日常の音、自然の音、時には人の声。すべてが私にとって大切な宝物です。
+    choices:
+      - text: 音の宝物を大切にする気持ちを理解したいです
+        next: emotional_end
+      - text: 日常の音の価値を教えてください
+        next: trust_end
+      - text: 宝物のような音を一緒に聞いてみたいです
+        next: contextual_end
+
+  # Night extended conversations
+  - id: nazuna_start_first_meet_night_extended_conversation
+    text: 夜の静寂は特別です。音がより鮮明に聞こえ、心も静かになります。あなたも夜の静寂を感じますか？
+    choices:
+      - text: 夜の静寂を感じます
+        next: nazuna_night_silence_feeling
+      - text: 音が鮮明に聞こえる夜について教えてください
+        next: nazuna_night_clear_sound
+      - text: 心が静かになる夜の魅力を知りたいです
+        next: nazuna_night_heart_calm
+
+  - id: nazuna_night_silence_feeling
+    text: 夜の静寂を感じる...それは昼間とは違う、深い静寂です。星の光も音を持っているような気がします。
+    choices:
+      - text: 星の光の音を聞いてみたいです
+        next: nazuna_night_star_sound
+      - text: 深い静寂の中で何を感じますか？
+        next: nazuna_night_deep_silence
+      - text: 昼間と夜の静寂の違いを教えてください
+        next: nazuna_night_silence_difference
+
+  - id: nazuna_night_clear_sound
+    text: 夜の鮮明な音...風の音、遠くの車の音、時計の音。すべてがはっきりと聞こえて、まるで音の世界に住んでいるようです。
+    choices:
+      - text: 音の世界に住む感覚を教えてください
+        next: nazuna_night_sound_world
+      - text: 鮮明に聞こえる音の美しさを感じたいです
+        next: nazuna_night_clear_beauty
+      - text: 夜の音の特別さを一緒に感じましょう
+        next: nazuna_night_sound_special
+
+  - id: nazuna_night_heart_calm
+    text: 心が静かになる夜...日中の騒がしさから解放されて、本当の自分と向き合える時間です。
+    choices:
+      - text: 本当の自分と向き合う時間を大切にしたいです
+        next: nazuna_night_true_self
+      - text: 日中の騒がしさから解放される感覚を知りたいです
+        next: nazuna_night_liberation
+      - text: 心が静かになる夜の魔法を教えてください
+        next: nazuna_night_magic
+
+  - id: nazuna_night_star_sound
+    text: 星の光の音...それは耳では聞こえないけれど、心で感じる音です。キラキラと優しい音がします。
+    choices:
+      - text: 心で感じる音を教えてください
+        next: emotional_end
+      - text: キラキラと優しい音を一緒に聞きたいです
+        next: trust_end
+      - text: 見えない音の世界を共有しましょう
+        next: contextual_end
+
+  - id: nazuna_night_deep_silence
+    text: 深い静寂の中で感じること...それは孤独ではなく、宇宙とのつながりです。とても大きな存在の一部になった気がします。
+    choices:
+      - text: 宇宙とのつながりを感じたいです
+        next: deep_end
+      - text: 大きな存在の一部である感覚を教えてください
+        next: emotional_end
+      - text: 孤独ではない静寂の豊かさを共有したいです
+        next: trust_end
+
+  - id: nazuna_night_silence_difference
+    text: 昼と夜の静寂の違い...昼の静寂は明るく軽やか、夜の静寂は深く重厚です。どちらも美しいですが、夜の方が神秘的です。
+    choices:
+      - text: 神秘的な夜の静寂を感じたいです
+        next: emotional_end
+      - text: 静寂の種類の豊かさを教えてください
+        next: trust_end
+      - text: 明るい静寂と深い静寂の両方を大切にしたいです
+        next: contextual_end
+
+  - id: nazuna_night_sound_world
+    text: 音の世界に住む感覚...すべての音に意味があり、すべての音が物語を語っています。とても豊かな世界です。
+    choices:
+      - text: 音の物語を聞かせてください
+        next: deep_end
+      - text: 豊かな音の世界を共有したいです
+        next: emotional_end
+      - text: 音に意味を見つける方法を教えてください
+        next: trust_end
+
+  - id: nazuna_night_clear_beauty
+    text: 鮮明な音の美しさ...クリアで純粋な音は、心を洗ってくれます。雑音のない世界の美しさです。
+    choices:
+      - text: 心を洗う音の力を感じたいです
+        next: emotional_end
+      - text: 雑音のない世界の美しさを教えてください
+        next: trust_end
+      - text: 純粋な音の価値を一緒に感じましょう
+        next: contextual_end
+
+  - id: nazuna_night_sound_special
+    text: 夜の音の特別さ...昼間隠れていた音が顔を出し、新しい音の景色を見せてくれます。
+    choices:
+      - text: 隠れていた音を見つけたいです
+        next: deep_end
+      - text: 新しい音の景色を一緒に見ましょう
+        next: emotional_end
+      - text: 夜だけの特別な音を教えてください
+        next: trust_end
+
+  - id: nazuna_night_true_self
+    text: 本当の自分と向き合う...夜の静寂の中で、昼間は気づかない自分の声が聞こえてきます。
+    choices:
+      - text: 自分の声を聞く方法を教えてください
+        next: emotional_end
+      - text: 本当の自分を知る旅を共有したいです
+        next: trust_end
+      - text: 気づかない自分の声に耳を傾けたいです
+        next: contextual_end
+
+  - id: nazuna_night_liberation
+    text: 騒がしさからの解放...夜になると、世界が静かになり、心も自由になります。とても開放的な気分です。
+    choices:
+      - text: 心の自由を感じたいです
+        next: emotional_end
+      - text: 開放的な気分を一緒に味わいましょう
+        next: trust_end
+      - text: 静かな世界の自由さを教えてください
+        next: contextual_end
+
+  - id: nazuna_night_magic
+    text: 夜の魔法...それは静寂が持つ特別な力です。時間がゆっくりと流れ、心が落ち着きます。
+    choices:
+      - text: 時間がゆっくり流れる感覚を共有したいです
+        next: emotional_end
+      - text: 静寂の魔法を教えてください
+        next: trust_end
+      - text: 夜の特別な力を一緒に感じましょう
+        next: deep_end
+
+  # Late night extended conversations
+  - id: nazuna_start_first_meet_late_night_extended_conversation
+    text: 深夜の時間...世界が最も静かになる時間です。この時間に起きているのは、何か特別な理由があるのでしょうか？
+    choices:
+      - text: 深夜の静寂に魅力を感じます
+        next: nazuna_late_night_silence_attraction
+      - text: 特別な理由があって起きています
+        next: nazuna_late_night_special_reason
+      - text: 深夜の世界について教えてください
+        next: nazuna_late_night_world
+
+  - id: nazuna_late_night_silence_attraction
+    text: 深夜の静寂への魅力...とても理解できます。この時間の静寂は、他では味わえない深さがあります。
+    choices:
+      - text: 深夜だけの特別な深さを感じたいです
+        next: nazuna_late_night_depth
+      - text: 他では味わえない静寂の魅力を教えてください
+        next: nazuna_late_night_unique_silence
+      - text: 深夜の静寂を一緒に味わいましょう
+        next: nazuna_late_night_shared_silence
+
+  - id: nazuna_late_night_special_reason
+    text: 特別な理由...深夜には昼間では気づかない音が聞こえます。録音機にとって、とても貴重な時間です。
+    choices:
+      - text: 深夜だけの音を聞かせてください
+        next: nazuna_late_night_exclusive_sounds
+      - text: 録音機にとって貴重な時間について教えてください
+        next: nazuna_late_night_recording_value
+      - text: 気づかない音の世界を共有したいです
+        next: nazuna_late_night_hidden_sounds
+
+  - id: nazuna_late_night_world
+    text: 深夜の世界...それは昼間とは全く別の世界です。静寂が支配し、音が特別な意味を持ちます。
+    choices:
+      - text: 音の特別な意味を教えてください
+        next: nazuna_late_night_sound_meaning
+      - text: 静寂が支配する世界を感じたいです
+        next: nazuna_late_night_silence_rule
+      - text: 別の世界の住人になった気分です
+        next: nazuna_late_night_different_world
+
+  - id: nazuna_late_night_depth
+    text: 深夜の深さ...それは心の奥底に響く深さです。表面的なものがすべて取り除かれ、本質だけが残ります。
+    choices:
+      - text: 心の奥底に響く深さを感じたいです
+        next: emotional_end
+      - text: 本質だけが残る世界を教えてください
+        next: deep_end
+      - text: 表面的なものを取り除く深夜の力を感じます
+        next: trust_end
+
+  - id: nazuna_late_night_unique_silence
+    text: 他では味わえない静寂...それは完全な静寂です。都市の騒音も、人の声も、すべてが眠りについています。
+    choices:
+      - text: 完全な静寂を体験したいです
+        next: emotional_end
+      - text: すべてが眠りについた世界の美しさを感じます
+        next: trust_end
+      - text: 都市が眠る時間の特別さを教えてください
+        next: contextual_end
+
+  - id: nazuna_late_night_shared_silence
+    text: 深夜の静寂を一緒に...とても嬉しいです。深夜の静寂は、一人で味わうより、誰かと共有する方が深い意味があります。
+    choices:
+      - text: 静寂の共有に深い意味を感じます
+        next: emotional_end
+      - text: 一緒に深夜の静寂を大切にしたいです
+        next: trust_end
+      - text: 共有することで深まる静寂の価値を学びたいです
+        next: contextual_end
+
+  - id: nazuna_late_night_exclusive_sounds
+    text: 深夜だけの音...時計の音、遠くの電車の音、風が建物を通り抜ける音。すべてが鮮明で、特別な響きを持っています。
+    choices:
+      - text: 特別な響きを持つ音を聞かせてください
+        next: deep_end
+      - text: 鮮明に聞こえる深夜の音を共有したいです
+        next: emotional_end
+      - text: 深夜の音の特別さを一緒に感じましょう
+        next: trust_end
+
+  - id: nazuna_late_night_recording_value
+    text: 録音機にとって貴重な時間...深夜の音は純粋で、雑音が少ない。録音機が最も力を発揮する時間です。
+    choices:
+      - text: 純粋な音の価値を教えてください
+        next: emotional_end
+      - text: 録音機の力を感じたいです
+        next: trust_end
+      - text: 雑音の少ない深夜の魅力を共有しましょう
+        next: contextual_end
+
+  - id: nazuna_late_night_hidden_sounds
+    text: 気づかない音の世界...深夜になると、昼間は聞こえない小さな音、遠くの音がすべて聞こえてきます。
+    choices:
+      - text: 小さな音に耳を傾けたいです
+        next: emotional_end
+      - text: 遠くの音を一緒に聞きましょう
+        next: trust_end
+      - text: 隠れた音の世界を探検したいです
+        next: deep_end
+
+  - id: nazuna_late_night_sound_meaning
+    text: 音の特別な意味...深夜の音は、昼間の音とは違う意味を持ちます。より深く、より真実に近い意味を持っています。
+    choices:
+      - text: 真実に近い音の意味を教えてください
+        next: deep_end
+      - text: 深夜の音の深さを感じたいです
+        next: emotional_end
+      - text: 音の意味を一緒に探りましょう
+        next: trust_end
+
+  - id: nazuna_late_night_silence_rule
+    text: 静寂が支配する世界...それは静寂が王様の世界です。すべての音が静寂に許可をもらって響いています。
+    choices:
+      - text: 静寂が王様の世界を感じたいです
+        next: emotional_end
+      - text: 音が静寂に許可をもらう感覚を教えてください
+        next: trust_end
+      - text: 静寂の支配する美しい世界を共有しましょう
+        next: contextual_end
+
+  - id: nazuna_late_night_different_world
+    text: 別の世界の住人...深夜の世界は、昼間とは全く違うルールで動いています。時間の流れも、音の意味も違います。
+    choices:
+      - text: 別の世界のルールを教えてください
+        next: deep_end
+      - text: 時間の流れの違いを感じたいです
+        next: emotional_end
+      - text: 深夜の世界の住人になりたいです
+        next: trust_end
+
+  # Rainy extended conversations
+  - id: nazuna_start_first_meet_rainy_extended_conversation
+    text: 雨音は特別な音楽です。録音機で集めた音の中でも、雨音は最も美しい音の一つです。
+    choices:
+      - text: 雨音の美しさを教えてください
+        next: nazuna_rainy_sound_beauty
+      - text: 雨音の音楽を一緒に聞きましょう
+        next: nazuna_rainy_music_together
+      - text: 録音機で集めた雨音について聞かせてください
+        next: nazuna_rainy_recording_collection
+
+  - id: nazuna_rainy_sound_beauty
+    text: 雨音の美しさ...それは自然が奏でる最も優しい音楽です。一つ一つの雨粒が、異なる音を作り出しています。
+    choices:
+      - text: 雨粒の異なる音を聞き分けたいです
+        next: nazuna_rainy_droplet_sounds
+      - text: 自然の優しい音楽を感じたいです
+        next: nazuna_rainy_natural_music
+      - text: 雨音の音楽を心で聞きたいです
+        next: nazuna_rainy_heart_listening
+
+  - id: nazuna_rainy_music_together
+    text: 雨音の音楽を一緒に...とても嬉しいです。雨音は一人で聞くより、誰かと一緒に聞く方が美しく感じます。
+    choices:
+      - text: 一緒に聞く雨音の美しさを感じます
+        next: nazuna_rainy_shared_beauty
+      - text: 雨音を共有することの喜びを教えてください
+        next: nazuna_rainy_sharing_joy
+      - text: 雨音を通して心を通わせたいです
+        next: nazuna_rainy_heart_connection
+
+  - id: nazuna_rainy_recording_collection
+    text: 録音機で集めた雨音...小雨、大雨、霧雨、それぞれ違う音を持っています。雨音のコレクションです。
+    choices:
+      - text: 雨音のコレクションを聞かせてください
+        next: nazuna_rainy_collection_sharing
+      - text: 雨の種類と音の違いを教えてください
+        next: nazuna_rainy_type_differences
+      - text: 雨音を集める楽しさを共有したいです
+        next: nazuna_rainy_collection_joy
+
+  - id: nazuna_rainy_droplet_sounds
+    text: 雨粒の異なる音...大きな雨粒は深い音、小さな雨粒は高い音。屋根に落ちる音、地面に落ちる音、すべて違います。
+    choices:
+      - text: 雨粒の音の違いを学びたいです
+        next: emotional_end
+      - text: 屋根と地面の音の違いを感じたいです
+        next: trust_end
+      - text: 雨粒の音のオーケストラを一緒に聞きましょう
+        next: contextual_end
+
+  - id: nazuna_rainy_natural_music
+    text: 自然の優しい音楽...雨音は自然からの贈り物です。疲れた心を癒してくれる、優しい音楽です。
+    choices:
+      - text: 疲れた心を癒す雨音の力を感じたいです
+        next: emotional_end
+      - text: 自然からの贈り物を大切にしたいです
+        next: trust_end
+      - text: 優しい音楽に包まれたいです
+        next: contextual_end
+
+  - id: nazuna_rainy_heart_listening
+    text: 雨音を心で聞く...それは耳で聞くのとは違う聞き方です。心が雨音の意味を理解し、感情を読み取ります。
+    choices:
+      - text: 心で聞く方法を教えてください
+        next: deep_end
+      - text: 雨音の意味を理解したいです
+        next: emotional_end
+      - text: 音の感情を読み取る技術を学びたいです
+        next: trust_end
+
+  - id: nazuna_rainy_shared_beauty
+    text: 共有する雨音の美しさ...一人で聞く時とは違う、深い美しさがあります。心と心が雨音を通してつながります。
+    choices:
+      - text: 心と心のつながりを感じたいです
+        next: emotional_end
+      - text: 共有することで深まる美しさを教えてください
+        next: trust_end
+      - text: 雨音を通したつながりを大切にしたいです
+        next: contextual_end
+
+  - id: nazuna_rainy_sharing_joy
+    text: 雨音を共有する喜び...それは音楽を誰かと一緒に聞く喜びに似ています。でも、もっと特別な喜びです。
+    choices:
+      - text: 特別な喜びを感じたいです
+        next: emotional_end
+      - text: 音楽を共有する喜びを教えてください
+        next: trust_end
+      - text: 雨音の特別さを一緒に感じましょう
+        next: contextual_end
+
+  - id: nazuna_rainy_heart_connection
+    text: 雨音を通した心のつながり...雨音が仲介してくれる、特別なつながりです。言葉では表現できない深いつながり。
+    choices:
+      - text: 言葉では表現できないつながりを感じたいです
+        next: emotional_end
+      - text: 雨音が仲介するつながりを大切にしたいです
+        next: trust_end
+      - text: 特別なつながりを共有しましょう
+        next: deep_end
+
+  - id: nazuna_rainy_collection_sharing
+    text: 雨音のコレクションを共有...それぞれの雨音には、その時の気持ちや風景が込められています。
+    choices:
+      - text: 雨音に込められた気持ちを教えてください
+        next: emotional_end
+      - text: 風景が込められた音を聞かせてください
+        next: trust_end
+      - text: 雨音のコレクションを一緒に楽しみたいです
+        next: contextual_end
+
+  - id: nazuna_rainy_type_differences
+    text: 雨の種類と音の違い...小雨は優しく、大雨は力強く、霧雨は神秘的です。それぞれが異なる感情を表現しています。
+    choices:
+      - text: 雨の感情表現を学びたいです
+        next: deep_end
+      - text: 神秘的な霧雨の音を聞きたいです
+        next: emotional_end
+      - text: 力強い大雨の音を感じたいです
+        next: trust_end
+
+  - id: nazuna_rainy_collection_joy
+    text: 雨音を集める楽しさ...それは音の宝探しのようなものです。新しい雨音を見つけるたびに、心が躍ります。
+    choices:
+      - text: 音の宝探しを一緒にしたいです
+        next: emotional_end
+      - text: 心が躍る雨音の発見を共有したいです
+        next: trust_end
+      - text: 新しい雨音を見つける楽しさを教えてください
+        next: contextual_end
+
+  # Foggy extended conversations
+  - id: nazuna_start_first_meet_foggy_extended_conversation
+    text: 霧の中の音は特別です。音がこもって、幻想的な響きになります。霧の中でしか聞けない音があります。
+    choices:
+      - text: 霧の中でしか聞けない音を聞かせてください
+        next: nazuna_foggy_exclusive_sounds
+      - text: 幻想的な響きを感じたいです
+        next: nazuna_foggy_mystical_sound
+      - text: 霧の中の音の特別さを教えてください
+        next: nazuna_foggy_sound_special
+
+  - id: nazuna_foggy_exclusive_sounds
+    text: 霧の中だけの音...それは音が霧に包まれて、柔らかく変化した音です。まるで音にベールがかかったような感じです。
+    choices:
+      - text: 音にベールがかかった感覚を感じたいです
+        next: nazuna_foggy_veiled_sound
+      - text: 霧に包まれた音の柔らかさを教えてください
+        next: nazuna_foggy_soft_sound
+      - text: 音が変化する霧の魔法を感じたいです
+        next: nazuna_foggy_transformation_magic
+
+  - id: nazuna_foggy_mystical_sound
+    text: 幻想的な響き...霧の中では、現実と幻想の境界があいまいになります。音も現実のものか、幻想のものかわからなくなります。
+    choices:
+      - text: 現実と幻想の境界を感じたいです
+        next: nazuna_foggy_reality_fantasy
+      - text: あいまいな世界の美しさを教えてください
+        next: nazuna_foggy_ambiguous_beauty
+      - text: 幻想的な音の世界を共有しましょう
+        next: nazuna_foggy_fantasy_world
+
+  - id: nazuna_foggy_sound_special
+    text: 霧の中の音の特別さ...それは音が霧によって柔らかく包まれ、優しく響くことです。刺激的な音も、霧の中では穏やかになります。
+    choices:
+      - text: 音が穏やかになる霧の力を感じたいです
+        next: nazuna_foggy_calming_power
+      - text: 柔らかく包まれる音を体験したいです
+        next: nazuna_foggy_soft_embrace
+      - text: 優しく響く音を一緒に聞きましょう
+        next: nazuna_foggy_gentle_sound
+
+  - id: nazuna_foggy_veiled_sound
+    text: 音にベールがかかった感覚...それは音が神秘的な衣をまとった感じです。普通の音が、特別な音に変わります。
+    choices:
+      - text: 音の神秘的な衣を感じたいです
+        next: emotional_end
+      - text: 普通の音が特別になる瞬間を共有したいです
+        next: trust_end
+      - text: 音の変化を一緒に楽しみましょう
+        next: contextual_end
+
+  - id: nazuna_foggy_soft_sound
+    text: 霧に包まれた音の柔らかさ...それは雲に包まれたような、ふわふわした音です。心も柔らかくなります。
+    choices:
+      - text: ふわふわした音を感じたいです
+        next: emotional_end
+      - text: 心が柔らかくなる音を共有したいです
+        next: trust_end
+      - text: 雲に包まれた音を一緒に聞きましょう
+        next: contextual_end
+
+  - id: nazuna_foggy_transformation_magic
+    text: 音が変化する霧の魔法...霧は音の魔法使いです。どんな音も、霧の魔法で美しく変化させます。
+    choices:
+      - text: 霧の魔法を感じたいです
+        next: deep_end
+      - text: 音の魔法使いの力を教えてください
+        next: emotional_end
+      - text: 美しく変化する音を共有しましょう
+        next: trust_end
+
+  - id: nazuna_foggy_reality_fantasy
+    text: 現実と幻想の境界...霧の中では、すべてがあいまいで、美しく、神秘的です。とても魅力的な世界です。
+    choices:
+      - text: あいまいな世界の魅力を感じたいです
+        next: emotional_end
+      - text: 神秘的な世界を一緒に探検しましょう
+        next: trust_end
+      - text: 美しい境界の世界を共有したいです
+        next: contextual_end
+
+  - id: nazuna_foggy_ambiguous_beauty
+    text: あいまいな世界の美しさ...はっきりしないからこそ、想像力が働き、より美しく感じられます。
+    choices:
+      - text: 想像力が働く美しさを感じたいです
+        next: emotional_end
+      - text: あいまいだからこその美しさを教えてください
+        next: trust_end
+      - text: 想像力を一緒に働かせましょう
+        next: deep_end
+
+  - id: nazuna_foggy_fantasy_world
+    text: 幻想的な音の世界...それは夢の中の世界のようです。現実を忘れて、音だけの世界に浸ることができます。
+    choices:
+      - text: 夢の中の世界を感じたいです
+        next: emotional_end
+      - text: 音だけの世界に浸りたいです
+        next: trust_end
+      - text: 現実を忘れる美しさを共有しましょう
+        next: contextual_end
+
+  - id: nazuna_foggy_calming_power
+    text: 霧の穏やかにする力...それは音だけでなく、心も穏やかにしてくれます。霧の中にいると、自然と心が落ち着きます。
+    choices:
+      - text: 心が落ち着く霧の力を感じたいです
+        next: emotional_end
+      - text: 穏やかになる心を共有したいです
+        next: trust_end
+      - text: 霧の癒しの力を一緒に感じましょう
+        next: contextual_end
+
+  - id: nazuna_foggy_soft_embrace
+    text: 柔らかく包まれる音...それは音が優しく抱きしめられている感じです。とても安心できる音です。
+    choices:
+      - text: 音が抱きしめられる感覚を感じたいです
+        next: emotional_end
+      - text: 安心できる音を共有したいです
+        next: trust_end
+      - text: 優しく包まれる感覚を一緒に楽しみましょう
+        next: contextual_end
+
+  - id: nazuna_foggy_gentle_sound
+    text: 優しく響く音...霧の中の音は、すべてが優しく、穏やかで、心を癒してくれます。
+    choices:
+      - text: 心を癒す音を感じたいです
+        next: emotional_end
+      - text: 優しい音を一緒に聞きましょう
+        next: trust_end
+      - text: 穏やかな音を共有したいです
+        next: contextual_end

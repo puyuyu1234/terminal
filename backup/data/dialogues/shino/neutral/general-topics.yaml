@@ -1,0 +1,1192 @@
+character: shino
+nodes:
+  - id: shino_hiding_silence
+    text: ……でも、あなたは見つけてくれた
+    next: shino_found_gratitude
+  - id: shino_station_topic
+    text: この駅、いつから電車が止まってないんだろう
+    choices:
+      - text: ずっと前からでは？
+        next: shino_station_topic_to_contextual_end_bridge
+      - text: でも線路はまだある
+        next: shino_station_topic_to_hopeful_end_hope_bridge
+      - text: ...
+        next: shino_station_topic_to_silence_end_quiet_bridge
+  - id: shino_station_history
+    text: そうかも……でも、覚えてないんだ
+    next: memory_end
+  - id: shino_station_hope
+    text: 線路があるってことは……もしかして
+    next: hopeful_end
+  - id: shino_station_silence
+    text: ……答えのない質問だったね
+    next: contextual_end
+  - id: shino_waiting_silence
+    text: ……待つことしかできない
+    next: contextual_end
+  - id: shino_clock_skepticism
+    text: 時計……でも、針が動いてるかどうか
+    next: contextual_end
+  - id: shino_season_topic
+    text: 季節って、変わってるのかな……
+    choices:
+      - text: 今は秋だと思います
+        next: shino_season_topic_to_contextual_end_bridge
+      - text: いつも同じ感じですか？
+        next: shino_season_topic_to_contextual_end_bridge
+      - text: ...
+        next: shino_season_topic_to_silence_end_quiet_bridge
+  - id: shino_season_confirmation
+    text: 秋……そうかもしれない。でも、いつも夕方みたい
+    next: shino_eternal_evening
+  - id: shino_season_stagnation
+    text: 同じ……変化がわからない
+    next: shino_change_blindness
+  - id: shino_season_silence
+    text: ……季節なんて、もうどうでもいいのかも
+    next: shino_seasonal_indifference
+  - id: shino_loneliness_silence
+    text: ……でも、本当に一人じゃないよね
+    next: shino_presence_acknowledgment
+  - id: shino_silence_preference
+    text: 静かな方が……落ち着く
+    choices:
+      - text: なぜですか？
+        next: shino_silence_preference_to_silence_end_quiet_bridge
+      - text: 僕もです
+        next: shino_silence_preference_to_silence_end_quiet_bridge
+      - text: ...
+        next: shino_silence_preference_to_silence_end_quiet_bridge
+  - id: shino_silence_reason
+    text: 言葉って、難しいから……
+    next: shino_communication_difficulty
+  - id: shino_silence_kinship
+    text: 同じ……嬉しい
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    next: silence_end
+  - id: shino_mutual_silence
+    text: ……
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: shino_profound_silence
+  - id: shino_existence_topic
+    text: 存在するって、どういうことだろう……
+    choices:
+      - text: 考えたことないです
+        next: shino_existence_topic_to_contextual_end_bridge
+      - text: 難しい質問ですね
+        next: shino_existence_topic_to_contextual_end_bridge
+      - text: ...
+        next: shino_existence_topic_to_silence_end_quiet_bridge
+  - id: shino_existence_simplicity
+    text: 考えない方が、楽かもしれない……
+    next: contextual_end
+  - id: shino_existence_complexity
+    text: 難しい……でも、考えちゃう
+    next: contextual_end
+  - id: shino_existence_silence
+    text: ……答えなんて、ないのかも
+    next: contextual_end
+  - id: shino_dream_topic
+    text: これって、夢なのかな……
+    choices:
+      - text: 現実だと思います
+        next: shino_dream_topic_to_contextual_end_bridge
+      - text: 夢かもしれません
+        next: shino_dream_topic_to_contextual_end_bridge
+      - text: ...
+        next: shino_dream_topic_to_silence_end_quiet_bridge
+  - id: shino_reality_assertion
+    text: 現実……そうだといいな
+    next: shino_reality_hope
+  - id: shino_dream_possibility
+    text: 夢なら、いつか覚めるのかな……
+    next: hopeful_end
+  - id: shino_dream_silence
+    text: ……夢でも現実でも、変わらない
+    next: contextual_end
+  - id: shino_forgotten_purpose
+    text: 忘れてしまった目的……でも、大切だったはず
+    choices:
+      - text: 思い出せるかも
+        next: shino_forgotten_purpose_to_hopeful_end_hope_bridge
+      - text: 大切なことは覚えてる
+        next: shino_forgotten_purpose_to_memory_end_memory_bridge
+      - text: ...
+        next: shino_forgotten_purpose_to_silence_end_quiet_bridge
+  - id: shino_memory_hope
+    text: そうだといいな……でも、急がない
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 10
+    next: contextual_end
+  - id: shino_important_memory
+    text: 大切なこと……あなたと話すこと、かも
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: contextual_end
+  - id: shino_forgotten_silence
+    text: ……忘れても、心は覚えてる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    next: memory_end
+  - id: shino_patient_waiting
+    text: 急がないのが、一番だよね……
+    next: shino_session_end
+  - id: shino_present_moment
+    text: 今、この瞬間が大切……
+    next: shino_session_end
+  - id: shino_heart_memory
+    text: 心の記憶は、消えない……
+    next: shino_session_end
+  - id: shino_imperceptible_change
+    text: 変化って、気づかないうちに起きてるのかも……
+    choices:
+      - text: 小さな変化は大切
+        next: shino_imperceptible_change_to_contextual_end_bridge
+      - text: 変わらないものもある
+        next: shino_imperceptible_change_to_contextual_end_bridge
+      - text: ...
+        next: shino_imperceptible_change_to_silence_end_quiet_bridge
+  - id: shino_passive_existence
+    text: ただ、存在してるだけで……意味があるのかな
+    choices:
+      - text: 存在自体に意味がある
+        next: shino_passive_existence_to_contextual_end_bridge
+      - text: 行動することが大切
+        next: shino_passive_existence_to_contextual_end_bridge
+      - text: ...
+        next: shino_passive_existence_to_silence_end_quiet_bridge
+  - id: shino_clock_doubt
+    text: 時計って、本当のことを言ってるのかな……
+    choices:
+      - text: 時間は相対的かも
+        next: shino_clock_doubt_to_contextual_end_bridge
+      - text: 時計は正確です
+        next: shino_clock_doubt_to_trust_end_trust_bridge
+      - text: ...
+        next: shino_clock_doubt_to_contextual_end_bridge
+  - id: shino_silence_bond
+    text: 静かな時間を分かち合える人がいるって……幸せ
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 25
+    next: shino_session_end
+  - id: shino_contradiction_feelings
+    text: 矛盾した気持ち……それも、人間らしいのかも
+    choices:
+      - text: 矛盾は自然なこと
+        next: shino_contradiction_feelings_to_contextual_end_bridge
+      - text: 一貫性も大切
+        next: shino_contradiction_feelings_to_contextual_end_bridge
+      - text: ...
+        next: shino_contradiction_feelings_to_silence_end_quiet_bridge
+  - id: shino_micro_changes
+    text: 小さな変化が積み重なって……大きくなる
+    choices:
+      - text: 積み重ねは大切ですね
+        next: shino_micro_changes_to_contextual_end_bridge
+      - text: 気づかない変化もある
+        next: shino_micro_changes_to_contextual_end_bridge
+      - text: ...
+        next: shino_micro_changes_to_shino_session_end_bridge
+  - id: shino_constants
+    text: 変わらないものも、確かにある……安心する
+    choices:
+      - text: 安定は心の支え
+        next: shino_constants_to_contextual_end_bridge
+      - text: 変わらない価値
+        next: shino_constants_to_contextual_end_bridge
+      - text: ...
+        next: shino_constants_to_shino_session_end_bridge
+  - id: shino_change_silence
+    text: ……変化も、静かに起きてる
+    choices:
+      - text: 静かな変化が一番大きい
+        next: shino_change_silence_to_silence_end_quiet_bridge
+      - text: 気づかぬうちに
+        next: shino_change_silence_to_contextual_end_bridge
+      - text: ...
+        next: shino_change_silence_to_shino_session_end_bridge
+  - id: shino_existence_value
+    text: そう思えると……楽になる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    choices:
+      - text: 存在に意味がある
+        next: shino_existence_value_to_contextual_end_bridge
+      - text: 楽になることも大切
+        next: shino_existence_value_to_contextual_end_bridge
+      - text: ...
+        next: shino_existence_value_to_shino_session_end_bridge
+  - id: shino_action_importance
+    text: 行動……難しいけど、やってみる
+    choices:
+      - text: 小さな行動から
+        next: shino_action_importance_to_contextual_end_bridge
+      - text: 勇気を出して
+        next: shino_action_importance_to_contextual_end_bridge
+      - text: ...
+        next: shino_action_importance_to_shino_session_end_bridge
+  - id: shino_passive_silence
+    text: ……いるだけで、いいのかも
+    choices:
+      - text: 存在することの価値
+        next: shino_passive_silence_to_contextual_end_bridge
+      - text: それも一つの答え
+        next: shino_passive_silence_to_contextual_end_bridge
+      - text: ...
+        next: shino_passive_silence_to_shino_session_end_bridge
+  - id: shino_clock_trust
+    text: そうだといいな……でも、疑っちゃう
+    choices:
+      - text: 疑うことも大切
+        next: shino_clock_trust_to_contextual_end_bridge
+      - text: 直感を信じて
+        next: shino_clock_trust_to_trust_end_trust_bridge
+      - text: ...
+        next: shino_clock_trust_to_shino_session_end_bridge
+  - id: shino_natural_contradiction
+    text: 矛盾してても……それが自分
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    choices:
+      - text: ありのままを受け入れる
+        next: shino_natural_contradiction_to_contextual_end_bridge
+      - text: 矛盾も個性
+        next: shino_natural_contradiction_to_special_end_special_bridge
+      - text: ...
+        next: shino_natural_contradiction_to_shino_session_end_bridge
+  - id: shino_consistency_value
+    text: 一貫性……難しいけど、大切かも
+    choices:
+      - text: バランスが重要
+        next: shino_consistency_value_to_contextual_end_bridge
+      - text: 完璧でなくても
+        next: shino_consistency_value_to_contextual_end_bridge
+      - text: ...
+        next: shino_consistency_value_to_shino_session_end_bridge
+  - id: shino_contradiction_silence
+    text: ……矛盾も、受け入れる
+    choices:
+      - text: 受容の大切さ
+        next: shino_contradiction_silence_to_contextual_end_bridge
+      - text: 心の広さ
+        next: shino_contradiction_silence_to_contextual_end_bridge
+      - text: ...
+        next: shino_contradiction_silence_to_shino_session_end_bridge
+  - id: shino_accumulation_wisdom
+    text: 積み重ねの大切さ……わかってもらえて、嬉しい
+    choices:
+      - text: 一歩ずつ進む
+        next: shino_accumulation_wisdom_to_contextual_end_bridge
+      - text: 時間をかけて
+        next: shino_accumulation_wisdom_to_contextual_end_bridge
+      - text: ...
+        next: shino_accumulation_wisdom_to_shino_session_end_bridge
+  - id: shino_subtle_changes
+    text: 気づかない変化……一番大きいのかも
+    choices:
+      - text: 無意識の成長
+        next: shino_subtle_changes_to_contextual_end_bridge
+      - text: 静かな進歩
+        next: shino_subtle_changes_to_silence_end_quiet_bridge
+      - text: ...
+        next: shino_subtle_changes_to_shino_session_end_bridge
+  - id: shino_stability_support
+    text: 安定があるから……変化も怖くない
+    choices:
+      - text: 土台があるから
+        next: shino_stability_support_to_contextual_end_bridge
+      - text: 安心できる場所
+        next: shino_stability_support_to_contextual_end_bridge
+      - text: ...
+        next: shino_stability_support_to_shino_session_end_bridge
+  - id: shino_unchanging_values
+    text: 変わらない価値……心の支えになる
+    choices:
+      - text: 大切なものは変わらない
+        next: shino_unchanging_values_to_contextual_end_bridge
+      - text: 信念を持つ
+        next: shino_unchanging_values_to_contextual_end_bridge
+      - text: ...
+        next: shino_unchanging_values_to_shino_session_end_bridge
+  - id: shino_gradual_progress
+    text: 一歩ずつ……それが一番確実
+    choices:
+      - text: 着実に進む
+        next: shino_gradual_progress_to_shino_session_end_bridge
+      - text: 急がず、焦らず
+        next: shino_gradual_progress_to_shino_session_end_bridge
+      - text: ...
+        next: shino_gradual_progress_to_shino_session_end_bridge
+  - id: shino_unconscious_development
+    text: 無意識の成長……信じてみる
+    choices:
+      - text: きっと成長してる
+        next: shino_unconscious_development_to_shino_session_end_bridge
+      - text: 自分を信じて
+        next: shino_unconscious_development_to_shino_session_end_bridge
+      - text: ...
+        next: shino_unconscious_development_to_shino_session_end_bridge
+  - id: shino_quiet_progress
+    text: 静かな進歩……それも素敵
+    choices:
+      - text: 静かでも確実
+        next: shino_quiet_progress_to_shino_session_end_bridge
+      - text: 目立たなくても
+        next: shino_quiet_progress_to_shino_session_end_bridge
+      - text: ...
+        next: shino_quiet_progress_to_shino_session_end_bridge
+  - id: shino_foundation_strength
+    text: 土台があるから……安心できる
+    choices:
+      - text: しっかりした基盤
+        next: shino_foundation_strength_to_shino_session_end_bridge
+      - text: 支えがある
+        next: shino_foundation_strength_to_shino_session_end_bridge
+      - text: ...
+        next: shino_foundation_strength_to_shino_session_end_bridge
+  - id: shino_safe_harbor
+    text: 安心できる場所……必要だよね
+    choices:
+      - text: 心の避難港
+        next: shino_safe_harbor_to_shino_session_end_bridge
+      - text: 帰る場所
+        next: shino_safe_harbor_to_shino_session_end_bridge
+      - text: ...
+        next: shino_safe_harbor_to_shino_session_end_bridge
+  - id: shino_eternal_treasures
+    text: 大切なものは……ずっと大切
+    choices:
+      - text: 宝物のように
+        next: shino_eternal_treasures_to_shino_session_end_bridge
+      - text: 心の奥に
+        next: shino_eternal_treasures_to_shino_session_end_bridge
+      - text: ...
+        next: shino_eternal_treasures_to_shino_session_end_bridge
+  - id: shino_strong_beliefs
+    text: 信念……大切にしたい
+    choices:
+      - text: 自分の軸を持つ
+        next: shino_strong_beliefs_to_shino_session_end_bridge
+      - text: ぶれない心
+        next: shino_strong_beliefs_to_shino_session_end_bridge
+      - text: ...
+        next: shino_strong_beliefs_to_shino_session_end_bridge
+  - id: shino_quiet_transformation
+    text: 静かな変化……一番深い
+    choices:
+      - text: 深い変化
+        next: shino_quiet_transformation_to_shino_session_end_bridge
+      - text: 内側から
+        next: shino_quiet_transformation_to_shino_session_end_bridge
+      - text: ...
+        next: shino_quiet_transformation_to_shino_session_end_bridge
+  - id: shino_unconscious_growth
+    text: 気づかぬうちに……成長してる
+    choices:
+      - text: きっと成長してる
+        next: shino_unconscious_growth_to_shino_session_end_bridge
+      - text: 信じてみる
+        next: shino_unconscious_growth_to_shino_session_end_bridge
+      - text: ...
+        next: shino_unconscious_growth_to_shino_session_end_bridge
+  - id: shino_meaningful_being
+    text: 存在に意味がある……そう思いたい
+    choices:
+      - text: きっとある
+        next: shino_meaningful_being_to_shino_session_end_bridge
+      - text: 存在するだけで
+        next: shino_meaningful_being_to_shino_session_end_bridge
+      - text: ...
+        next: shino_meaningful_being_to_shino_session_end_bridge
+  - id: shino_relief_importance
+    text: 楽になることも……大切だよね
+    choices:
+      - text: 心の余裕
+        next: shino_relief_importance_to_shino_session_end_bridge
+      - text: 休むことも必要
+        next: shino_relief_importance_to_shino_session_end_bridge
+      - text: ...
+        next: shino_relief_importance_to_shino_session_end_bridge
+  - id: shino_small_steps
+    text: 小さな行動から……始めてみる
+    choices:
+      - text: 一歩ずつ
+        next: shino_small_steps_to_shino_session_end_bridge
+      - text: できることから
+        next: shino_small_steps_to_shino_session_end_bridge
+      - text: ...
+        next: shino_small_steps_to_shino_session_end_bridge
+  - id: shino_courage_building
+    text: 勇気を出して……やってみる
+    choices:
+      - text: 応援してます
+        next: shino_courage_building_to_shino_session_end_bridge
+      - text: きっとできる
+        next: shino_courage_building_to_shino_session_end_bridge
+      - text: ...
+        next: shino_courage_building_to_shino_session_end_bridge
+  - id: shino_being_value
+    text: 存在することの価値……わかってもらえて嬉しい
+    choices:
+      - text: いるだけで価値がある
+        next: shino_being_value_to_shino_session_end_bridge
+      - text: 存在を肯定
+        next: shino_being_value_to_shino_session_end_bridge
+      - text: ...
+        next: shino_being_value_to_shino_session_end_bridge
+  - id: shino_acceptance_answer
+    text: それも一つの答え……そうかもしれない
+    choices:
+      - text: 答えは一つじゃない
+        next: shino_acceptance_answer_to_shino_session_end_bridge
+      - text: 自分なりの答え
+        next: shino_acceptance_answer_to_shino_session_end_bridge
+      - text: ...
+        next: shino_acceptance_answer_to_shino_session_end_bridge
+  - id: shino_mental_clock
+    text: 心の時計……大切にしたい
+    choices:
+      - text: 自分のペース
+        next: shino_mental_clock_to_shino_session_end_bridge
+      - text: 心のリズム
+        next: shino_mental_clock_to_shino_session_end_bridge
+      - text: ...
+        next: shino_mental_clock_to_shino_session_end_bridge
+  - id: shino_healthy_skepticism
+    text: 疑うことも大切……バランスだね
+    choices:
+      - text: 健全な疑問
+        next: shino_healthy_skepticism_to_shino_session_end_bridge
+      - text: 考える力
+        next: shino_healthy_skepticism_to_shino_session_end_bridge
+      - text: ...
+        next: shino_healthy_skepticism_to_shino_session_end_bridge
+  - id: shino_trust_intuition
+    text: 直感を信じて……やってみる
+    choices:
+      - text: 内なる声を聞く
+        next: shino_trust_intuition_to_shino_session_end_bridge
+      - text: 感覚を大切に
+        next: shino_trust_intuition_to_shino_session_end_bridge
+      - text: ...
+        next: shino_trust_intuition_to_shino_session_end_bridge
+  - id: shino_embrace_ambiguity
+    text: 曖昧さを受け入れる……難しいけど
+    choices:
+      - text: 不確実性も人生
+        next: shino_embrace_ambiguity_to_shino_session_end_bridge
+      - text: 完璧じゃなくても
+        next: shino_embrace_ambiguity_to_shino_session_end_bridge
+      - text: ...
+        next: shino_embrace_ambiguity_to_shino_session_end_bridge
+  - id: shino_uncertainty_acceptance
+    text: それでいいのかも……そう思えると楽
+    choices:
+      - text: 受け入れる勇気
+        next: shino_uncertainty_acceptance_to_shino_session_end_bridge
+      - text: ありのままで
+        next: shino_uncertainty_acceptance_to_shino_session_end_bridge
+      - text: ...
+        next: shino_uncertainty_acceptance_to_shino_session_end_bridge
+  - id: shino_self_acceptance
+    text: ありのままを受け入れる……大切だね
+    choices:
+      - text: 自分を大切に
+        next: shino_self_acceptance_to_shino_session_end_bridge
+      - text: 完璧じゃなくても
+        next: shino_self_acceptance_to_shino_session_end_bridge
+      - text: ...
+        next: shino_self_acceptance_to_shino_session_end_bridge
+  - id: shino_contradiction_as_uniqueness
+    text: 矛盾も個性……そう考えると楽
+    choices:
+      - text: 個性を大切に
+        next: shino_contradiction_as_uniqueness_to_shino_session_end_bridge
+      - text: ユニークでいい
+        next: shino_contradiction_as_uniqueness_to_shino_session_end_bridge
+      - text: ...
+        next: shino_contradiction_as_uniqueness_to_shino_session_end_bridge
+  - id: shino_balance_importance
+    text: バランスが重要……難しいけど
+    choices:
+      - text: ちょうどいい加減
+        next: shino_balance_importance_to_shino_session_end_bridge
+      - text: 程々が一番
+        next: shino_balance_importance_to_shino_session_end_bridge
+      - text: ...
+        next: shino_balance_importance_to_shino_session_end_bridge
+  - id: shino_imperfection_acceptance
+    text: 完璧でなくても……それでいい
+    choices:
+      - text: 不完全でも美しい
+        next: shino_imperfection_acceptance_to_shino_session_end_bridge
+      - text: 人間らしさ
+        next: shino_imperfection_acceptance_to_shino_session_end_bridge
+      - text: ...
+        next: shino_imperfection_acceptance_to_shino_session_end_bridge
+  - id: shino_acceptance_wisdom
+    text: 受容の大切さ……学んでいきたい
+    choices:
+      - text: 智慧を身につける
+        next: shino_acceptance_wisdom_to_shino_session_end_bridge
+      - text: 心を開く
+        next: shino_acceptance_wisdom_to_shino_session_end_bridge
+      - text: ...
+        next: shino_acceptance_wisdom_to_shino_session_end_bridge
+  - id: shino_open_heart
+    text: 心の広さ……憧れる
+    choices:
+      - text: 広い心を持つ
+        next: shino_open_heart_to_shino_session_end_bridge
+      - text: 寛容でいたい
+        next: shino_open_heart_to_shino_session_end_bridge
+      - text: ...
+        next: shino_open_heart_to_shino_session_end_bridge
+  - id: shino_memory_gaps
+    text: 記憶が……ところどころ抜けてる
+    choices:
+      - text: 大切なことは覚えてる
+        next: shino_memory_gaps_to_memory_end_memory_bridge
+      - text: 忘れることも必要
+        next: shino_memory_gaps_to_contextual_end_bridge
+      - text: ...
+        next: shino_memory_gaps_to_memory_end_memory_bridge
+  - id: shino_faint_hope
+    text: もしかして……いつか電車が来るかも
+    choices:
+      - text: 希望を持つことは大切
+        next: shino_faint_hope_to_hopeful_end_hope_bridge
+      - text: 信じ続けること
+        next: shino_faint_hope_to_trust_end_trust_bridge
+      - text: ...
+        next: shino_faint_hope_to_hopeful_end_hope_bridge
+  - id: shino_rhetorical_acceptance
+    text: 答えのない質問……でも、それでもいい
+    choices:
+      - text: 問うこと自体に意味がある
+        next: shino_rhetorical_acceptance_to_contextual_end_bridge
+      - text: 答えを求めすぎない
+        next: shino_rhetorical_acceptance_to_contextual_end_bridge
+      - text: ...
+        next: shino_rhetorical_acceptance_to_silence_end_quiet_bridge
+  - id: shino_safe_space
+    text: 安心できる場所……ここがそうなのかも
+    next: shino_session_end
+  - id: shino_companionship_comfort
+    text: 一緒にいる安心感……ありがとう
+    next: shino_session_end
+  - id: shino_waiting_person
+    text: 誰だったかな……忘れちゃった
+    next: shino_session_end
+  - id: shino_waiting_difficulty
+    text: 辛い……でも、他に何もできないから
+    next: shino_session_end
+  - id: shino_communication_barriers
+    text: 話しにくいこと……わかってもらえて嬉しい
+    next: shino_session_end
+  - id: shino_silence_value
+    text: 静かな時間……大切にしたい
+    next: shino_session_end
+  - id: shino_mutual_understanding
+    text: ……お互い、わかってる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 20
+    next: shino_session_end
+  - id: shino_kindness_aspiration
+    text: 優しくありたい……素敵な気持ちだね
+    next: shino_session_end
+  - id: shino_mutual_care
+    text: 気遣い……お互いにできること
+    next: shino_session_end
+  - id: shino_gentle_silence
+    text: ……優しさが、伝わってくる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: shino_session_end
+  - id: shino_forgetting_necessity
+    text: 忘れることも必要……そうかもしれない
+    next: shino_session_end
+  - id: shino_memory_acceptance
+    text: ……記憶も、曖昧でいい
+    next: shino_session_end
+  - id: shino_hope_value
+    text: 希望……大切にしたい
+    next: shino_session_end
+  - id: shino_persistent_faith
+    text: 信じ続ける……それだけで十分
+    next: shino_session_end
+  - id: shino_hope_silence
+    text: ……小さな希望
+    next: shino_session_end
+  - id: shino_questioning_value
+    text: 問うこと自体に意味……そうかもしれない
+    next: shino_session_end
+  - id: shino_philosophical_silence
+    text: ……考えることも、生きること
+    next: shino_session_end
+  - id: shino_answerless_questions
+    text: 答えのない問い……でも、問い続ける
+    choices:
+      - text: 問うことに意味がある
+        next: shino_answerless_questions_to_contextual_end_bridge
+      - text: 答えを求めずに
+        next: shino_answerless_questions_to_contextual_end_bridge
+      - text: ...
+        next: shino_answerless_questions_to_shino_session_end_bridge
+  - id: shino_awakening_hope
+    text: いつか覚める……それも希望なのかな
+    choices:
+      - text: 希望は必要
+        next: shino_awakening_hope_to_hopeful_end_hope_bridge
+      - text: 覚めない夢もある
+        next: shino_awakening_hope_to_contextual_end_bridge
+      - text: ...
+        next: shino_awakening_hope_to_shino_session_end_bridge
+  - id: shino_experiential_reality
+    text: 体験することが現実……なのかもしれない
+    choices:
+      - text: 感じることが全て
+        next: shino_experiential_reality_to_contextual_end_bridge
+      - text: 体験の価値
+        next: shino_experiential_reality_to_contextual_end_bridge
+      - text: ...
+        next: shino_experiential_reality_to_shino_session_end_bridge
+  - id: shino_ignorance_bliss
+    text: 知らない方が楽……そんなこともある
+    choices:
+      - text: 時には必要な無知
+        next: shino_ignorance_bliss_to_contextual_end_bridge
+      - text: 知ることの重さ
+        next: shino_ignorance_bliss_to_contextual_end_bridge
+      - text: ...
+        next: shino_ignorance_bliss_to_shino_session_end_bridge
+  - id: shino_compulsive_thinking
+    text: 考えちゃう……止められない
+    choices:
+      - text: 考えることは自然
+        next: shino_compulsive_thinking_to_contextual_end_bridge
+      - text: 休むことも大切
+        next: shino_compulsive_thinking_to_contextual_end_bridge
+      - text: ...
+        next: shino_compulsive_thinking_to_shino_session_end_bridge
+  - id: shino_questioning_meaning
+    text: 問うことに意味……そう信じたい
+    next: shino_session_end
+  - id: shino_answerless_peace
+    text: 答えを求めずに……それも一つの道
+    next: shino_session_end
+  - id: shino_hope_necessity
+    text: 希望は必要……生きる力になる
+    next: shino_session_end
+  - id: shino_eternal_dream
+    text: 覚めない夢……それも美しい
+    next: shino_session_end
+  - id: shino_feeling_reality
+    text: 感じることが全て……深い真実
+    next: shino_session_end
+  - id: shino_experience_value
+    text: 体験の価値……かけがえのないもの
+    next: shino_session_end
+  - id: shino_necessary_ignorance
+    text: 必要な無知……時には守ってくれる
+    next: shino_session_end
+  - id: shino_knowledge_burden
+    text: 知ることの重さ……でも背負う
+    next: shino_session_end
+  - id: shino_natural_thinking
+    text: 考えることは自然……人間らしい
+    next: shino_session_end
+  - id: shino_mental_rest
+    text: 休むことも大切……心を労わる
+    next: shino_session_end
+  - id: shino_station_topic_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices:
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: shino_station_topic_to_hopeful_end_hope_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_station_topic_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_season_topic_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_season_topic_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_silence_preference_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_existence_topic_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_existence_topic_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_dream_topic_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_dream_topic_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_forgotten_purpose_to_hopeful_end_hope_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_forgotten_purpose_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_forgotten_purpose_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_imperceptible_change_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_imperceptible_change_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_passive_existence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_passive_existence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_clock_doubt_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_clock_doubt_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_contradiction_feelings_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_contradiction_feelings_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_micro_changes_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_micro_changes_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_constants_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_constants_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_change_silence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_change_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_change_silence_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_existence_value_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_existence_value_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_action_importance_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_action_importance_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_passive_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_passive_silence_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_clock_trust_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_clock_trust_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_clock_trust_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_natural_contradiction_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_natural_contradiction_to_special_end_special_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_natural_contradiction_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_consistency_value_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_consistency_value_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_contradiction_silence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_contradiction_silence_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_accumulation_wisdom_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_accumulation_wisdom_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_subtle_changes_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_subtle_changes_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_subtle_changes_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_stability_support_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_stability_support_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_unchanging_values_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_unchanging_values_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_gradual_progress_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_unconscious_development_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_quiet_progress_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_foundation_strength_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_safe_harbor_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_eternal_treasures_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_strong_beliefs_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_quiet_transformation_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_unconscious_growth_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_meaningful_being_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_relief_importance_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_small_steps_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_courage_building_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_being_value_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_acceptance_answer_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_mental_clock_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_healthy_skepticism_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_trust_intuition_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_embrace_ambiguity_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_uncertainty_acceptance_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_self_acceptance_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_contradiction_as_uniqueness_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_balance_importance_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_imperfection_acceptance_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_acceptance_wisdom_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_open_heart_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_memory_gaps_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_memory_gaps_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_faint_hope_to_hopeful_end_hope_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_faint_hope_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_rhetorical_acceptance_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_rhetorical_acceptance_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_answerless_questions_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_answerless_questions_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_awakening_hope_to_hopeful_end_hope_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_awakening_hope_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_awakening_hope_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_experiential_reality_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_experiential_reality_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_ignorance_bliss_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_ignorance_bliss_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_compulsive_thinking_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_compulsive_thinking_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_station_topic_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_station_topic_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_station_topic_to_hopeful_end_hope_bridge_to_hopeful_end_hope_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_station_topic_to_hopeful_end_hope_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_station_topic_to_hopeful_end_hope_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_station_topic_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_station_topic_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_forgotten_purpose_to_memory_end_memory_bridge_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_forgotten_purpose_to_memory_end_memory_bridge_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_forgotten_purpose_to_memory_end_memory_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_clock_doubt_to_trust_end_trust_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_clock_doubt_to_trust_end_trust_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_clock_doubt_to_trust_end_trust_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_micro_changes_to_shino_session_end_bridge_to_shino_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_micro_changes_to_shino_session_end_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_micro_changes_to_shino_session_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_natural_contradiction_to_special_end_special_bridge_to_special_end_special_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_natural_contradiction_to_special_end_special_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: shino_natural_contradiction_to_special_end_special_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: null
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    next: hopeful_end
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end

@@ -1,0 +1,24 @@
+character: tomo
+nodes:
+  - id: tomo_night_interest
+    text: 夜に活動する人は、昼間と違う色を持ってる。
+    effects:
+      - type: set_flag
+        flag: tomo_sees_night_colors
+    next: contextual_end
+  - id: tomo_night_affinity
+    text: 夜好きな人！私も夜の方が描きやすい。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    next: contextual_end
+  - id: tomo_night_silence
+    text: 夜の静寂を理解してる人......素敵。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 15
+    next: contextual_end

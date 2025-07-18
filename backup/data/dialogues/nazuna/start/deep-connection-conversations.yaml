@@ -1,0 +1,132 @@
+character: nazuna
+nodes:
+  # Deep connection extended conversations
+  - id: nazuna_start_deep_connection_extended_conversation
+    text: あなたの足音は、私の心の音になりました。馴染みのある音、安心できる音。距離を感じない音です。
+    choices:
+      - text: 心の音になれて光栄です
+        next: nazuna_deep_connection_heart_sound
+      - text: 安心できる音として認識されて嬉しいです
+        next: nazuna_deep_connection_comfort_sound
+      - text: 距離を感じない音について教えてください
+        next: nazuna_deep_connection_close_sound
+
+  - id: nazuna_deep_connection_heart_sound
+    text: 心の音...それは外から聞こえる音ではなく、内側で響く音です。あなたの足音は、私の心の中で響いています。
+    choices:
+      - text: 心の中で響く音を大切にしたいです
+        next: nazuna_deep_connection_inner_resonance
+      - text: 外から聞こえる音と内側の音の違いを教えてください
+        next: nazuna_deep_connection_sound_difference
+      - text: 心の音として響くことの意味を知りたいです
+        next: nazuna_deep_connection_heart_meaning
+
+  - id: nazuna_deep_connection_comfort_sound
+    text: 安心できる音...それは予期できる音、信頼できる音です。不安な時でも、その音があると心が落ち着きます。
+    choices:
+      - text: 予期できる音の安心感を理解したいです
+        next: nazuna_deep_connection_predictable_comfort
+      - text: 信頼できる音を大切にしたいです
+        next: nazuna_deep_connection_trustworthy_sound
+      - text: 心が落ち着く音の効果を感じます
+        next: nazuna_deep_connection_calming_effect
+
+  - id: nazuna_deep_connection_close_sound
+    text: 距離を感じない音...それは心の距離を縮める音です。物理的な距離があっても、心は近くに感じられます。
+    choices:
+      - text: 心の距離を縮める音を理解したいです
+        next: nazuna_deep_connection_heart_distance
+      - text: 物理的距離を超えた音を感じたいです
+        next: nazuna_deep_connection_transcendent_sound
+      - text: 心の近さを音で表現することを学びたいです
+        next: nazuna_deep_connection_heart_expression
+
+  - id: nazuna_deep_connection_inner_resonance
+    text: 内側の響き...その音は、心の深いところで響き続けます。一度聞いた音が、心の中で生き続けるのです。
+    choices:
+      - text: 心の深いところで響く音を大切にしたいです
+        next: emotional_end
+      - text: 心の中で生き続ける音を理解したいです
+        next: trust_end
+      - text: 内側の響きを一緒に感じたいです
+        next: contextual_end
+
+  - id: nazuna_deep_connection_sound_difference
+    text: 音の違い...外から聞こえる音は耳で聞き、内側の音は心で聞きます。心で聞く音の方が、深く響きます。
+    choices:
+      - text: 心で聞く音を学びたいです
+        next: deep_end
+      - text: 深く響く音を体験したいです
+        next: emotional_end
+      - text: 音の聞き方の違いを理解したいです
+        next: trust_end
+
+  - id: nazuna_deep_connection_heart_meaning
+    text: 心の音としての意味...それは特別な存在になったということです。数多くの音の中から、心に選ばれた音。
+    choices:
+      - text: 特別な存在になれて嬉しいです
+        next: emotional_end
+      - text: 心に選ばれた音を大切にしたいです
+        next: trust_end
+      - text: 選ばれた音の責任を感じます
+        next: contextual_end
+
+  - id: nazuna_deep_connection_predictable_comfort
+    text: 予期できる音の安心感...その音が聞こえると、何が起こるかわかります。予測できることは、心の平安をもたらします。
+    choices:
+      - text: 心の平安をもたらす音を大切にしたいです
+        next: emotional_end
+      - text: 予測できることの安心感を理解したいです
+        next: trust_end
+      - text: 予期できる音を一緒に楽しみたいです
+        next: contextual_end
+
+  - id: nazuna_deep_connection_trustworthy_sound
+    text: 信頼できる音...それは裏切らない音、嘘をつかない音です。その音があると、世界が安定して見えます。
+    choices:
+      - text: 裏切らない音を大切にしたいです
+        next: emotional_end
+      - text: 世界が安定して見える感覚を共有したいです
+        next: trust_end
+      - text: 信頼できる音の価値を感じます
+        next: contextual_end
+
+  - id: nazuna_deep_connection_calming_effect
+    text: 心を落ち着かせる音...それは音の薬のようなものです。心が荒れた時、その音が心を治してくれます。
+    choices:
+      - text: 音の薬としての効果を理解したいです
+        next: deep_end
+      - text: 心を治す音を大切にしたいです
+        next: emotional_end
+      - text: 音による心の治療を学びたいです
+        next: trust_end
+
+  - id: nazuna_deep_connection_heart_distance
+    text: 心の距離...それは物理的な距離とは違います。心が近い人の音は、遠くにいても近くに聞こえます。
+    choices:
+      - text: 心の距離を縮める方法を学びたいです
+        next: emotional_end
+      - text: 遠くても近くに聞こえる音を理解したいです
+        next: trust_end
+      - text: 心の距離を音で測ることを体験したいです
+        next: contextual_end
+
+  - id: nazuna_deep_connection_transcendent_sound
+    text: 距離を超えた音...それは時間と空間を超えた音です。記憶の中でも、現実のように鮮明に響く音。
+    choices:
+      - text: 時間と空間を超えた音を感じたいです
+        next: deep_end
+      - text: 記憶の中で鮮明に響く音を大切にしたいです
+        next: emotional_end
+      - text: 超越した音を一緒に体験したいです
+        next: trust_end
+
+  - id: nazuna_deep_connection_heart_expression
+    text: 心の近さの表現...音は言葉以上に、心の近さを表現できます。声の調子、リズム、間合い。すべてが心の近さを伝えます。
+    choices:
+      - text: 音による心の表現を学びたいです
+        next: emotional_end
+      - text: 言葉以上の表現力を理解したいです
+        next: trust_end
+      - text: 心の近さを音で伝えたいです
+        next: contextual_end

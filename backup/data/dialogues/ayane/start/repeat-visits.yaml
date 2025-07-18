@@ -1,0 +1,40 @@
+character: ayane
+nodes:
+  - id: ayane_start_second_meet
+    text: あ！また会えた！約束したわけじゃないのに不思議だね！
+    conditions:
+      - type: variable
+        name: ayane_meet_count
+        operator: equals
+        value: 1
+    effects:
+      - type: increment
+        variable: ayane_meet_count
+    choices:
+      - text: 僕も嬉しいです
+        next: ayane_start_second_meet_extended_conversation
+      - text: 偶然ですね
+        next: ayane_start_second_meet_extended_conversation
+      - text: ...
+        next: ayane_start_second_meet_extended_conversation
+  - id: ayane_start_frequent_visitor
+    text: もう{{meet_count}}回も会ってるんだ！友達みたい！
+    conditions:
+      - type: variable
+        name: ayane_meet_count
+        operator: greater_than
+        value: 2
+      - type: variable
+        name: ayane_meet_count
+        operator: less_than
+        value: 8
+    effects:
+      - type: increment
+        variable: ayane_meet_count
+    choices:
+      - text: 友達になりましょう
+        next: ayane_start_frequent_visitor_extended_conversation
+      - text: よく覚えてますね
+        next: ayane_start_frequent_visitor_extended_conversation
+      - text: ...
+        next: ayane_start_frequent_visitor_extended_conversation

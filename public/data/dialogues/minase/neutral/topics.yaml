@@ -1,0 +1,52 @@
+dialogues:
+  - id: minase_neutral_activity
+    text: "特に何もしていませんわ。ただ、この場所が落ち着くんです。現実から少し離れられるような。"
+    choices:
+      - text: "現実から逃げたいことがあるの？"
+        next: minase_neutral_escape
+      - text: "確かに静かで落ち着くね"
+        next: minase_neutral_peaceful
+      - text: "もう帰ろうか"
+        next: minase_end_goodbye
+
+  - id: minase_neutral_response
+    text: "ふふ、そうですね。でも、私は意味があってここにいるんですよ。"
+    choices:
+      - text: "どんな意味？"
+        next: minase_neutral_meaning
+      - text: "それは興味深いね"
+        next: minase_end_goodbye
+
+  - id: minase_neutral_escape
+    text: "逃げるなんて、そんな弱い言葉は使いませんわ。ただ、時には立ち止まることも必要でしょう？"
+    choices:
+      - text: "その通りだね"
+        next: minase_neutral_agreement
+      - text: "でも前に進まないと"
+        next: minase_end_goodbye
+
+  - id: minase_neutral_peaceful
+    text: "でしょう？時間が止まったみたいで、何も考えなくていいんです。"
+    choices:
+      - text: "一緒にいると安心する"
+        next: minase_neutral_comfort
+      - text: "たまにはそういう時間も必要だね"
+        next: minase_end_goodbye
+
+  - id: minase_neutral_meaning
+    text: "秘密ですわ。でも、いつかお話しする日が来るかもしれませんね。"
+    choices:
+      - text: "楽しみにしてるよ"
+        next: minase_end_goodbye
+
+  - id: minase_neutral_agreement
+    text: "分かってくださるのね。急いでばかりいると、大切なものを見落としてしまいますから。"
+    choices:
+      - text: "君と話していると時間を忘れる"
+        next: minase_end_goodbye
+
+  - id: minase_neutral_comfort
+    text: "あら、そんなことを言われると照れてしまいますわ。でも、嬉しいです。"
+    choices:
+      - text: "また明日も来るよ"
+        next: minase_end_goodbye

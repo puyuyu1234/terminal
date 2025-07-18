@@ -1,0 +1,492 @@
+character: nazuna
+nodes:
+  - id: nazuna_sound_nature
+    text: ......音って、不思議。
+    choices:
+      - text: どんなふうに？
+        next: nazuna_sound_nature_extended_conversation
+      - text: 聞くのが好き？
+        next: nazuna_sound_nature_extended_conversation
+      - text: ...
+        next: nazuna_sound_nature_extended_conversation
+  - id: nazuna_sound_explanation
+    text: ......目に見えない。でも、そこにある。
+    next: contextual_end
+  - id: nazuna_listening_preference
+    text: ......うん。音は、嘘つかない。
+    next: contextual_end
+  - id: nazuna_sound_silence
+    text: ......静寂も、音の一つ。
+    next: silence_end
+  - id: nazuna_recording_topic
+    text: ......録音機、重い。でも、大切。
+    choices:
+      - text: なんで録音するの？
+        next: nazuna_recording_topic_extended_conversation
+      - text: 重くない？
+        next: nazuna_recording_topic_extended_conversation
+      - text: ...
+        next: nazuna_recording_topic_extended_conversation
+  - id: nazuna_recording_reason
+    text: ......忘れたくない。美しい音。
+    next: nazuna_memory_preservation
+  - id: nazuna_weight_concern
+    text: ......重くない。心が、軽くなる。
+    next: contextual_end
+  - id: nazuna_habit_explanation
+    text: ......習慣というか、呼ばれる感じ。
+    next: contextual_end
+  - id: nazuna_schedule_details
+    text: ......電車の時間に、合わせてる。
+    next: contextual_end
+  - id: nazuna_station_acoustics
+    text: ......この場所、音が響く。
+    choices:
+      - text: いい音？
+        next: nazuna_station_acoustics_extended_conversation
+      - text: うるさくない？
+        next: nazuna_station_acoustics_extended_conversation
+      - text: ...
+        next: nazuna_station_acoustics_extended_conversation
+  - id: nazuna_good_acoustics
+    text: ......うん。音が、生きてる。
+    next: contextual_end
+  - id: nazuna_noise_tolerance
+    text: ......うるさい音も、意味がある。
+    next: contextual_end
+  - id: nazuna_acoustic_silence
+    text: ......音の神殿。
+    next: contextual_end
+  - id: nazuna_environment_comfort
+    text: ......ここ、落ち着く。
+    choices:
+      - text: なぜ？
+        next: nazuna_environment_comfort_extended_conversation
+      - text: 私も
+        next: nazuna_environment_comfort_extended_conversation
+      - text: ...
+        next: nazuna_environment_comfort_extended_conversation
+  - id: nazuna_comfort_reason
+    text: ......音が、優しい。
+    next: contextual_end
+  - id: nazuna_shared_comfort
+    text: ......同じ気持ち。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 8
+    next: contextual_end
+  - id: nazuna_comfort_silence
+    text: ......心の、家。
+    next: contextual_end
+  - id: nazuna_memory_sounds
+    text: ......音は、思い出。
+    choices:
+      - text: どんな思い出？
+        next: nazuna_memory_sounds_extended_conversation
+      - text: 大切な音？
+        next: nazuna_memory_sounds_extended_conversation
+      - text: ...
+        next: nazuna_memory_sounds_extended_conversation
+  - id: nazuna_memory_examples
+    text: ......母の声。電車の音。風の歌。
+    next: contextual_end
+  - id: nazuna_precious_sounds
+    text: ......全部、大切。一つ一つ。
+    next: contextual_end
+  - id: nazuna_memory_silence
+    text: ......音の、アルバム。
+    next: contextual_end
+  - id: nazuna_forgetting_fear
+    text: ......忘れるの、怖い。
+    choices:
+      - text: 何を忘れるの？
+        next: nazuna_forgetting_fear_extended_conversation
+      - text: 大丈夫だよ
+        next: nazuna_forgetting_fear_extended_conversation
+      - text: ...
+        next: nazuna_forgetting_fear_extended_conversation
+  - id: nazuna_forgetting_content
+    text: ......大切な人の、声。
+    next: contextual_end
+  - id: nazuna_reassurance_response
+    text: ......ありがとう。でも、録音してると、安心。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 10
+    next: contextual_end
+  - id: nazuna_fear_silence
+    text: ......だから、録音。
+    next: contextual_end
+  - id: nazuna_childhood_sounds
+    text: ......子供の頃の音、覚えてる。
+    choices:
+      - text: どんな音？
+        next: nazuna_childhood_sounds_extended_conversation
+      - text: 懐かしい？
+        next: nazuna_childhood_sounds_extended_conversation
+      - text: ...
+        next: nazuna_childhood_sounds_extended_conversation
+  - id: nazuna_childhood_catalog
+    text: ......鳥の声。お母さんの歌。
+    next: contextual_end
+  - id: nazuna_childhood_nostalgia
+    text: ......懐かしい。でも、遠い。
+    next: contextual_end
+  - id: nazuna_childhood_silence
+    text: ......純粋な、音。
+    next: memory_end
+  - id: nazuna_emotional_sounds
+    text: ......音に、感情がある。
+    choices:
+      - text: どんな感情？
+        next: nazuna_emotional_sounds_extended_conversation
+      - text: 感じるの？
+        next: nazuna_emotional_sounds_extended_conversation
+      - text: ...
+        next: nazuna_emotional_sounds_extended_conversation
+  - id: nazuna_sound_emotions
+    text: ......悲しい音。嬉しい音。怒った音。
+    next: contextual_end
+  - id: nazuna_emotional_sensitivity
+    text: ......音の、心。
+    next: contextual_end
+  - id: nazuna_emotional_silence
+    text: ......音が、泣いてる時もある。
+    next: contextual_end
+  - id: nazuna_loneliness_topic
+    text: ......一人、好き。でも、寂しい時もある。
+    choices:
+      - text: どんな時？
+        next: nazuna_loneliness_topic_extended_conversation
+      - text: 矛盾してる？
+        next: nazuna_loneliness_topic_extended_conversation
+      - text: ...
+        next: nazuna_loneliness_topic_extended_conversation
+  - id: nazuna_loneliness_moments
+    text: ......美しい音、聞いた時。誰かに、教えたくなる。
+    next: contextual_end
+  - id: nazuna_contradiction_acceptance
+    text: ......矛盾してる。でも、それが人間。
+    next: contextual_end
+  - id: nazuna_loneliness_silence
+    text: ......音が、友達。
+    next: contextual_end
+  - id: nazuna_peace_topic
+    text: ......平和な音、好き。
+    choices:
+      - text: どんな音？
+        next: nazuna_peace_topic_extended_conversation
+      - text: 争いの音は嫌い？
+        next: nazuna_peace_topic_extended_conversation
+      - text: ...
+        next: nazuna_peace_topic_extended_conversation
+  - id: nazuna_peaceful_sounds
+    text: ......波の音。鳥の歌。子守唄。
+    next: contextual_end
+  - id: nazuna_conflict_sounds
+    text: ......嫌いじゃない。でも、疲れる。
+    next: contextual_end
+  - id: nazuna_peace_silence
+    text: ......心の、薬。
+    next: contextual_end
+  - id: nazuna_invisible_presence
+    text: ......でも、確かに存在する。
+    choices:
+      - text: 証明できる？
+        next: nazuna_invisible_presence_extended_conversation
+      - text: 感じるもの？
+        next: nazuna_invisible_presence_extended_conversation
+      - text: ...
+        next: nazuna_invisible_presence_extended_conversation
+  - id: nazuna_sound_honesty
+    text: ......人は、嘘つく。音は、真実。
+    next: contextual_end
+  - id: nazuna_silence_as_sound
+    text: ......一番、雄弁な音。
+    next: silence_end
+  - id: nazuna_memory_preservation
+    text: ......音の、宝物。
+    next: contextual_end
+  - id: nazuna_emotional_lightness
+    text: ......重い機械、軽い心。
+    next: contextual_end
+  - id: nazuna_treasure_metaphor
+    text: ......開けると、思い出が溢れる。
+    next: memory_end
+  - id: nazuna_rhythm_comfort
+    text: ......心臓の音と、似てる。
+    next: contextual_end
+  - id: nazuna_warm_memories
+    text: ......人の声も、聞こえた。
+    next: contextual_end
+  - id: nazuna_hopeful_waiting
+    text: ......信じてる。
+    next: trust_end
+  - id: nazuna_purity_concept
+    text: ......余計な音が、ない。
+    next: contextual_end
+  - id: nazuna_beautiful_quiet
+    text: ......静寂の、美しさ。
+    next: silence_end
+  - id: nazuna_sound_guidance
+    text: ......音の、時計。
+    next: contextual_end
+  - id: nazuna_priority_clarity
+    text: ......音が、全て。
+    next: contextual_end
+  - id: nazuna_sound_nature_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: nazuna_sound_nature_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_recording_topic_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_recording_topic_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_station_acoustics_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_station_acoustics_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_environment_comfort_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_environment_comfort_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_memory_sounds_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_memory_sounds_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_memory_sounds_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_forgetting_fear_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_forgetting_fear_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_childhood_sounds_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_childhood_sounds_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_emotional_sounds_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_emotional_sounds_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_loneliness_topic_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_loneliness_topic_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_peace_topic_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_peace_topic_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_invisible_presence_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_invisible_presence_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_sound_nature_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_sound_nature_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_sound_nature_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_sound_nature_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_memory_sounds_to_memory_end_memory_bridge_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_memory_sounds_to_memory_end_memory_bridge_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: nazuna_memory_sounds_to_memory_end_memory_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    next: hopeful_end
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end
+  - id: nazuna_sound_nature_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: &a2
+      - text: 協力的な探求ですね
+        next: trust_end
+      - text: 新しい発見がありました
+        next: deep_end
+      - text: 心が通じ合います
+        next: emotional_end
+  - id: nazuna_recording_topic_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_station_acoustics_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_environment_comfort_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_memory_sounds_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_forgetting_fear_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_childhood_sounds_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_emotional_sounds_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_loneliness_topic_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_peace_topic_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: nazuna_invisible_presence_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: gentle_listening
+    text: 話を聞いてくれる人がいるというのは、とても心強いものです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: emotional_end
+      - text: いつでも話してください
+        next: trust_end
+      - text: 支え合えますね
+        next: contextual_end

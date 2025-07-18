@@ -1,0 +1,263 @@
+character: shino
+nodes:
+  # 2回目の出会い用の拡張会話
+  - id: shino_start_second_meet_extended_conversation
+    text: 二度目...そうですね。一度目とは違った気持ちで話せます。少し安心しているのかもしれません。
+    choices:
+      - text: 安心してもらえて嬉しいです
+        next: shino_second_meet_comfort
+      - text: 僕も安心しています
+        next: shino_second_meet_mutual_comfort
+      - text: どんな違いを感じますか？
+        next: shino_second_meet_difference
+
+  - id: shino_second_meet_comfort
+    text: 嬉しい...そう言ってもらえると、心が温かくなります。見知らぬ人が、もう見知らぬ人ではなくなった気がします。
+    choices:
+      - text: 僕にとっても特別な人です
+        next: shino_second_meet_special_person
+      - text: 親しみを感じますね
+        next: shino_second_meet_familiarity
+      - text: 心のつながりを感じます
+        next: shino_second_meet_heart_connection
+
+  - id: shino_second_meet_mutual_comfort
+    text: お互いに安心...それは素晴らしいことですね。こうして同じ気持ちを共有できるなんて、思ってもみませんでした。
+    choices:
+      - text: 共有できて嬉しいです
+        next: shino_second_meet_shared_joy
+      - text: 特別な関係ですね
+        next: shino_second_meet_special_bond
+      - text: 心が通じ合っていますね
+        next: shino_second_meet_connection
+
+  - id: shino_second_meet_difference
+    text: 違い...最初は警戒していました。でも今は、あなたがここにいることが自然に感じられます。
+    choices:
+      - text: 自然に感じられて良かったです
+        next: shino_second_meet_natural_feeling
+      - text: 警戒する必要はありませんよ
+        next: shino_second_meet_reassurance
+      - text: 信頼してもらえて嬉しいです
+        next: shino_second_meet_trust_development
+
+  - id: shino_second_meet_special_person
+    text: 特別な...私にとっても、あなたは特別な存在になりました。こんな風に思える人に出会えるなんて。
+    choices:
+      - text: 出会えて本当に良かったです
+        next: emotional_end
+      - text: 大切な関係ですね
+        next: trust_end
+      - text: お互いにとって特別ですね
+        next: contextual_end
+
+  - id: shino_second_meet_familiarity
+    text: 親しみ...そうですね。まだ短い時間しか過ごしていないのに、ずっと前から知っているような気がします。
+    choices:
+      - text: 僕も同じように感じます
+        next: emotional_end
+      - text: 不思議な感覚ですね
+        next: deep_end
+      - text: 心の距離が近いですね
+        next: trust_end
+
+  - id: shino_second_meet_heart_connection
+    text: 心のつながり...そんな言葉が出るなんて、私も驚いています。でも、確かに感じられます。
+    choices:
+      - text: 僕も強く感じます
+        next: emotional_end
+      - text: 見えない絆がありますね
+        next: trust_end
+      - text: 大切にしたいつながりです
+        next: contextual_end
+
+  - id: shino_second_meet_shared_joy
+    text: 共有できる喜び...一人では感じられない種類の幸せがありますね。分かち合うことで、より大きくなるような。
+    choices:
+      - text: 分かち合う喜びは特別です
+        next: emotional_end
+      - text: 一緒だからこその幸せですね
+        next: trust_end
+      - text: 素晴らしい発見ですね
+        next: contextual_end
+
+  - id: shino_second_meet_special_bond
+    text: 特別な絆...そうですね。目に見えないけれど、確かに存在する何かがあります。
+    choices:
+      - text: 強い絆を感じます
+        next: trust_end
+      - text: 見えない糸で結ばれているようです
+        next: emotional_end
+      - text: 大切な絆ですね
+        next: contextual_end
+
+  - id: shino_second_meet_connection
+    text: 通じ合う心...言葉にするのは難しいですが、理解し合えているという安心感があります。
+    choices:
+      - text: 理解し合えて嬉しいです
+        next: emotional_end
+      - text: 安心感は大切ですね
+        next: trust_end
+      - text: 心が通じ合っていますね
+        next: contextual_end
+
+  - id: shino_second_meet_natural_feeling
+    text: 自然に...そう感じてもらえるなら、私も嬉しいです。無理をしなくても、ここにいられる関係になれました。
+    choices:
+      - text: 無理のない関係が一番ですね
+        next: emotional_end
+      - text: 自然体でいられます
+        next: trust_end
+      - text: 居心地の良い関係ですね
+        next: contextual_end
+
+  - id: shino_second_meet_reassurance
+    text: 警戒する必要はない...そう言ってもらえて安心します。心を開いても大丈夫だと思えるようになりました。
+    choices:
+      - text: 心を開いてくれてありがとう
+        next: emotional_end
+      - text: 安心してください
+        next: trust_end
+      - text: 大丈夫ですよ
+        next: contextual_end
+
+  - id: shino_second_meet_trust_development
+    text: 信頼...そんな大切な言葉を使ってもらえるなんて。私も、あなたを信頼しています。
+    choices:
+      - text: 信頼し合えて嬉しいです
+        next: trust_end
+      - text: 相互の信頼は大切ですね
+        next: emotional_end
+      - text: これからもよろしくお願いします
+        next: contextual_end
+
+  # 常連訪問者用の拡張会話
+  - id: shino_start_frequent_visitor_extended_conversation
+    text: 何度も来てくれて...もう習慣になっているようですね。私にとっても、あなたがいることが日常の一部になりました。
+    choices:
+      - text: 僕にとっても大切な時間です
+        next: shino_frequent_visitor_precious_time
+      - text: 良い習慣ですね
+        next: shino_frequent_visitor_good_habit
+      - text: 日常の一部になれて嬉しいです
+        next: shino_frequent_visitor_daily_part
+
+  - id: shino_frequent_visitor_precious_time
+    text: 大切な時間...そう言ってもらえると、この時間がより特別に感じられます。日々の中で、一番落ち着ける瞬間かもしれません。
+    choices:
+      - text: 僕も一番落ち着きます
+        next: shino_frequent_visitor_mutual_peace
+      - text: 特別な時間を共有していますね
+        next: shino_frequent_visitor_shared_special
+      - text: 大切にしたい時間です
+        next: shino_frequent_visitor_cherished_time
+
+  - id: shino_frequent_visitor_good_habit
+    text: 良い習慣...そうですね。悪い習慣もありますが、これは心を豊かにしてくれる習慣だと思います。
+    choices:
+      - text: 心を豊かにする習慣は大切ですね
+        next: shino_frequent_visitor_enriching_habit
+      - text: 続けていきたい習慣ですね
+        next: shino_frequent_visitor_continuing_habit
+      - text: 僕にとっても良い習慣です
+        next: shino_frequent_visitor_mutual_habit
+
+  - id: shino_frequent_visitor_daily_part
+    text: 日常の一部...そんな風に言ってもらえると、なんだか嬉しくて。一人だった日常に、温かい色がついたような気がします。
+    choices:
+      - text: 温かい色のある日常は素敵ですね
+        next: shino_frequent_visitor_warm_daily
+      - text: 僕の日常も明るくなりました
+        next: shino_frequent_visitor_bright_daily
+      - text: お互いの日常を豊かにしていますね
+        next: shino_frequent_visitor_mutual_enrichment
+
+  - id: shino_frequent_visitor_mutual_peace
+    text: お互いに落ち着く...そんな関係になれたなんて、本当に幸せです。心の平安を共有できるなんて、奇跡のようです。
+    choices:
+      - text: 心の平安は最高の贈り物ですね
+        next: emotional_end
+      - text: 奇跡のような関係ですね
+        next: trust_end
+      - text: 本当に幸せです
+        next: contextual_end
+
+  - id: shino_frequent_visitor_shared_special
+    text: 共有する特別な時間...一人では作れない、二人だからこその時間。こんな体験ができるなんて、思ってもみませんでした。
+    choices:
+      - text: 二人だからこその時間ですね
+        next: emotional_end
+      - text: 特別な体験を共有していますね
+        next: trust_end
+      - text: 素晴らしい発見ですね
+        next: contextual_end
+
+  - id: shino_frequent_visitor_cherished_time
+    text: 大切にしたい時間...私も同じ気持ちです。この時間を大切に思ってくれる人がいることが、何より嬉しいです。
+    choices:
+      - text: 大切に思ってくれて嬉しいです
+        next: emotional_end
+      - text: お互いに大切にしましょう
+        next: trust_end
+      - text: かけがえのない時間ですね
+        next: contextual_end
+
+  - id: shino_frequent_visitor_enriching_habit
+    text: 心を豊かにする習慣...そんな風に考えたことはありませんでしたが、確かにそうですね。心が満たされる感覚があります。
+    choices:
+      - text: 心の満足は大切ですね
+        next: emotional_end
+      - text: 豊かな心で過ごしましょう
+        next: trust_end
+      - text: 満たされる感覚は素晴らしいです
+        next: contextual_end
+
+  - id: shino_frequent_visitor_continuing_habit
+    text: 続けていきたい習慣...はい、私もそう思います。この習慣がなくなってしまうことを考えると、寂しい気持ちになります。
+    choices:
+      - text: 僕も続けていきたいです
+        next: trust_end
+      - text: 寂しくならないよう、続けましょう
+        next: emotional_end
+      - text: 末永く続けていきましょう
+        next: contextual_end
+
+  - id: shino_frequent_visitor_mutual_habit
+    text: お互いにとって良い習慣...そんな風に思い合えるなんて、素晴らしいことですね。同じ価値観を共有できています。
+    choices:
+      - text: 価値観を共有できて嬉しいです
+        next: emotional_end
+      - text: 同じ想いを持てますね
+        next: trust_end
+      - text: 素晴らしい共有ですね
+        next: contextual_end
+
+  - id: shino_frequent_visitor_warm_daily
+    text: 温かい色のある日常...そんな詩的な表現をしてもらえると、日常がより美しく見えます。言葉の力は不思議ですね。
+    choices:
+      - text: 言葉には力がありますね
+        next: deep_end
+      - text: 美しい日常を過ごしましょう
+        next: emotional_end
+      - text: 詩的な表現が好きです
+        next: contextual_end
+
+  - id: shino_frequent_visitor_bright_daily
+    text: 明るくなった日常...そう言ってもらえると、私も誰かの役に立てているような気がして、嬉しいです。
+    choices:
+      - text: 十分に役に立ってくれています
+        next: emotional_end
+      - text: お互いに良い影響を与えていますね
+        next: trust_end
+      - text: 明るい日常は素晴らしいです
+        next: contextual_end
+
+  - id: shino_frequent_visitor_mutual_enrichment
+    text: お互いの日常を豊かに...それは理想的な関係ですね。与え合い、受け取り合う。バランスの取れた関係だと思います。
+    choices:
+      - text: バランスの取れた関係は理想的ですね
+        next: emotional_end
+      - text: 与え合う関係は素晴らしいです
+        next: trust_end
+      - text: 豊かな関係を築けました
+        next: contextual_end

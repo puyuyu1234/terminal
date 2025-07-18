@@ -1,0 +1,54 @@
+dialogues:
+  - id: ayane_neutral_activity
+    text: "いつもは本を読んだり、夕日を見たりしています。ここは静かで、考え事をするのにちょうどいいんです。"
+    choices:
+      - text: "どんな本を読んでいるの？"
+        next: ayane_neutral_books
+      - text: "夕日がきれいですね"
+        next: ayane_neutral_sunset
+      - text: "もう帰ろうか"
+        next: ayane_end_goodbye
+
+  - id: ayane_neutral_train
+    text: "電車...もう来ないって分かってるんです。でも、いつか来るような気がして。"
+    choices:
+      - text: "なぜそう思うの？"
+        next: ayane_neutral_hope
+      - text: "一緒に待とう"
+        next: ayane_neutral_together
+      - text: "帰る時間だよ"
+        next: ayane_end_goodbye
+
+  - id: ayane_neutral_books
+    text: "古い詩集とか、短編小説とか。時間が止まったみたいなお話が好きです。"
+    choices:
+      - text: "おすすめの本はある？"
+        next: ayane_neutral_recommendation
+      - text: "それは面白そうだね"
+        next: ayane_end_goodbye
+
+  - id: ayane_neutral_sunset
+    text: "はい、毎日少しずつ違う色になるんです。今日はオレンジ色が強いですね。"
+    choices:
+      - text: "一緒に見よう"
+        next: ayane_neutral_together
+      - text: "きれいな夕日だね"
+        next: ayane_end_goodbye
+
+  - id: ayane_neutral_hope
+    text: "希望って、理由なんていらないんじゃないでしょうか。ただ、信じていたいだけなんです。"
+    choices:
+      - text: "素敵な考えだね"
+        next: ayane_end_goodbye
+
+  - id: ayane_neutral_together
+    text: "はい、一緒にいてくれると嬉しいです。でも、あなたも帰る時間がありますよね。"
+    choices:
+      - text: "もう少しだけ"
+        next: ayane_end_goodbye
+
+  - id: ayane_neutral_recommendation
+    text: "『星の王子さま』はいかがですか。大切なものは目に見えないって言葉が印象的です。"
+    choices:
+      - text: "今度読んでみるよ"
+        next: ayane_end_goodbye

@@ -1,0 +1,258 @@
+character: shino
+nodes:
+  - id: shino_trust_development
+    text: なんだか、話しやすくなった気がする……
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 5
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: shino
+          operator: greater_than
+          value: 50
+    effects:
+      - type: set_flag
+        flag: shino_trusts_player
+    choices:
+      - text: 僕もそう思います
+        next: shino_trust_development_extended_conversation
+      - text: 時間が解決したんですね
+        next: shino_trust_development_extended_conversation
+      - text: ...
+        next: shino_trust_development_extended_conversation
+  - id: shino_vulnerability_moment
+    text: 実は……怖いんだ。誰も来なくなることが
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 8
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: shino
+          operator: greater_than
+          value: 70
+      - type: flag
+        name: shino_trusts_player
+    effects:
+      - type: set_flag
+        flag: shino_shared_fear
+    choices:
+      - text: 僕は来続けますよ
+        next: shino_vulnerability_moment_extended_conversation
+      - text: その気持ち、わかります
+        next: shino_vulnerability_moment_extended_conversation
+      - text: ...
+        next: shino_vulnerability_moment_extended_conversation
+  - id: shino_deep_question
+    text: ねえ……私って、本当にいるのかな？
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 10
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: shino
+          operator: greater_than
+          value: 80
+      - type: flag
+        name: shino_shared_fear
+    choices:
+      - text: もちろんいますよ
+        next: shino_deep_question_extended_conversation
+      - text: 僕には見えています
+        next: shino_deep_question_extended_conversation
+      - text: 一緒に考えましょう
+        next: shino_deep_question_extended_conversation
+      - text: ...
+        next: shino_deep_question_extended_conversation
+  - id: shino_protective_feeling
+    text: あなたがいると……安心できる
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 18
+      - type: custom
+        handler: relationship_level
+        params:
+          characterId: shino
+          operator: greater_than
+          value: 90
+    effects:
+      - type: set_flag
+        flag: shino_feels_protected
+    choices:
+      - text: 僕もです
+        next: shino_mutual_safety
+      - text: 守ってあげたいです
+        next: shino_protection_offer
+      - text: ずっと一緒にいましょう
+        next: shino_togetherness_promise
+      - text: ...
+        next: shino_safety_silence
+  - id: shino_mutual_trust
+    text: お互いに……そう思えるのって、奇跡かも
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 35
+    next: shino_miracle_recognition
+  - id: shino_trust_silence
+    text: ……言葉にしなくても、わかる
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 40
+    next: contextual_end
+  - id: shino_absolute_trust
+    text: 絶対に信じて……ありがとう
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 60
+    next: shino_session_end
+  - id: shino_trust_development_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: shino_trust_development_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_vulnerability_moment_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_vulnerability_moment_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_vulnerability_moment_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_deep_question_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_deep_question_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_trust_development_to_trust_end_trust_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_trust_development_to_trust_end_trust_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_trust_development_to_trust_end_trust_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_trust_development_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_trust_development_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_vulnerability_moment_to_emotional_end_emotion_bridge_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_vulnerability_moment_to_emotional_end_emotion_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_vulnerability_moment_to_emotional_end_emotion_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_vulnerability_moment_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: shino_vulnerability_moment_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices: &a2
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices: &a3
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices: &a4
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices: &a5
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices: &a6
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices: &a7
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end

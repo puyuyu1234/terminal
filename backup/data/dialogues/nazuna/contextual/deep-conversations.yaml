@@ -1,0 +1,8 @@
+character: nazuna
+nodes:
+  - id: nazuna_intimate_space
+    text: ......親密な空間。二人だけの世界。
+    next: nazuna_session_end
+  - id: nazuna_deep_understanding
+    text: ......深い理解。言葉なしに。
+    next: nazuna_session_end

@@ -1,0 +1,228 @@
+character: shino
+nodes:
+  - id: shino_start_first_meet_evening
+    text: ……誰？
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: evening
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: neutral_response
+        text: ただの通りすがり
+        next: shino_first_meet_evening_deep_talk
+      - id: silent_response
+        text: ...
+        next: shino_first_meet_evening_deep_talk
+      - id: gentle_response
+        text: すみません、驚かせて
+        next: shino_first_meet_evening_deep_talk
+
+  - id: shino_first_meet_evening_deep_talk
+    text: 通りすがり...でも、こんな場所に来る人は珍しいです。何か探しているものでも？
+    choices:
+      - text: 特に何も
+        next: shino_first_meet_evening_nothing_special
+      - text: 静かな場所を探してました
+        next: shino_first_meet_evening_quiet_place
+      - text: あなたは何をしているんですか？
+        next: shino_first_meet_evening_what_doing
+
+  - id: shino_first_meet_evening_nothing_special
+    text: 特に何も...でも、こんな場所に足が向くということは、何かあるのかもしれませんね。心の奥で。
+    choices:
+      - text: そうかもしれません
+        next: shino_evening_subconscious_draw
+      - text: 無意識に来たのかも
+        next: shino_evening_unconscious_pull
+      - text: あなたはなぜここに？
+        next: shino_evening_why_here
+
+  - id: shino_first_meet_evening_quiet_place
+    text: 静かな場所...ここは確かに静かです。音といえば、風の音と、遠くの街の音だけ。私も静けさが好きです。
+    choices:
+      - text: 落ち着きますね
+        next: shino_evening_calming_atmosphere
+      - text: 一緒に静かに過ごしましょう
+        next: shino_evening_shared_quietude
+      - text: 静けさの中に何を見つけますか？
+        next: shino_evening_silence_discovery
+
+  - id: shino_first_meet_evening_what_doing
+    text: 私は...ただここにいるだけです。時間が止まったような、この場所にいると安心するんです。
+    choices:
+      - text: 安心できる場所は大切ですね
+        next: shino_evening_safe_place
+      - text: 時間が止まったような？
+        next: shino_evening_frozen_time
+      - text: 一人でいることが多いんですか？
+        next: shino_evening_solitude_question
+
+  - id: shino_start_first_meet_night
+    text: こんな夜に……誰かいるの？
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: night
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: apologetic_response
+        text: 夜遅くてすみません
+        next: shino_start_first_meet_night_to_contextual_end_bridge
+      - id: casual_response
+        text: 散歩してました
+        next: shino_start_first_meet_night_to_contextual_end_bridge
+      - id: silent_response
+        text: ...
+        next: shino_start_first_meet_night_to_contextual_end_bridge
+
+  - id: shino_start_first_meet_rainy
+    text: 雨の音で気づかなかった……
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: rainy
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: weather_comment
+        text: 濡れませんか？
+        next: shino_start_first_meet_rainy_to_contextual_end_bridge
+      - id: neutral_response
+        text: こんばんは
+        next: shino_start_first_meet_rainy_to_contextual_end_bridge
+      - id: silent_response
+        text: ...
+        next: shino_start_first_meet_rainy_to_contextual_end_bridge
+
+  - id: shino_start_first_meet_foggy
+    text: 霧で見えなくて……びっくりした
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: foggy
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: fog_comment
+        text: すごい霧ですね
+        next: shino_start_first_meet_foggy_to_contextual_end_bridge
+      - id: apologetic_response
+        text: 驚かせてしまって
+        next: shino_start_first_meet_foggy_to_contextual_end_bridge
+      - id: silent_response
+        text: ...
+        next: shino_start_first_meet_foggy_to_contextual_end_bridge
+
+  # 夕方の会話の継続ノード
+  - id: shino_evening_subconscious_draw
+    text: 心の奥で...そうですね。きっと何かが私たちを同じ場所に導いたのかもしれません。
+    choices:
+      - text: 運命的な出会いですね
+        next: emotional_end
+      - text: 不思議な縁を感じます
+        next: trust_end
+      - text: 同じ気持ちを抱いていたのかも
+        next: contextual_end
+
+  - id: shino_evening_unconscious_pull
+    text: 無意識に...私もそう思います。理由は分からないけれど、ここにいると落ち着く。あなたも同じなのかもしれませんね。
+    choices:
+      - text: 確かに落ち着きます
+        next: emotional_end
+      - text: 心地よい場所ですね
+        next: contextual_end
+      - text: 同じ感覚を持っているんですね
+        next: trust_end
+
+  - id: shino_evening_why_here
+    text: 私がなぜここに...それは難しい質問ですね。でも、あなたが聞いてくれるなら、少しお話ししてもいいかもしれません。
+    choices:
+      - text: ぜひ聞かせてください
+        next: trust_end
+      - text: 無理しなくていいですよ
+        next: emotional_end
+      - text: お話を聞くのは好きです
+        next: contextual_end
+
+  - id: shino_evening_calming_atmosphere
+    text: 落ち着く...そうですね。この静けさは心を穏やかにしてくれます。あなたと一緒だと、さらに安らかな気持ちになれます。
+    choices:
+      - text: 僕も安らかな気持ちです
+        next: emotional_end
+      - text: 一緒にいると心地よいですね
+        next: trust_end
+      - text: 穏やかな時間を過ごしましょう
+        next: contextual_end
+
+  - id: shino_evening_shared_quietude
+    text: 一緒に静かに...そんな風に過ごせる人がいるなんて、思ってもみませんでした。静寂を共有できるのは、特別なことですね。
+    choices:
+      - text: 特別な時間を過ごしていますね
+        next: emotional_end
+      - text: 静寂を共有できて嬉しいです
+        next: trust_end
+      - text: 心が通じ合っているようです
+        next: contextual_end
+
+  - id: shino_evening_silence_discovery
+    text: 静けさの中に...私は自分自身を見つけます。そして今は、あなたとのつながりも感じられます。
+    choices:
+      - text: 深い洞察ですね
+        next: deep_end
+      - text: つながりを感じて嬉しいです
+        next: emotional_end
+      - text: 自分自身と向き合うことは大切ですね
+        next: contextual_end
+
+  - id: shino_evening_safe_place
+    text: 安心できる場所...本当にそうですね。ここは私にとって避難所のような場所です。そして今、あなたがいることで、さらに安心できます。
+    choices:
+      - text: 僕も安心できます
+        next: emotional_end
+      - text: 一緒にいると安全ですね
+        next: trust_end
+      - text: 大切な場所なんですね
+        next: contextual_end
+
+  - id: shino_evening_frozen_time
+    text: 時間が止まったような...そうですね。ここでは時間の流れが違うような気がします。永遠の瞬間を過ごしているような。
+    choices:
+      - text: 永遠の瞬間ですね
+        next: deep_end
+      - text: 時間を忘れてしまいます
+        next: emotional_end
+      - text: 特別な時間の流れですね
+        next: contextual_end
+
+  - id: shino_evening_solitude_question
+    text: 一人でいることが多いか...はい、そうですね。でも、寂しいわけではありません。一人の時間も大切だと思っています。
+    choices:
+      - text: 一人の時間も価値がありますね
+        next: deep_end
+      - text: バランスが大切ですね
+        next: contextual_end
+      - text: でも一緒にいる時間も素敵です
+        next: emotional_end

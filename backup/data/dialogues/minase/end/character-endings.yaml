@@ -1,0 +1,8 @@
+character: minase
+nodes:
+  - id: minase_session_end
+    text: "今日の会話も興味深かった。また考えを聞かせてもらいたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

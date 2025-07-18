@@ -1,0 +1,312 @@
+character: ayane
+nodes:
+  # Regular visitor extended conversations
+  - id: ayane_start_regular_visitor_extended_conversation
+    text: 待ってたって言ってもらえるなんて、すごく嬉しいです！誰かが自分を待っていてくれるって、特別な気持ちになります。
+    choices:
+      - text: 特別な気持ちを感じます
+        next: ayane_regular_special_feeling
+      - text: 待つということの意味を教えてください
+        next: ayane_regular_waiting_meaning
+      - text: 僕も誰かを待つ気持ちが分かります
+        next: ayane_regular_mutual_waiting
+
+  - id: ayane_regular_special_feeling
+    text: 特別な気持ち...そうですね。普通の日が特別な日に変わる瞬間って、魔法みたいです。
+    choices:
+      - text: 魔法のような瞬間を大切にしましょう
+        next: ayane_regular_magical_moments
+      - text: 普通が特別に変わる力を感じます
+        next: ayane_regular_transformation_power
+      - text: 日常の中の特別を見つけたいです
+        next: ayane_regular_daily_special
+
+  - id: ayane_regular_waiting_meaning
+    text: 待つということ...それは相手を思う気持ちの表れだと思います。時間をかけて、心を込めて待つこと。
+    choices:
+      - text: 相手を思う気持ちは大切ですね
+        next: ayane_regular_caring_feeling
+      - text: 心を込めて待つことの美しさを感じます
+        next: ayane_regular_heartfelt_waiting
+      - text: 時間をかけることの価値を学びます
+        next: ayane_regular_time_value
+
+  - id: ayane_regular_mutual_waiting
+    text: 待つ気持ちが分かる...そうですね。お互いが待ち合っているような関係って、とても温かいです。
+    choices:
+      - text: 温かい関係を大切にしましょう
+        next: ayane_regular_warm_relationship
+      - text: お互いを思い合う気持ちを感じます
+        next: ayane_regular_mutual_care
+      - text: 待ち合う関係は素敵です
+        next: ayane_regular_waiting_relationship
+
+  - id: ayane_regular_magical_moments
+    text: 魔法のような瞬間...そういう瞬間を大切にしていると、人生がキラキラして見えます。
+    choices:
+      - text: 人生をキラキラさせる秘訣を教えてください
+        next: ayane_regular_sparkling_life
+      - text: 魔法のような瞬間を一緒に作りましょう
+        next: ayane_regular_creating_magic
+      - text: キラキラした人生を歩みたいです
+        next: ayane_regular_shining_life
+
+  - id: ayane_regular_transformation_power
+    text: 変わる力...それは見方を変えることから始まります。同じことでも、違った角度から見ると新しい発見があります。
+    choices:
+      - text: 見方を変えることを学びたいです
+        next: ayane_regular_perspective_change
+      - text: 新しい発見を楽しみにします
+        next: ayane_regular_new_discovery
+      - text: 違った角度から物事を見る習慣をつけたいです
+        next: ayane_regular_different_angles
+
+  - id: ayane_regular_daily_special
+    text: 日常の中の特別...それは小さな幸せを見つけることです。朝の光、鳥の鳴き声、人の笑顔。
+    choices:
+      - text: 小さな幸せを見つける目を養いたいです
+        next: ayane_regular_small_happiness
+      - text: 朝の光の美しさを感じます
+        next: ayane_regular_morning_light
+      - text: 人の笑顔は特別な贈り物ですね
+        next: ayane_regular_smile_gift
+
+  - id: ayane_regular_caring_feeling
+    text: 相手を思う気持ち...そういう気持ちがあるから、人は優しくなれるんですね。思いやりの心です。
+    choices:
+      - text: 思いやりの心を大切にします
+        next: ayane_regular_compassionate_heart
+      - text: 優しくなれる気持ちを育てたいです
+        next: ayane_regular_kindness_growth
+      - text: 相手を思う気持ちを持ち続けたいです
+        next: ayane_regular_caring_continuation
+
+  - id: ayane_regular_heartfelt_waiting
+    text: 心を込めて待つ...それは愛情の表現の一つですね。待つ時間も、一緒にいる時間と同じくらい大切です。
+    choices:
+      - text: 愛情の表現を学びたいです
+        next: ayane_regular_love_expression
+      - text: 待つ時間も大切にします
+        next: ayane_regular_waiting_time
+      - text: 一緒にいる時間を大切にしましょう
+        next: ayane_regular_together_time
+
+  - id: ayane_regular_time_value
+    text: 時間の価値...時間は誰にとっても平等で、だからこそ貴重です。その時間を誰かのために使うことは愛です。
+    choices:
+      - text: 時間を愛として使いたいです
+        next: ayane_regular_time_as_love
+      - text: 貴重な時間を大切にします
+        next: ayane_regular_precious_time
+      - text: 平等な時間の価値を感じます
+        next: ayane_regular_equal_time
+
+  - id: ayane_regular_warm_relationship
+    text: 温かい関係...そういう関係があると、心が安らぎます。お互いを大切に思う気持ちが、温かさを生むんですね。
+    choices:
+      - text: 心の安らぎを共有しましょう
+        next: emotional_end
+      - text: 温かさを生む関係を築きたいです
+        next: trust_end
+      - text: お互いを大切に思います
+        next: contextual_end
+
+  - id: ayane_regular_mutual_care
+    text: 思い合う気持ち...そういう気持ちがあると、一人じゃないって感じられます。支え合える関係です。
+    choices:
+      - text: 支え合える関係を大切にします
+        next: trust_end
+      - text: 一人じゃない安心感を感じます
+        next: emotional_end
+      - text: 思い合う気持ちを育てましょう
+        next: contextual_end
+
+  - id: ayane_regular_waiting_relationship
+    text: 待ち合う関係...それは信頼関係の表れです。相手が来ることを信じて待つ、相手も自分を待っていてくれると信じる。
+    choices:
+      - text: 信頼関係を大切にします
+        next: trust_end
+      - text: 信じて待つ心を持ちたいです
+        next: emotional_end
+      - text: 信頼し合える関係を築きましょう
+        next: contextual_end
+
+  - id: ayane_regular_sparkling_life
+    text: キラキラした人生の秘訣...それは感謝の気持ちを持つことです。小さなことにも「ありがとう」と思えると、世界が輝いて見えます。
+    choices:
+      - text: 感謝の気持ちを大切にします
+        next: emotional_end
+      - text: 小さなことにも感謝したいです
+        next: trust_end
+      - text: 世界が輝いて見える目を持ちたいです
+        next: deep_end
+
+  - id: ayane_regular_creating_magic
+    text: 魔法を作る...それは一緒にいる時間を特別にすることです。笑顔、会話、静かな時間、すべてが魔法の材料です。
+    choices:
+      - text: 一緒に魔法を作りましょう
+        next: emotional_end
+      - text: 特別な時間を大切にします
+        next: trust_end
+      - text: 笑顔も魔法の一部ですね
+        next: contextual_end
+
+  - id: ayane_regular_shining_life
+    text: 輝く人生...それは自分らしく生きることです。無理をしないで、自分の好きなことを大切にして生きること。
+    choices:
+      - text: 自分らしく生きたいです
+        next: emotional_end
+      - text: 好きなことを大切にします
+        next: trust_end
+      - text: 無理をしない生き方を学びたいです
+        next: deep_end
+
+  - id: ayane_regular_perspective_change
+    text: 見方を変える...それは心の柔軟性です。固定観念にとらわれずに、新しい視点を受け入れることです。
+    choices:
+      - text: 心の柔軟性を身につけたいです
+        next: deep_end
+      - text: 新しい視点を受け入れます
+        next: trust_end
+      - text: 固定観念から自由になりたいです
+        next: emotional_end
+
+  - id: ayane_regular_new_discovery
+    text: 新しい発見...それは好奇心の報酬です。何にでも興味を持って、「なぜ？」と問いかけることから始まります。
+    choices:
+      - text: 好奇心を大切にします
+        next: deep_end
+      - text: 何にでも興味を持ちたいです
+        next: emotional_end
+      - text: 「なぜ？」と問いかける習慣をつけます
+        next: trust_end
+
+  - id: ayane_regular_different_angles
+    text: 違った角度...それは物事の多面性を理解することです。一つの出来事にも、たくさんの意味があります。
+    choices:
+      - text: 物事の多面性を理解したいです
+        next: deep_end
+      - text: たくさんの意味を見つけたいです
+        next: emotional_end
+      - text: 多角的な視点を持ちたいです
+        next: trust_end
+
+  - id: ayane_regular_small_happiness
+    text: 小さな幸せ...それは毎日の宝物です。見つけようと思えば、どこにでもあります。大切なのは気づく心です。
+    choices:
+      - text: 気づく心を育てたいです
+        next: emotional_end
+      - text: 毎日の宝物を見つけましょう
+        next: trust_end
+      - text: 小さな幸せを大切にします
+        next: contextual_end
+
+  - id: ayane_regular_morning_light
+    text: 朝の光...新しい一日の始まりを告げる、希望の光です。毎朝、世界が生まれ変わるような気持ちになります。
+    choices:
+      - text: 希望の光を感じます
+        next: emotional_end
+      - text: 世界が生まれ変わる気持ちを共有します
+        next: trust_end
+      - text: 新しい一日を大切にします
+        next: contextual_end
+
+  - id: ayane_regular_smile_gift
+    text: 笑顔の贈り物...それは心から心へ届く、最も美しい贈り物です。お金では買えない、でも誰でも与えることができます。
+    choices:
+      - text: 笑顔を贈り物として大切にします
+        next: emotional_end
+      - text: 心から心へ届く美しさを感じます
+        next: trust_end
+      - text: 誰でも与えることができる贈り物ですね
+        next: contextual_end
+
+  - id: ayane_regular_compassionate_heart
+    text: 思いやりの心...それは人間の最も美しい部分です。相手の気持ちを理解し、共感することができる心です。
+    choices:
+      - text: 最も美しい部分を育てたいです
+        next: emotional_end
+      - text: 相手の気持ちを理解したいです
+        next: trust_end
+      - text: 共感する心を大切にします
+        next: deep_end
+
+  - id: ayane_regular_kindness_growth
+    text: 優しさの成長...それは日々の小さな行動から始まります。人に親切にする、動物を大切にする、自然を愛する。
+    choices:
+      - text: 小さな行動から始めます
+        next: trust_end
+      - text: 人に親切にしたいです
+        next: emotional_end
+      - text: すべてを大切にする心を持ちたいです
+        next: deep_end
+
+  - id: ayane_regular_caring_continuation
+    text: 思いやりの継続...それは意識的な選択です。疲れた時も、忙しい時も、相手を思いやる心を忘れないこと。
+    choices:
+      - text: 意識的に思いやりを選びます
+        next: trust_end
+      - text: 忙しい時も思いやりを忘れません
+        next: emotional_end
+      - text: 継続する力を身につけたいです
+        next: deep_end
+
+  - id: ayane_regular_love_expression
+    text: 愛情の表現...それは言葉だけでなく、行動でも示すことです。待つこと、支えること、一緒にいること。
+    choices:
+      - text: 行動で愛情を示したいです
+        next: emotional_end
+      - text: 支えることを学びたいです
+        next: trust_end
+      - text: 一緒にいることの大切さを感じます
+        next: contextual_end
+
+  - id: ayane_regular_waiting_time
+    text: 待つ時間...それは準備の時間でもあります。相手に会える喜びを想像したり、何を話そうか考えたり。
+    choices:
+      - text: 準備の時間を大切にします
+        next: trust_end
+      - text: 会える喜びを想像します
+        next: emotional_end
+      - text: 話すことを楽しみにします
+        next: contextual_end
+
+  - id: ayane_regular_together_time
+    text: 一緒にいる時間...それは共有する時間です。経験を分け合い、感情を共有し、思い出を作る時間。
+    choices:
+      - text: 経験を分け合いましょう
+        next: emotional_end
+      - text: 感情を共有したいです
+        next: trust_end
+      - text: 思い出を作りましょう
+        next: contextual_end
+
+  - id: ayane_regular_time_as_love
+    text: 愛としての時間...それは最も純粋な愛の形です。自分の時間を相手のために使うことは、最高の愛情表現です。
+    choices:
+      - text: 純粋な愛を学びたいです
+        next: emotional_end
+      - text: 時間を愛情として捧げたいです
+        next: trust_end
+      - text: 最高の愛情表現を目指します
+        next: deep_end
+
+  - id: ayane_regular_precious_time
+    text: 貴重な時間...それは二度と戻ってこないものです。だからこそ、今この瞬間を大切にしたいです。
+    choices:
+      - text: 今この瞬間を大切にします
+        next: emotional_end
+      - text: 二度と戻らない時間を意識します
+        next: trust_end
+      - text: 貴重さを噛み締めます
+        next: contextual_end
+
+  - id: ayane_regular_equal_time
+    text: 平等な時間...それは神様が与えてくれた公平な贈り物です。お金持ちも貧しい人も、同じ24時間を持っています。
+    choices:
+      - text: 公平な贈り物を大切にします
+        next: emotional_end
+      - text: 平等な時間の価値を感じます
+        next: trust_end
+      - text: 24時間を有効に使いたいです
+        next: deep_end

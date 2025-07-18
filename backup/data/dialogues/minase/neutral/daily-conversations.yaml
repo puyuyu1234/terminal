@@ -1,0 +1,5 @@
+character: minase
+nodes:
+  - id: minase_normality_challenge
+    text: 普通？あなたの目には、そう見えるのね。
+    next: contextual_end

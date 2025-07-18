@@ -1,0 +1,233 @@
+conversations:
+  # 落書き帳の使用頻度による変化
+  - id: tomo_notebook_usage
+    text: "..."
+    conditions:
+      - if: "tomo_notebook_usage >= 5"
+        text: "...(落書き帳に何かを書いている)...これで...変わる..."
+      - if: "tomo_notebook_usage >= 3"
+        text: "...(落書き帳を見つめている)...書くと...現実になる..."
+      - if: "tomo_notebook_usage >= 1"
+        text: "...(落書き帳を膝に置いている)..."
+      - else:
+        text: "...(落書き帳を抱えている)..."
+    choices:
+      - text: "何を書いてるの？"
+        next: tomo_writing_content
+      - text: "現実になるって？"
+        next: tomo_reality_alteration
+      - text: "..."
+        next: tomo_quiet_observation
+
+  # 名前に関する質問への反応
+  - id: tomo_name_inquiry
+    text: "..."
+    conditions:
+      - if: "tomo_name_avoidance >= 4"
+        text: "...(首を振る)...名前...いらない...書けば...消える..."
+      - if: "tomo_name_avoidance >= 2"
+        text: "...(落書き帳を見る)...名前...書いちゃダメ..."
+      - if: "tomo_name_avoidance >= 1"
+        text: "...(困った表情)...名前...ない..."
+      - else:
+        text: "...(何も言わない)..."
+    choices:
+      - text: "なぜ名前を言えないの？"
+        next: tomo_name_fear
+      - text: "名前がなくても大丈夫"
+        next: tomo_name_acceptance
+      - text: "じゃあ、何て呼ぼうか"
+        next: tomo_nickname_suggestion
+
+  # 現実操作能力への気づき
+  - id: tomo_reality_power
+    text: "..."
+    conditions:
+      - if: "tomo_reality_awareness >= 5"
+        text: "...(落書き帳を閉じる)...危険...書きすぎると...元に戻せない..."
+      - if: "tomo_reality_awareness >= 3"
+        text: "...(落書き帳を見る)...書いたこと...本当になる...怖い..."
+      - if: "tomo_reality_awareness >= 1"
+        text: "...(落書き帳に触れる)...不思議...なことが起こる..."
+      - else:
+        text: "...(落書き帳を持っている)..."
+    choices:
+      - text: "どんなことが起こるの？"
+        next: tomo_power_examples
+      - text: "怖いなら書かなくてもいい"
+        next: tomo_power_restraint
+      - text: "元に戻す方法はないの？"
+        next: tomo_reversal_possibility
+
+  # 信頼度による開示
+  - id: tomo_trust_revelation
+    text: "..."
+    conditions:
+      - if: "tomo_trust_level >= 5"
+        text: "...(落書き帳を見せる)...これ...見る？...でも...危険..."
+      - if: "tomo_trust_level >= 3"
+        text: "...(小さく話す)...あなた...信用できる...人？"
+      - if: "tomo_trust_level >= 1"
+        text: "...(少し安心している)...怖く...ない..."
+      - else:
+        text: "...(警戒している)..."
+    choices:
+      - text: "見せてくれるの？"
+        next: tomo_notebook_reveal
+      - text: "信用できるかどうかは君が決めて"
+        next: tomo_trust_decision
+      - text: "怖くないよ"
+        next: tomo_fear_reassurance
+
+  # 夜の進行による変化
+  - id: tomo_night_influence
+    text: "..."
+    conditions:
+      - if: "night_progression >= 8"
+        text: "...(落書き帳に書く)...夜...深い...境界...薄い...書きやすい..."
+      - if: "night_progression >= 6"
+        text: "...(落書き帳を開く)...夜...力...強くなる..."
+      - if: "night_progression >= 4"
+        text: "...(落書き帳を見る)...夜...変わる..."
+      - else:
+        text: "...(落書き帳を抱えている)..."
+    choices:
+      - text: "夜の方が書きやすい？"
+        next: tomo_night_writing
+      - text: "境界って何？"
+        next: tomo_boundary_explanation
+      - text: "力って？"
+        next: tomo_power_inquiry
+
+  # プレイヤーの行動パターンによる反応
+  - id: tomo_player_observation
+    text: "..."
+    conditions:
+      - if: "player_empathy_level >= 5"
+        text: "...(落書き帳に書く)...優しい人...書いておく...忘れないように..."
+      - if: "player_silence_count >= 5"
+        text: "...(落書き帳を見る)...静か...同じ...書く必要...ない..."
+      - if: "total_visits >= 10"
+        text: "...(落書き帳をめくる)...よく来る...書いてある..."
+      - else:
+        text: "...(落書き帳を見つめる)...新しい...人..."
+    choices:
+      - text: "僕のことを書いてるの？"
+        next: tomo_player_documentation
+      - text: "忘れないように？"
+        next: tomo_memory_preservation
+      - text: "何が書いてあるの？"
+        next: tomo_content_inquiry
+
+  # 複合条件での特別な瞬間
+  - id: tomo_special_moment
+    text: "..."
+    conditions:
+      - if: "tomo_trust_level >= 4 && tomo_reality_awareness >= 3"
+        text: "...(落書き帳を開く)...あなたに...見せる...でも...約束して...秘密..."
+      - if: "tomo_trust_level >= 3 && player_silence_count >= 5"
+        text: "...(落書き帳に書く)...静かな人...安心...一緒にいる..."
+      - if: "tomo_notebook_usage >= 5 && total_visits >= 15"
+        text: "...(落書き帳を見る)...たくさん...書いた...あなたのこと..."
+      - else:
+        text: "...(落書き帳を抱えている)..."
+    choices:
+      - text: "約束する"
+        next: tomo_secret_promise
+      - text: "僕のことをたくさん？"
+        next: tomo_extensive_documentation
+      - text: "一緒にいて安心？"
+        next: tomo_comfort_confirmation
+
+  # 記憶と忘却の問題
+  - id: tomo_memory_issues
+    text: "..."
+    conditions:
+      - if: "tomo_memory_confusion >= 4"
+        text: "...(落書き帳をめくる)...書いてない...忘れる...書かないと...消える..."
+      - if: "tomo_memory_confusion >= 2"
+        text: "...(落書き帳を見る)...昨日...書いた？...覚えてない..."
+      - else:
+        text: "...(落書き帳を開く)..."
+    choices:
+      - text: "何を忘れるの？"
+        next: tomo_forgetting_content
+      - text: "書けば思い出せる？"
+        next: tomo_memory_aid
+      - text: "大切なことは覚えてる？"
+        next: tomo_important_memories
+
+  # 孤独感の表現
+  - id: tomo_loneliness
+    text: "..."
+    conditions:
+      - if: "tomo_loneliness_level >= 4"
+        text: "...(落書き帳に書く)...いつも...ひとり...書くだけ...話し相手..."
+      - if: "tomo_loneliness_level >= 2"
+        text: "...(落書き帳を見る)...ひとり...でも...これがある..."
+      - else:
+        text: "...(落書き帳を抱える)..."
+    choices:
+      - text: "ひとりじゃないよ"
+        next: tomo_companionship_offer
+      - text: "落書き帳が友達？"
+        next: tomo_notebook_friend
+      - text: "僕と話そう"
+        next: tomo_conversation_invitation
+
+  # 継続ノード例
+  - id: tomo_writing_content
+    text: "...(落書き帳を見せる)...天気...人...出来事...書くと...忘れない..."
+    effects:
+      - type: increment
+        variable: tomo_notebook_usage
+        value: 1
+    choices:
+      - text: "記録として書いてるの？"
+        next: tomo_record_keeping
+      - text: "忘れたくないことがあるの？"
+        next: tomo_precious_memories
+      - text: "僕のことも書いてる？"
+        next: tomo_player_entry
+
+  - id: tomo_reality_alteration
+    text: "...(落書き帳を見る)...書くと...本当になる...でも...怖い...間違ったら...取り返し...つかない..."
+    effects:
+      - type: increment
+        variable: tomo_reality_awareness
+        value: 1
+    choices:
+      - text: "間違ったことって？"
+        next: tomo_mistake_fear
+      - text: "気をつけて書けば大丈夫"
+        next: tomo_careful_writing
+      - text: "本当にそんなことが起こるの？"
+        next: tomo_power_doubt
+
+  - id: tomo_name_fear
+    text: "...(落書き帳を抱える)...名前...書くと...存在する...書かないと...消える...怖い..."
+    effects:
+      - type: increment
+        variable: tomo_name_avoidance
+        value: 1
+    choices:
+      - text: "存在することが怖い？"
+        next: tomo_existence_fear
+      - text: "名前なんて記号だよ"
+        next: tomo_name_meaning
+      - text: "消えないよ、大丈夫"
+        next: tomo_existence_assurance
+
+  - id: tomo_notebook_reveal
+    text: "...(落書き帳を開く)...これ...私の...世界...書いた...全部..."
+    effects:
+      - type: increment
+        variable: tomo_trust_level
+        value: 2
+    choices:
+      - text: "すごい世界だね"
+        next: tomo_world_appreciation
+      - text: "全部君が作ったの？"
+        next: tomo_creation_acknowledgment
+      - text: "大切なものを見せてくれてありがとう"
+        next: tomo_gratitude_response

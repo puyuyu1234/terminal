@@ -1,0 +1,284 @@
+conversations:
+  # 多重人格の暗示（低確率）
+  - id: ayane_personality_shift_hint
+    text: "あ...今、何て言ったんでしたっけ？あれ、私の声じゃないような..."
+    probability: 0.10
+    conditions:
+      - if: "ayane_trust_level >= 4 && total_visits >= 8"
+    effects:
+      - type: increment
+        variable: ayane_personality_hints
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+    choices:
+      - text: "声が変わった？"
+        next: ayane_voice_change
+      - text: "どんな声だった？"
+        next: ayane_other_voice
+      - text: "大丈夫？"
+        next: ayane_confusion_concern
+
+  - id: ayane_other_personality
+    text: "...あの子がまた出てきちゃったの。私じゃない私。悪い私。"
+    probability: 0.06
+    conditions:
+      - if: "ayane_personality_hints >= 2"
+    effects:
+      - type: increment
+        variable: ayane_personality_hints
+        value: 2
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "悪い私って？"
+        next: ayane_dark_personality
+      - text: "どんな子？"
+        next: ayane_other_self_description
+      - text: "君は君だよ"
+        next: ayane_identity_affirmation
+
+  # 赤いマフラーの真実（血の暗示）
+  - id: ayane_scarf_truth_hint
+    text: "このマフラー...最初は白だったんです。でも、赤い方がきれいでしょう？"
+    probability: 0.08
+    conditions:
+      - if: "ayane_trust_level >= 5 && ayane_scarf_mentions >= 4"
+    effects:
+      - type: increment
+        variable: ayane_scarf_dark_truth
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "どうして赤くなったの？"
+        next: ayane_scarf_color_change
+      - text: "赤い色は何？"
+        next: ayane_red_substance
+      - text: "きれいだね"
+        next: ayane_innocent_response
+
+  - id: ayane_scarf_stains
+    text: "汚れても目立たないから便利なんです。赤いマフラーは。"
+    probability: 0.07
+    conditions:
+      - if: "ayane_scarf_dark_truth >= 1"
+    effects:
+      - type: increment
+        variable: ayane_scarf_dark_truth
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 1
+    choices:
+      - text: "どんな汚れ？"
+        next: ayane_stain_details
+      - text: "何で汚れるの？"
+        next: ayane_stain_source
+      - text: "洗えばいいじゃない"
+        next: ayane_washing_refusal
+
+  # 虐待の記憶（代理ミュンヒハウゼン）
+  - id: ayane_sick_sibling_hint
+    text: "弟が病気なんです。でも、私がお世話してあげるから大丈夫。お薬も私があげてます。"
+    probability: 0.09
+    conditions:
+      - if: "ayane_trust_level >= 4 && player_empathy_level >= 3"
+    effects:
+      - type: increment
+        variable: ayane_caregiver_role
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+    choices:
+      - text: "どんな病気？"
+        next: ayane_sibling_illness
+      - text: "お薬は医者からもらったの？"
+        next: ayane_medication_source
+      - text: "大変だね"
+        next: ayane_caregiver_burden
+
+  - id: ayane_medication_control
+    text: "お薬、私が管理してるんです。弟は忘れちゃうから。でも、多めにあげる時もあります。"
+    probability: 0.05
+    conditions:
+      - if: "ayane_caregiver_role >= 1"
+    effects:
+      - type: increment
+        variable: ayane_medication_manipulation
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "多めに？それは危険じゃない？"
+        next: ayane_medication_danger
+      - text: "なぜ多めにあげるの？"
+        next: ayane_medication_reason
+      - text: "医者に相談した方がいい"
+        next: ayane_medical_consultation
+
+  # 無邪気な殺意の暗示
+  - id: ayane_innocent_violence_hint
+    text: "小さい子って、壊れやすいんですね。でも、壊れた時の音がきれいで..."
+    probability: 0.04
+    conditions:
+      - if: "ayane_trust_level >= 6 && ayane_dark_hints >= 2"
+    effects:
+      - type: increment
+        variable: ayane_violence_hints
+        value: 2
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "何を壊したの？"
+        next: ayane_broken_things
+      - text: "きれいな音？"
+        next: ayane_sound_fascination
+      - text: "怖いこと言わないで"
+        next: ayane_fear_response
+
+  - id: ayane_harm_normalization
+    text: "痛がってる時の顔って、不思議ですね。でも、すぐ慣れちゃいます。"
+    probability: 0.03
+    conditions:
+      - if: "ayane_violence_hints >= 1"
+    effects:
+      - type: increment
+        variable: ayane_violence_hints
+        value: 2
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "誰が痛がってるの？"
+        next: ayane_victim_identity
+      - text: "慣れるって？"
+        next: ayane_desensitization
+      - text: "それは良くないよ"
+        next: ayane_moral_correction
+
+  # 記憶の断片化
+  - id: ayane_memory_gaps
+    text: "昨日、何をしたか覚えてません。でも、手が汚れてたから、何かしたんでしょうね。"
+    probability: 0.08
+    conditions:
+      - if: "ayane_memory_confusion >= 3"
+    effects:
+      - type: increment
+        variable: ayane_memory_gaps
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 1
+    choices:
+      - text: "何で汚れてた？"
+        next: ayane_hand_stains
+      - text: "思い出せない？"
+        next: ayane_memory_loss
+      - text: "洗えばきれいになる"
+        next: ayane_cleaning_obsession
+
+  # 継続ノード
+  - id: ayane_voice_change
+    text: "そうです！低い声になってたんです。私の声じゃない、知らない声。"
+    effects:
+      - type: increment
+        variable: ayane_voice_awareness
+        value: 1
+    choices:
+      - text: "その声は何て言ってた？"
+        next: ayane_other_voice_words
+      - text: "怖くない？"
+        next: ayane_voice_fear
+      - text: "今は君の声だよ"
+        next: ayane_voice_reassurance
+
+  - id: ayane_dark_personality
+    text: "悪い私は...人を傷つけるの。でも、楽しそうにしてるんです。"
+    effects:
+      - type: increment
+        variable: ayane_dark_awareness
+        value: 1
+    choices:
+      - text: "どうやって傷つけるの？"
+        next: ayane_harm_methods
+      - text: "止められない？"
+        next: ayane_control_loss
+      - text: "君は優しい子だよ"
+        next: ayane_good_self_affirmation
+
+  - id: ayane_scarf_color_change
+    text: "遊んでる時に...赤くなっちゃったんです。でも、きれいでしょう？"
+    effects:
+      - type: increment
+        variable: ayane_scarf_incident
+        value: 1
+    choices:
+      - text: "どんな遊び？"
+        next: ayane_dangerous_game
+      - text: "誰と遊んでた？"
+        next: ayane_playmate_identity
+      - text: "怪我したの？"
+        next: ayane_injury_question
+
+  - id: ayane_sibling_illness
+    text: "よくわからない病気です。でも、私がお世話してると悪くなるんです。不思議ですね。"
+    effects:
+      - type: increment
+        variable: ayane_medical_awareness
+        value: 1
+    choices:
+      - text: "悪くなる？"
+        next: ayane_condition_worsening
+      - text: "医者に診てもらった？"
+        next: ayane_medical_avoidance
+      - text: "お世話の仕方が間違ってるかも"
+        next: ayane_care_mistake
+
+  - id: ayane_medication_danger
+    text: "大丈夫です。弟は強いから。でも、時々苦しそうにしてます。"
+    effects:
+      - type: increment
+        variable: ayane_harm_denial
+        value: 1
+    choices:
+      - text: "苦しそうなら薬を減らそう"
+        next: ayane_medication_reduction
+      - text: "それは危険だよ"
+        next: ayane_danger_denial
+      - text: "すぐ病院に"
+        next: ayane_hospital_resistance
+
+  - id: ayane_broken_things
+    text: "おもちゃとか...虫とか...いろいろです。でも、動かなくなっちゃいます。"
+    effects:
+      - type: increment
+        variable: ayane_destruction_pattern
+        value: 1
+    choices:
+      - text: "生き物も？"
+        next: ayane_living_victims
+      - text: "なぜ壊すの？"
+        next: ayane_destruction_motive
+      - text: "それは良くないよ"
+        next: ayane_moral_teaching
+
+  - id: ayane_hand_stains
+    text: "赤い汚れです。でも、何の汚れかわからないんです。"
+    effects:
+      - type: increment
+        variable: ayane_evidence_awareness
+        value: 1
+    choices:
+      - text: "血かもしれない"
+        next: ayane_blood_recognition
+      - text: "何をしたか思い出して"
+        next: ayane_memory_retrieval
+      - text: "大丈夫、きれいになる"
+        next: ayane_cleaning_comfort

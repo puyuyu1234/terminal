@@ -1,0 +1,1078 @@
+character: minase
+nodes:
+  - id: minase_determinism_view
+    text: そうかもしれないわね。でも、それでも選択する意味はある。
+    next: contextual_end
+  - id: minase_free_will_view
+    text: 変える力はあるかもしれない。でも、変えたいと思うのも運命かも。
+    next: contextual_end
+  - id: minase_paradox_view
+    text: 賢い答えね。矛盾を受け入れるのは、大人の知恵。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 12
+    next: contextual_end
+  - id: minase_limit_explanation
+    text: 感情の動きは読めても、その理由まではわからない。
+    next: contextual_end
+  - id: minase_imperfection_admission
+    text: 完璧だったら、人間じゃないでしょう？
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 10
+    next: contextual_end
+  - id: minase_limit_silence
+    text: ……限界があるから、面白いのかもしれない。
+    next: contextual_end
+  - id: minase_station_atmosphere
+    text: この駅、不思議な雰囲気でしょう？
+    choices:
+      - text: どんなふうに？
+        next: minase_station_atmosphere_extended_conversation
+      - text: 普通の駅では？
+        next: minase_station_atmosphere_extended_conversation
+      - text: ...
+        next: minase_station_atmosphere_extended_conversation
+  - id: minase_atmosphere_description
+    text: 時間が止まってるような、でも流れてるような。
+    next: contextual_end
+  - id: minase_atmosphere_silence
+    text: ……感じ取ってるのね。言葉にする必要はない。
+    next: contextual_end
+  - id: minase_uncertainty_acceptance
+    text: わからない、か。正直でいいわ。
+    next: contextual_end
+  - id: minase_fear_response
+    text: 怖いものもある。でも、美しいものもある。
+    next: contextual_end
+  - id: minase_human_nature
+    text: 人間って、予測できそうで、できないのよね。
+    choices:
+      - text: どういう意味ですか？
+        next: minase_human_nature_extended_conversation
+      - text: 僕は単純です
+        next: minase_human_nature_extended_conversation
+      - text: ...
+        next: minase_human_nature_extended_conversation
+  - id: minase_predictability_paradox
+    text: パターンはあるけど、例外も必ずある。それが人間の面白さ。
+    next: contextual_end
+  - id: minase_simplicity_challenge
+    text: 単純？あなたの行動は、そう言ってないわ。
+    next: contextual_end
+  - id: minase_human_silence
+    text: ……沈黙も、人間らしい反応ね。
+    next: silence_end
+  - id: minase_memory_nature
+    text: 記憶って、曖昧なものよね。
+    choices:
+      - text: よく忘れます
+        next: minase_memory_nature_extended_conversation
+      - text: 大切なことは覚えてます
+        next: minase_memory_nature_extended_conversation
+      - text: ...
+        next: minase_memory_nature_extended_conversation
+  - id: minase_forgetting_natural
+    text: 忘れるのは、心の自己防衛。全部覚えてたら、壊れちゃう。
+    next: contextual_end
+  - id: minase_selective_memory
+    text: そうね。心は、必要なものだけを残す。
+    next: memory_end
+  - id: minase_memory_silence
+    text: ……記憶は、言葉より深いところにあるのよ。
+    next: memory_end
+  - id: minase_choice_philosophy
+    text: 選択って、不思議よね。何を選んでも、何かを失う。
+    choices:
+      - text: それは悲しいですね
+        next: minase_choice_philosophy_extended_conversation
+      - text: でも得るものもある
+        next: minase_choice_philosophy_extended_conversation
+      - text: ...
+        next: minase_choice_philosophy_extended_conversation
+  - id: minase_loss_sadness
+    text: 悲しいけど、それが人生の美しさでもある。
+    next: contextual_end
+  - id: minase_gain_focus
+    text: そうね。得るものに注目するのは、賢い生き方。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 8
+    next: hopeful_end
+  - id: minase_choice_silence
+    text: ……選ばないことも、選択の一つよ。
+    next: contextual_end
+  - id: minase_existence_question
+    text: 存在するって、何だと思う？
+    choices:
+      - text: 考えたことないです
+        next: minase_existence_question_extended_conversation
+      - text: 感じることです
+        next: minase_existence_question_extended_conversation
+      - text: わかりません
+        next: minase_existence_question_extended_conversation
+      - text: ...
+        next: minase_existence_question_extended_conversation
+  - id: minase_existence_simplicity
+    text: 考えない方が、楽かもしれないわね。
+    next: contextual_end
+  - id: minase_existence_feeling
+    text: 感じる、か。いい答えね。理屈より大切なもの。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 10
+    next: contextual_end
+  - id: minase_existence_mystery
+    text: わからない、それが正直な答えよ。
+    next: contextual_end
+  - id: minase_existence_silence
+    text: ……存在は、言葉を超えた何かね。
+    next: contextual_end
+  - id: minase_perception_explanation
+    text: 同じ花を見ても、見る人によって違う花になる。
+    next: contextual_end
+  - id: minase_objective_challenge
+    text: 一つに見える？それも、あなたの見方の一つよ。
+    next: contextual_end
+  - id: minase_reality_silence
+    text: ……現実は、沈黙の中にあるのかもしれない。
+    next: contextual_end
+  - id: minase_truth_nature
+    text: 真実って、一つじゃないのよ。
+    choices:
+      - text: 複数あるんですか？
+        next: minase_truth_nature_extended_conversation
+      - text: 混乱します
+        next: minase_truth_nature_extended_conversation
+      - text: ...
+        next: minase_truth_nature_extended_conversation
+  - id: minase_multiple_truths
+    text: 層になってるの。表面から深部まで、いくつも。
+    next: contextual_end
+  - id: minase_confusion_natural
+    text: 混乱は、理解の始まり。恐れることはない。
+    next: contextual_end
+  - id: minase_truth_silence
+    text: ……真実は、言葉にした瞬間に変わるものよ。
+    next: contextual_end
+  - id: minase_mystery_value
+    text: 謎があるから、生きる意味がある。
+    next: contextual_end
+  - id: minase_choice_meaning
+    text: 選択する瞬間に、意味が生まれる。
+    next: contextual_end
+  - id: minase_will_paradox
+    text: 自由意志の矛盾。でも、美しい矛盾よ。
+    next: contextual_end
+  - id: minase_wisdom_recognition
+    text: その知恵、大切にしなさい。
+    effects:
+      - type: custom
+        handler: modify_trust
+        params:
+          amount: 5
+    next: contextual_end
+  - id: minase_present_focus
+    text: 今、この瞬間が一番大切。
+    next: contextual_end
+  - id: minase_emotion_mystery
+    text: 感情は、論理を超えた何かね。
+    next: contextual_end
+  - id: minase_limitation_beauty
+    text: 制約があるから、創造性が生まれる。
+    next: contextual_end
+  - id: minase_recurring_main
+    text: また同じような会話をしてるわね。でも、微妙に違う。
+    choices:
+      - text: 何が違うんですか？
+        next: minase_recurring_main_extended_conversation
+      - text: 同じに感じます
+        next: minase_recurring_main_extended_conversation
+      - text: 進歩してる？
+        next: minase_recurring_main_extended_conversation
+      - text: ...
+        next: minase_recurring_main_extended_conversation
+  - id: minase_narrative_awareness
+    text: 私たちの会話も、一つの物語なのよ。筋書きのない物語。
+    choices:
+      - text: どんな物語ですか？
+        next: minase_narrative_awareness_extended_conversation
+      - text: 結末はあるんですか？
+        next: minase_narrative_awareness_extended_conversation
+      - text: 主人公は誰？
+        next: minase_narrative_awareness_extended_conversation
+      - text: ...
+        next: minase_narrative_awareness_extended_conversation
+  - id: minase_butterfly_effect
+    text: 小さな変化が大きな結果を生む。あなたの一言で、未来が変わるかもしれない。
+    choices:
+      - text: それは責任重大ですね
+        next: minase_butterfly_effect_extended_conversation
+      - text: どんな変化が？
+        next: minase_butterfly_effect_extended_conversation
+      - text: 怖くなります
+        next: minase_butterfly_effect_extended_conversation
+      - text: ...
+        next: minase_butterfly_effect_extended_conversation
+  - id: minase_temporal_precision
+    text: 時間の精密さは、心の中にあるのよ。時計は道具にすぎない。
+    choices:
+      - text: 心の時計？
+        next: minase_temporal_precision_extended_conversation
+      - text: 正確さの意味
+        next: minase_temporal_precision_extended_conversation
+      - text: 時計も大切では？
+        next: minase_temporal_precision_extended_conversation
+      - text: ...
+        next: minase_temporal_precision_extended_conversation
+  - id: minase_silence_drama
+    text: 沈黙には、言葉以上の表現力があるの。心の劇場よ。
+    choices:
+      - text: 心の劇場？
+        next: minase_silence_drama_extended_conversation
+      - text: どんな劇が？
+        next: minase_silence_drama_extended_conversation
+      - text: 言葉も必要では？
+        next: minase_silence_drama_extended_conversation
+      - text: ...
+        next: minase_silence_drama_extended_conversation
+  - id: minase_subtle_differences
+    text: あなたの反応、質問の仕方、沈黙の長さ……全部少しずつ変わってる。
+    choices:
+      - text: 成長してるってこと？
+        next: minase_subtle_differences_extended_conversation
+      - text: 気づかなかった
+        next: minase_subtle_differences_extended_conversation
+      - text: ...
+        next: minase_subtle_differences_extended_conversation
+  - id: minase_sameness_illusion
+    text: 同じに見えても、水は流れてるの。川は同じでも、水は新しい。
+    choices:
+      - text: 哲学的ですね
+        next: minase_sameness_illusion_extended_conversation
+      - text: 川と水の違い
+        next: minase_sameness_illusion_extended_conversation
+      - text: ...
+        next: minase_sameness_illusion_extended_conversation
+  - id: minase_progress_evaluation
+    text: 進歩は円を描くのよ。同じところを通っても、高さが違う。
+    choices:
+      - text: 螺旋的な成長
+        next: minase_progress_evaluation_extended_conversation
+      - text: どの高さにいるんですか？
+        next: minase_progress_evaluation_extended_conversation
+      - text: ...
+        next: minase_progress_evaluation_extended_conversation
+  - id: minase_story_nature
+    text: 始まりも終わりも曖昧な物語。でも、それが人生というもの。
+    choices:
+      - text: 曖昧さの美しさ
+        next: minase_story_nature_extended_conversation
+      - text: 明確さが欲しい
+        next: minase_story_nature_extended_conversation
+      - text: ...
+        next: minase_story_nature_extended_conversation
+  - id: minase_ending_question
+    text: 結末は、語り手が決めるもの。あなたも語り手の一人よ。
+    choices:
+      - text: 僕が決められる？
+        next: minase_ending_question_extended_conversation
+      - text: 責任が重い
+        next: minase_ending_question_extended_conversation
+      - text: ...
+        next: minase_ending_question_extended_conversation
+  - id: minase_protagonist_query
+    text: 全員が主人公よ。でも、物語によって役割が変わる。
+    choices:
+      - text: 今の役割は？
+        next: minase_protagonist_query_extended_conversation
+      - text: 役割は選べる？
+        next: minase_protagonist_query_extended_conversation
+      - text: ...
+        next: minase_protagonist_query_extended_conversation
+  - id: minase_narrative_silence
+    text: ……沈黙も、物語の重要な一部ね。
+    next: minase_session_end
+  - id: minase_wisdom_distinction
+    text: 知識は蓄積、智慧は洞察。本で学べるのと、体験でしか得られないもの。
+    choices:
+      - text: 体験の方が大切？
+        next: minase_wisdom_distinction_extended_conversation
+      - text: 両方のバランス
+        next: minase_wisdom_distinction_extended_conversation
+      - text: ...
+        next: minase_wisdom_distinction_extended_conversation
+  - id: minase_wisdom_assessment
+    text: あなたには静かな智慧がある。言葉にしなくても、理解してる。
+    choices:
+      - text: 本当にそうでしょうか？
+        next: minase_wisdom_assessment_extended_conversation
+      - text: まだまだです
+        next: minase_wisdom_assessment_extended_conversation
+      - text: ...
+        next: minase_wisdom_assessment_extended_conversation
+  - id: minase_wisdom_desire
+    text: 欲しがることが、もう智慧の始まりよ。気づいてない人は求めもしない。
+    choices:
+      - text: どうやって育てる？
+        next: minase_wisdom_desire_extended_conversation
+      - text: 時間がかかりそう
+        next: minase_wisdom_desire_extended_conversation
+      - text: ...
+        next: minase_wisdom_desire_extended_conversation
+  - id: minase_wisdom_silence
+    text: ……智慧は、沈黙の中で最もよく育つもの。
+    next: minase_session_end
+  - id: minase_growth_recognition
+    text: 成長は、振り返ったときに気づくもの。今この瞬間も成長してる。
+    next: minase_session_end
+  - id: minase_unconscious_change
+    text: 気づかない変化が、一番本質的。意識しすぎると、かえって妨げになる。
+    next: minase_session_end
+  - id: minase_philosophy_appreciation
+    text: 哲学は、日常の中にあるのよ。特別なものじゃない。
+    next: minase_session_end
+  - id: minase_metaphor_explanation
+    text: 比喩は、真実への橋。直接は渡れない深い谷を繋ぐの。
+    next: minase_session_end
+  - id: minase_spiral_growth
+    text: 螺旋だから、前に戻ったように見えても、実は高い位置にいる。
+    next: minase_session_end
+  - id: minase_level_inquiry
+    text: 高さに優劣はないの。それぞれの場所に、それぞれの景色がある。
+    next: minase_session_end
+  - id: minase_ambiguity_beauty
+    text: 曖昧さは、解釈の余地。あなたの心が意味を与えるのよ。
+    next: minase_session_end
+  - id: minase_clarity_desire
+    text: 明確さを求める気持ちも理解できる。でも、霧の中にも美しさがある。
+    next: minase_session_end
+  - id: minase_narrative_power
+    text: 物語を作る力は、誰にでもある。ただ、それに気づいてない人が多い。
+    next: minase_session_end
+  - id: minase_authorship_weight
+    text: 重いけど、それがあなたを強くする。責任は、力の源でもあるの。
+    next: minase_session_end
+  - id: minase_current_role
+    text: 今のあなたは、探求者。答えを求めて旅をしてる人。
+    next: minase_session_end
+  - id: minase_role_choice
+    text: 選択はできるけど、選択すること自体も一つの役割よ。
+    next: minase_session_end
+  - id: minase_experience_primacy
+    text: 体験は、知識に命を吹き込むもの。でも、知識がないと体験も浅くなる。
+    next: minase_session_end
+  - id: minase_wisdom_balance
+    text: バランス感覚も、智慧の一つ。極端は、見えないものを生む。
+    next: minase_session_end
+  - id: minase_wisdom_confirmation
+    text: 疑うことも智慧よ。確信しすぎると、学ぶことを止めてしまう。
+    next: minase_session_end
+  - id: minase_humility_response
+    text: 謙虚さは、智慧の器を大きくする。空の器にこそ、新しいものが入る。
+    next: minase_session_end
+  - id: minase_wisdom_cultivation
+    text: 疑問を大切にして、急がずに考える。それが一番の育て方。
+    next: minase_session_end
+  - id: minase_patience_wisdom
+    text: 時間をかけた智慧は、深い根を持つ。急いで得たものは、すぐに失われる。
+    next: minase_session_end
+  - id: minase_creative_limits
+    text: 無限の自由は、実は選択を難しくする。枠があるから、その中で輝ける。
+    next: minase_session_end
+  - id: minase_freedom_creativity
+    text: 自由と制約は、対立するものじゃないの。互いを高め合う関係。
+    next: minase_session_end
+  - id: minase_haiku_wisdom
+    text: 短い詩に宇宙を込める。言葉を削ることで、意味が濃縮される。
+    next: minase_session_end
+  - id: minase_creative_silence
+    text: ……創造の瞬間には、静寂が必要。雑音の中では、新しいものは生まれない。
+    next: minase_session_end
+  - id: minase_mindfulness
+    text: 現在に集中することが、すべての始まり。過去と未来の間で迷わないで。
+    choices:
+      - text: 現在に集中する方法
+        next: minase_mindfulness_extended_conversation
+      - text: 過去が気になります
+        next: minase_mindfulness_extended_conversation
+      - text: 未来が不安で
+        next: minase_mindfulness_extended_conversation
+      - text: ...
+        next: minase_mindfulness_extended_conversation
+  - id: minase_feeling_logic
+    text: 感情と論理は対立するものじゃない。調和できる、美しいバランス。
+    choices:
+      - text: どうやって調和させる？
+        next: minase_feeling_logic_extended_conversation
+      - text: 対立することもある
+        next: minase_feeling_logic_extended_conversation
+      - text: 感情を優先したい
+        next: minase_feeling_logic_extended_conversation
+      - text: ...
+        next: minase_feeling_logic_extended_conversation
+  - id: minase_temporal_ambiguity
+    text: 時間が曖昧になる瞬間がある。それが、この場所の特別さ。
+    choices:
+      - text: 時間の曖昧さ？
+        next: minase_temporal_ambiguity_extended_conversation
+      - text: 特別な場所なんですね
+        next: minase_temporal_ambiguity_extended_conversation
+      - text: 現実感がない時も
+        next: minase_temporal_ambiguity_extended_conversation
+      - text: ...
+        next: minase_temporal_ambiguity_extended_conversation
+  - id: minase_perception_difference
+    text: 同じ世界を見ても、人それぞれ違う世界がある。それが面白い。
+    choices:
+      - text: 違う世界？
+        next: minase_perception_difference_extended_conversation
+      - text: 真実は一つでは？
+        next: minase_perception_difference_extended_conversation
+      - text: 迷ってしまいます
+        next: minase_perception_difference_extended_conversation
+      - text: ...
+        next: minase_perception_difference_extended_conversation
+  - id: minase_intuitive_understanding
+    text: 理屈で分からなくても、心で分かることがある。それを大切にして。
+    choices:
+      - text: 心の理解？
+        next: minase_intuitive_understanding_extended_conversation
+      - text: 説明できないけど
+        next: minase_intuitive_understanding_extended_conversation
+      - text: 直感を信じたい
+        next: minase_intuitive_understanding_extended_conversation
+      - text: ...
+        next: minase_intuitive_understanding_extended_conversation
+  - id: minase_present_focus_method
+    text: 呼吸に意識を向けて。今この瞬間の空気、温度、音。
+    choices:
+      - text: 実践してみます
+        next: minase_present_focus_method_extended_conversation
+      - text: 難しそうですね
+        next: minase_present_focus_method_extended_conversation
+      - text: ...
+        next: minase_present_focus_method_extended_conversation
+  - id: minase_past_attachment
+    text: 過去は記憶の中でしか存在しない。でも、学びは今に活かせる。
+    choices:
+      - text: どう活かす？
+        next: minase_past_attachment_extended_conversation
+      - text: 忘れられません
+        next: minase_past_attachment_extended_conversation
+      - text: ...
+        next: minase_past_attachment_extended_conversation
+  - id: minase_future_anxiety
+    text: 未来への不安は自然なもの。でも、今の積み重ねが未来を作る。
+    choices:
+      - text: 今を大切にします
+        next: minase_future_anxiety_extended_conversation
+      - text: 不安が消えません
+        next: minase_future_anxiety_extended_conversation
+      - text: ...
+        next: minase_future_anxiety_extended_conversation
+  - id: minase_mindfulness_silence
+    text: ……静寂の中の気づき。それが真のマインドフルネス。
+    next: minase_session_end
+  - id: minase_harmony_method
+    text: 対話させるの。感情に論理の質問をして、論理に感情の温かさを。
+    choices:
+      - text: 対話のコツは？
+        next: minase_harmony_method_extended_conversation
+      - text: 興味深いアプローチ
+        next: minase_harmony_method_extended_conversation
+      - text: ...
+        next: minase_harmony_method_extended_conversation
+  - id: minase_conflict_resolution
+    text: 対立は成長のチャンス。どちらが正しいかより、何を学べるか。
+    choices:
+      - text: 学びの視点
+        next: minase_conflict_resolution_extended_conversation
+      - text: 正しさも大切では？
+        next: minase_conflict_resolution_extended_conversation
+      - text: ...
+        next: minase_conflict_resolution_extended_conversation
+  - id: minase_emotion_priority
+    text: 感情を優先するのも一つの智慧。心の声を無視しちゃダメ。
+    choices:
+      - text: 心の声の聞き方
+        next: minase_emotion_priority_extended_conversation
+      - text: 論理も必要では？
+        next: minase_emotion_priority_extended_conversation
+      - text: ...
+        next: minase_emotion_priority_extended_conversation
+  - id: minase_balance_silence
+    text: ……バランスは静寂の中で見つかる。騒がしい心では見えない。
+    next: minase_session_end
+  - id: minase_incompleteness_appeal
+    text: 完璧は終わりを意味する。不完全は可能性を意味する。
+    choices:
+      - text: 可能性の美しさ
+        next: minase_incompleteness_appeal_extended_conversation
+      - text: 終わりも美しいのでは？
+        next: minase_incompleteness_appeal_extended_conversation
+      - text: ...
+        next: minase_incompleteness_appeal_extended_conversation
+  - id: minase_perfection_desire
+    text: 完璧を目指すのは美しい。でも、完璧に囚われないで。
+    choices:
+      - text: 囚われるとは？
+        next: minase_perfection_desire_extended_conversation
+      - text: 目指し続けたい
+        next: minase_perfection_desire_extended_conversation
+      - text: ...
+        next: minase_perfection_desire_extended_conversation
+  - id: minase_imperfection_fear
+    text: 不完全を恐れる気持ち、分かるわ。でも、それがあなたらしさ。
+    choices:
+      - text: らしさって何ですか？
+        next: minase_imperfection_fear_extended_conversation
+      - text: 恐れを克服したい
+        next: minase_imperfection_fear_extended_conversation
+      - text: ...
+        next: minase_imperfection_fear_extended_conversation
+  - id: minase_beauty_silence
+    text: ……美は言葉を超えたところにある。感じるしかない。
+    next: minase_session_end
+  - id: minase_practice_commitment
+    text: 実践こそが道。一歩ずつ、焦らずに歩んで。
+    next: minase_session_end
+  - id: minase_difficulty_acceptance
+    text: 難しいと感じることが、成長の証拠。簡単なら成長はない。
+    next: minase_session_end
+  - id: minase_learning_application
+    text: 経験を智慧に変える技術。それが真の学び。
+    next: minase_session_end
+  - id: minase_memory_burden
+    text: 重い記憶も、あなたの一部。否定せず、共に歩んで。
+    next: minase_session_end
+  - id: minase_present_value
+    text: 今この瞬間の積み重ね。それが人生の真の価値。
+    next: minase_session_end
+  - id: minase_anxiety_persistence
+    text: 不安が消えなくても大丈夫。不安と共に歩む強さもある。
+    next: minase_session_end
+  - id: minase_inner_dialogue
+    text: 内なる対話のコツは、批判せずに聞くこと。全ての声に価値がある。
+    next: minase_session_end
+  - id: minase_approach_appreciation
+    text: 新しいアプローチを受け入れる心。それが成長への扉。
+    next: minase_session_end
+  - id: minase_learning_perspective
+    text: 学びの視点があれば、失敗も成功も等しく価値がある。
+    next: minase_session_end
+  - id: minase_rightness_balance
+    text: 正しさと学びのバランス。どちらも大切な要素。
+    next: minase_session_end
+  - id: minase_heart_listening
+    text: 心の声は、静寂の中でよく聞こえる。騒音を減らして。
+    next: minase_session_end
+  - id: minase_logic_necessity
+    text: 論理も心の一部。感情と論理、どちらも大切な友達。
+    next: minase_session_end
+  - id: minase_potential_beauty
+    text: まだ見ぬ可能性の美しさ。それが人生を輝かせる。
+    next: minase_session_end
+  - id: minase_completion_beauty
+    text: 完成の美しさもある。でも、それは新しい始まりでもある。
+    next: minase_session_end
+  - id: minase_perfectionism_trap
+    text: 完璧主義の罠は、行動を止めてしまうこと。完璧より、継続。
+    next: minase_session_end
+  - id: minase_pursuit_value
+    text: 追求する姿勢そのものが美しい。結果より、その心が大切。
+    next: minase_session_end
+  - id: minase_authenticity_meaning
+    text: らしさは、他人と比べて見つけるものじゃない。内側から湧き出るもの。
+    next: minase_session_end
+  - id: minase_fear_overcoming
+    text: 恐れを克服するより、恐れと友達になる方が楽。敵じゃないの。
+    next: minase_session_end
+  - id: minase_station_atmosphere_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: &a1
+      - text: 何を考えているんですか？
+        next: deep_reflection
+      - text: お聞きしてもいいですか？
+        next: gentle_inquiry
+      - text: 一緒に考えましょう
+        next: shared_thinking
+  - id: minase_station_atmosphere_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_human_nature_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_human_nature_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_memory_nature_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_memory_nature_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_memory_nature_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_choice_philosophy_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_choice_philosophy_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_existence_question_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_existence_question_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_truth_nature_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_truth_nature_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_recurring_main_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_recurring_main_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_narrative_awareness_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_narrative_awareness_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_butterfly_effect_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_butterfly_effect_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_temporal_precision_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_temporal_precision_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_silence_drama_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_silence_drama_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_subtle_differences_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_subtle_differences_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_sameness_illusion_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_sameness_illusion_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_progress_evaluation_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_progress_evaluation_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_story_nature_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_story_nature_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_ending_question_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_ending_question_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_protagonist_query_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_protagonist_query_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_wisdom_distinction_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_wisdom_distinction_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_wisdom_assessment_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_wisdom_assessment_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_wisdom_desire_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_wisdom_desire_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_mindfulness_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_mindfulness_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_feeling_logic_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_feeling_logic_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_temporal_ambiguity_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_perception_difference_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_perception_difference_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_intuitive_understanding_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_intuitive_understanding_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_intuitive_understanding_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_present_focus_method_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_present_focus_method_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_past_attachment_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_past_attachment_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_past_attachment_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_future_anxiety_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_future_anxiety_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_harmony_method_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_harmony_method_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_conflict_resolution_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_conflict_resolution_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_emotion_priority_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_emotion_priority_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_incompleteness_appeal_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_incompleteness_appeal_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_perfection_desire_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_perfection_desire_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_imperfection_fear_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_imperfection_fear_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_station_atmosphere_to_contextual_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_station_atmosphere_to_contextual_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_station_atmosphere_to_silence_end_quiet_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_station_atmosphere_to_silence_end_quiet_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_memory_nature_to_memory_end_memory_bridge_to_memory_end_memory_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_memory_nature_to_memory_end_memory_bridge_to_emotional_end_emotion_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_memory_nature_to_memory_end_memory_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_subtle_differences_to_minase_session_end_bridge_to_minase_session_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_subtle_differences_to_minase_session_end_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_subtle_differences_to_minase_session_end_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_intuitive_understanding_to_trust_end_trust_bridge_to_trust_end_trust_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_intuitive_understanding_to_trust_end_trust_bridge_to_contextual_end_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: minase_intuitive_understanding_to_trust_end_trust_bridge_to_silence_end_quiet_bridge
+    text: そうですね...。実は、最近よく考えるんです。
+    choices: *a1
+  - id: deep_reflection
+    text: 人生のこと、この場所のこと、時間のこと...色々なことを考えます。
+    choices:
+      - text: 深い思索ですね
+        next: philosophical_moment
+      - text: 一緒に考えましょう
+        next: shared_contemplation
+      - text: どんなことが一番気になりますか？
+        next: focused_inquiry
+  - id: gentle_inquiry
+    text: 話してくれるなら、喜んで聞かせてもらいます。
+    choices:
+      - text: ありがとうございます
+        next: grateful_openness
+      - text: 少し考えをまとめてみます
+        next: thoughtful_preparation
+      - text: 一緒に考えてもらえませんか？
+        next: collaborative_thinking
+  - id: shared_thinking
+    text: そうですね。一人で考えるより、二人で考える方が新しい発見があるかもしれません。
+    choices:
+      - text: 協力して考えましょう
+        next: cooperative_exploration
+      - text: 新しい視点が得られそうです
+        next: fresh_perspective
+      - text: どこから始めましょうか？
+        next: starting_point
+  - id: calm_appreciation
+    text: 心が落ち着いて、自分自身と向き合えるような気がします。
+    choices:
+      - text: 内省的な時間は大切ですね
+        next: introspective_value
+      - text: 静けさの中に豊かさがある
+        next: rich_silence
+      - text: 一緒に静かな時間を過ごしましょう
+        next: shared_quietude
+  - id: wordless_understanding
+    text: 言葉を超えた何かが伝わる瞬間って、確かにありますね。
+    choices:
+      - text: 心で通じ合えますね
+        next: heart_connection
+      - text: 言葉以上のものを感じます
+        next: beyond_words
+      - text: このまま静かに過ごしましょう
+        next: peaceful_togetherness
+  - id: grateful_presence
+    text: こちらこそ、ありがとうございます。一緒にいてくれる人がいるって、心強いです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: mutual_appreciation
+      - text: 支え合えますね
+        next: mutual_support
+      - text: いつでも話しかけてください
+        next: open_availability
+  - id: philosophical_moment
+    text: 深い哲学的な瞬間を共有できました。
+    next: contextual_end
+  - id: shared_contemplation
+    text: 一緒に考える時間は有意義でした。
+    next: contextual_end
+  - id: focused_inquiry
+    text: 興味深い話題を深められました。
+    next: contextual_end
+  - id: grateful_openness
+    text: 素直に話せる関係性を築けました。
+    next: emotional_end
+  - id: thoughtful_preparation
+    text: 考えをまとめる時間も大切ですね。
+    next: contextual_end
+  - id: collaborative_thinking
+    text: 協力して考える楽しさを発見しました。
+    next: trust_end
+  - id: cooperative_exploration
+    text: 協力的な探求ができました。
+    next: trust_end
+  - id: fresh_perspective
+    text: 新しい視点を得られました。
+    next: deep_end
+  - id: starting_point
+    text: 良い出発点を見つけました。
+    next: hopeful_end
+  - id: introspective_value
+    text: 内省の価値を再発見しました。
+    next: deep_end
+  - id: rich_silence
+    text: 静寂の豊かさを体感しました。
+    next: special_end
+  - id: shared_quietude
+    text: 静かな時間を共有しました。
+    next: silence_end
+  - id: heart_connection
+    text: 心のつながりを感じました。
+    next: emotional_end
+  - id: beyond_words
+    text: 言葉を超えた理解を得ました。
+    next: deep_end
+  - id: peaceful_togetherness
+    text: 平和な共存を体験しました。
+    next: silence_end
+  - id: mutual_appreciation
+    text: 相互の感謝を確認しました。
+    next: emotional_end
+  - id: mutual_support
+    text: 支え合える関係を築けました。
+    next: trust_end
+  - id: open_availability
+    text: いつでも話せる関係になりました。
+    next: trust_end
+  - id: minase_station_atmosphere_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: &a2
+      - text: 協力的な探求ですね
+        next: trust_end
+      - text: 新しい発見がありました
+        next: deep_end
+      - text: 心が通じ合います
+        next: emotional_end
+  - id: minase_human_nature_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_memory_nature_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_choice_philosophy_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_existence_question_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_truth_nature_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_recurring_main_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_narrative_awareness_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_butterfly_effect_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_temporal_precision_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_silence_drama_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_subtle_differences_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_sameness_illusion_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_progress_evaluation_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_story_nature_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_ending_question_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_protagonist_query_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_wisdom_distinction_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_wisdom_assessment_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_wisdom_desire_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_mindfulness_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_feeling_logic_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_temporal_ambiguity_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_perception_difference_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_intuitive_understanding_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_present_focus_method_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_past_attachment_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_future_anxiety_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_harmony_method_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_conflict_resolution_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_emotion_priority_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_incompleteness_appeal_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_perfection_desire_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: minase_imperfection_fear_extended_conversation
+    text: 一緒に考える時間は素晴らしいですね。お互いの視点を交換することで、より深い理解が生まれます。
+    choices: *a2
+  - id: gentle_listening
+    text: 話を聞いてくれる人がいるというのは、とても心強いものです。
+    choices:
+      - text: 僕も同じ気持ちです
+        next: emotional_end
+      - text: いつでも話してください
+        next: trust_end
+      - text: 支え合えますね
+        next: contextual_end

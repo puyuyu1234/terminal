@@ -1,0 +1,10 @@
+dialogues:
+  - id: tomo_start_greeting
+    text: "おかえりなさい。今日はどんな一日でしたか？私はずっとここで待っていました。"
+    choices:
+      - text: "いい一日だったよ"
+        next: tomo_neutral_good_day
+      - text: "疲れた一日だった"
+        next: tomo_neutral_tired
+      - text: "少し話していこうか"
+        next: tomo_neutral_comfort

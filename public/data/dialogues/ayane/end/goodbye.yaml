@@ -1,0 +1,7 @@
+dialogues:
+  - id: ayane_end_goodbye
+    text: "また明日も来てくれますか？私、ここで待っていますから。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

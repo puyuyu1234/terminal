@@ -1,0 +1,202 @@
+conversations:
+  # 予言回数による変化
+  - id: minase_prophecy_pattern
+    text: "{{player_name}}、"
+    conditions:
+      - if: "minase_prophecy_count >= 7"
+        text: "{{player_name}}、私の言葉をもう信じてくれてるでしょう？明日は...いえ、やめておきましょう。"
+      - if: "minase_prophecy_count >= 5"
+        text: "{{player_name}}、私の予言、どれくらい当たってた？覚えてる？"
+      - if: "minase_prophecy_count >= 3"
+        text: "{{player_name}}、また未来のことを話してもいい？"
+      - else:
+        text: "{{player_name}}、明日のことが見えるのよ。"
+    choices:
+      - text: "教えて"
+        next: minase_future_revelation
+      - text: "予言は当たるの？"
+        next: minase_accuracy_question
+      - text: "なぜ未来がわかるの？"
+        next: minase_ability_origin
+
+  # 時間感覚の歪み
+  - id: minase_time_awareness
+    text: "時間って、"
+    conditions:
+      - if: "minase_time_distortion >= 5"
+        text: "時間って、本当はないのかもしれないわね。全部、同時に起きてるのかも。"
+      - if: "minase_time_distortion >= 3"
+        text: "時間って、人によって違うのよ。あなたの一分と私の一分は、全然違う。"
+      - if: "minase_time_distortion >= 1"
+        text: "時間って、不思議よね。早く感じたり、遅く感じたり。"
+      - else:
+        text: "時間って、みんな同じように流れてると思う？"
+    choices:
+      - text: "どういうこと？"
+        next: minase_time_explanation
+      - text: "僕の時間はどう見える？"
+        next: minase_player_time_observation
+      - text: "よくわからない"
+        next: minase_confusion_understanding
+
+  # 信頼度と訪問回数の複合条件
+  - id: minase_recognition_pattern
+    text: "{{player_name}}、"
+    conditions:
+      - if: "minase_trust_level >= 4 && total_visits >= 15"
+        text: "{{player_name}}、あなたもう何回も来てるけど、本当は何を探してるの？"
+      - if: "minase_trust_level >= 2 && total_visits >= 10"
+        text: "{{player_name}}、あなたがここに来る理由、だんだんわかってきた気がする。"
+      - if: "total_visits >= 5"
+        text: "{{player_name}}、あなたはここの常連さんね。"
+      - else:
+        text: "{{player_name}}、初めて見る顔ね。でも、なんだか懐かしい気がする。"
+    choices:
+      - text: "君は僕のことをどう思う？"
+        next: minase_player_assessment
+      - text: "ここに来る理由は..."
+        next: minase_reason_inquiry
+      - text: "懐かしい？"
+        next: minase_familiarity_explanation
+
+  # 夜の進行による変化
+  - id: minase_night_knowledge
+    text: "もう"
+    conditions:
+      - if: "night_progression >= 8"
+        text: "もう深夜ね。この時間になると、境界が曖昧になるの。生と死の、過去と未来の。"
+      - if: "night_progression >= 6"
+        text: "もう夜も深いわね。夜って、時間の概念が変わるの。"
+      - if: "night_progression >= 4"
+        text: "もう夜ね。夜になると、違うことが見えるようになるの。"
+      - else:
+        text: "もう夕方ね。一日が終わろうとしてる。"
+    choices:
+      - text: "どんなことが見える？"
+        next: minase_night_visions
+      - text: "境界って？"
+        next: minase_boundary_explanation
+      - text: "怖くない？"
+        next: minase_fear_response
+
+  # プレイヤーの行動パターンによる反応
+  - id: minase_player_pattern_analysis
+    text: "{{player_name}}、あなたって"
+    conditions:
+      - if: "player_silence_count >= 5 && player_empathy_level >= 3"
+        text: "{{player_name}}、あなたって静かだけど優しいのね。そういう人は、重いものを背負ってることが多いの。"
+      - if: "player_silence_count >= 7"
+        text: "{{player_name}}、あなたって本当に静かね。何か、言えないことがあるの？"
+      - if: "player_empathy_level >= 5"
+        text: "{{player_name}}、あなたって人の気持ちがよくわかるのね。でも、自分のことはどうかしら？"
+      - else:
+        text: "{{player_name}}、あなたって不思議な人ね。まだよくわからないわ。"
+    choices:
+      - text: "僕のことがわかるの？"
+        next: minase_player_insight
+      - text: "言えないことって？"
+        next: minase_unspeakable_things
+      - text: "重いものって何？"
+        next: minase_burden_explanation
+
+  # 予言の正確性による変化
+  - id: minase_prediction_confidence
+    text: "私の予言、"
+    conditions:
+      - if: "minase_accuracy_rate >= 80"
+        text: "私の予言、もうほとんど当たってるでしょう？でも、これは祝福なのかしら、それとも呪いなのかしら。"
+      - if: "minase_accuracy_rate >= 60"
+        text: "私の予言、結構当たってるでしょう？でも、当たりすぎるのも考えものね。"
+      - if: "minase_accuracy_rate >= 40"
+        text: "私の予言、どうだった？半分くらいは当たってるかしら。"
+      - else:
+        text: "私の予言、全然当たらないわね。でも、それでいいのかも。"
+    choices:
+      - text: "なぜ未来がわかるの？"
+        next: minase_ability_source
+      - text: "当たらない方がいいの？"
+        next: minase_failure_preference
+      - text: "怖くない？"
+        next: minase_fear_of_knowing
+
+  # 複合条件での深い洞察
+  - id: minase_deep_insight
+    text: "{{player_name}}、"
+    conditions:
+      - if: "minase_trust_level >= 5 && minase_time_distortion >= 3"
+        text: "{{player_name}}、あなたの時間、本当に止まってるのね。それとも、私の時間が早すぎるのかしら。"
+      - if: "minase_trust_level >= 4 && total_visits >= 20"
+        text: "{{player_name}}、あなたと私、もう何回も会ってるけど、毎回同じことを繰り返してる気がするの。"
+      - if: "minase_prophecy_count >= 10 && minase_trust_level >= 3"
+        text: "{{player_name}}、私がこんなに予言を続けてるのは、あなたに何かを伝えたいからなのかもしれないわね。"
+      - else:
+        text: "{{player_name}}、あなたに会うたび、新しいことが見えるようになるの。"
+    choices:
+      - text: "何を伝えたいの？"
+        next: minase_hidden_message
+      - text: "僕の時間はどうなってる？"
+        next: minase_player_time_diagnosis
+      - text: "同じことの繰り返し？"
+        next: minase_loop_acknowledgment
+
+  # 継続ノード例
+  - id: minase_future_revelation
+    text: "明日は..."
+    conditions:
+      - if: "minase_prophecy_count >= 5"
+        text: "明日は...いえ、やめておきましょう。あなたにとって良くないことが見えるから。"
+      - else:
+        text: "明日は雨が降るわ。でも、あなたは傘を持っていない。"
+    effects:
+      - type: increment
+        variable: minase_prophecy_count
+        value: 1
+    choices:
+      - text: "良くないことって？"
+        next: minase_bad_future
+      - text: "どうして教えてくれないの？"
+        next: minase_protection_explanation
+      - text: "傘を持っていこう"
+        next: minase_preparation_response
+
+  - id: minase_time_explanation
+    text: "例えば、あなたがここに来てから、私にとっては何年も経ってる気がするの。でも、あなたにとっては数分かもしれない。"
+    effects:
+      - type: increment
+        variable: minase_time_distortion
+        value: 1
+    choices:
+      - text: "それって..."
+        next: minase_time_implication
+      - text: "よくわからない"
+        next: minase_time_confusion
+      - text: "僕も同じような感覚がある"
+        next: minase_shared_time_perception
+
+  - id: minase_player_assessment
+    text: "あなたは...探してるのね。何かを、あるいは誰かを。でも、本当に探してるのは、自分自身かもしれない。"
+    effects:
+      - type: increment
+        variable: minase_trust_level
+        value: 1
+    choices:
+      - text: "当たってるかも"
+        next: minase_accurate_assessment
+      - text: "何を探してるかわからない"
+        next: minase_lost_seeker
+      - text: "違うと思う"
+        next: minase_denial_response
+
+  - id: minase_night_visions
+    text: "夜になると、昼間は見えないものが見えるの。人の本当の姿とか、隠された真実とか。"
+    effects:
+      - type: increment
+        variable: minase_night_insights
+        value: 1
+    choices:
+      - text: "僕の本当の姿は？"
+        next: minase_player_true_form
+      - text: "隠された真実？"
+        next: minase_hidden_truth
+      - text: "見たくないものもある？"
+        next: minase_unwanted_visions

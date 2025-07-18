@@ -1,0 +1,50 @@
+character: shino
+nodes:
+  - id: shino_start_regular_evening
+    text: 今日も来たね……もう慣れちゃった
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 6
+      - type: environment
+        name: timeOfDay
+        value: evening
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: comfort_comment
+        text: 僕も慣れました
+        next: shino_start_regular_evening_extended_conversation
+      - id: routine_question
+        text: いつもここにいるんですか？
+        next: shino_start_regular_evening_extended_conversation
+      - id: silent_response
+        text: ...
+        next: shino_start_regular_evening_extended_conversation
+
+  - id: shino_start_warm_relationship
+    text: あ、来てくれたんだ……嬉しい
+    conditions:
+      - type: variable
+        name: shino_meet_count
+        operator: greater_than
+        value: 10
+      - type: variable
+        name: shino_trust_level
+        operator: greater_than
+        value: 5
+    effects:
+      - type: increment
+        variable: shino_meet_count
+    choices:
+      - id: happiness_response
+        text: 僕も嬉しいです
+        next: shino_start_warm_relationship_extended_conversation
+      - id: greeting_response
+        text: こんばんは、しのさん
+        next: shino_start_warm_relationship_extended_conversation
+      - id: silent_response
+        text: ...
+        next: shino_start_warm_relationship_extended_conversation

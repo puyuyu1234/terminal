@@ -1,0 +1,102 @@
+character: nazuna
+nodes:
+  - id: nazuna_start_first_meet_evening
+    text: ......
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: evening
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: こんにちは
+        next: nazuna_start_first_meet_evening_extended_conversation
+      - text: ...
+        next: nazuna_start_first_meet_evening_extended_conversation
+      - text: 録音機？
+        next: nazuna_start_first_meet_evening_extended_conversation
+  - id: nazuna_start_first_meet_night
+    text: ......あ。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: night
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: こんばんは
+        next: nazuna_start_first_meet_night_extended_conversation
+      - text: 驚かせて失礼
+        next: nazuna_start_first_meet_night_extended_conversation
+      - text: ...
+        next: nazuna_start_first_meet_night_extended_conversation
+  - id: nazuna_start_first_meet_late_night
+    text: ......こんな時間に。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: late_night
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: 眠れなくて
+        next: nazuna_start_first_meet_late_night_extended_conversation
+      - text: 遅い時間ですね
+        next: nazuna_start_first_meet_late_night_extended_conversation
+      - text: ...
+        next: nazuna_start_first_meet_late_night_extended_conversation
+  - id: nazuna_start_first_meet_rainy
+    text: ......雨音。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: rainy
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: いい音ですね
+        next: nazuna_start_first_meet_rainy_extended_conversation
+      - text: 濡れませんか？
+        next: nazuna_start_first_meet_rainy_extended_conversation
+      - text: ...
+        next: nazuna_start_first_meet_rainy_extended_conversation
+  - id: nazuna_start_first_meet_foggy
+    text: ......霧の中から。
+    conditions:
+      - type: variable
+        name: nazuna_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: foggy
+    effects:
+      - type: increment
+        variable: nazuna_meet_count
+    choices:
+      - text: 見えにくいですね
+        next: nazuna_start_first_meet_foggy_extended_conversation
+      - text: 幻想的です
+        next: nazuna_start_first_meet_foggy_extended_conversation
+      - text: ...
+        next: nazuna_start_first_meet_foggy_extended_conversation

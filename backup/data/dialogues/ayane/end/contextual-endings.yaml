@@ -1,0 +1,233 @@
+character: ayane
+nodes:
+  # 感情関連の終了ノード
+  - id: ayane_emotional_contagion
+    text: "感情って本当に伝染するよね！一緒にいると心が軽くなる！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_atmosphere_reading
+    text: "雰囲気で分かるって、心がつながってる証拠だよね！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_sharing_power
+    text: "共有の力って本当にすごい！一人では感じられない喜びがある！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_connection_feeling
+    text: "つながりを感じる...この温かさを大切にしたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 深い関係性の終了ノード
+  - id: ayane_security_feeling
+    text: "安心できる関係って、本当に貴重だよね。ありがとう。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_mutual_comfort
+    text: "お互いに心地いいって、理想的な関係だと思う！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_deep_comfort_silence
+    text: "深い安らぎの中で、心も静かに休んでいるね。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 記憶・思い出関連の終了ノード
+  - id: ayane_importance_recognition
+    text: "大切な話って言ってもらえて、すごく嬉しい！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_memorable_conversation
+    text: "印象的って言ってもらえて光栄！心に残る会話ができて嬉しいな！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_cherished_silence
+    text: "大切にしてもらってる静かな温かさ、心に染みるね。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 自然・環境関連の終了ノード
+  - id: ayane_cozy_feeling
+    text: "居心地の良い空間って、心を癒してくれるよね。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_nature_music
+    text: "自然のメロディーって、心の奥深くに響くよね！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_relaxation_effect
+    text: "リラックス効果があるって、自然の力ってすごいよね！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 哲学的・抽象的な終了ノード
+  - id: ayane_mysterious_place
+    text: "不思議な場所って言葉がぴったり！でも、不思議だからこそ面白いのかも！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_dream_reality_border
+    text: "夢と現実の境界って曖昧だよね！どちらも大切な体験だと思う！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_metaphysical_silence
+    text: "形而上学的な静寂の中で、存在の不思議を感じるね。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_empathy_relief
+    text: "共感できて嬉しいって、まさに私の気持ち！一緒に感じられる人がいるって幸せ！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_collaborative_thinking
+    text: "一緒に考えようって言ってもらえて嬉しい！二人で考えると、もっと深い答えが見つかりそう！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 成長・変化関連の終了ノード
+  - id: ayane_warmth_feelings
+    text: "温かい気持ちって、心の栄養だよね！この温かさを大切にしたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_heart_connection
+    text: "心がつながってるって感じると、とても幸せになるね！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_pure_feelings
+    text: "清らかな気持ちって、心を洗い流してくれるよね。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_emotional_closeness
+    text: "心の距離が近くなるって、とても特別な感じがするね！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 希望・未来関連の終了ノード
+  - id: ayane_big_dreams
+    text: "大きな夢を描くと、心が踊るような気持ちになる！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_mutual_encouragement
+    text: "お互いに励まし合える関係って、本当に素敵だと思う！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_strong_partnership
+    text: "強いパートナーシップがあれば、どんな困難も乗り越えられそう！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_silent_hope
+    text: "静かな希望って、心の奥で光り続けるんだね！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_mental_preparation
+    text: "心の準備って大切！新しいスタートに向けて、気持ちを整えてるんだね！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  # 時間・平和関連の終了ノード
+  - id: ayane_special_moments
+    text: "特別な時間を分かち合えて、本当に幸せ！"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_peaceful_mind
+    text: "穏やかな気持ちって、心の平和だよね！この安らぎを大切にしたい。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_rain_rhythm
+    text: "雨音のリズムって、自然の音楽！心も同じリズムで踊ってる感じ。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_time_magic
+    text: "時間の魔法って素敵な表現！過去も現在も、魔法で結ばれてるのかも。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []
+
+  - id: ayane_memory_depth
+    text: "記憶の深みって、海の底みたい！潜れば潜るほど、美しいものが見つかる。"
+    effects:
+      - type: custom
+        handler: end_dialogue_session
+    choices: []

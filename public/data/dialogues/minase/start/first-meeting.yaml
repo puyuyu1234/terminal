@@ -1,0 +1,10 @@
+dialogues:
+  - id: minase_start_greeting
+    text: "あら、またお客さんですね。こんな場所に来るなんて、物好きな方ですこと。"
+    choices:
+      - text: "ここで何をしているの？"
+        next: minase_neutral_activity
+      - text: "君も物好きだね"
+        next: minase_neutral_response
+      - text: "少し話していこうか"
+        next: minase_neutral_peaceful

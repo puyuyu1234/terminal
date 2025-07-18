@@ -1,0 +1,102 @@
+character: minase
+nodes:
+  - id: minase_start_first_meet_evening
+    text: あら。新しい顔ね。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: evening
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: はじめまして
+        next: minase_start_first_meet_evening_extended_conversation
+      - text: 新しい？
+        next: minase_start_first_meet_evening_extended_conversation
+      - text: ...
+        next: minase_start_first_meet_evening_extended_conversation
+  - id: minase_start_first_meet_prediction
+    text: あら。あなたが来ることは知ってたけど、思ったより早いわね。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: night
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: 知ってた？
+        next: minase_start_first_meet_prediction_extended_conversation
+      - text: 予定があったんですか？
+        next: minase_start_first_meet_prediction_extended_conversation
+      - text: ...
+        next: minase_start_first_meet_prediction_extended_conversation
+  - id: minase_start_first_meet_rainy
+    text: 雨の夜に現れるなんて、ドラマチックね。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: rainy
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: たまたまです
+        next: minase_start_first_meet_rainy_extended_conversation
+      - text: ドラマチック？
+        next: minase_start_first_meet_rainy_extended_conversation
+      - text: ...
+        next: minase_start_first_meet_rainy_extended_conversation
+  - id: minase_start_first_meet_foggy
+    text: 霧の中から現れるなんて、まるで幽霊みたい。でも、あなたは生きてるわね。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: weather
+        value: foggy
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: 生きてます
+        next: minase_start_first_meet_foggy_extended_conversation
+      - text: 幽霊に見えました？
+        next: minase_start_first_meet_foggy_extended_conversation
+      - text: ...
+        next: minase_start_first_meet_foggy_extended_conversation
+  - id: minase_start_first_meet_late
+    text: こんな時間に……あなたの未来、少し見えるわ。
+    conditions:
+      - type: variable
+        name: minase_meet_count
+        operator: equals
+        value: 0
+      - type: environment
+        name: timeOfDay
+        value: late_night
+    effects:
+      - type: increment
+        variable: minase_meet_count
+    choices:
+      - text: 未来が見える？
+        next: minase_start_first_meet_late_extended_conversation
+      - text: どんな未来ですか？
+        next: minase_start_first_meet_late_extended_conversation
+      - text: ...
+        next: minase_start_first_meet_late_extended_conversation

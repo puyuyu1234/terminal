@@ -1,0 +1,664 @@
+character: ayane
+nodes:
+  # First meeting evening extended conversations
+  - id: ayane_start_first_meet_evening_extended_conversation
+    text: 久しぶりに人と話せるなんて、本当に嬉しいです！一人でいることが多いので、誰かと話すのはとても貴重な時間です。
+    choices:
+      - text: 一人でいることが多いんですね
+        next: ayane_evening_solitude_discussion
+      - text: 僕も話せて嬉しいです
+        next: ayane_evening_mutual_joy
+      - text: 貴重な時間を大切にしましょう
+        next: ayane_evening_precious_time
+
+  - id: ayane_evening_solitude_discussion
+    text: そうなんです。でも寂しいってわけじゃないんです。一人の時間も好きだし、誰かと話す時間も好きです。
+    choices:
+      - text: バランスが大切ですね
+        next: ayane_evening_balance_importance
+      - text: 一人の時間も大切にします
+        next: ayane_evening_solitude_value
+      - text: 両方楽しめるのは素敵です
+        next: ayane_evening_both_enjoyment
+
+  - id: ayane_evening_mutual_joy
+    text: 嬉しいって言ってもらえると、もっと嬉しくなります！笑顔って伝染するんですね。
+    choices:
+      - text: 笑顔の伝染は素晴らしいです
+        next: ayane_evening_smile_contagion
+      - text: 嬉しい気持ちを共有しましょう
+        next: ayane_evening_joy_sharing
+      - text: あなたの笑顔が素敵です
+        next: ayane_evening_smile_compliment
+
+  - id: ayane_evening_precious_time
+    text: 貴重な時間...そうですね！今この瞬間を大切にしたいです。特別な時間になりそうです。
+    choices:
+      - text: 今この瞬間を大切にします
+        next: ayane_evening_present_moment
+      - text: 特別な時間にしましょう
+        next: ayane_evening_special_time
+      - text: 一緒に過ごせて幸せです
+        next: ayane_evening_together_happiness
+
+  - id: ayane_evening_balance_importance
+    text: バランス！そうですね。一人の時間で自分と向き合って、人との時間で新しい発見をして。
+    choices:
+      - text: 自分と向き合う時間も大切ですね
+        next: ayane_evening_self_reflection
+      - text: 新しい発見を楽しみにします
+        next: ayane_evening_new_discovery
+      - text: 両方必要な時間ですね
+        next: ayane_evening_both_necessary
+
+  - id: ayane_evening_solitude_value
+    text: 一人の時間の価値...分かってくれる人がいるんですね。静かに考えたり、好きなことをしたり。
+    choices:
+      - text: 静かに考える時間は大切です
+        next: ayane_evening_quiet_thinking
+      - text: 好きなことをする時間も必要ですね
+        next: ayane_evening_favorite_activities
+      - text: 理解し合えて嬉しいです
+        next: ayane_evening_mutual_understanding
+
+  - id: ayane_evening_both_enjoyment
+    text: 両方楽しめるって言ってもらえると、なんだか自分のことを理解してもらえた気がします。
+    choices:
+      - text: 理解できて嬉しいです
+        next: ayane_evening_understanding_joy
+      - text: 自分らしさを大切にしてください
+        next: ayane_evening_authenticity_value
+      - text: 素晴らしい考え方ですね
+        next: ayane_evening_wonderful_perspective
+
+  - id: ayane_evening_smile_contagion
+    text: 笑顔の伝染...本当にそうですね！一人が笑顔になると、周りも明るくなります。
+    choices:
+      - text: 周りを明るくする力がありますね
+        next: emotional_end
+      - text: 笑顔は魔法のようです
+        next: trust_end
+      - text: 明るい雰囲気を作ってくれてありがとう
+        next: contextual_end
+
+  - id: ayane_evening_joy_sharing
+    text: 嬉しい気持ちを分け合うって、素敵なことですね。一人の喜びが、二人の喜びになります。
+    choices:
+      - text: 分け合うことで倍になりますね
+        next: trust_end
+      - text: 二人の喜びを大切にしましょう
+        next: emotional_end
+      - text: 素敵な時間を過ごしています
+        next: contextual_end
+
+  - id: ayane_evening_smile_compliment
+    text: 私の笑顔が素敵だなんて...照れちゃいます！でも嬉しいです。
+    choices:
+      - text: 素直な反応が可愛いです
+        next: emotional_end
+      - text: 照れている姿も素敵です
+        next: trust_end
+      - text: 自然な笑顔が一番美しいです
+        next: contextual_end
+
+  - id: ayane_evening_present_moment
+    text: 今この瞬間...そうですね。過去でもなく未来でもなく、今ここにいることを大切にしたいです。
+    choices:
+      - text: 今ここにいることの価値を感じます
+        next: deep_end
+      - text: 現在を大切にしましょう
+        next: trust_end
+      - text: 瞬間瞬間を味わいたいです
+        next: emotional_end
+
+  - id: ayane_evening_special_time
+    text: 特別な時間...普通の時間が、誰かと一緒だと特別になるんですね。不思議で素敵です。
+    choices:
+      - text: 一緒にいると特別になりますね
+        next: emotional_end
+      - text: 不思議で素敵な体験です
+        next: trust_end
+      - text: 普通が特別になる魔法ですね
+        next: contextual_end
+
+  - id: ayane_evening_together_happiness
+    text: 幸せって感じてもらえるなんて、私も本当に幸せです！幸せが伝わっていくんですね。
+    choices:
+      - text: 幸せを分け合いましょう
+        next: emotional_end
+      - text: 幸せが伝わるのは素晴らしいです
+        next: trust_end
+      - text: 一緒にいて幸せです
+        next: contextual_end
+
+  - id: ayane_evening_self_reflection
+    text: 自分と向き合う時間...時々難しいこともありますが、自分を知ることは大切ですね。
+    choices:
+      - text: 自分を知ることは成長につながります
+        next: deep_end
+      - text: 難しいことも必要な時間です
+        next: trust_end
+      - text: 自分と向き合う勇気は素晴らしいです
+        next: emotional_end
+
+  - id: ayane_evening_new_discovery
+    text: 新しい発見...人と話すたびに、新しい視点や考え方を学べます。今日もきっと何か発見があるはず。
+    choices:
+      - text: 新しい視点を楽しみにします
+        next: deep_end
+      - text: 学び続けることは素晴らしいです
+        next: trust_end
+      - text: 今日の発見を一緒に探しましょう
+        next: emotional_end
+
+  - id: ayane_evening_both_necessary
+    text: 両方必要...そうですね。人生には色んな時間が必要です。静かな時間も、賑やかな時間も。
+    choices:
+      - text: 人生の多様性を感じます
+        next: deep_end
+      - text: 色んな時間を大切にしましょう
+        next: trust_end
+      - text: 静かな時間も賑やかな時間も好きです
+        next: emotional_end
+
+  - id: ayane_evening_quiet_thinking
+    text: 静かに考える時間...頭の中を整理したり、夢を描いたり。そんな時間も大切にしています。
+    choices:
+      - text: 頭の中を整理する時間は大切です
+        next: trust_end
+      - text: 夢を描く時間は素敵です
+        next: emotional_end
+      - text: 思考を整理する方法を教えてください
+        next: deep_end
+
+  - id: ayane_evening_favorite_activities
+    text: 好きなことをする時間...読書をしたり、絵を描いたり、音楽を聴いたり。自分だけの時間を楽しんでいます。
+    choices:
+      - text: 自分だけの時間を楽しめるのは素晴らしいです
+        next: emotional_end
+      - text: 趣味を持つことは大切ですね
+        next: trust_end
+      - text: 創造的な活動が好きなんですね
+        next: deep_end
+
+  - id: ayane_evening_mutual_understanding
+    text: 理解し合える...そんな風に感じてもらえるなんて、本当に嬉しいです。心が通じ合っているような気がします。
+    choices:
+      - text: 心が通じ合えて嬉しいです
+        next: emotional_end
+      - text: 理解し合える関係を大切にしましょう
+        next: trust_end
+      - text: 通じ合う心を感じます
+        next: contextual_end
+
+  - id: ayane_evening_understanding_joy
+    text: 理解してもらえる喜び...こんなに嬉しいことはありません。分かってもらえるって、とても温かい気持ちになります。
+    choices:
+      - text: 温かい気持ちを共有しましょう
+        next: emotional_end
+      - text: 理解し合えることは素晴らしいです
+        next: trust_end
+      - text: 分かり合える関係を築きましょう
+        next: contextual_end
+
+  - id: ayane_evening_authenticity_value
+    text: 自分らしさを大切に...そうですね。無理をしないで、自然体でいることが一番ですね。
+    choices:
+      - text: 自然体のあなたが一番素敵です
+        next: emotional_end
+      - text: 無理をしないことは大切です
+        next: trust_end
+      - text: 自分らしさを大切にしましょう
+        next: contextual_end
+
+  - id: ayane_evening_wonderful_perspective
+    text: 素晴らしい考え方だなんて...そんな風に言ってもらえると、自分の考えに自信が持てます。
+    choices:
+      - text: 自信を持ってください
+        next: trust_end
+      - text: 素晴らしい考えを持っています
+        next: emotional_end
+      - text: 自分の考えを大切にしましょう
+        next: contextual_end
+
+  # First meeting energetic extended conversations
+  - id: ayane_start_first_meet_energetic_extended_conversation
+    text: 赤いマフラーを褒めてもらえるなんて嬉しいです！このマフラー、お気に入りなんです。元気が出る色だと思って選びました。
+    choices:
+      - text: 元気が出る色ですね
+        next: ayane_energetic_color_energy
+      - text: お気に入りが見つかって良かったですね
+        next: ayane_energetic_favorite_discovery
+      - text: 色の選び方にセンスを感じます
+        next: ayane_energetic_color_sense
+
+  - id: ayane_energetic_color_energy
+    text: 色のエネルギー...赤は情熱的で、見ているだけで元気になります。色には不思議な力がありますね。
+    choices:
+      - text: 色の力について教えてください
+        next: ayane_energetic_color_power
+      - text: 情熱的な色が似合います
+        next: ayane_energetic_passionate_color
+      - text: 不思議な力を感じます
+        next: ayane_energetic_mysterious_power
+
+  - id: ayane_energetic_favorite_discovery
+    text: お気に入りを見つけるって、宝物を見つけるような感じです。長い間探していたものに出会えた時の喜び。
+    choices:
+      - text: 宝物を見つけるような喜びですね
+        next: ayane_energetic_treasure_joy
+      - text: 長い間探していたものとは？
+        next: ayane_energetic_long_search
+      - text: 出会いの喜びを感じます
+        next: ayane_energetic_meeting_joy
+
+  - id: ayane_energetic_color_sense
+    text: センスだなんて...恥ずかしいです！でも嬉しいです。自分の好きな色を選んで、それを認めてもらえるって素敵です。
+    choices:
+      - text: 自分の好きを大切にするのは素晴らしいです
+        next: ayane_energetic_self_preference
+      - text: 恥ずかしがる必要はありません
+        next: ayane_energetic_no_embarrassment
+      - text: 認め合えることは素敵です
+        next: ayane_energetic_mutual_recognition
+
+  - id: ayane_energetic_color_power
+    text: 色の力...青は落ち着き、黄色は明るさ、緑は安らぎ。それぞれの色が、心に違う影響を与えるんです。
+    choices:
+      - text: 色と心の関係は深いですね
+        next: ayane_energetic_color_heart_relation
+      - text: 他の色の効果も知りたいです
+        next: ayane_energetic_other_colors
+      - text: 色の心理学に興味があります
+        next: ayane_energetic_color_psychology
+
+  - id: ayane_energetic_passionate_color
+    text: 情熱的な色が似合う...そう言ってもらえると、もっと自信を持って赤を身につけられます。
+    choices:
+      - text: 自信を持って身につけてください
+        next: ayane_energetic_confident_wearing
+      - text: 情熱的な人にぴったりです
+        next: ayane_energetic_passionate_person
+      - text: 赤がとても似合います
+        next: ayane_energetic_red_suits
+
+  - id: ayane_energetic_mysterious_power
+    text: 不思議な力...科学的に説明できないことでも、確かに感じられることってありますね。
+    choices:
+      - text: 感じることを大切にしましょう
+        next: ayane_energetic_feeling_importance
+      - text: 科学を超えた不思議さを楽しみます
+        next: ayane_energetic_beyond_science
+      - text: 確かに感じられることは真実です
+        next: ayane_energetic_felt_truth
+
+  - id: ayane_energetic_treasure_joy
+    text: 宝物の喜び...一つ見つけると、また次の宝物を探したくなります。人生は宝探しのようです。
+    choices:
+      - text: 人生は宝探しですね
+        next: emotional_end
+      - text: 次の宝物を一緒に探しましょう
+        next: trust_end
+      - text: 宝物を見つける喜びを共有しましょう
+        next: contextual_end
+
+  - id: ayane_energetic_long_search
+    text: 長い間探していたもの...それは自分らしさかもしれません。自分に似合うもの、自分が好きなものを見つけること。
+    choices:
+      - text: 自分らしさを見つけることは大切です
+        next: deep_end
+      - text: 自分に似合うものを見つけられて良かったです
+        next: emotional_end
+      - text: 自分の好きを大切にしましょう
+        next: trust_end
+
+  - id: ayane_energetic_meeting_joy
+    text: 出会いの喜び...物との出会いも、人との出会いも、特別な瞬間ですね。今日のような出会いも。
+    choices:
+      - text: 今日の出会いは特別です
+        next: emotional_end
+      - text: 特別な瞬間を大切にしましょう
+        next: trust_end
+      - text: 様々な出会いを楽しみます
+        next: contextual_end
+
+  - id: ayane_energetic_self_preference
+    text: 自分の好きを大切に...そうですね。他の人の目を気にしすぎずに、自分の心に従うことも大切です。
+    choices:
+      - text: 自分の心に従うことは勇気が要ります
+        next: deep_end
+      - text: 他人の目を気にしすぎないでください
+        next: trust_end
+      - text: 自分の好きを応援します
+        next: emotional_end
+
+  - id: ayane_energetic_no_embarrassment
+    text: 恥ずかしがらなくていい...そう言ってもらえると、もっと自分を表現できそうです。
+    choices:
+      - text: 自分を表現することは素晴らしいです
+        next: emotional_end
+      - text: もっと自分らしく表現してください
+        next: trust_end
+      - text: 表現する勇気を応援します
+        next: contextual_end
+
+  - id: ayane_energetic_mutual_recognition
+    text: 認め合える...そんな関係って素敵ですね。お互いの良いところを見つけて、認め合えたら。
+    choices:
+      - text: お互いの良いところを見つけましょう
+        next: emotional_end
+      - text: 認め合える関係を築きましょう
+        next: trust_end
+      - text: 素敵な関係ですね
+        next: contextual_end
+
+  - id: ayane_energetic_color_heart_relation
+    text: 色と心の関係...深いですね。色を見ただけで、昔の記憶や感情が蘇ったりします。
+    choices:
+      - text: 色と記憶の関係は興味深いです
+        next: deep_end
+      - text: 感情を蘇らせる色の力はすごいです
+        next: emotional_end
+      - text: 色の深い影響を感じます
+        next: trust_end
+
+  - id: ayane_energetic_other_colors
+    text: 他の色の効果...紫は神秘的、オレンジは活発、ピンクは優しさ。色の世界は本当に豊かです。
+    choices:
+      - text: 色の世界の豊かさを感じます
+        next: emotional_end
+      - text: 神秘的な紫も素敵ですね
+        next: trust_end
+      - text: 色の効果を学ぶのは楽しいです
+        next: contextual_end
+
+  - id: ayane_energetic_color_psychology
+    text: 色の心理学...面白いですね。色が人の心に与える影響を研究する学問もあるんです。
+    choices:
+      - text: 色の心理学を学んでみたいです
+        next: deep_end
+      - text: 人の心への影響は興味深いです
+        next: trust_end
+      - text: 研究する価値がありますね
+        next: emotional_end
+
+  - id: ayane_energetic_confident_wearing
+    text: 自信を持って...そうですね。好きなものを身につけている時が、一番自分らしくいられます。
+    choices:
+      - text: 自分らしさを大切にしてください
+        next: emotional_end
+      - text: 好きなものを身につけることは大切です
+        next: trust_end
+      - text: 自信を持った姿が素敵です
+        next: contextual_end
+
+  - id: ayane_energetic_passionate_person
+    text: 情熱的な人...そう見えますか？自分ではよく分からないけど、嬉しいです。
+    choices:
+      - text: 情熱的な人だと思います
+        next: emotional_end
+      - text: 自分では分からないものですね
+        next: trust_end
+      - text: 情熱を感じます
+        next: contextual_end
+
+  - id: ayane_energetic_red_suits
+    text: 赤が似合う...ありがとうございます。赤は勇気をくれる色だと思います。
+    choices:
+      - text: 勇気をくれる色は素晴らしいです
+        next: trust_end
+      - text: 赤の勇気を分けてください
+        next: emotional_end
+      - text: 勇気の色を身につけているんですね
+        next: contextual_end
+
+  - id: ayane_energetic_feeling_importance
+    text: 感じることの大切さ...理屈で説明できないことでも、心で感じることは大切にしたいです。
+    choices:
+      - text: 心で感じることを大切にしましょう
+        next: emotional_end
+      - text: 理屈を超えた感覚も大切です
+        next: deep_end
+      - text: 感じる心を大切にします
+        next: trust_end
+
+  - id: ayane_energetic_beyond_science
+    text: 科学を超えた不思議さ...そういうものを楽しめるって、豊かな心の証拠だと思います。
+    choices:
+      - text: 豊かな心を育てたいです
+        next: emotional_end
+      - text: 不思議さを楽しみましょう
+        next: trust_end
+      - text: 科学を超えた世界も大切です
+        next: deep_end
+
+  - id: ayane_energetic_felt_truth
+    text: 感じられる真実...そうですね。データや数字だけでは分からない、心で感じる真実があります。
+    choices:
+      - text: 心で感じる真実を大切にします
+        next: emotional_end
+      - text: データを超えた真実がありますね
+        next: deep_end
+      - text: 感じる真実を信じます
+        next: trust_end
+
+  # First meeting rainy extended conversations
+  - id: ayane_start_first_meet_rainy_extended_conversation
+    text: 雨の中でも来てくれた...そんな優しさに心が温かくなります。雨の日はちょっと寂しいこともあるけど、今日は特別です。
+    choices:
+      - text: 雨の日の特別さを感じます
+        next: ayane_rainy_special_feeling
+      - text: 心が温かくなる出会いですね
+        next: ayane_rainy_warm_meeting
+      - text: 雨の日も美しいものがありますね
+        next: ayane_rainy_beauty_discovery
+
+  - id: ayane_rainy_special_feeling
+    text: 雨の日の特別さ...普段とは違う雰囲気があって、いつもより静かで、でも生命力を感じます。
+    choices:
+      - text: 雨の日の生命力を感じます
+        next: ayane_rainy_life_force
+      - text: 静かな雰囲気が好きです
+        next: ayane_rainy_quiet_atmosphere
+      - text: 普段とは違う美しさがありますね
+        next: ayane_rainy_different_beauty
+
+  - id: ayane_rainy_warm_meeting
+    text: 心が温かくなる出会い...雨で体は少し冷えているけど、心はとても温かいです。不思議ですね。
+    choices:
+      - text: 心の温かさは体の温かさより大切です
+        next: ayane_rainy_heart_warmth
+      - text: 不思議で素敵な体験です
+        next: ayane_rainy_wonderful_experience
+      - text: 出会いの温かさを感じます
+        next: ayane_rainy_meeting_warmth
+
+  - id: ayane_rainy_beauty_discovery
+    text: 雨の日の美しさ...雨粒がキラキラ光ったり、空気が澄んでいたり。見つけようと思えば美しいものはたくさんあります。
+    choices:
+      - text: 美しいものを見つける目を持ちたいです
+        next: ayane_rainy_beauty_perception
+      - text: 雨粒のキラキラは確かに美しいです
+        next: ayane_rainy_sparkling_drops
+      - text: 澄んだ空気を感じます
+        next: ayane_rainy_clear_air
+
+  - id: ayane_rainy_life_force
+    text: 雨の日の生命力...植物が雨を待っているように、私たちも何かを待っている気がします。
+    choices:
+      - text: 私たちも何かを待っているんですね
+        next: ayane_rainy_waiting_something
+      - text: 植物のように雨を受け入れたいです
+        next: ayane_rainy_accepting_rain
+      - text: 生命力を感じる瞬間は大切です
+        next: ayane_rainy_vital_moments
+
+  - id: ayane_rainy_quiet_atmosphere
+    text: 静かな雰囲気...雨音だけが聞こえて、世界が静まり返っているようです。心も静かになります。
+    choices:
+      - text: 雨音の静けさに心が落ち着きます
+        next: ayane_rainy_peaceful_sound
+      - text: 世界が静まり返る感覚を共有します
+        next: ayane_rainy_quiet_world
+      - text: 心の静けさを大切にしたいです
+        next: ayane_rainy_inner_quiet
+
+  - id: ayane_rainy_different_beauty
+    text: 違う美しさ...そうですね。晴れの日には晴れの日の、雨の日には雨の日の美しさがあります。
+    choices:
+      - text: それぞれの美しさを楽しみましょう
+        next: ayane_rainy_each_beauty
+      - text: 多様な美しさを感じます
+        next: ayane_rainy_diverse_beauty
+      - text: 天気によって変わる美しさは素敵です
+        next: ayane_rainy_weather_beauty
+
+  - id: ayane_rainy_heart_warmth
+    text: 心の温かさ...そうですね。体が冷えても、心が温かければ大丈夫です。温かい心が一番大切です。
+    choices:
+      - text: 温かい心を大切にします
+        next: emotional_end
+      - text: 心の温かさを分け合いましょう
+        next: trust_end
+      - text: 大切なことを教えてくれてありがとう
+        next: contextual_end
+
+  - id: ayane_rainy_wonderful_experience
+    text: 不思議で素敵な体験...人生にはこういう瞬間があるから、毎日が特別になるんですね。
+    choices:
+      - text: 毎日を特別にする瞬間を大切にします
+        next: emotional_end
+      - text: 人生の素敵な瞬間を楽しみましょう
+        next: trust_end
+      - text: 不思議な体験を共有できて嬉しいです
+        next: contextual_end
+
+  - id: ayane_rainy_meeting_warmth
+    text: 出会いの温かさ...人と人が出会うって、本当に温かいことですね。雨の冷たさを忘れてしまいます。
+    choices:
+      - text: 人との出会いは温かいものです
+        next: emotional_end
+      - text: 冷たさを忘れる温かさを感じます
+        next: trust_end
+      - text: 出会いの奇跡を感じます
+        next: contextual_end
+
+  - id: ayane_rainy_beauty_perception
+    text: 美しいものを見つける目...そういう目を持てたら、毎日がもっと楽しくなりそうです。
+    choices:
+      - text: 毎日を楽しくする目を育てましょう
+        next: emotional_end
+      - text: 美しいものを一緒に見つけましょう
+        next: trust_end
+      - text: 見つける目を持つことは素晴らしいです
+        next: deep_end
+
+  - id: ayane_rainy_sparkling_drops
+    text: キラキラ光る雨粒...小さな宝石のようですね。自然が作り出す美しさには、いつも感動します。
+    choices:
+      - text: 自然の美しさは格別です
+        next: deep_end
+      - text: 小さな宝石のようですね
+        next: emotional_end
+      - text: 自然の感動を共有しましょう
+        next: trust_end
+
+  - id: ayane_rainy_clear_air
+    text: 澄んだ空気...雨が空気を洗ってくれるんですね。深呼吸すると、とても気持ちがいいです。
+    choices:
+      - text: 一緒に深呼吸しましょう
+        next: trust_end
+      - text: 雨が洗ってくれる空気は気持ちいいです
+        next: emotional_end
+      - text: 澄んだ空気を楽しみましょう
+        next: contextual_end
+
+  - id: ayane_rainy_waiting_something
+    text: 何かを待っている...そうですね。新しい出会いや、特別な瞬間や、成長の機会を。
+    choices:
+      - text: 新しい出会いを大切にしましょう
+        next: emotional_end
+      - text: 特別な瞬間を一緒に待ちましょう
+        next: trust_end
+      - text: 成長の機会を楽しみにします
+        next: deep_end
+
+  - id: ayane_rainy_accepting_rain
+    text: 雨を受け入れる...そうですね。雨を避けようとするのではなく、雨と一緒にいることを楽しみたいです。
+    choices:
+      - text: 雨と一緒にいることを楽しみましょう
+        next: emotional_end
+      - text: 受け入れることの大切さを学びます
+        next: deep_end
+      - text: 雨を楽しむ心を大切にします
+        next: trust_end
+
+  - id: ayane_rainy_vital_moments
+    text: 生命力を感じる瞬間...そういう瞬間を大切にしたいです。生きていることの喜びを感じられます。
+    choices:
+      - text: 生きていることの喜びを共有しましょう
+        next: emotional_end
+      - text: 生命力を感じる瞬間を大切にします
+        next: trust_end
+      - text: 生きる喜びを感じます
+        next: deep_end
+
+  - id: ayane_rainy_peaceful_sound
+    text: 雨音の平和...そうですね。雨音を聞いていると、心が落ち着いて、平和な気持ちになります。
+    choices:
+      - text: 平和な気持ちを大切にしましょう
+        next: emotional_end
+      - text: 雨音の平和を楽しみます
+        next: trust_end
+      - text: 心が落ち着く音を聞きましょう
+        next: contextual_end
+
+  - id: ayane_rainy_quiet_world
+    text: 静まり返る世界...普段の騒がしさから離れて、静かな世界に入れるのは貴重な体験です。
+    choices:
+      - text: 静かな世界を楽しみましょう
+        next: trust_end
+      - text: 貴重な体験を共有できて嬉しいです
+        next: emotional_end
+      - text: 騒がしさから離れる時間も大切です
+        next: deep_end
+
+  - id: ayane_rainy_inner_quiet
+    text: 心の静けさ...外の世界が静かになると、心の中も静かになります。自分と向き合える時間です。
+    choices:
+      - text: 自分と向き合う時間を大切にします
+        next: deep_end
+      - text: 心の静けさを楽しみます
+        next: emotional_end
+      - text: 静かな心を保ちたいです
+        next: trust_end
+
+  - id: ayane_rainy_each_beauty
+    text: それぞれの美しさ...そうですね。違いを楽しめるって、豊かな心の証拠だと思います。
+    choices:
+      - text: 豊かな心を育てたいです
+        next: emotional_end
+      - text: 違いを楽しむ心を大切にします
+        next: trust_end
+      - text: 多様性の美しさを感じます
+        next: deep_end
+
+  - id: ayane_rainy_diverse_beauty
+    text: 多様な美しさ...世界には本当にたくさんの美しさがあります。それぞれを発見していきたいです。
+    choices:
+      - text: 美しさを一緒に発見しましょう
+        next: emotional_end
+      - text: 世界の美しさを楽しみます
+        next: trust_end
+      - text: 発見する楽しさを共有しましょう
+        next: contextual_end
+
+  - id: ayane_rainy_weather_beauty
+    text: 天気による美しさ...天気が変わるたびに、新しい美しさに出会えるんですね。楽しみが増えます。
+    choices:
+      - text: 新しい美しさとの出会いを楽しみましょう
+        next: emotional_end
+      - text: 楽しみを一緒に見つけましょう
+        next: trust_end
+      - text: 天気の変化を楽しみます
+        next: contextual_end

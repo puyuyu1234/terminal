@@ -1,0 +1,263 @@
+conversations:
+  # 時間ループの暗示（低確率）
+  - id: minase_time_loop_hint
+    text: "また同じことを言うけど...でも、本当に「また」なのかしら。何度目だろう、この会話。"
+    probability: 0.12
+    conditions:
+      - if: "minase_trust_level >= 4 && total_visits >= 12"
+    effects:
+      - type: increment
+        variable: minase_time_distortion
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 2
+    choices:
+      - text: "前にも同じ話をした？"
+        next: minase_repetition_confirmation
+      - text: "何度目って？"
+        next: minase_loop_count
+      - text: "覚えてない"
+        next: minase_memory_asymmetry
+
+  - id: minase_death_experience
+    text: "死ぬって、一瞬じゃないのよ。とても長い時間に感じるの...私、知ってるの。"
+    probability: 0.08
+    conditions:
+      - if: "minase_trust_level >= 5 && minase_time_distortion >= 3"
+    effects:
+      - type: increment
+        variable: minase_death_hints
+        value: 2
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "なぜ知ってるの？"
+        next: minase_death_knowledge
+      - text: "死んだことがあるの？"
+        next: minase_death_experience_detail
+      - text: "怖い話だね"
+        next: minase_death_fear_response
+
+  # 実験の被験者暗示
+  - id: minase_experiment_hint
+    text: "白い部屋で、たくさんの管に繋がれてる自分を見たことがあるの。でも、夢かもしれない。"
+    probability: 0.06
+    conditions:
+      - if: "minase_trust_level >= 6 && minase_death_hints >= 2"
+    effects:
+      - type: increment
+        variable: minase_experiment_hints
+        value: 1
+      - type: increment
+        variable: mystery_level
+        value: 2
+    choices:
+      - text: "白い部屋？"
+        next: minase_laboratory_description
+      - text: "管に繋がれてる？"
+        next: minase_medical_equipment
+      - text: "夢じゃないかも"
+        next: minase_reality_acknowledgment
+
+  - id: minase_time_experiment
+    text: "時間を操る実験...誰かがやってるのかもしれない。私は、その実験台。"
+    probability: 0.05
+    conditions:
+      - if: "minase_experiment_hints >= 1"
+    effects:
+      - type: increment
+        variable: minase_experiment_hints
+        value: 2
+      - type: increment
+        variable: overall_tension
+        value: 2
+    choices:
+      - text: "誰が実験を？"
+        next: minase_experimenter_identity
+      - text: "実験台って？"
+        next: minase_subject_status
+      - text: "それは妄想じゃない？"
+        next: minase_reality_question
+
+  # 他者の死の予知
+  - id: minase_death_prediction
+    text: "あなたの死期が見えるの...でも、言わない方がいいわよね。知らない方が幸せ。"
+    probability: 0.07
+    conditions:
+      - if: "minase_trust_level >= 5 && minase_prophecy_count >= 8"
+    effects:
+      - type: increment
+        variable: minase_death_sight
+        value: 1
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "僕の死期？"
+        next: minase_player_death_vision
+      - text: "なぜ見えるの？"
+        next: minase_death_sight_origin
+      - text: "知りたくない"
+        next: minase_ignorance_protection
+
+  - id: minase_death_burden
+    text: "死を見る能力って、呪いよね。救えないのに、知ってしまう。"
+    probability: 0.09
+    conditions:
+      - if: "minase_death_sight >= 1"
+    effects:
+      - type: increment
+        variable: minase_death_burden
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 2
+    choices:
+      - text: "救おうとしたことはある？"
+        next: minase_rescue_attempts
+      - text: "辛い能力だね"
+        next: minase_burden_sympathy
+      - text: "なぜ教えてくれたの？"
+        next: minase_confession_reason
+
+  # 無限ループの絶望
+  - id: minase_eternal_repetition
+    text: "同じことを何千回、何万回も繰り返してるの...でも、変えられない。"
+    probability: 0.04
+    conditions:
+      - if: "minase_time_distortion >= 5 && night_progression >= 8"
+    effects:
+      - type: increment
+        variable: minase_despair_level
+        value: 2
+      - type: increment
+        variable: overall_tension
+        value: 3
+    choices:
+      - text: "何を繰り返してるの？"
+        next: minase_repetition_content
+      - text: "変える方法はない？"
+        next: minase_escape_possibility
+      - text: "絶望的だね"
+        next: minase_despair_acknowledgment
+
+  - id: minase_future_futility
+    text: "未来を知ってても、何も変えられない。知識は無力よ。"
+    probability: 0.08
+    conditions:
+      - if: "minase_despair_level >= 1"
+    effects:
+      - type: increment
+        variable: minase_futility_feeling
+        value: 1
+      - type: increment
+        variable: emotional_depth
+        value: 1
+    choices:
+      - text: "なぜ変えられないの？"
+        next: minase_powerlessness_explanation
+      - text: "知識には価値がある"
+        next: minase_knowledge_value
+      - text: "諦めないで"
+        next: minase_hope_encouragement
+
+  # 継続ノード
+  - id: minase_repetition_confirmation
+    text: "そう、何度も。あなたは毎回同じことを言うの。でも、気づいてない。"
+    effects:
+      - type: increment
+        variable: minase_loop_awareness
+        value: 1
+    choices:
+      - text: "僕は覚えてない"
+        next: minase_memory_asymmetry
+      - text: "君だけが覚えてる？"
+        next: minase_sole_memory
+      - text: "それは不可能だ"
+        next: minase_impossibility_denial
+
+  - id: minase_death_knowledge
+    text: "死んだことがあるから...何度も死んでるの。でも、また戻ってくる。"
+    effects:
+      - type: increment
+        variable: minase_death_experience
+        value: 1
+    choices:
+      - text: "何度も死んでる？"
+        next: minase_multiple_deaths
+      - text: "どうやって戻ってくるの？"
+        next: minase_resurrection_mechanism
+      - text: "それは妄想じゃない？"
+        next: minase_delusion_question
+
+  - id: minase_laboratory_description
+    text: "病院みたいな、でも病院じゃない。機械だらけの部屋。私の体は動かない。"
+    effects:
+      - type: increment
+        variable: minase_laboratory_vision
+        value: 1
+    choices:
+      - text: "今もそこにいる？"
+        next: minase_current_location
+      - text: "どうやって脱出したの？"
+        next: minase_escape_method
+      - text: "意識だけここにいる？"
+        next: minase_consciousness_separation
+
+  - id: minase_player_death_vision
+    text: "三年後...いえ、やめておきましょう。知らない方がいい。"
+    effects:
+      - type: increment
+        variable: minase_player_death_seen
+        value: 1
+    choices:
+      - text: "教えて"
+        next: minase_death_detail_request
+      - text: "変えられる？"
+        next: minase_fate_change_possibility
+      - text: "知りたくない"
+        next: minase_ignorance_choice
+
+  - id: minase_rescue_attempts
+    text: "何度も警告したけど...誰も信じない。そして、予言通りに死んでいく。"
+    effects:
+      - type: increment
+        variable: minase_failed_warnings
+        value: 1
+    choices:
+      - text: "何人救おうとした？"
+        next: minase_rescue_count
+      - text: "なぜ信じてもらえない？"
+        next: minase_credibility_problem
+      - text: "諦めないで"
+        next: minase_persistence_encouragement
+
+  - id: minase_repetition_content
+    text: "この会話、あなたの選択、私の反応...全部同じパターンの繰り返し。"
+    effects:
+      - type: increment
+        variable: minase_pattern_recognition
+        value: 1
+    choices:
+      - text: "パターンを破れない？"
+        next: minase_pattern_breaking
+      - text: "僕の選択も決まってる？"
+        next: minase_predetermined_choice
+      - text: "それは宿命？"
+        next: minase_fate_discussion
+
+  - id: minase_powerlessness_explanation
+    text: "時間は一方通行...私は見ることしかできない。観察者でしかない。"
+    effects:
+      - type: increment
+        variable: minase_observer_role
+        value: 1
+    choices:
+      - text: "観察者として何を見てる？"
+        next: minase_observation_content
+      - text: "行動を起こせない？"
+        next: minase_action_impossibility
+      - text: "それでも意味がある"
+        next: minase_meaning_affirmation

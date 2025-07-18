@@ -1,0 +1,353 @@
+character: minase
+nodes:
+  # Second meeting extended conversations
+  - id: minase_start_second_meet_extended_conversation
+    text: 二度目の出会いは、初回とは違う意味を持ちます。偶然が必然に変わる瞬間です。
+    choices:
+      - text: 偶然が必然に変わるとは？
+        next: minase_second_coincidence_necessity
+      - text: 二度目の意味を教えてください
+        next: minase_second_meaning_explanation
+      - text: 必然を感じます
+        next: minase_second_inevitability_feeling
+
+  - id: minase_second_coincidence_necessity
+    text: 偶然と必然...一度目は偶然かもしれませんが、二度目は選択です。その選択が、運命の糸を織り始めます。
+    choices:
+      - text: 選択の重要性を感じます
+        next: minase_second_choice_importance
+      - text: 運命の糸を感じたいです
+        next: minase_second_fate_thread
+      - text: 織り始めるとは美しい表現ですね
+        next: minase_second_weaving_beauty
+
+  - id: minase_second_meaning_explanation
+    text: 二度目の意味...それは関係性の始まりです。知らない人から、知っている人へと変化する境界線です。
+    choices:
+      - text: 関係性の始まりを感じます
+        next: minase_second_relationship_beginning
+      - text: 境界線を越えたいです
+        next: minase_second_boundary_crossing
+      - text: 変化を受け入れます
+        next: minase_second_change_acceptance
+
+  - id: minase_second_inevitability_feeling
+    text: 必然性への感覚...それは直感の声です。心の奥深くで感じる真実に、素直に従うことが大切です。
+    choices:
+      - text: 直感の声を大切にします
+        next: minase_second_intuition_value
+      - text: 心の奥深くの真実を探します
+        next: minase_second_deep_truth
+      - text: 素直に従う勇気を持ちます
+        next: minase_second_honest_courage
+
+  - id: minase_second_choice_importance
+    text: 選択の重要性...小さな選択が、人生の大きな流れを決定します。二度目に来るという選択が、新しい章の始まりです。
+    choices:
+      - text: 新しい章の始まりを感じます
+        next: minase_second_new_chapter
+      - text: 人生の流れを意識します
+        next: minase_second_life_flow
+      - text: 小さな選択を大切にします
+        next: minase_second_small_choice
+
+  - id: minase_second_fate_thread
+    text: 運命の糸...それは見えないけれど確実に存在するものです。二人の間に、細い糸が張られ始めています。
+    choices:
+      - text: 細い糸を感じます
+        next: minase_second_thin_thread
+      - text: 見えない糸を大切にします
+        next: minase_second_invisible_thread
+      - text: 確実な存在を信じます
+        next: minase_second_certain_existence
+
+  - id: minase_second_weaving_beauty
+    text: 織りの美しさ...それは時間をかけて作られる芸術です。急がずに、丁寧に、一本一本の糸を織り上げていきましょう。
+    choices:
+      - text: 時間をかけた芸術を創ります
+        next: minase_second_time_art
+      - text: 丁寧に織り上げたいです
+        next: minase_second_careful_weaving
+      - text: 一本一本を大切にします
+        next: minase_second_each_thread
+
+  - id: minase_second_relationship_beginning
+    text: 関係性の始まり...それは種が芽を出す瞬間に似ています。小さな芽が、やがて大きな木になるのです。
+    choices:
+      - text: 種が芽を出す瞬間を大切にします
+        next: emotional_end
+      - text: 大きな木に育つことを信じます
+        next: trust_end
+      - text: 小さな芽を見守ります
+        next: deep_end
+
+  - id: minase_second_boundary_crossing
+    text: 境界線を越える...それは勇気のいる行為です。しかし、越えた先には新しい世界が待っています。
+    choices:
+      - text: 勇気を持って越えます
+        next: deep_end
+      - text: 新しい世界を楽しみにします
+        next: emotional_end
+      - text: 境界線を越えた先を見たいです
+        next: trust_end
+
+  - id: minase_second_change_acceptance
+    text: 変化の受け入れ...それは成長の証です。変化を恐れずに受け入れることで、新しい可能性が開かれます。
+    choices:
+      - text: 成長の証として受け入れます
+        next: trust_end
+      - text: 新しい可能性を歓迎します
+        next: emotional_end
+      - text: 変化を恐れません
+        next: deep_end
+
+  - id: minase_second_intuition_value
+    text: 直感の価値...それは理性を超えた知恵です。頭で考えるよりも、心で感じることが正しい道を示してくれます。
+    choices:
+      - text: 理性を超えた知恵を信じます
+        next: deep_end
+      - text: 心で感じることを大切にします
+        next: emotional_end
+      - text: 正しい道を歩みたいです
+        next: trust_end
+
+  - id: minase_second_deep_truth
+    text: 深い真実...それは表面的な理解を超えたものです。二度目の出会いが、その真実に近づく扉を開きます。
+    choices:
+      - text: 表面を超えた理解を求めます
+        next: deep_end
+      - text: 真実に近づく扉を開きます
+        next: trust_end
+      - text: 深い真実を知りたいです
+        next: emotional_end
+
+  - id: minase_second_honest_courage
+    text: 素直な勇気...それは自分の感情に正直になることです。二度目に来たという事実が、その勇気を物語っています。
+    choices:
+      - text: 自分の感情に正直になります
+        next: emotional_end
+      - text: 勇気を持って行動します
+        next: trust_end
+      - text: 素直でいることを大切にします
+        next: deep_end
+
+  - id: minase_second_new_chapter
+    text: 新しい章...それは白紙のページから始まります。どんな物語を書くかは、これからの選択次第です。
+    choices:
+      - text: 美しい物語を書きたいです
+        next: emotional_end
+      - text: 選択を大切にします
+        next: trust_end
+      - text: 白紙のページを大切にします
+        next: deep_end
+
+  - id: minase_second_life_flow
+    text: 人生の流れ...それは川の流れに似ています。二度目の出会いが、その流れに新しい支流を加えます。
+    choices:
+      - text: 新しい支流を歓迎します
+        next: emotional_end
+      - text: 川の流れを感じます
+        next: trust_end
+      - text: 人生の流れを大切にします
+        next: deep_end
+
+  - id: minase_second_small_choice
+    text: 小さな選択...それは蝶の羽ばたきのようなものです。小さな動きが、大きな変化を生み出すことがあります。
+    choices:
+      - text: 蝶の羽ばたきを感じます
+        next: deep_end
+      - text: 大きな変化を期待します
+        next: emotional_end
+      - text: 小さな動きを大切にします
+        next: trust_end
+
+  - id: minase_second_thin_thread
+    text: 細い糸...それは最初はとても脆いものです。しかし、時間と共に強く太くなり、切れない絆となります。
+    choices:
+      - text: 時間と共に強くなることを信じます
+        next: trust_end
+      - text: 切れない絆を築きたいです
+        next: emotional_end
+      - text: 脆さも大切にします
+        next: deep_end
+
+  - id: minase_second_invisible_thread
+    text: 見えない糸...それは信頼と理解で織られています。目に見えないからこそ、最も強い結びつきとなります。
+    choices:
+      - text: 信頼と理解を大切にします
+        next: trust_end
+      - text: 最も強い結びつきを求めます
+        next: emotional_end
+      - text: 見えない力を信じます
+        next: deep_end
+
+  - id: minase_second_certain_existence
+    text: 確実な存在...それは疑いようのない現実です。二度目の出会いが、その確実性を証明しています。
+    choices:
+      - text: 疑いようのない現実を受け入れます
+        next: trust_end
+      - text: 確実性を感じます
+        next: emotional_end
+      - text: 証明された事実を大切にします
+        next: deep_end
+
+  - id: minase_second_time_art
+    text: 時間の芸術...それは急かすことのできない美しさです。ゆっくりと、自然に、関係性を深めていきましょう。
+    choices:
+      - text: 急かさず自然に進みます
+        next: trust_end
+      - text: 美しさを大切にします
+        next: emotional_end
+      - text: 関係性を深めたいです
+        next: deep_end
+
+  - id: minase_second_careful_weaving
+    text: 丁寧な織り...それは愛情と注意深さの表れです。一つ一つの瞬間を大切にして、美しい模様を作りましょう。
+    choices:
+      - text: 愛情を込めて織ります
+        next: emotional_end
+      - text: 注意深さを大切にします
+        next: trust_end
+      - text: 美しい模様を作りたいです
+        next: deep_end
+
+  - id: minase_second_each_thread
+    text: 一本一本の糸...それぞれに意味があります。今日の糸、明日の糸、すべてが物語の一部となります。
+    choices:
+      - text: それぞれの意味を大切にします
+        next: deep_end
+      - text: 物語の一部として受け入れます
+        next: trust_end
+      - text: 今日の糸を大切に織ります
+        next: emotional_end
+
+  # Frequent visitor extended conversations
+  - id: minase_start_frequent_visitor_extended_conversation
+    text: 頻繁な訪問は、予想を超えた絆の証です。数字以上の意味が、そこには込められています。
+    choices:
+      - text: 予想を超えた絆を感じます
+        next: minase_frequent_unexpected_bond
+      - text: 数字以上の意味とは？
+        next: minase_frequent_beyond_numbers
+      - text: 絆の証を大切にします
+        next: minase_frequent_bond_evidence
+
+  - id: minase_frequent_unexpected_bond
+    text: 予想外の絆...それは自然発生的な美しさです。計画されたものではなく、心が導いた結果です。
+    choices:
+      - text: 自然発生的な美しさを感じます
+        next: minase_frequent_natural_beauty
+      - text: 心が導いた結果を信じます
+        next: minase_frequent_heart_guidance
+      - text: 計画を超えた縁を大切にします
+        next: minase_frequent_unplanned_connection
+
+  - id: minase_frequent_beyond_numbers
+    text: 数字を超えた意味...それは質的な変化です。回数ではなく、深さが重要なのです。
+    choices:
+      - text: 質的な変化を感じます
+        next: minase_frequent_qualitative_change
+      - text: 深さを重視します
+        next: minase_frequent_depth_importance
+      - text: 回数より深さを大切にします
+        next: minase_frequent_depth_over_frequency
+
+  - id: minase_frequent_bond_evidence
+    text: 絆の証拠...それは行動によって示されます。言葉よりも、継続的な行動が真実を語ります。
+    choices:
+      - text: 行動で示したいです
+        next: minase_frequent_action_demonstration
+      - text: 継続的な行動を大切にします
+        next: minase_frequent_continuous_action
+      - text: 真実を語る行動を続けます
+        next: minase_frequent_truth_telling_action
+
+  - id: minase_frequent_natural_beauty
+    text: 自然の美しさ...それは人工的でない純粋さです。計算されていない出会いこそが、最も美しいのです。
+    choices:
+      - text: 純粋さを大切にします
+        next: emotional_end
+      - text: 計算されていない出会いを感謝します
+        next: trust_end
+      - text: 人工的でない美しさを感じます
+        next: deep_end
+
+  - id: minase_frequent_heart_guidance
+    text: 心の導き...それは最も確実な羅針盤です。頭で考えるよりも、心で感じることが正しい方向を示します。
+    choices:
+      - text: 心を羅針盤として信じます
+        next: trust_end
+      - text: 正しい方向を歩みます
+        next: emotional_end
+      - text: 心で感じることを大切にします
+        next: deep_end
+
+  - id: minase_frequent_unplanned_connection
+    text: 計画外の縁...それは宇宙の意志かもしれません。予定にないものが、最も大切な出会いになることがあります。
+    choices:
+      - text: 宇宙の意志を感じます
+        next: deep_end
+      - text: 大切な出会いを感謝します
+        next: emotional_end
+      - text: 予定にない縁を大切にします
+        next: trust_end
+
+  - id: minase_frequent_qualitative_change
+    text: 質的変化...それは内面の成長です。同じ場所でも、見える景色が変わっていることに気づきます。
+    choices:
+      - text: 内面の成長を感じます
+        next: emotional_end
+      - text: 見える景色の変化を楽しみます
+        next: trust_end
+      - text: 同じ場所での変化を大切にします
+        next: deep_end
+
+  - id: minase_frequent_depth_importance
+    text: 深さの重要性...それは関係性の本質です。表面的な交流ではなく、深い理解を求めることが大切です。
+    choices:
+      - text: 深い理解を求めます
+        next: deep_end
+      - text: 関係性の本質を大切にします
+        next: trust_end
+      - text: 表面を超えた交流を望みます
+        next: emotional_end
+
+  - id: minase_frequent_depth_over_frequency
+    text: 深さと頻度...両方が調和することで、真の関係が生まれます。量と質のバランスが重要です。
+    choices:
+      - text: 調和を大切にします
+        next: trust_end
+      - text: 真の関係を築きたいです
+        next: emotional_end
+      - text: 量と質のバランスを意識します
+        next: deep_end
+
+  - id: minase_frequent_action_demonstration
+    text: 行動による証明...それは最も説得力のある言葉です。継続的な行動が、心の真実を物語ります。
+    choices:
+      - text: 継続的な行動を続けます
+        next: trust_end
+      - text: 心の真実を大切にします
+        next: emotional_end
+      - text: 説得力のある行動を心がけます
+        next: deep_end
+
+  - id: minase_frequent_continuous_action
+    text: 継続的行動...それは意志の力の表れです。一時的な感情ではなく、確固たる決意が必要です。
+    choices:
+      - text: 確固たる決意を持ちます
+        next: trust_end
+      - text: 意志の力を大切にします
+        next: emotional_end
+      - text: 一時的でない感情を育みます
+        next: deep_end
+
+  - id: minase_frequent_truth_telling_action
+    text: 真実を語る行動...それは嘘をつくことのできない誠実さです。行動こそが、最も正直な表現なのです。
+    choices:
+      - text: 誠実さを大切にします
+        next: emotional_end
+      - text: 正直な表現を心がけます
+        next: trust_end
+      - text: 嘘をつかない行動を続けます
+        next: deep_end
