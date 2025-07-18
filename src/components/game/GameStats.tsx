@@ -11,6 +11,7 @@ export const GameStats: React.FC<GameStatsProps> = ({ gameState, onBack }) => {
   console.log('[GameStats] Player visits:', gameState.player.totalVisits);
   console.log('[GameStats] Character count:', gameState.characters.size);
   console.log('[GameStats] History length:', gameState.history.length);
+  console.log('[GameStats] Variables:', Object.fromEntries(gameState.variables));
   
   const characterStats = Array.from(gameState.characters.entries()).map(([id, state]) => ({
     id,
@@ -19,6 +20,14 @@ export const GameStats: React.FC<GameStatsProps> = ({ gameState, onBack }) => {
 
   const totalFlags = gameState.flags.size;
   const totalVariables = gameState.variables.size;
+  
+  // Get silence count from variables (not from player.silenceCount)
+  const silenceCount = gameState.variables.get('player_silence_count') || 0;
+  const empathyLevel = gameState.variables.get('player_empathy_level') || 0;
+  const curiosityLevel = gameState.variables.get('player_curiosity_level') || 0;
+  
+  console.log('[GameStats] Silence count from variables:', silenceCount);
+  console.log('[GameStats] Player.silenceCount:', gameState.player.silenceCount);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
@@ -45,7 +54,7 @@ export const GameStats: React.FC<GameStatsProps> = ({ gameState, onBack }) => {
           
           <div className="bg-gray-800 p-6 rounded-lg">
             <div className="text-2xl font-light text-yellow-300">
-              {gameState.player.silenceCount}
+              {silenceCount}
             </div>
             <div className="text-sm text-gray-400">沈黙の回数</div>
           </div>
@@ -55,6 +64,42 @@ export const GameStats: React.FC<GameStatsProps> = ({ gameState, onBack }) => {
               {gameState.history.length}
             </div>
             <div className="text-sm text-gray-400">会話の記録</div>
+          </div>
+        </div>
+
+        {/* Player Behavior Stats */}
+        <div className="mb-8">
+          <h2 className="text-xl font-light mb-4">あなたの行動パターン</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-gray-800 p-4 rounded-lg">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-400">共感レベル</span>
+                <span className="text-lg font-medium text-pink-300">{empathyLevel}</span>
+              </div>
+              <div className="text-xs text-gray-500 mt-1">
+                {getEmpathyDescription(empathyLevel)}
+              </div>
+            </div>
+            
+            <div className="bg-gray-800 p-4 rounded-lg">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-400">好奇心レベル</span>
+                <span className="text-lg font-medium text-cyan-300">{curiosityLevel}</span>
+              </div>
+              <div className="text-xs text-gray-500 mt-1">
+                {getCuriosityDescription(curiosityLevel)}
+              </div>
+            </div>
+            
+            <div className="bg-gray-800 p-4 rounded-lg">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-400">沈黙の傾向</span>
+                <span className="text-lg font-medium text-yellow-300">{silenceCount}</span>
+              </div>
+              <div className="text-xs text-gray-500 mt-1">
+                {getSilenceDescription(silenceCount)}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -166,4 +211,25 @@ function getTrustDescription(trustLevel: number): string {
   if (trustLevel >= -20) return '普通';
   if (trustLevel >= -50) return '距離感';
   return '警戒';
+}
+
+function getEmpathyDescription(empathyLevel: number): string {
+  if (empathyLevel >= 10) return '共感性豊かな心';
+  if (empathyLevel >= 5) return '思いやりのある人';
+  if (empathyLevel >= 1) return '優しい一面';
+  return '冷静な観察者';
+}
+
+function getCuriosityDescription(curiosityLevel: number): string {
+  if (curiosityLevel >= 10) return '探求心旺盛';
+  if (curiosityLevel >= 5) return '好奇心旺盛';
+  if (curiosityLevel >= 1) return '興味深い質問';
+  return '慎重な姿勢';
+}
+
+function getSilenceDescription(silenceCount: number): string {
+  if (silenceCount >= 10) return '深い沈黙を愛する';
+  if (silenceCount >= 5) return '静寂を好む';
+  if (silenceCount >= 1) return '時折の沈黙';
+  return '言葉を選ぶ人';
 }

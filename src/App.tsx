@@ -1,18 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MainMenu } from './components/game/MainMenu';
 import { GameSession } from './components/game/GameSession';
 import { GameStats } from './components/game/GameStats';
+import { DebugOverlay } from './components/debug/DebugOverlay';
 import { useGameEngine } from './hooks/useGameEngine';
+import { gameDebugger } from './debug/gameDebug';
 
 type GameMode = 'menu' | 'session' | 'stats';
 
 function App() {
   const { gameState, startNewSession, makeChoice, endSession, gameEngine } = useGameEngine();
   const [currentMode, setCurrentMode] = useState<GameMode>('menu');
+  const [debugVisible, setDebugVisible] = useState(false);
+
+  // Attach game engine to debugger when available
+  useEffect(() => {
+    if (gameEngine) {
+      gameDebugger.setGameEngine(gameEngine);
+      console.log('🔧 [DEBUG] GameEngine attached to global debugger');
+      console.log('🔧 [DEBUG] Try: gameDebugger.logSilenceCount()');
+    }
+  }, [gameEngine]);
 
   const handleStartGame = async () => {
     setCurrentMode('session');
     await startNewSession();
+    // Log initial state
+    setTimeout(() => {
+      gameDebugger.logSilenceCount();
+    }, 1000);
   };
 
   const handleSessionEnd = () => {

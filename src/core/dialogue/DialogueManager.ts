@@ -147,6 +147,14 @@ export class DialogueManager {
 
     const choice = choices[choiceIndex];
 
+    console.log(`[DialogueManager] 🎯 Choice made:`, {
+      index: choiceIndex,
+      text: choice.text,
+      id: choice.id,
+      effects: choice.effects,
+      nodeId: this.currentNode?.id
+    });
+
     this.eventBus.emit({
       type: 'choice_made',
       timestamp: new Date().toISOString(),
@@ -157,10 +165,19 @@ export class DialogueManager {
       }
     });
 
+    // Check if this is a silence choice
+    if (choice.text.includes('......') || choice.text.includes('沈黙') || choice.text.includes('静か')) {
+      console.log(`🤐 [SILENCE CHOICE] Detected silence choice: "${choice.text}"`);
+    }
+
     if (choice.effects) {
-      choice.effects.forEach(effect => {
+      console.log(`[DialogueManager] 💫 Processing ${choice.effects.length} effects for choice`);
+      choice.effects.forEach((effect, index) => {
+        console.log(`[DialogueManager] 💫 Effect ${index + 1}:`, effect);
         this.effectProcessor.process(effect as any, context);
       });
+    } else {
+      console.log(`[DialogueManager] 💫 No effects for this choice`);
     }
 
     const characterState = context.state.characters.get(context.currentCharacter.id);

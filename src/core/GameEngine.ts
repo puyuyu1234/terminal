@@ -213,8 +213,21 @@ export class GameEngine {
     }
 
     try {
-      console.log('[GameEngine] makeChoice: Making choice', choiceIndex);
+      console.log('[GameEngine] 🎮 Making choice', choiceIndex);
+      
+      // Log current variable state before choice
+      const currentSilenceCount = this.currentContext.state.variables.get('player_silence_count') || 0;
+      console.log(`[GameEngine] 📊 Current silence count BEFORE choice: ${currentSilenceCount}`);
+      
       const nextNode = await this.dialogueManager.makeChoice(choiceIndex, this.currentContext);
+      
+      // Log variable state after choice
+      const newSilenceCount = this.currentContext.state.variables.get('player_silence_count') || 0;
+      console.log(`[GameEngine] 📊 Current silence count AFTER choice: ${newSilenceCount}`);
+      
+      if (newSilenceCount !== currentSilenceCount) {
+        console.log(`🤐 [SILENCE COUNT CHANGE] ${currentSilenceCount} → ${newSilenceCount}`);
+      }
       
       // Check if dialogue has ended
       if (!nextNode) {
@@ -304,6 +317,24 @@ export class GameEngine {
 
   setVariable(name: string, value: number): void {
     this.stateManager.setVariable(name, value);
+  }
+
+  // Debug helpers
+  logCurrentState(): void {
+    console.log('🔍 [DEBUG] Current Game State:');
+    console.log('📊 Variables:', Object.fromEntries(this.stateManager.getState().variables));
+    console.log('🏳️ Flags:', Array.from(this.stateManager.getState().flags));
+    console.log('👥 Characters:', Object.fromEntries(this.stateManager.getState().characters));
+    console.log('📈 Player:', this.stateManager.getState().player);
+  }
+
+  getSilenceCount(): number {
+    return this.stateManager.getState().variables.get('player_silence_count') || 0;
+  }
+
+  logSilenceCount(): void {
+    const count = this.getSilenceCount();
+    console.log(`🤐 [SILENCE COUNT DEBUG] Current count: ${count}`);
   }
 
   forceCharacterAppearance(characterId: CharacterId): void {

@@ -9,8 +9,16 @@ export class YAMLDialogueLoader implements DialogueDataSource {
   private baseUrl: string;
   private cache: Map<CharacterId, DialogueNode[]> = new Map();
 
-  constructor(baseUrl: string = '/data/dialogues') {
-    this.baseUrl = baseUrl;
+  constructor(baseUrl?: string) {
+    // 本番環境とdev環境で適切なベースURLを設定
+    if (baseUrl) {
+      this.baseUrl = baseUrl;
+    } else {
+      // Viteのベースパスを考慮
+      const viteBase = import.meta.env.BASE_URL || '/';
+      this.baseUrl = viteBase === '/' ? '/data/dialogues' : `${viteBase}data/dialogues`;
+    }
+    console.log('[DialogueLoader] Base URL:', this.baseUrl);
   }
 
   async loadDialogue(characterId: CharacterId): Promise<DialogueNode[]> {

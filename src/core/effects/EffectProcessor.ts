@@ -107,7 +107,10 @@ export class EffectProcessor {
   }
 
   process(effect: EffectUnion, context: GameContext): void {
+    console.log(`[EffectProcessor] Processing effect:`, effect);
+    
     if (effect.delay && effect.delay > 0) {
+      console.log(`[EffectProcessor] Delaying effect for ${effect.delay}ms`);
       this.pendingEffects.push({
         effect,
         executeAt: Date.now() + effect.delay
@@ -158,14 +161,34 @@ export class EffectProcessor {
   }
 
   private processIncrement(effect: IncrementEffect, context: GameContext): void {
+    console.log(`[EffectProcessor] Processing increment effect:`, effect);
+    
     const current = context.state.variables.get(effect.variable) || 0;
-    const amount = effect.amount || 1;
+    
+    // Support both 'amount' and 'value' properties from YAML
+    const amount = effect.amount || (effect as any).value || 1;
+    
+    console.log(`[EffectProcessor] Variable ${effect.variable}: current=${current}, amount=${amount}`);
+    
     context.state.variables.set(effect.variable, current + amount);
+    
+    // Verify the variable was set correctly
+    const newValue = context.state.variables.get(effect.variable);
+    console.log(`[EffectProcessor] Variable ${effect.variable} set to ${newValue}`);
+    
+    // Special handling for player_silence_count
+    if (effect.variable === 'player_silence_count') {
+      console.log(`🤐 [SILENCE COUNT] Incremented from ${current} to ${current + amount}`);
+      console.log(`🤐 [SILENCE COUNT] Current silence count in state:`, newValue);
+    }
   }
 
   private processDecrement(effect: DecrementEffect, context: GameContext): void {
     const current = context.state.variables.get(effect.variable) || 0;
-    const amount = effect.amount || 1;
+    
+    // Support both 'amount' and 'value' properties from YAML
+    const amount = effect.amount || (effect as any).value || 1;
+    
     context.state.variables.set(effect.variable, Math.max(0, current - amount));
   }
 

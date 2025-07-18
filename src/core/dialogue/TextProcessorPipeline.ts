@@ -26,7 +26,43 @@ export class VariableReplacementProcessor implements TextProcessor {
   priority = 100;
 
   process(text: string, context: GameContext): string {
-    return text.replace(/\{\{(\w+)\}\}/g, (match, varName) => {
+    return text.replace(/\{\{([\w\.]+)\}\}/g, (match, varName) => {
+      // Handle character-specific variables like character_encounter_count.minase
+      if (varName.includes('.')) {
+        const [baseVar, characterId] = varName.split('.');
+        
+        // Handle character encounter count
+        if (baseVar === 'character_encounter_count') {
+          const charState = context.state.characters.get(characterId);
+          if (charState) {
+            return String(charState.meetCount);
+          }
+          return '0';
+        }
+        
+        // Handle character-specific variables
+        const charState = context.state.characters.get(characterId);
+        if (charState) {
+          // Check if this is a trust level reference
+          if (baseVar === 'trust_level') {
+            return String(charState.trustLevel);
+          }
+          
+          // Check character-specific flags or other properties
+          if (charState.specificFlags && charState.specificFlags.has(baseVar)) {
+            return '1';
+          }
+        }
+        
+        // Check if it's a variable with character qualifier
+        const fullVarName = `${baseVar}.${characterId}`;
+        const value = context.state.variables.get(fullVarName);
+        if (value !== undefined) {
+          return String(value);
+        }
+      }
+      
+      // Handle regular variables
       const value = context.state.variables.get(varName);
       if (value !== undefined) {
         return String(value);

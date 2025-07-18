@@ -7,6 +7,7 @@ import type {
   DialogueHistoryEntry 
 } from '@/types';
 import { StateStorage } from './StateStorage';
+import { parse } from 'yaml';
 
 export class StateManager {
   private state: GameState;
@@ -43,6 +44,10 @@ export class StateManager {
 
     try {
       console.log('[StateManager] Initializing state manager...');
+      
+      // Initialize global variables from YAML definitions
+      await this.initializeGlobalVariables();
+      
       const savedState = await this.storage.load();
       if (savedState) {
         console.log('[StateManager] Found saved state:', savedState);
@@ -171,6 +176,7 @@ export class StateManager {
   }
 
   setVariable(name: string, value: number): void {
+    console.log(`[StateManager] 📝 Setting variable ${name} = ${value}`);
     this.state.variables.set(name, value);
   }
 
@@ -180,6 +186,7 @@ export class StateManager {
 
   incrementVariable(name: string, amount: number = 1): void {
     const current = this.state.variables.get(name) || 0;
+    console.log(`[StateManager] 📈 Incrementing variable ${name} from ${current} to ${current + amount}`);
     this.state.variables.set(name, current + amount);
   }
 
@@ -252,6 +259,36 @@ export class StateManager {
     this.save().catch(error => {
       console.error('Failed to save reset state:', error);
     });
+  }
+
+  private async initializeGlobalVariables(): Promise<void> {
+    try {
+      // Determine the correct base URL for variables
+      const viteBase = import.meta.env.BASE_URL || '/';
+      const baseUrl = viteBase === '/' ? '/data/variables' : `${viteBase}data/variables`;
+      
+      console.log('[StateManager] Loading global variables from:', `${baseUrl}/global-variables.yaml`);
+      
+      const response = await fetch(`${baseUrl}/global-variables.yaml`);
+      if (response.ok) {
+        const yamlText = await response.text();
+        const config = parse(yamlText) as { variables: Record<string, { initial_value: any }> };
+        
+        // Initialize variables if they don't exist
+        if (config.variables) {
+          Object.entries(config.variables).forEach(([name, definition]) => {
+            if (!this.state.variables.has(name)) {
+              this.state.variables.set(name, definition.initial_value);
+              console.log(`[StateManager] Initialized ${name} to ${definition.initial_value}`);
+            }
+          });
+        }
+      } else {
+        console.warn('[StateManager] Could not load global variables file');
+      }
+    } catch (error) {
+      console.error('[StateManager] Error loading global variables:', error);
+    }
   }
 
   destroy(): void {
