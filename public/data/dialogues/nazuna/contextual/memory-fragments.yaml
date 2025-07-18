@@ -1,0 +1,216 @@
+dialogues:
+  # なずなの記憶の断片 - 音への深い愛と失われた記憶
+  - id: nazuna_memory_fragment_father_song
+    text: "......（突然涙ぐむ）あれ？なぜか、子守唄が聞こえる。お父さんの...歌声。"
+    conditions:
+      - type: variable
+        name: nazuna.family_memories
+        operator: greater_than
+        value: 2
+      - type: variable
+        name: nazuna.trust_level
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "どんな子守唄？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: nazuna_father_song_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "father_song"
+              character: "nazuna"
+        next: nazuna_father_song_memory
+      - text: "......（静かに聞く）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: set_flag
+            flag: nazuna_father_song_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "father_song"
+              character: "nazuna"
+        next: nazuna_silent_memory_sharing
+
+  - id: nazuna_memory_fragment_lost_recording
+    text: "......（録音機を見つめる）昔、とても大切な録音があった。でも、失くしてしまった。今でも探してる。"
+    conditions:
+      - type: variable
+        name: nazuna.recorder_mentions
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: nazuna.trust_level
+        operator: greater_than
+        value: 5
+    choices:
+      - text: "どんな録音だった？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: nazuna_lost_recording_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "lost_recording"
+              character: "nazuna"
+        next: nazuna_precious_recording
+      - text: "一緒に探そう"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: nazuna_lost_recording_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "lost_recording"
+              character: "nazuna"
+        next: nazuna_search_companion
+
+  - id: nazuna_memory_fragment_first_sound
+    text: "......（遠くを見つめる）最初に好きになった音を覚えてる。雨の日、窓ガラスを叩く音。一人じゃなかった。"
+    conditions:
+      - type: variable
+        name: nazuna.rain_sounds
+        operator: greater_than
+        value: 2
+      - type: variable
+        name: nazuna.emotional_sounds
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "一人じゃなかった？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: nazuna_first_sound_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "first_sound"
+              character: "nazuna"
+        next: nazuna_rain_companion
+      - text: "特別な雨の日"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: nazuna_first_sound_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "first_sound"
+              character: "nazuna"
+        next: nazuna_special_rainy_day
+
+  # 中間ノード
+  - id: nazuna_father_song_memory
+    text: "......『小さな星よ、眠りなさい』って歌ってくれた。私が怖がりだった時、いつも。"
+    choices:
+      - text: "優しいお父さんだったんだね"
+        next: nazuna_father_gentleness
+      - text: "今でも聞こえる？"
+        next: nazuna_continuing_song
+
+  - id: nazuna_silent_memory_sharing
+    text: "......（小さく歌う）『小さな星よ、眠りなさい』...あなたにも聞こえるかな？"
+    choices:
+      - text: "聞こえる"
+        next: nazuna_shared_song
+      - text: "......（一緒に聞く）"
+        next: nazuna_quiet_connection
+
+  - id: nazuna_precious_recording
+    text: "......お母さんの笑い声。最後に聞いた、お母さんの笑い声。"
+    choices:
+      - text: "大切な声だったんだね"
+        next: nazuna_mother_voice
+      - text: "きっと見つかる"
+        next: nazuna_hope_recovery
+
+  - id: nazuna_search_companion
+    text: "......一緒に探してくれる？本当に？"
+    choices:
+      - text: "もちろん"
+        next: nazuna_grateful_search
+      - text: "諦めたくない"
+        next: nazuna_determined_search
+
+  - id: nazuna_rain_companion
+    text: "......お母さんがいた。窓の外を見ながら、『雨の音楽』って言ってくれた。"
+    choices:
+      - text: "素敵な表現だね"
+        next: nazuna_mother_poetry
+      - text: "お母さんも音が好きだった"
+        next: nazuna_inherited_love
+
+  - id: nazuna_special_rainy_day
+    text: "......生まれて初めて、音に心を奪われた日。雨が私に音楽を教えてくれた。"
+    choices:
+      - text: "運命の日だったんだね"
+        next: nazuna_destiny_sound
+      - text: "雨は先生だった"
+        next: nazuna_rain_teacher
+
+  # 収束ノード
+  - id: nazuna_father_gentleness
+    text: "......（涙を拭く）はい。とても優しい人でした。"
+    choices: []
+
+  - id: nazuna_continuing_song
+    text: "......今でも。静かにしていると、聞こえてくる。"
+    choices: []
+
+  - id: nazuna_shared_song
+    text: "......（嬉しそうに）聞こえる...一緒に聞いてくれて、ありがとう。"
+    choices: []
+
+  - id: nazuna_quiet_connection
+    text: "......（静かに微笑む）"
+    choices: []
+
+  - id: nazuna_mother_voice
+    text: "......（頷く）世界で一番美しい声でした。"
+    choices: []
+
+  - id: nazuna_hope_recovery
+    text: "......そう信じてる。いつか、きっと。"
+    choices: []
+
+  - id: nazuna_grateful_search
+    text: "......ありがとう。一人じゃないって、心強い。"
+    choices: []
+
+  - id: nazuna_determined_search
+    text: "......諦めたくない。私も、あなたも。"
+    choices: []
+
+  - id: nazuna_mother_poetry
+    text: "......お母さんは詩人でした。音の詩人。"
+    choices: []
+
+  - id: nazuna_inherited_love
+    text: "......（小さく頷く）お母さんから受け継いだ、音への愛。"
+    choices: []
+
+  - id: nazuna_destiny_sound
+    text: "......運命...そうかもしれません。音と出会う運命。"
+    choices: []
+
+  - id: nazuna_rain_teacher
+    text: "......最初の先生。今でも、雨の日が好きです。"
+    choices: []

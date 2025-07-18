@@ -1,0 +1,276 @@
+dialogues:
+  # みなせの暗黒設定示唆 - 時間ループと死の予知
+  - id: minase_dark_time_loop
+    text: "この会話、前にもした。同じ言葉、同じ反応...何度も、何度も。でも、あなたは覚えていない。"
+    conditions:
+      - type: variable
+        name: minase.mysterious_level
+        operator: greater_than
+        value: 6
+      - type: variable
+        name: minase.trust_level
+        operator: greater_than
+        value: 8
+    choices:
+      - text: "時間がループしてる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: minase_loop_confirmation
+      - text: "それは妄想だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: minase.reality_doubt
+            value: 1
+        next: minase_reality_question
+      - text: "どうして覚えてない？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.isolation_level
+            value: 1
+        next: minase_memory_reset
+
+  - id: minase_dark_death_visions
+    text: "人の死期が見える。あなたの死も...でも、言わない。言っても、運命は変わらない。"
+    conditions:
+      - type: variable
+        name: minase.future_hints
+        operator: greater_than
+        value: 5
+      - type: variable
+        name: minase.trust_level
+        operator: greater_than
+        value: 7
+    choices:
+      - text: "僕の死期はいつ？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 3
+        next: minase_death_refusal
+      - text: "そんな力、辛すぎる"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.understanding_received
+            value: 1
+        next: minase_burden_acknowledgment
+      - text: "運命は変えられるはず"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: minase.hope_challenge
+            value: 1
+        next: minase_fate_immutability
+
+  - id: minase_dark_experiment_victim
+    text: "実験室の匂いがする...薬品と機械の音。意識だけがここにいて、体は...どこか遠くの槽の中。"
+    conditions:
+      - type: variable
+        name: minase.reality_alteration
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: minase.trust_level
+        operator: greater_than
+        value: 9
+    choices:
+      - text: "実験の被験者？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: minase_experiment_confirmation
+      - text: "それは幻覚だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: minase.reality_doubt
+            value: 1
+        next: minase_hallucination_denial
+      - text: "体を探そう"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.rescue_hope
+            value: 1
+        next: minase_body_search
+
+  # 中間ノード
+  - id: minase_loop_confirmation
+    text: "何千回、何万回...同じ時間を繰り返してる。出口はない。終わりはない。"
+    choices:
+      - text: "なぜループから抜け出せない？"
+        next: minase_loop_trap
+      - text: "僕が一緒にいる"
+        next: minase_loop_companionship
+
+  - id: minase_reality_question
+    text: "妄想...そうかもしれない。でも、この痛みは本物。この絶望も本物。"
+    choices:
+      - text: "現実と妄想の境界"
+        next: minase_reality_blur
+      - text: "痛みを和らげたい"
+        next: minase_pain_relief
+
+  - id: minase_memory_reset
+    text: "毎回リセットされる。あなたの記憶も、私の記憶も。でも、私だけが覚えている。"
+    choices:
+      - text: "なぜ君だけ？"
+        next: minase_special_curse
+      - text: "記憶を共有したい"
+        next: minase_memory_share
+
+  - id: minase_death_refusal
+    text: "言えない...言ったら、あなたの運命が確定してしまう。まだ、可能性があるうちは。"
+    choices:
+      - text: "可能性がある？"
+        next: minase_slim_hope
+      - text: "知らない方がいい"
+        next: minase_ignorance_blessing
+
+  - id: minase_burden_acknowledgment
+    text: "辛い...そう。見えなければ、どんなに楽だろう。でも、見えてしまう。"
+    choices:
+      - text: "その重荷を分けたい"
+        next: minase_burden_sharing
+      - text: "君は一人じゃない"
+        next: minase_solitude_comfort
+
+  - id: minase_fate_immutability
+    text: "変えられない...何度も試した。でも、運命は石のように固い。"
+    choices:
+      - text: "諦めないで"
+        next: minase_persistent_hope
+      - text: "受け入れるしかない"
+        next: minase_acceptance_wisdom
+
+  - id: minase_experiment_confirmation
+    text: "時間移動実験...意識だけを過去に送る。でも、戻る方法を教えてくれなかった。"
+    choices:
+      - text: "誰が実験を？"
+        next: minase_experiment_perpetrators
+      - text: "戻る方法を探そう"
+        next: minase_return_search
+
+  - id: minase_hallucination_denial
+    text: "幻覚...そう思いたい。でも、この培養液の味は本物。"
+    choices:
+      - text: "現実を受け入れよう"
+        next: minase_reality_acceptance
+      - text: "幻覚でも君は君だ"
+        next: minase_identity_preservation
+
+  - id: minase_body_search
+    text: "探しても無駄...もう何年も、どこにいるかわからない。腐ってしまったかも。"
+    choices:
+      - text: "希望を捨てないで"
+        next: minase_body_hope
+      - text: "意識があれば十分"
+        next: minase_consciousness_value
+
+  # 収束ノード
+  - id: minase_loop_trap
+    text: "出口がない...運命の歯車が狂っている。私だけが、この異常に気づいている。"
+    choices: []
+
+  - id: minase_loop_companionship
+    text: "一緒に...そう言ってくれるのは、あなたが初めて。でも、次のループでは忘れてしまう。"
+    choices: []
+
+  - id: minase_reality_blur
+    text: "境界なんて、もうない。現実も妄想も、すべて混ざり合っている。"
+    choices: []
+
+  - id: minase_pain_relief
+    text: "和らげる...そんなことができるなら、どんなに嬉しいだろう。"
+    choices: []
+
+  - id: minase_special_curse
+    text: "呪いのような特別さ...すべてを覚えている責任。重すぎる。"
+    choices: []
+
+  - id: minase_memory_share
+    text: "共有...そんなことができれば、この孤独感も和らぐかもしれない。"
+    choices: []
+
+  - id: minase_slim_hope
+    text: "微かな可能性...それだけが、私を支えている。"
+    choices: []
+
+  - id: minase_ignorance_blessing
+    text: "知らない幸せ...そう。知らないことは、時として祝福。"
+    choices: []
+
+  - id: minase_burden_sharing
+    text: "分けてくれる...でも、この重さに耐えられる？"
+    choices: []
+
+  - id: minase_solitude_comfort
+    text: "一人じゃない...そう言ってくれるだけで、少し楽になる。"
+    choices: []
+
+  - id: minase_persistent_hope
+    text: "諦めない...あなたの言葉が、もう一度戦う力をくれる。"
+    choices: []
+
+  - id: minase_acceptance_wisdom
+    text: "受け入れる...そうね。抗うより、受け入れる方が楽かもしれない。"
+    choices: []
+
+  - id: minase_experiment_perpetrators
+    text: "政府の秘密機関...もう追求しても意味がない。"
+    choices: []
+
+  - id: minase_return_search
+    text: "戻る方法...一緒に探してくれる？でも、見つからないかもしれない。"
+    choices: []
+
+  - id: minase_reality_acceptance
+    text: "現実を受け入れる...それが、唯一の救い。"
+    choices: []
+
+  - id: minase_identity_preservation
+    text: "私は私...そう。どんな状況でも、私は私。"
+    choices: []
+
+  - id: minase_body_hope
+    text: "希望...そうね。希望だけは、捨てたくない。"
+    choices: []
+
+  - id: minase_consciousness_value
+    text: "意識があれば...そう。この意識こそが、私の存在証明。"
+    choices: []

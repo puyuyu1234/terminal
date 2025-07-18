@@ -1,0 +1,276 @@
+dialogues:
+  # あやねの暗黒設定示唆 - 無邪気さの裏に隠された闇
+  - id: ayane_dark_red_muffler
+    text: "マフラーが赤いのは...最初は白かったの。でも、だんだん赤くなった。洗っても、赤いまま。"
+    conditions:
+      - type: variable
+        name: ayane.muffler_mentions
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: ayane.trust_level
+        operator: greater_than
+        value: 7
+    choices:
+      - text: "なぜ赤くなった？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: ayane_muffler_stain
+      - text: "染料がついたのかな"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.innocence_protection
+            value: 1
+        next: ayane_innocent_explanation
+      - text: "赤い色、綺麗だよ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.color_acceptance
+            value: 1
+        next: ayane_red_beauty
+
+  - id: ayane_dark_forgotten_friend
+    text: "小さな友達がいたの。とても小さくて、弱くて...でも、今はいない。どこに行ったか、思い出せない。"
+    conditions:
+      - type: variable
+        name: ayane.mysterious_encounters
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: ayane.trust_level
+        operator: greater_than
+        value: 8
+    choices:
+      - text: "どんな友達？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: ayane_small_friend_description
+      - text: "引っ越したのかもしれない"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.innocent_theory
+            value: 1
+        next: ayane_moving_theory
+      - text: "思い出すのが怖い？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.fear_recognition
+            value: 1
+        next: ayane_memory_fear
+
+  - id: ayane_dark_multiple_voices
+    text: "時々、違う声が聞こえる。私の声だけど、私じゃない。『やっちゃダメ』って言ってくる。"
+    conditions:
+      - type: variable
+        name: ayane.confusion_level
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: ayane.trust_level
+        operator: greater_than
+        value: 9
+    choices:
+      - text: "誰の声？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: ayane_other_self
+      - text: "それは良心の声だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.moral_guidance
+            value: 1
+        next: ayane_conscience_explanation
+      - text: "何をやっちゃダメ？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.forbidden_actions
+            value: 1
+        next: ayane_dangerous_impulse
+
+  # 中間ノード
+  - id: ayane_muffler_stain
+    text: "赤い絵の具で遊んでた時に...でも、絵の具じゃなかったかも。温かくて、どろっとしてて。"
+    choices:
+      - text: "それは血？"
+        next: ayane_blood_suggestion
+      - text: "ケチャップかな"
+        next: ayane_food_theory
+
+  - id: ayane_innocent_explanation
+    text: "染料...そうかもしれない。でも、あの日のことは、あまり覚えてない。"
+    choices:
+      - text: "思い出さなくてもいい"
+        next: ayane_memory_protection
+      - text: "何があったの？"
+        next: ayane_day_inquiry
+
+  - id: ayane_red_beauty
+    text: "綺麗...そう言ってくれるの、あなただけ。みんな、怖がって見ない。"
+    choices:
+      - text: "なぜ怖がるの？"
+        next: ayane_fear_reason
+      - text: "君の大切なものだから"
+        next: ayane_precious_item
+
+  - id: ayane_small_friend_description
+    text: "小さな男の子。泣き虫で、いつも私にくっついてた。『お姉ちゃん』って呼んでくれた。"
+    choices:
+      - text: "弟がいたの？"
+        next: ayane_brother_possibility
+      - text: "今でも会いたい？"
+        next: ayane_reunion_wish
+
+  - id: ayane_moving_theory
+    text: "引っ越し...そうかもしれない。でも、お別れも言わずに。"
+    choices:
+      - text: "急な引っ越しだったのかも"
+        next: ayane_sudden_departure
+      - text: "きっと君を忘れてない"
+        next: ayane_unforgotten_bond
+
+  - id: ayane_memory_fear
+    text: "怖い...そう。思い出すと、胸が苦しくなる。でも、思い出さないと、その子が消えてしまう。"
+    choices:
+      - text: "無理しなくていい"
+        next: ayane_gentle_acceptance
+      - text: "少しずつ思い出そう"
+        next: ayane_gradual_remembering
+
+  - id: ayane_other_self
+    text: "もう一人の私...大人の私。冷たくて、厳しくて、でも私を守ってくれる。"
+    choices:
+      - text: "守ってくれるなら良い声"
+        next: ayane_protective_voice
+      - text: "一人で抱え込まないで"
+        next: ayane_burden_sharing
+
+  - id: ayane_conscience_explanation
+    text: "良心...そういう難しい言葉、よくわからない。でも、『ダメ』って言ってくる。"
+    choices:
+      - text: "それは大切な声"
+        next: ayane_important_voice
+      - text: "時には従った方がいい"
+        next: ayane_voice_obedience
+
+  - id: ayane_dangerous_impulse
+    text: "小さな生き物を...でも、言えない。言ったら、その声がもっと大きくなる。"
+    choices:
+      - text: "危険な衝動があるんだね"
+        next: ayane_impulse_recognition
+      - text: "声に従って正解だった"
+        next: ayane_voice_success
+
+  # 収束ノード
+  - id: ayane_blood_suggestion
+    text: "血...そんな怖い言葉、使わないで。でも、あの温かさは...忘れられない。"
+    choices: []
+
+  - id: ayane_food_theory
+    text: "ケチャップ...そうかもしれない。お料理の手伝いをしてた時に。"
+    choices: []
+
+  - id: ayane_memory_protection
+    text: "思い出さなくてもいい...優しいね。でも、時々、勝手に思い出しちゃう。"
+    choices: []
+
+  - id: ayane_day_inquiry
+    text: "あの日...とても暑い日だった。それしか、覚えてない。"
+    choices: []
+
+  - id: ayane_fear_reason
+    text: "怖がる...血の色だからかな。でも、私には綺麗に見える。"
+    choices: []
+
+  - id: ayane_precious_item
+    text: "大切なもの...そう。これがないと、私じゃない。"
+    choices: []
+
+  - id: ayane_brother_possibility
+    text: "弟...そうかもしれない。でも、お母さんは『一人っ子』だって。"
+    choices: []
+
+  - id: ayane_reunion_wish
+    text: "会いたい...とても会いたい。でも、もう会えない気がする。"
+    choices: []
+
+  - id: ayane_sudden_departure
+    text: "急な引っ越し...そうね。でも、なぜ誰も教えてくれなかったんだろう。"
+    choices: []
+
+  - id: ayane_unforgotten_bond
+    text: "忘れてない...そう信じたい。私も、忘れないから。"
+    choices: []
+
+  - id: ayane_gentle_acceptance
+    text: "無理しない...そうしてる。でも、夢に出てくるの。"
+    choices: []
+
+  - id: ayane_gradual_remembering
+    text: "少しずつ...そうね。いつか、全部思い出せるかもしれない。"
+    choices: []
+
+  - id: ayane_protective_voice
+    text: "守ってくれる...そう。危険な時、いつも止めてくれる。"
+    choices: []
+
+  - id: ayane_burden_sharing
+    text: "一人で抱え込まない...でも、誰に話せばいいの？"
+    choices: []
+
+  - id: ayane_important_voice
+    text: "大切な声...そうね。その声のおかげで、悪い子にならずに済んでる。"
+    choices: []
+
+  - id: ayane_voice_obedience
+    text: "従った方がいい...そう。その声は、いつも正しい。"
+    choices: []
+
+  - id: ayane_impulse_recognition
+    text: "危険な衝動...そんな風に言われると、怖くなる。"
+    choices: []
+
+  - id: ayane_voice_success
+    text: "正解だった...そう。その声に従って、良かった。"
+    choices: []

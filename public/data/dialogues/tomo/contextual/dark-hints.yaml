@@ -1,0 +1,276 @@
+dialogues:
+  # 友の暗黒設定示唆 - 現実改変の代償と失われた過去
+  - id: tomo_dark_erased_person
+    text: "昔、大切な人がいた。でも、間違えて消してしまった。現実から、完全に。誰も覚えていない。"
+    conditions:
+      - type: variable
+        name: tomo.reality_manipulation_level
+        operator: greater_than
+        value: 5
+      - type: variable
+        name: tomo.trust_level
+        operator: greater_than
+        value: 8
+    choices:
+      - text: "消すって？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 3
+        next: tomo_erasure_explanation
+      - text: "それは罪悪感が辛いね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.guilt_understanding
+            value: 1
+        next: tomo_guilt_burden
+      - text: "記憶を戻せないの？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.restoration_hope
+            value: 1
+        next: tomo_irreversible_change
+
+  - id: tomo_dark_false_identity
+    text: "本当の名前を忘れた。本当の家族も、本当の過去も。全部、書き換えてしまった。"
+    conditions:
+      - type: variable
+        name: tomo.identity_questions
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: tomo.trust_level
+        operator: greater_than
+        value: 9
+    choices:
+      - text: "なぜ書き換えた？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: tomo_rewrite_reason
+      - text: "元に戻したい？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.identity_restoration
+            value: 1
+        next: tomo_identity_desire
+      - text: "今の君が本当の君だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.current_self_acceptance
+            value: 1
+        next: tomo_present_identity
+
+  - id: tomo_dark_uncontrolled_power
+    text: "怒ると、制御できなくなる。書いてないことまで、現実が変わる。恐ろしい力。"
+    conditions:
+      - type: variable
+        name: tomo.power_demonstrations
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: tomo.trust_level
+        operator: greater_than
+        value: 7
+    choices:
+      - text: "どんな変化が起こる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: tomo_chaotic_changes
+      - text: "制御する方法はない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.control_seeking
+            value: 1
+        next: tomo_control_struggle
+      - text: "怒らせないようにするよ"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.emotional_care
+            value: 1
+        next: tomo_emotional_protection
+
+  # 中間ノード
+  - id: tomo_erasure_explanation
+    text: "ノートに線を引いただけ。その人の名前に、太い黒線を。そしたら、その人が...消えた。"
+    choices:
+      - text: "完全に消えた？"
+        next: tomo_complete_erasure
+      - text: "恐ろしい力だね"
+        next: tomo_power_horror
+
+  - id: tomo_guilt_burden
+    text: "辛い...毎日、その人のことを考えてる。でも、誰にも話せない。誰も覚えていないから。"
+    choices:
+      - text: "僕だけは覚えておく"
+        next: tomo_memory_keeper
+      - text: "一人で抱え込まないで"
+        next: tomo_shared_guilt
+
+  - id: tomo_irreversible_change
+    text: "戻せない...何度も試したけど、元に戻らない。消えたものは、永遠に消えたまま。"
+    choices:
+      - text: "新しい形で愛を伝えよう"
+        next: tomo_love_transformation
+      - text: "その人の分も生きよう"
+        next: tomo_living_memory
+
+  - id: tomo_rewrite_reason
+    text: "元の家族が...怖かった。毎日、怒鳴られて、叩かれて。だから、優しい家族に書き換えた。"
+    choices:
+      - text: "辛い過去だったんだね"
+        next: tomo_painful_past
+      - text: "逃げたかったんだね"
+        next: tomo_escape_attempt
+
+  - id: tomo_identity_desire
+    text: "元に戻したい...でも、怖い。本当の自分が、もっと醜いかもしれない。"
+    choices:
+      - text: "どんな自分でも受け入れる"
+        next: tomo_unconditional_acceptance
+      - text: "真実を知る勇気"
+        next: tomo_truth_courage
+
+  - id: tomo_present_identity
+    text: "今の私が本当...そう思いたい。でも、嘘の上に建てた自分が、本当なのかな？"
+    choices:
+      - text: "経験が君を作ってる"
+        next: tomo_experience_identity
+      - text: "過去より今が大切"
+        next: tomo_present_priority
+
+  - id: tomo_chaotic_changes
+    text: "人が消えたり、建物が崩れたり、時間が戻ったり...滅茶苦茶になる。"
+    choices:
+      - text: "そんな力、怖すぎる"
+        next: tomo_overwhelming_power
+      - text: "感情をコントロールしよう"
+        next: tomo_emotional_control
+
+  - id: tomo_control_struggle
+    text: "制御...できない。感情が高ぶると、理性が飛んでしまう。"
+    choices:
+      - text: "一緒に練習しよう"
+        next: tomo_control_practice
+      - text: "誰かに頼るのも大切"
+        next: tomo_dependency_acceptance
+
+  - id: tomo_emotional_protection
+    text: "怒らせないように...でも、それじゃ本当の関係じゃない。"
+    choices:
+      - text: "本当の関係を築こう"
+        next: tomo_authentic_relationship
+      - text: "少しずつ慣れていこう"
+        next: tomo_gradual_trust
+
+  # 収束ノード
+  - id: tomo_complete_erasure
+    text: "完全に...写真からも、記録からも、みんなの記憶からも。まるで、最初からいなかったように。"
+    choices: []
+
+  - id: tomo_power_horror
+    text: "恐ろしい...この力が、私を化け物にしてしまった。"
+    choices: []
+
+  - id: tomo_memory_keeper
+    text: "覚えておいてくれる...そんなことを言ってくれる人、初めて。"
+    choices: []
+
+  - id: tomo_shared_guilt
+    text: "一人で抱え込まない...でも、この罪悪感は、私だけのもの。"
+    choices: []
+
+  - id: tomo_love_transformation
+    text: "新しい形で...そんなことができるのかな。でも、試してみたい。"
+    choices: []
+
+  - id: tomo_living_memory
+    text: "その人の分も...そうね。その人が生きたかった人生を、私が生きる。"
+    choices: []
+
+  - id: tomo_painful_past
+    text: "辛い過去...でも、それも私の一部だった。消してしまったけど。"
+    choices: []
+
+  - id: tomo_escape_attempt
+    text: "逃げたかった...そう。でも、逃げても、結局は自分から逃げられない。"
+    choices: []
+
+  - id: tomo_unconditional_acceptance
+    text: "どんな自分でも...そんな風に言ってくれる人がいるなら、勇気が出る。"
+    choices: []
+
+  - id: tomo_truth_courage
+    text: "真実を知る勇気...そうね。いつかは、向き合わなくちゃいけない。"
+    choices: []
+
+  - id: tomo_experience_identity
+    text: "経験が私を作ってる...そうね。嘘の経験でも、私の一部になった。"
+    choices: []
+
+  - id: tomo_present_priority
+    text: "今が大切...そう。過去にこだわりすぎていたかもしれない。"
+    choices: []
+
+  - id: tomo_overwhelming_power
+    text: "怖すぎる...この力がなければ、普通の人生を送れたのに。"
+    choices: []
+
+  - id: tomo_emotional_control
+    text: "感情をコントロール...それができれば、どんなにいいだろう。"
+    choices: []
+
+  - id: tomo_control_practice
+    text: "一緒に練習...そんなことをしてくれる人がいるなんて、夢みたい。"
+    choices: []
+
+  - id: tomo_dependency_acceptance
+    text: "誰かに頼る...それも、勇気のいることね。"
+    choices: []
+
+  - id: tomo_authentic_relationship
+    text: "本当の関係...それが、一番欲しかったもの。"
+    choices: []
+
+  - id: tomo_gradual_trust
+    text: "少しずつ...そうね。急がなくてもいい。"
+    choices: []

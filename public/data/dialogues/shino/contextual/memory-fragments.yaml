@@ -1,0 +1,303 @@
+dialogues:
+  # しののの記憶の断片 - 失われた愛と混乱する記憶
+  - id: shino_memory_fragment_wedding_dress
+    text: "白いドレスを着てる夢を見る。とても美しいドレス。誰かが『似合うね』って言ってくれる。でも、顔が見えない。"
+    conditions:
+      - type: variable
+        name: shino.waiting_person_mentions
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: shino.trust_level
+        operator: greater_than
+        value: 5
+    choices:
+      - text: "結婚式の夢？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: shino_wedding_dress_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "wedding_dress"
+              character: "shino"
+        next: shino_wedding_dream
+      - text: "美しかったんだね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: shino_wedding_dress_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "wedding_dress"
+              character: "shino"
+        next: shino_beautiful_moment
+      - text: "その人の声は覚えてる？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: shino_wedding_dress_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "wedding_dress"
+              character: "shino"
+        next: shino_beloved_voice
+
+  - id: shino_memory_fragment_last_goodbye
+    text: "『少し出かけてくる』って言って、手を振った。それが最後だった。でも、何の最後だったのか分からない。"
+    conditions:
+      - type: variable
+        name: shino.memory_fragments
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: shino.comfort_level
+        operator: greater_than
+        value: 4
+    choices:
+      - text: "出かけた人？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: shino_last_goodbye_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "last_goodbye"
+              character: "shino"
+        next: shino_departed_person
+      - text: "手を振り返した？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: shino_last_goodbye_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "last_goodbye"
+              character: "shino"
+        next: shino_wave_response
+      - text: "きっと帰ってくる"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: shino_last_goodbye_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "last_goodbye"
+              character: "shino"
+        next: shino_return_hope
+
+  - id: shino_memory_fragment_shared_sunset
+    text: "夕日を一緒に見た。『綺麗だね』って言い合って、手を繋いだ。その時の温かさだけは、はっきり覚えてる。"
+    conditions:
+      - type: variable
+        name: shino.physical_memories
+        operator: greater_than
+        value: 2
+      - type: variable
+        name: shino.love_recognition
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "どこで見た夕日？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: shino_shared_sunset_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "shared_sunset"
+              character: "shino"
+        next: shino_sunset_location
+      - text: "温かい記憶だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: shino_shared_sunset_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "shared_sunset"
+              character: "shino"
+        next: shino_warmth_memory
+      - text: "愛し合ってたんだね"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: shino_shared_sunset_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "shared_sunset"
+              character: "shino"
+        next: shino_mutual_love
+
+  # 中間ノード
+  - id: shino_wedding_dream
+    text: "結婚式...そうかもしれない。でも、夢なのか、記憶なのか、分からない。"
+    choices:
+      - text: "夢でも記憶でも美しい"
+        next: shino_beautiful_reality
+      - text: "心の奥の願い"
+        next: shino_deep_wish
+
+  - id: shino_beautiful_moment
+    text: "美しかった...そう。人生で一番美しい瞬間だった気がする。"
+    choices:
+      - text: "特別な瞬間"
+        next: shino_special_moment
+      - text: "その美しさを大切に"
+        next: shino_treasure_beauty
+
+  - id: shino_beloved_voice
+    text: "声...優しくて、温かくて、愛に満ちた声。その声だけは、絶対に忘れない。"
+    choices:
+      - text: "愛の声"
+        next: shino_voice_of_love
+      - text: "心に刻まれてる"
+        next: shino_engraved_voice
+
+  - id: shino_departed_person
+    text: "大切な人。私の全てだった人。でも、どこに行ったのか分からない。"
+    choices:
+      - text: "探し続けてるんだね"
+        next: shino_endless_search
+      - text: "きっと近くにいる"
+        next: shino_nearby_presence
+
+  - id: shino_wave_response
+    text: "手を振り返した...そう。笑顔で手を振った。でも、それが最後だなんて知らなかった。"
+    choices:
+      - text: "笑顔で送り出した"
+        next: shino_smiling_farewell
+      - text: "美しい最後の記憶"
+        next: shino_beautiful_ending
+
+  - id: shino_return_hope
+    text: "帰ってくる...そう信じてる。だから、ここで待ってる。"
+    choices:
+      - text: "待つ価値がある"
+        next: shino_worthy_wait
+      - text: "愛があるから待てる"
+        next: shino_love_powered_wait
+
+  - id: shino_sunset_location
+    text: "海の見える丘だった気がする。二人だけの特別な場所。風が気持ちよくて。"
+    choices:
+      - text: "ロマンチックな場所"
+        next: shino_romantic_place
+      - text: "二人の秘密の場所"
+        next: shino_secret_place
+
+  - id: shino_warmth_memory
+    text: "温かい記憶...そう。心も体も、すべてが温かかった。"
+    choices:
+      - text: "愛に包まれてた"
+        next: shino_surrounded_by_love
+      - text: "幸せな時間"
+        next: shino_happy_time
+
+  - id: shino_mutual_love
+    text: "愛し合ってた...そうね。深く、深く愛し合ってた。"
+    choices:
+      - text: "真実の愛"
+        next: shino_true_love
+      - text: "永遠の愛"
+        next: shino_eternal_love
+
+  # 収束ノード
+  - id: shino_beautiful_reality
+    text: "夢でも記憶でも美しい...そうね。美しいものは美しい。"
+    choices: []
+
+  - id: shino_deep_wish
+    text: "心の奥の願い...そうかもしれない。叶えたい願い。"
+    choices: []
+
+  - id: shino_special_moment
+    text: "特別な瞬間...そう。二度とない特別な瞬間。"
+    choices: []
+
+  - id: shino_treasure_beauty
+    text: "その美しさを大切に...そうする。心の奥深くに、大切にしまっておく。"
+    choices: []
+
+  - id: shino_voice_of_love
+    text: "愛の声...そうね。愛がいっぱい込められた声。"
+    choices: []
+
+  - id: shino_engraved_voice
+    text: "心に刻まれてる...そう。深く、深く刻まれてる。"
+    choices: []
+
+  - id: shino_endless_search
+    text: "探し続けてる...そう。諦めるつもりはない。"
+    choices: []
+
+  - id: shino_nearby_presence
+    text: "近くにいる...そう感じる時がある。すぐそばに。"
+    choices: []
+
+  - id: shino_smiling_farewell
+    text: "笑顔で送り出した...そう。最後も笑顔だった。"
+    choices: []
+
+  - id: shino_beautiful_ending
+    text: "美しい最後の記憶...そうね。悲しいけれど、美しい。"
+    choices: []
+
+  - id: shino_worthy_wait
+    text: "待つ価値がある...そう。どんなに長くても、待つ価値がある。"
+    choices: []
+
+  - id: shino_love_powered_wait
+    text: "愛があるから待てる...そうね。愛の力で、ずっと待てる。"
+    choices: []
+
+  - id: shino_romantic_place
+    text: "ロマンチックな場所...そうだった。とてもロマンチックだった。"
+    choices: []
+
+  - id: shino_secret_place
+    text: "秘密の場所...そう。私たちだけの秘密の場所。"
+    choices: []
+
+  - id: shino_surrounded_by_love
+    text: "愛に包まれてた...そう。すべてが愛に包まれてた。"
+    choices: []
+
+  - id: shino_happy_time
+    text: "幸せな時間...そうだった。とても幸せな時間。"
+    choices: []
+
+  - id: shino_true_love
+    text: "真実の愛...そうね。偽りのない、真実の愛。"
+    choices: []
+
+  - id: shino_eternal_love
+    text: "永遠の愛...そう。時間を超えた、永遠の愛。"
+    choices: []

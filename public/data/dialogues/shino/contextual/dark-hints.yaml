@@ -1,0 +1,279 @@
+dialogues:
+  # しのの暗黒設定示唆 - 記憶の欠落と待つ理由の真実
+  - id: shino_dark_repeated_words
+    text: "『すぐに帰るから』って...何度も何度も聞いた言葉。でも、『すぐ』って、どのくらい？"
+    conditions:
+      - type: variable
+        name: shino.waiting_person_mentions
+        operator: greater_than
+        value: 5
+      - type: variable
+        name: shino.trust_level
+        operator: greater_than
+        value: 7
+    choices:
+      - text: "どのくらい待ってる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: shino_time_confusion_deep
+      - text: "もう帰ってこないかもしれない"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.reality_confrontation
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: shino_painful_truth_avoidance
+      - text: "......（何も言わない）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_silent_understanding
+
+  - id: shino_dark_memory_gaps
+    text: "記憶に...空白がある。大切な部分だけ、真っ黒に塗りつぶされてる。見たくないものを、見なかったことにしてる。"
+    conditions:
+      - type: variable
+        name: shino.memory_fragments
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: shino.trust_level
+        operator: greater_than
+        value: 8
+    choices:
+      - text: "何を見なかったことに？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: shino_blocked_trauma
+      - text: "見なくてもいい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_protective_response
+      - text: "思い出さない方がいいこともある"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.understanding_level
+            value: 1
+        next: shino_memory_protection
+
+  - id: shino_dark_medication_hints
+    text: "薬を飲むと、痛みが和らぐ。たくさん飲むと、もっと和らぐ。でも、時々、どこにいるかわからなくなる。"
+    conditions:
+      - type: variable
+        name: shino.confusion_level
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: shino.trust_level
+        operator: greater_than
+        value: 6
+    choices:
+      - text: "どんな薬？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: shino_medication_dependency
+      - text: "飲みすぎは危険だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.concern_received
+            value: 1
+        next: shino_danger_acknowledgment
+      - text: "痛みって？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.emotional_pain
+            value: 1
+        next: shino_pain_nature
+
+  # 中間ノード
+  - id: shino_time_confusion_deep
+    text: "何年？何十年？...もう数えられない。でも、約束は約束。『必ず迎えに行く』って。"
+    choices:
+      - text: "長すぎる"
+        next: shino_endless_waiting
+      - text: "その人はもう..."
+        next: shino_truth_resistance
+
+  - id: shino_painful_truth_avoidance
+    text: "（首を振る）違う。そんなことない。きっと、迷子になってるだけ。道がわからないだけ。"
+    choices:
+      - text: "もしかして、事故とか..."
+        next: shino_accident_denial
+      - text: "そうかもしれない"
+        next: shino_delusion_support
+
+  - id: shino_silent_understanding
+    text: "......（安心したような表情）言葉にしなくても、わかってくれる。"
+    choices:
+      - text: "......（そっと寄り添う）"
+        next: shino_wordless_comfort
+      - text: "......（手を差し伸べる）"
+        next: shino_gentle_contact
+
+  - id: shino_blocked_trauma
+    text: "赤い色...スクリーチ音...泣き声...でも、それ以上は思い出せない。思い出したくない。"
+    choices:
+      - text: "無理しなくていい"
+        next: shino_trauma_protection
+      - text: "交通事故？"
+        next: shino_accident_fragment
+
+  - id: shino_protective_response
+    text: "優しいね。でも、見なかったことにしてるのは、私だけじゃないかもしれない。"
+    choices:
+      - text: "みんな何かを隠してる"
+        next: shino_universal_secrets
+      - text: "君が一番辛いはず"
+        next: shino_pain_acknowledgment
+
+  - id: shino_memory_protection
+    text: "そうね...知らない方が幸せなこともある。でも、忘れることはできない。"
+    choices:
+      - text: "記憶は消えない"
+        next: shino_eternal_memory
+      - text: "時間が癒してくれる"
+        next: shino_time_healing
+
+  - id: shino_medication_dependency
+    text: "心を静める薬...でも、最近は効かなくなってきた。もっと、たくさん..."
+    choices:
+      - text: "それは依存だよ"
+        next: shino_dependency_realization
+      - text: "医者に相談した？"
+        next: shino_medical_avoidance
+
+  - id: shino_danger_acknowledgment
+    text: "危険...そうね。でも、現実の方がもっと危険。薬の中の方が、安全。"
+    choices:
+      - text: "現実から逃げても解決しない"
+        next: shino_escape_reality
+      - text: "一緒に現実と向き合おう"
+        next: shino_reality_support
+
+  - id: shino_pain_nature
+    text: "心の痛み...胸が締め付けられる痛み。呼吸ができなくなる痛み。"
+    choices:
+      - text: "喪失の痛み"
+        next: shino_loss_pain
+      - text: "その痛みも君の一部"
+        next: shino_pain_acceptance
+
+  # 収束ノード
+  - id: shino_endless_waiting
+    text: "長すぎる...でも、待つのをやめたら、その人は本当にいなくなってしまう。"
+    choices: []
+
+  - id: shino_truth_resistance
+    text: "（強く首を振る）違う！まだ生きてる！きっと、きっと..."
+    choices: []
+
+  - id: shino_accident_denial
+    text: "事故なんて...そんなこと、考えたくない。考えちゃだめ。"
+    choices: []
+
+  - id: shino_delusion_support
+    text: "そう...道に迷ってるだけ。だから、目印になるように、ここで待ってる。"
+    choices: []
+
+  - id: shino_wordless_comfort
+    text: "......（静かに涙を流す）"
+    choices: []
+
+  - id: shino_gentle_contact
+    text: "......（そっと手を握る）温かい...久しぶりに、温かい。"
+    choices: []
+
+  - id: shino_trauma_protection
+    text: "無理しない...そう。もう十分、無理した。"
+    choices: []
+
+  - id: shino_accident_fragment
+    text: "事故...（震え）そんな言葉、聞きたくない。"
+    choices: []
+
+  - id: shino_universal_secrets
+    text: "みんな...そうね。みんな、何かを隠してる。"
+    choices: []
+
+  - id: shino_pain_acknowledgment
+    text: "一番辛い...そうかもしれない。でも、まだ我慢できる。"
+    choices: []
+
+  - id: shino_eternal_memory
+    text: "消えない...そう。どんなに薬を飲んでも、消えない。"
+    choices: []
+
+  - id: shino_time_healing
+    text: "時間が癒してくれる...そう信じたい。でも、まだ痛い。"
+    choices: []
+
+  - id: shino_dependency_realization
+    text: "依存...そんな怖い言葉を使わないで。これは、必要なの。"
+    choices: []
+
+  - id: shino_medical_avoidance
+    text: "医者は...現実を見ろって言う。でも、見られない。"
+    choices: []
+
+  - id: shino_escape_reality
+    text: "逃げてる...そうね。でも、逃げないと、壊れてしまう。"
+    choices: []
+
+  - id: shino_reality_support
+    text: "一緒に...本当に、一緒にいてくれる？"
+    choices: []
+
+  - id: shino_loss_pain
+    text: "喪失...そう。失ったものは、もう戻らない。"
+    choices: []
+
+  - id: shino_pain_acceptance
+    text: "痛みも私の一部...そうね。この痛みがないと、私じゃない。"
+    choices: []

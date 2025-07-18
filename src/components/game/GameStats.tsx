@@ -18,8 +18,10 @@ export const GameStats: React.FC<GameStatsProps> = ({ gameState, onBack }) => {
     ...state
   }));
 
-  const totalFlags = gameState.flags.size;
   const totalVariables = gameState.variables.size;
+  
+  // Get memory fragments count
+  const memoryFragments = gameState.variables.get('memory_fragments_discovered') || 0;
   
   // Get silence count from variables (not from player.silenceCount)
   const silenceCount = gameState.variables.get('player_silence_count') || 0;
@@ -136,24 +138,34 @@ export const GameStats: React.FC<GameStatsProps> = ({ gameState, onBack }) => {
           </div>
         </div>
 
-        {/* Flags and Variables */}
+        {/* Memory Fragments and Variables */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-gray-800 p-6 rounded-lg">
             <h3 className="text-lg font-light mb-4">記憶の断片</h3>
-            <div className="text-sm text-gray-400 mb-2">
-              {totalFlags}個の記憶
+            <div className="text-2xl font-light text-purple-300 mb-2">
+              {memoryFragments}
             </div>
-            {totalFlags > 0 && (
+            <div className="text-sm text-gray-400 mb-2">
+              発見された記憶の断片
+            </div>
+            {memoryFragments > 0 ? (
               <div className="text-xs text-gray-500">
-                あなたの選択が、少しずつ積み重なっています
+                深い会話を通して、特別な記憶が蘇りました
+              </div>
+            ) : (
+              <div className="text-xs text-gray-500">
+                まだ記憶の断片は見つかっていません
               </div>
             )}
           </div>
           
           <div className="bg-gray-800 p-6 rounded-lg">
             <h3 className="text-lg font-light mb-4">内なる変化</h3>
+            <div className="text-2xl font-light text-orange-300 mb-2">
+              {totalVariables}
+            </div>
             <div className="text-sm text-gray-400 mb-2">
-              {totalVariables}の変数
+              蓄積された変化
             </div>
             {totalVariables > 0 && (
               <div className="text-xs text-gray-500">

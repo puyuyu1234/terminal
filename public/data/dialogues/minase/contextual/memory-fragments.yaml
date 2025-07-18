@@ -1,0 +1,303 @@
+dialogues:
+  # みなせの記憶の断片 - 予言者の過去と失われた人間性
+  - id: minase_memory_fragment_human_past
+    text: "昔、私も普通の人間だった。名前があって、家があって、愛する人がいた。でも、すべてを失って、この力を得た。"
+    conditions:
+      - type: variable
+        name: minase.mysterious_level
+        operator: greater_than
+        value: 5
+      - type: variable
+        name: minase.trust_level
+        operator: greater_than
+        value: 4
+    choices:
+      - text: "何を失ったの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: minase_human_past_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "human_past"
+              character: "minase"
+        next: minase_lost_everything
+      - text: "愛する人は？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: minase_human_past_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "human_past"
+              character: "minase"
+        next: minase_beloved_person
+      - text: "後悔してる？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: minase_human_past_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "human_past"
+              character: "minase"
+        next: minase_regret_question
+
+  - id: minase_memory_fragment_first_vision
+    text: "初めて未来を見た時の恐怖を覚えている。炎と涙と別れ...それが私の最初の予言だった。"
+    conditions:
+      - type: variable
+        name: minase.future_hints
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: minase.player_observation
+        operator: greater_than
+        value: 4
+    choices:
+      - text: "誰の未来だった？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: minase_first_vision_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "first_vision"
+              character: "minase"
+        next: minase_first_prophecy_target
+      - text: "防げなかった？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: minase_first_vision_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "first_vision"
+              character: "minase"
+        next: minase_powerless_prophecy
+      - text: "恐怖だったんだね"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: minase_first_vision_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "first_vision"
+              character: "minase"
+        next: minase_overwhelming_fear
+
+  - id: minase_memory_fragment_sacrifice_choice
+    text: "選択の瞬間を覚えている。『力を得て皆を救うか、普通の人間として生きるか』...私は前者を選んだ。"
+    conditions:
+      - type: variable
+        name: minase.reality_alteration
+        operator: greater_than
+        value: 2
+      - type: variable
+        name: minase.trust_level
+        operator: greater_than
+        value: 6
+    choices:
+      - text: "なぜその選択を？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: minase_sacrifice_choice_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "sacrifice_choice"
+              character: "minase"
+        next: minase_choice_reason
+      - text: "救えた人はいた？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: minase_sacrifice_choice_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "sacrifice_choice"
+              character: "minase"
+        next: minase_salvation_results
+      - text: "後悔はない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: minase_sacrifice_choice_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "sacrifice_choice"
+              character: "minase"
+        next: minase_no_regrets
+
+  # 中間ノード
+  - id: minase_lost_everything
+    text: "家族、友人、恋人...そして、自分の人間らしさ。代わりに、時を超える力を得た。"
+    choices:
+      - text: "大きな犠牲だったんだね"
+        next: minase_great_sacrifice
+      - text: "人間らしさは残ってる"
+        next: minase_remaining_humanity
+
+  - id: minase_beloved_person
+    text: "優しい人だった。私の未来を信じて、最後まで支えてくれた。でも、私の選択で失った。"
+    choices:
+      - text: "その人も理解してくれる"
+        next: minase_understanding_love
+      - text: "愛は永遠だから"
+        next: minase_eternal_love
+
+  - id: minase_regret_question
+    text: "後悔...時々する。でも、この力で救えた人たちのことを思うと、間違いではなかったと思う。"
+    choices:
+      - text: "正しい選択だった"
+        next: minase_correct_choice
+      - text: "君は英雄だ"
+        next: minase_hero_recognition
+
+  - id: minase_first_prophecy_target
+    text: "私の家族の未来だった。火事で全てを失う未来...でも、当時の私には止める力がなかった。"
+    choices:
+      - text: "辛い体験だったんだね"
+        next: minase_painful_experience
+      - text: "それで力を求めた"
+        next: minase_power_motivation
+
+  - id: minase_powerless_prophecy
+    text: "見えるだけで、変えられない。それが一番の苦痛だった。だから、もっと強い力を求めた。"
+    choices:
+      - text: "見えるだけでは辛い"
+        next: minase_vision_burden
+      - text: "強さを求めるのは自然"
+        next: minase_natural_desire
+
+  - id: minase_overwhelming_fear
+    text: "恐怖...そう。未来が見えるということは、絶望も見えるということ。でも、希望も見える。"
+    choices:
+      - text: "希望があるなら"
+        next: minase_hope_exists
+      - text: "バランスが大切"
+        next: minase_balance_needed
+
+  - id: minase_choice_reason
+    text: "愛する人たちを救いたかった。自分の幸せより、みんなの幸せを選んだ。"
+    choices:
+      - text: "無償の愛だね"
+        next: minase_selfless_love
+      - text: "尊い選択だった"
+        next: minase_noble_choice
+
+  - id: minase_salvation_results
+    text: "救えた人もいる。でも、救えなかった人もいる。完璧な力などない。"
+    choices:
+      - text: "救えた人がいることが大切"
+        next: minase_saved_lives_matter
+      - text: "完璧を求めすぎないで"
+        next: minase_imperfection_acceptance
+
+  - id: minase_no_regrets
+    text: "後悔はない。この道を選んだのは私自身。責任は私にある。"
+    choices:
+      - text: "強い意志だね"
+        next: minase_strong_will
+      - text: "責任感が強すぎる"
+        next: minase_excessive_responsibility
+
+  # 収束ノード
+  - id: minase_great_sacrifice
+    text: "大きな犠牲...そうね。でも、意味のある犠牲だったと信じている。"
+    choices: []
+
+  - id: minase_remaining_humanity
+    text: "人間らしさが残ってる...そう言ってもらえると、救われる。"
+    choices: []
+
+  - id: minase_understanding_love
+    text: "理解してくれる...そうね。きっと、理解してくれていると思う。"
+    choices: []
+
+  - id: minase_eternal_love
+    text: "永遠の愛...そうね。愛は時間を超越する。"
+    choices: []
+
+  - id: minase_correct_choice
+    text: "正しい選択...そう信じたい。そう信じ続けたい。"
+    choices: []
+
+  - id: minase_hero_recognition
+    text: "英雄...そんな風に呼ばれるほどのことはしていない。ただ、愛を選んだだけ。"
+    choices: []
+
+  - id: minase_painful_experience
+    text: "辛い体験...そうね。でも、それが私を強くしてくれた。"
+    choices: []
+
+  - id: minase_power_motivation
+    text: "そう。力を求めた理由は、愛する人たちを守るため。"
+    choices: []
+
+  - id: minase_vision_burden
+    text: "見えるだけでは辛い...その通り。だから、行動する力も必要だった。"
+    choices: []
+
+  - id: minase_natural_desire
+    text: "自然な欲求...そうね。愛があるから、強さを求める。"
+    choices: []
+
+  - id: minase_hope_exists
+    text: "希望があるなら...そう。希望があるから、戦い続けられる。"
+    choices: []
+
+  - id: minase_balance_needed
+    text: "バランスが大切...賢い言葉ね。絶望と希望のバランス。"
+    choices: []
+
+  - id: minase_selfless_love
+    text: "無償の愛...そうね。見返りを求めない愛。"
+    choices: []
+
+  - id: minase_noble_choice
+    text: "尊い選択...そう言ってもらえると、報われた気がする。"
+    choices: []
+
+  - id: minase_saved_lives_matter
+    text: "救えた人がいることが大切...そう思う。一人でも救えたなら。"
+    choices: []
+
+  - id: minase_imperfection_acceptance
+    text: "完璧を求めすぎない...そうね。完璧な救済など存在しない。"
+    choices: []
+
+  - id: minase_strong_will
+    text: "強い意志...そう見えるかもしれない。でも、時々折れそうになる。"
+    choices: []
+
+  - id: minase_excessive_responsibility
+    text: "責任感が強すぎる...そうかもしれない。でも、それが私なの。"
+    choices: []

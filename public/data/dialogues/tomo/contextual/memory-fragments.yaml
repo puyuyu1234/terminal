@@ -1,0 +1,303 @@
+dialogues:
+  # 友の記憶の断片 - 現実操作の起源と失われた平穏
+  - id: tomo_memory_fragment_childhood_toy
+    text: "小さい頃、壊れたおもちゃを『直れ』って言ったら、本当に直った。それが最初だった。みんな怖がって、友達がいなくなった。"
+    conditions:
+      - type: variable
+        name: tomo.reality_manipulation_level
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: tomo.trust_level
+        operator: greater_than
+        value: 4
+    choices:
+      - text: "寂しかったんだね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: tomo_childhood_toy_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "childhood_toy"
+              character: "tomo"
+        next: tomo_childhood_loneliness
+      - text: "素晴らしい力だったのに"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: tomo_childhood_toy_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "childhood_toy"
+              character: "tomo"
+        next: tomo_misunderstood_gift
+      - text: "みんなが理解してくれなかった"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: tomo_childhood_toy_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "childhood_toy"
+              character: "tomo"
+        next: tomo_lack_of_understanding
+
+  - id: tomo_memory_fragment_normal_life
+    text: "普通の生活を送りたかった。普通の友達と、普通の恋愛と、普通の将来。でも、この力がそれを許さなかった。"
+    conditions:
+      - type: variable
+        name: tomo.melancholy_level
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: tomo.trust_level
+        operator: greater_than
+        value: 5
+    choices:
+      - text: "普通って何だろう？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: tomo_normal_life_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "normal_life"
+              character: "tomo"
+        next: tomo_definition_of_normal
+      - text: "特別だからこそ価値がある"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: tomo_normal_life_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "normal_life"
+              character: "tomo"
+        next: tomo_special_value
+      - text: "力は君の一部"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: tomo_normal_life_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "normal_life"
+              character: "tomo"
+        next: tomo_power_acceptance
+
+  - id: tomo_memory_fragment_first_love
+    text: "初恋の人がいた。でも、私の力を見て逃げていった。『君は人間じゃない』って言われた。それが一番痛かった。"
+    conditions:
+      - type: variable
+        name: tomo.emotional_depth
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: tomo.trust_level
+        operator: greater_than
+        value: 6
+    choices:
+      - text: "その人が間違ってた"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: tomo_first_love_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "first_love"
+              character: "tomo"
+        next: tomo_wrong_judgment
+      - text: "君は人間だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: tomo_first_love_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "first_love"
+              character: "tomo"
+        next: tomo_humanity_affirmation
+      - text: "愛に力は関係ない"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: tomo_first_love_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "first_love"
+              character: "tomo"
+        next: tomo_love_beyond_power
+
+  # 中間ノード
+  - id: tomo_childhood_loneliness
+    text: "寂しかった...そう。とても寂しかった。みんなが私を避けるようになって。"
+    choices:
+      - text: "今は一人じゃない"
+        next: tomo_current_companionship
+      - text: "寂しさを理解してる"
+        next: tomo_loneliness_understanding
+
+  - id: tomo_misunderstood_gift
+    text: "素晴らしい力...でも、みんなには恐怖でしかなかった。贈り物が呪いになった。"
+    choices:
+      - text: "理解する人もいる"
+        next: tomo_understanding_exists
+      - text: "贈り物は贈り物"
+        next: tomo_gift_remains_gift
+
+  - id: tomo_lack_of_understanding
+    text: "理解してくれなかった...そう。どんなに説明しても、怖がられるだけだった。"
+    choices:
+      - text: "僕は理解してる"
+        next: tomo_current_understanding
+      - text: "説明する必要はない"
+        next: tomo_no_explanation_needed
+
+  - id: tomo_definition_of_normal
+    text: "普通...特別な力がなくて、みんなと同じように生きられること。でも、それが幸せなのかな？"
+    choices:
+      - text: "普通じゃなくても幸せはある"
+        next: tomo_happiness_beyond_normal
+      - text: "君らしく生きることが大切"
+        next: tomo_authentic_living
+
+  - id: tomo_special_value
+    text: "特別だからこそ価値がある...そう思いたい。でも、時々、普通が恋しくなる。"
+    choices:
+      - text: "両方の気持ちがあっていい"
+        next: tomo_mixed_feelings_ok
+      - text: "特別な君が好き"
+        next: tomo_special_preference
+
+  - id: tomo_power_acceptance
+    text: "力は私の一部...そうね。切り離せない一部。でも、それが全てじゃない。"
+    choices:
+      - text: "君は力以上の存在"
+        next: tomo_beyond_power
+      - text: "人間性が一番大切"
+        next: tomo_humanity_most_important
+
+  - id: tomo_wrong_judgment
+    text: "間違ってた...そう思いたい。でも、その時はとても傷ついた。"
+    choices:
+      - text: "傷は癒える"
+        next: tomo_wounds_heal
+      - text: "その人の価値観が狭かった"
+        next: tomo_narrow_perspective
+
+  - id: tomo_humanity_affirmation
+    text: "人間...そう言ってくれる人がいて、嬉しい。時々、自分でも分からなくなる。"
+    choices:
+      - text: "間違いなく人間だよ"
+        next: tomo_definitely_human
+      - text: "心があることが証拠"
+        next: tomo_heart_as_proof
+
+  - id: tomo_love_beyond_power
+    text: "愛に力は関係ない...そうね。でも、相手がそう思ってくれないと..."
+    choices:
+      - text: "本当の愛は力を超越する"
+        next: tomo_true_love_transcends
+      - text: "理解してくれる人がいる"
+        next: tomo_understanding_love
+
+  # 収束ノード
+  - id: tomo_current_companionship
+    text: "今は一人じゃない...そうね。あなたがいてくれる。"
+    choices: []
+
+  - id: tomo_loneliness_understanding
+    text: "寂しさを理解してる...ありがとう。理解してくれる人がいて、救われる。"
+    choices: []
+
+  - id: tomo_understanding_exists
+    text: "理解する人もいる...そう。あなたのように。"
+    choices: []
+
+  - id: tomo_gift_remains_gift
+    text: "贈り物は贈り物...そうね。使い方次第で、呪いにも祝福にもなる。"
+    choices: []
+
+  - id: tomo_current_understanding
+    text: "理解してる...そう言ってもらえると、とても嬉しい。"
+    choices: []
+
+  - id: tomo_no_explanation_needed
+    text: "説明する必要はない...そうね。理解してくれる人には、言葉はいらない。"
+    choices: []
+
+  - id: tomo_happiness_beyond_normal
+    text: "普通じゃなくても幸せはある...そうね。私なりの幸せを見つけたい。"
+    choices: []
+
+  - id: tomo_authentic_living
+    text: "私らしく生きる...そうしてみる。ありのままの私で。"
+    choices: []
+
+  - id: tomo_mixed_feelings_ok
+    text: "両方の気持ちがあっていい...そうね。複雑でいいのね。"
+    choices: []
+
+  - id: tomo_special_preference
+    text: "特別な私が好き...そう言ってもらえると、自分を受け入れられる。"
+    choices: []
+
+  - id: tomo_beyond_power
+    text: "力以上の存在...そうね。私は、私の力だけで定義されるものじゃない。"
+    choices: []
+
+  - id: tomo_humanity_most_important
+    text: "人間性が一番大切...そう。力があっても、心があることが大切。"
+    choices: []
+
+  - id: tomo_wounds_heal
+    text: "傷は癒える...そうね。時間をかけて、きっと癒える。"
+    choices: []
+
+  - id: tomo_narrow_perspective
+    text: "価値観が狭かった...そうかもしれない。でも、その時は理解できなかった。"
+    choices: []
+
+  - id: tomo_definitely_human
+    text: "間違いなく人間...そう言ってもらえると、安心する。"
+    choices: []
+
+  - id: tomo_heart_as_proof
+    text: "心があることが証拠...そうね。この心こそが、人間である証拠。"
+    choices: []
+
+  - id: tomo_true_love_transcends
+    text: "本当の愛は力を超越する...そう信じたい。いつか、そんな愛に出会えるかな。"
+    choices: []
+
+  - id: tomo_understanding_love
+    text: "理解してくれる人がいる...そう。あなたのような人が。"
+    choices: []

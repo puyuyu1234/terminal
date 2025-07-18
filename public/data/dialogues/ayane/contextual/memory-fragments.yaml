@@ -1,0 +1,303 @@
+dialogues:
+  # あやねの記憶の断片 - 純粋な記憶と失われた過去
+  - id: ayane_memory_fragment_garden_promise
+    text: "あのね...突然思い出した。お花畑で、誰かと約束したの。『いつまでも一緒にいよう』って。"
+    conditions:
+      - type: variable
+        name: ayane.trust_level
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: ayane.innocence_level
+        operator: greater_than
+        value: 3
+    choices:
+      - text: "どんなお花畑？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: ayane_garden_promise_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "garden_promise"
+              character: "ayane"
+        next: ayane_flower_garden_description
+      - text: "誰との約束？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: ayane_garden_promise_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "garden_promise"
+              character: "ayane"
+        next: ayane_mysterious_person
+      - text: "美しい約束だね"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: ayane_garden_promise_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "garden_promise"
+              character: "ayane"
+        next: ayane_promise_beauty
+
+  - id: ayane_memory_fragment_music_box
+    text: "あ...オルゴールの音。どこかで聞いたことがある。大切な人が、いつも聞かせてくれた。"
+    conditions:
+      - type: variable
+        name: ayane.comfort_level
+        operator: greater_than
+        value: 5
+      - type: variable
+        name: ayane.mysterious_encounters
+        operator: greater_than
+        value: 2
+    choices:
+      - text: "どんなメロディー？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: ayane_music_box_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "music_box"
+              character: "ayane"
+        next: ayane_gentle_melody
+      - text: "大切な人？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: ayane_music_box_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "music_box"
+              character: "ayane"
+        next: ayane_beloved_memory
+      - text: "今でも聞こえる？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: ayane_music_box_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "music_box"
+              character: "ayane"
+        next: ayane_continuing_music
+
+  - id: ayane_memory_fragment_birthday_wish
+    text: "今日、お誕生日だった気がする。でも、いつのお誕生日かわからない。ケーキがあった、星のろうそくがあった。"
+    conditions:
+      - type: variable
+        name: ayane.train_mentions
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: ayane.trust_level
+        operator: greater_than
+        value: 6
+    choices:
+      - text: "お誕生日おめでとう"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: set_flag
+            flag: ayane_birthday_wish_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "birthday_wish"
+              character: "ayane"
+        next: ayane_birthday_gratitude
+      - text: "何をお願いした？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: set_flag
+            flag: ayane_birthday_wish_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "birthday_wish"
+              character: "ayane"
+        next: ayane_secret_wish
+      - text: "星のろうそく？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: set_flag
+            flag: ayane_birthday_wish_memory
+          - type: custom
+            handler: trigger_memory_fragment
+            params:
+              type: "birthday_wish"
+              character: "ayane"
+        next: ayane_star_candles
+
+  # 中間ノード
+  - id: ayane_flower_garden_description
+    text: "色とりどりのお花がいっぱい。チューリップ、ひまわり、バラ...全部が笑ってるみたいだった。"
+    choices:
+      - text: "幸せな場所だったんだね"
+        next: ayane_happy_garden
+      - text: "お花も喜んでた"
+        next: ayane_joyful_flowers
+
+  - id: ayane_mysterious_person
+    text: "顔は思い出せない。でも、とても温かい人だった。私のことを、お花みたいに大切にしてくれた。"
+    choices:
+      - text: "愛されてたんだね"
+        next: ayane_beloved_flower
+      - text: "その人も君を待ってる"
+        next: ayane_waiting_person
+
+  - id: ayane_promise_beauty
+    text: "美しい約束...そうです。でも、守れなかった。ここで待ってるの。"
+    choices:
+      - text: "まだ間に合う"
+        next: ayane_hope_remains
+      - text: "約束は心の中に"
+        next: ayane_heart_promise
+
+  - id: ayane_gentle_melody
+    text: "優しくて、悲しくて、でも温かいメロディー。子守唄みたいな。"
+    choices:
+      - text: "愛情のメロディー"
+        next: ayane_love_melody
+      - text: "心に響く音"
+        next: ayane_heart_music
+
+  - id: ayane_beloved_memory
+    text: "お母さんかな？お父さんかな？分からない。でも、とても大切な人。"
+    choices:
+      - text: "愛してくれた人"
+        next: ayane_loving_person
+      - text: "きっと家族"
+        next: ayane_family_love
+
+  - id: ayane_continuing_music
+    text: "静かにしてると、聞こえてくる。心の奥から、優しい音楽が。"
+    choices:
+      - text: "心の音楽"
+        next: ayane_soul_music
+      - text: "永遠の贈り物"
+        next: ayane_eternal_gift
+
+  - id: ayane_birthday_gratitude
+    text: "ありがとう。久しぶりに、お祝いしてもらった。嬉しいです。"
+    choices:
+      - text: "いつでもお祝いする"
+        next: ayane_celebration_promise
+      - text: "特別な日だから"
+        next: ayane_special_birthday
+
+  - id: ayane_secret_wish
+    text: "秘密のお願い...『みんなが幸せになりますように』って。自分のことより、みんなのこと。"
+    choices:
+      - text: "優しい願い"
+        next: ayane_gentle_wish
+      - text: "君の幸せも大切"
+        next: ayane_self_worth
+
+  - id: ayane_star_candles
+    text: "星の形のろうそく。火を灯すと、小さな星空みたいで。魔法みたいだった。"
+    choices:
+      - text: "魔法の誕生日"
+        next: ayane_magical_birthday
+      - text: "星に願いを"
+        next: ayane_star_wish
+
+  # 収束ノード
+  - id: ayane_happy_garden
+    text: "とても幸せな場所でした。今でも、行きたいな。"
+    choices: []
+
+  - id: ayane_joyful_flowers
+    text: "お花も喜んでた...そうです。みんなで笑ってました。"
+    choices: []
+
+  - id: ayane_beloved_flower
+    text: "愛されてた...そうです。お花みたいに、大切にしてもらってました。"
+    choices: []
+
+  - id: ayane_waiting_person
+    text: "待ってる...そうかもしれません。だから、私も待ってます。"
+    choices: []
+
+  - id: ayane_hope_remains
+    text: "まだ間に合う...そう信じてます。希望は捨てません。"
+    choices: []
+
+  - id: ayane_heart_promise
+    text: "心の中に...そうです。約束は、心の中にあります。"
+    choices: []
+
+  - id: ayane_love_melody
+    text: "愛情のメロディー...そうです。愛がいっぱい詰まってました。"
+    choices: []
+
+  - id: ayane_heart_music
+    text: "心に響く...今でも響いてます。温かい音楽が。"
+    choices: []
+
+  - id: ayane_loving_person
+    text: "愛してくれた人...そうです。とても、とても愛してくれました。"
+    choices: []
+
+  - id: ayane_family_love
+    text: "家族の愛...きっと、家族の愛だったんです。"
+    choices: []
+
+  - id: ayane_soul_music
+    text: "心の音楽...そうです。魂に刻まれた音楽です。"
+    choices: []
+
+  - id: ayane_eternal_gift
+    text: "永遠の贈り物...素敵な表現ですね。大切にします。"
+    choices: []
+
+  - id: ayane_celebration_promise
+    text: "いつでも...ありがとうございます。嬉しいです。"
+    choices: []
+
+  - id: ayane_special_birthday
+    text: "特別な日...そうです。今日は特別な日です。"
+    choices: []
+
+  - id: ayane_gentle_wish
+    text: "優しい願い...そうですね。みんなが幸せになってほしいです。"
+    choices: []
+
+  - id: ayane_self_worth
+    text: "私の幸せも大切...そうですね。忘れてました。"
+    choices: []
+
+  - id: ayane_magical_birthday
+    text: "魔法の誕生日...そうでした。魔法みたいに美しかったです。"
+    choices: []
+
+  - id: ayane_star_wish
+    text: "星に願いを...そうです。お星さまが聞いてくれました。"
+    choices: []

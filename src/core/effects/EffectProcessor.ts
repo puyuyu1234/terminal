@@ -100,6 +100,19 @@ export class EffectProcessor {
         context.state.variables.set('loop_count', params.loopCount);
       }
     });
+
+    // Trigger memory fragment
+    this.registerCustomHandler('trigger_memory_fragment', (params, context) => {
+      const { type, character } = params;
+      const fragmentFlag = `memory_fragment_${character}_${type}`;
+      context.state.flags.add(fragmentFlag);
+      
+      // Also add a generic memory fragment counter
+      const currentCount = context.state.variables.get('memory_fragments_discovered') || 0;
+      context.state.variables.set('memory_fragments_discovered', currentCount + 1);
+      
+      console.log(`[Memory Fragment] Triggered: ${fragmentFlag}`);
+    });
   }
 
   registerCustomHandler(name: string, handler: CustomEffectHandler): void {

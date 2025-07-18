@@ -1,0 +1,276 @@
+dialogues:
+  # なずなの暗黒設定示唆 - 沈黙の理由と録音機の秘密
+  - id: nazuna_dark_train_trauma
+    text: "......（電車の音が聞こえると震える）その音...あの日の音と同じ。スクリーチ音、悲鳴...そして、静寂。"
+    conditions:
+      - type: variable
+        name: nazuna.train_mentions
+        operator: greater_than
+        value: 4
+      - type: variable
+        name: nazuna.trust_level
+        operator: greater_than
+        value: 8
+    choices:
+      - text: "あの日って？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 2
+        next: nazuna_accident_day
+      - text: "怖い思い出があるんだね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.trauma_understanding
+            value: 1
+        next: nazuna_trauma_acknowledgment
+      - text: "......（静かに寄り添う）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_silent_comfort
+
+  - id: nazuna_dark_recording_collection
+    text: "......（録音機をたくさん見せる）最後の言葉を集めてる。みんなの、最後の言葉。"
+    conditions:
+      - type: variable
+        name: nazuna.recorder_mentions
+        operator: greater_than
+        value: 6
+      - type: variable
+        name: nazuna.trust_level
+        operator: greater_than
+        value: 9
+    choices:
+      - text: "最後の言葉？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 3
+        next: nazuna_death_recordings
+      - text: "それは不吉だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: nazuna.concern_received
+            value: 1
+        next: nazuna_ominous_collection
+      - text: "なぜ集めるの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.motive_inquiry
+            value: 1
+        next: nazuna_collection_reason
+
+  - id: nazuna_dark_lost_voice
+    text: "......（小さく）昔は、たくさん話してた。でも、あの日から声が出なくなった。言葉が、怖くなった。"
+    conditions:
+      - type: variable
+        name: nazuna.voice_mentions
+        operator: greater_than
+        value: 3
+      - type: variable
+        name: nazuna.trust_level
+        operator: greater_than
+        value: 7
+    choices:
+      - text: "なぜ言葉が怖くなった？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.dark_hints_level
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: nazuna_word_trauma
+      - text: "今は話してくれてる"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.progress_recognition
+            value: 1
+        next: nazuna_speaking_progress
+      - text: "言葉がなくても伝わる"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: nazuna.nonverbal_comfort
+            value: 1
+        next: nazuna_wordless_communication
+
+  # 中間ノード
+  - id: nazuna_accident_day
+    text: "......お父さんと一緒に駅にいた。電車が来て...お父さんが前に出て...そして。"
+    choices:
+      - text: "お父さんは？"
+        next: nazuna_father_fate
+      - text: "辛い記憶だったんだね"
+        next: nazuna_painful_memory
+
+  - id: nazuna_trauma_acknowledgment
+    text: "......（小さく頷く）怖い...今でも、電車の音が聞こえると、あの日を思い出す。"
+    choices:
+      - text: "時間が癒してくれる"
+        next: nazuna_healing_time
+      - text: "一人で抱え込まないで"
+        next: nazuna_shared_burden
+
+  - id: nazuna_silent_comfort
+    text: "......（安心したような表情）言葉がなくても、わかってくれる。"
+    choices:
+      - text: "......（手を差し伸べる）"
+        next: nazuna_gentle_touch
+      - text: "......（一緒に座る）"
+        next: nazuna_quiet_companionship
+
+  - id: nazuna_death_recordings
+    text: "......死ぬ前に、みんな何か言う。大切な人の名前とか、『ありがとう』とか。"
+    choices:
+      - text: "どうやって録音を？"
+        next: nazuna_recording_method
+      - text: "それは悲しすぎる"
+        next: nazuna_collection_sadness
+
+  - id: nazuna_ominous_collection
+    text: "......不吉...そうかもしれない。でも、忘れられるのが一番怖い。"
+    choices:
+      - text: "忘れられたくない？"
+        next: nazuna_memory_preservation
+      - text: "生きている言葉の方が大切"
+        next: nazuna_living_words
+
+  - id: nazuna_collection_reason
+    text: "......お父さんの最後の言葉を聞き逃した。だから、他の人の言葉を集めてる。"
+    choices:
+      - text: "お父さんの声を探してる"
+        next: nazuna_father_voice_search
+      - text: "君への愛は聞こえてる"
+        next: nazuna_unspoken_love
+
+  - id: nazuna_word_trauma
+    text: "......『助けて』って叫んだけど、誰も来なかった。言葉が、嘘になった。"
+    choices:
+      - text: "言葉は嘘じゃない"
+        next: nazuna_word_truth
+      - text: "助けを求めるのは正しかった"
+        next: nazuna_help_validation
+
+  - id: nazuna_speaking_progress
+    text: "......（小さく微笑む）あなたには、話したくなる。不思議。"
+    choices:
+      - text: "嬉しい"
+        next: nazuna_speaking_joy
+      - text: "信頼してくれてありがとう"
+        next: nazuna_trust_appreciation
+
+  - id: nazuna_wordless_communication
+    text: "......（頷く）音と沈黙で、心が通じる。言葉より、確かかもしれない。"
+    choices:
+      - text: "心の声が聞こえる"
+        next: nazuna_heart_voice
+      - text: "沈黙も会話の一部"
+        next: nazuna_silence_conversation
+
+  # 収束ノード
+  - id: nazuna_father_fate
+    text: "......（涙を流す）お父さんは...もう、いない。"
+    choices: []
+
+  - id: nazuna_painful_memory
+    text: "......（震える）辛い...でも、お父さんの最後の瞬間。忘れられない。"
+    choices: []
+
+  - id: nazuna_healing_time
+    text: "......時間...そうかもしれない。でも、まだ痛い。"
+    choices: []
+
+  - id: nazuna_shared_burden
+    text: "......一人で...そうしてた。でも、あなたがいてくれる。"
+    choices: []
+
+  - id: nazuna_gentle_touch
+    text: "......（そっと手を取る）温かい。"
+    choices: []
+
+  - id: nazuna_quiet_companionship
+    text: "......（静かに寄り添う）"
+    choices: []
+
+  - id: nazuna_recording_method
+    text: "......病院で、こっそりと。看護師さんには内緒で。"
+    choices: []
+
+  - id: nazuna_collection_sadness
+    text: "......悲しい...でも、美しい。人生の最後の音楽。"
+    choices: []
+
+  - id: nazuna_memory_preservation
+    text: "......忘れられたくない。みんな、生きていた証を残したい。"
+    choices: []
+
+  - id: nazuna_living_words
+    text: "......生きている言葉...そうかもしれない。でも、最後の言葉も大切。"
+    choices: []
+
+  - id: nazuna_father_voice_search
+    text: "......（頷く）お父さんの声を、探してる。見つからないけど。"
+    choices: []
+
+  - id: nazuna_unspoken_love
+    text: "......聞こえてる...そうかもしれない。心の奥で。"
+    choices: []
+
+  - id: nazuna_word_truth
+    text: "......嘘じゃない...そう思いたい。でも、信じるのが怖い。"
+    choices: []
+
+  - id: nazuna_help_validation
+    text: "......正しかった...そう言ってもらえると、少し楽になる。"
+    choices: []
+
+  - id: nazuna_speaking_joy
+    text: "......（小さく微笑む）嬉しい。久しぶりに、話すのが楽しい。"
+    choices: []
+
+  - id: nazuna_trust_appreciation
+    text: "......信頼...大切な言葉。ありがとう。"
+    choices: []
+
+  - id: nazuna_heart_voice
+    text: "......心の声...そう。言葉より、確かに聞こえる。"
+    choices: []
+
+  - id: nazuna_silence_conversation
+    text: "......沈黙も会話...そうね。一番深い会話かもしれない。"
+    choices: []
