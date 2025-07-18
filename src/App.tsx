@@ -7,7 +7,7 @@ import { useGameEngine } from './hooks/useGameEngine';
 type GameMode = 'menu' | 'session' | 'stats';
 
 function App() {
-  const { gameState, startNewSession, makeChoice } = useGameEngine();
+  const { gameState, startNewSession, makeChoice, endSession, gameEngine } = useGameEngine();
   const [currentMode, setCurrentMode] = useState<GameMode>('menu');
 
   const handleStartGame = async () => {
@@ -16,6 +16,8 @@ function App() {
   };
 
   const handleSessionEnd = () => {
+    console.log('[App] handleSessionEnd called - ending session');
+    endSession();
     setCurrentMode('menu');
   };
 
@@ -68,25 +70,31 @@ function App() {
       );
     
     case 'stats':
+      console.log('[App] Stats mode - gameState:', gameState);
+      console.log('[App] Stats mode - gameState.context:', gameState.context);
+      console.log('[App] Stats mode - gameState.context?.state:', gameState.context?.state);
+      
+      // GameEngineから直接状態を取得
+      const actualState = gameEngine.getGameState();
+      console.log('[App] Stats mode - actualState from gameEngine:', actualState);
+      
       return (
         <GameStats 
-          gameState={gameState.context?.state || {
-            player: { totalVisits: 0, silenceCount: 0, lastVisitDate: '', currentSessionStart: '' },
-            characters: new Map(),
-            flags: new Set(),
-            variables: new Map(),
-            history: []
-          }}
+          gameState={actualState}
           onBack={handleBackToMenu}
         />
       );
     
     default:
+      const totalVisits = gameEngine.getGameState().player.totalVisits;
+      console.log('[App] MainMenu - totalVisits from gameEngine:', totalVisits);
+      console.log('[App] MainMenu - gameState.context?.state?.player?.totalVisits:', gameState.context?.state?.player?.totalVisits);
+      
       return (
         <MainMenu
           onStartGame={handleStartGame}
           onShowStats={handleShowStats}
-          totalVisits={gameState.context?.state?.player?.totalVisits || 0}
+          totalVisits={totalVisits}
         />
       );
   }

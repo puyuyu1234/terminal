@@ -11,8 +11,9 @@ import { StateStorage } from './StateStorage';
 export class StateManager {
   private state: GameState;
   private storage: StateStorage;
-  private autoSaveInterval: number = 60000; // 1 minute
+  private autoSaveInterval: number = 300000; // 5 minutes
   private autoSaveTimer?: ReturnType<typeof setInterval>;
+  private isInitialized = false;
 
   constructor(storage: StateStorage) {
     this.storage = storage;
@@ -35,34 +36,68 @@ export class StateManager {
   }
 
   async initialize(): Promise<void> {
+    if (this.isInitialized) {
+      console.log('[StateManager] Already initialized, skipping...');
+      return;
+    }
+
     try {
+      console.log('[StateManager] Initializing state manager...');
       const savedState = await this.storage.load();
       if (savedState) {
+        console.log('[StateManager] Found saved state:', savedState);
         this.restoreFromMinimalState(savedState);
+        console.log('[StateManager] State restored successfully');
+      } else {
+        console.log('[StateManager] No saved state found, using initial state');
       }
     } catch (error) {
       console.error('Failed to load saved state:', error);
     }
 
     this.startAutoSave();
+    this.isInitialized = true;
   }
 
   private restoreFromMinimalState(minimal: MinimalGameState): void {
+    console.log('[StateManager] Restoring state from minimal state...');
+    console.log('[StateManager] Previous visits:', this.state.player.totalVisits);
+    
     this.state.player.totalVisits = minimal.visits;
+    this.state.player.lastVisitDate = minimal.lastVisitDate || new Date().toISOString();
+    this.state.player.silenceCount = minimal.silenceCount || 0;
+    console.log('[StateManager] Restored player state:', {
+      visits: this.state.player.totalVisits,
+      lastVisitDate: this.state.player.lastVisitDate,
+      silenceCount: this.state.player.silenceCount
+    });
     
     this.state.flags = new Set(minimal.flags);
+    console.log('[StateManager] Restored flags:', minimal.flags);
     
     this.state.variables = new Map(Object.entries(minimal.variables));
+    console.log('[StateManager] Restored variables:', minimal.variables);
     
     this.state.characters = new Map();
     Object.entries(minimal.characterData).forEach(([charId, charData]) => {
+      console.log(`[StateManager] Restoring character ${charId}:`, charData);
       this.state.characters.set(charId as CharacterId, {
         meetCount: charData.meetCount,
         trustLevel: charData.trustLevel,
         lastChoices: [],
-        specificFlags: new Set(charData.flags)
+        specificFlags: new Set(charData.flags),
+        lastSeenDate: charData.lastSeenDate
       });
     });
+    
+    // 会話履歴を復元
+    this.state.history = minimal.history || [];
+    console.log('[StateManager] Restored history:', this.state.history.length, 'entries');
+    
+    console.log('[StateManager] Final restored state:');
+    console.log('[StateManager]   Total visits:', this.state.player.totalVisits);
+    console.log('[StateManager]   Character count:', this.state.characters.size);
+    console.log('[StateManager]   History count:', this.state.history.length);
   }
 
   private createMinimalState(): MinimalGameState {
@@ -72,7 +107,8 @@ export class StateManager {
       characterData[charId] = {
         meetCount: charState.meetCount,
         trustLevel: charState.trustLevel,
-        flags: Array.from(charState.specificFlags)
+        flags: Array.from(charState.specificFlags),
+        lastSeenDate: charState.lastSeenDate
       };
     });
 
@@ -80,7 +116,10 @@ export class StateManager {
       visits: this.state.player.totalVisits,
       flags: Array.from(this.state.flags),
       variables: Object.fromEntries(this.state.variables),
-      characterData
+      characterData,
+      lastVisitDate: this.state.player.lastVisitDate,
+      silenceCount: this.state.player.silenceCount,
+      history: this.state.history
     };
   }
 
@@ -97,8 +136,22 @@ export class StateManager {
   }
 
   async save(): Promise<void> {
-    const minimalState = this.createMinimalState();
-    await this.storage.save(minimalState);
+    try {
+      console.log('[StateManager] Starting save operation...');
+      const minimalState = this.createMinimalState();
+      console.log('[StateManager] Minimal state created:', {
+        visits: minimalState.visits,
+        charactersCount: Object.keys(minimalState.characterData).length,
+        historyLength: minimalState.history?.length || 0,
+        silenceCount: minimalState.silenceCount
+      });
+      
+      await this.storage.save(minimalState);
+      console.log('[StateManager] Game state saved successfully');
+    } catch (error) {
+      console.error('[StateManager] Failed to save game state:', error);
+      throw error;
+    }
   }
 
   getState(): GameState {
@@ -156,6 +209,8 @@ export class StateManager {
   incrementPlayerVisits(): void {
     this.state.player.totalVisits++;
     this.state.player.lastVisitDate = new Date().toISOString();
+    console.log('[StateManager] Player visits incremented to:', this.state.player.totalVisits);
+    console.log('[StateManager] Last visit date set to:', this.state.player.lastVisitDate);
   }
 
   incrementSilenceCount(): void {

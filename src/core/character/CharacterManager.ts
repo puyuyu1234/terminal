@@ -159,6 +159,17 @@ export class CharacterManager {
     const candidates = this.getAllCharacters();
     const weightedCandidates = this.calculateWeights(candidates, context);
     
+    console.log('[CharacterManager] Character selection debug:');
+    console.log('  Player visits:', context.state.player.totalVisits);
+    console.log('  Character states:');
+    context.state.characters.forEach((charState, charId) => {
+      console.log(`    ${charId}: meetCount=${charState.meetCount}, trustLevel=${charState.trustLevel}`);
+    });
+    console.log('  Weighted candidates:');
+    weightedCandidates.forEach(wc => {
+      console.log(`    ${wc.character.id}: weight=${wc.weight}`);
+    });
+    
     // Prevent same character appearing consecutively (unless conditions force it)
     if (this.lastSelectedCharacter) {
       const lastCharWeight = weightedCandidates.find(
@@ -166,12 +177,14 @@ export class CharacterManager {
       );
       if (lastCharWeight && lastCharWeight.weight > 0) {
         lastCharWeight.weight *= 0.3; // Reduce weight by 70%
+        console.log(`  Reduced weight for ${this.lastSelectedCharacter} to ${lastCharWeight.weight}`);
       }
     }
 
     const selected = this.weightedRandom(weightedCandidates);
     this.lastSelectedCharacter = selected.id;
     
+    console.log(`  Selected character: ${selected.id} (${selected.name})`);
     return selected;
   }
 

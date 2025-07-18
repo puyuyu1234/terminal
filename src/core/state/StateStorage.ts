@@ -13,6 +13,12 @@ export class LocalStorageStateStorage implements StateStorage {
     try {
       const serialized = JSON.stringify(state);
       localStorage.setItem(this.storageKey, serialized);
+      
+      // 保存の確認
+      const verification = localStorage.getItem(this.storageKey);
+      if (!verification || verification !== serialized) {
+        throw new Error('Save verification failed');
+      }
     } catch (error) {
       console.error('Failed to save to localStorage:', error);
       throw new Error('Failed to save game state');
@@ -21,10 +27,17 @@ export class LocalStorageStateStorage implements StateStorage {
 
   async load(): Promise<MinimalGameState | null> {
     try {
+      console.log('[LocalStorage] Loading state from key:', this.storageKey);
       const serialized = localStorage.getItem(this.storageKey);
-      if (!serialized) return null;
+      if (!serialized) {
+        console.log('[LocalStorage] No data found in localStorage');
+        return null;
+      }
       
-      return JSON.parse(serialized) as MinimalGameState;
+      console.log('[LocalStorage] Found serialized data:', serialized);
+      const parsed = JSON.parse(serialized) as MinimalGameState;
+      console.log('[LocalStorage] Parsed state:', parsed);
+      return parsed;
     } catch (error) {
       console.error('Failed to load from localStorage:', error);
       return null;

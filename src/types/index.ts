@@ -198,10 +198,14 @@ export interface MinimalGameState {
   flags: string[];
   characterData: { [key: string]: MinimalCharacterState };
   variables: { [key: string]: number };
+  lastVisitDate?: string;
+  silenceCount?: number;
+  history?: DialogueHistoryEntry[];
 }
 
 export interface MinimalCharacterState {
   meetCount: number;
   trustLevel: number;
   flags: string[];
+  lastSeenDate?: string;
 }

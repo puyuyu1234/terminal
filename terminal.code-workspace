@@ -1,0 +1,34 @@
+{
+  "folders": [
+    {
+      "name": "🎮 Terminal Game",
+      "path": "."
+    },
+    {
+      "name": "💬 Dialogue Data",
+      "path": "./public/data/dialogues"
+    },
+    {
+      "name": "🔧 Source Code",
+      "path": "./src"
+    },
+    {
+      "name": "📚 Docs",
+      "path": "./docs"
+    },
+    {
+      "name": "🧪 Tests",
+      "path": "./test"
+    },
+    {
+      "name": "⚙️ Scripts",
+      "path": "./scripts"
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.yaml": "yaml"
+    },
+    "explorer.sortOrder": "type"
+  }
+}

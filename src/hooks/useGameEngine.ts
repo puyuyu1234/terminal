@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { GameEngine } from '@/core/GameEngine';
 import type { GameContext, Character } from '@/types';
 
@@ -13,7 +13,14 @@ export interface GameState {
 }
 
 export const useGameEngine = () => {
-  const [gameEngine] = useState(() => new GameEngine());
+  const gameEngineRef = useRef<GameEngine | null>(null);
+  const initializationRef = useRef(false);
+  
+  if (!gameEngineRef.current) {
+    gameEngineRef.current = new GameEngine();
+  }
+  
+  const gameEngine = gameEngineRef.current;
   const [gameState, setGameState] = useState<GameState>({
     isLoading: true,
     isInSession: false,
@@ -34,14 +41,31 @@ export const useGameEngine = () => {
   }, [gameEngine]);
 
   const initialize = useCallback(async () => {
+    if (initializationRef.current) {
+      console.log('[useGameEngine] Already initialized, skipping...');
+      return;
+    }
+    
+    initializationRef.current = true;
+    
     try {
+      console.log('[useGameEngine] Initializing game engine...');
       await gameEngine.initialize();
+      
+      const gameStateInfo = gameEngine.getGameState();
+      console.log('[useGameEngine] Game engine initialized, state:', {
+        totalVisits: gameStateInfo.player.totalVisits,
+        characterCount: gameStateInfo.characters.size
+      });
+      
       setGameState(prev => ({
         ...prev,
         isLoading: false,
         error: null
       }));
     } catch (error) {
+      console.error('[useGameEngine] Failed to initialize:', error);
+      initializationRef.current = false; // Reset on failure
       setGameState(prev => ({
         ...prev,
         isLoading: false,
@@ -97,6 +121,7 @@ export const useGameEngine = () => {
         updateGameState();
       } else {
         // Session ended
+        console.log('[useGameEngine] Session ended after choice - dialogue completed');
         setGameState(prev => ({
           ...prev,
           isInSession: false,
@@ -115,6 +140,17 @@ export const useGameEngine = () => {
   }, [gameEngine, updateGameState]);
 
   const endSession = useCallback(() => {
+    // GameEngineの endSession を呼んで状態を保存
+    console.log('[useGameEngine] endSession called');
+    console.log('[useGameEngine] Current character:', gameEngine.getCurrentCharacter());
+    
+    if (gameEngine.getCurrentCharacter()) {
+      console.log('[useGameEngine] Ending session manually');
+      gameEngine.endCurrentSession();
+    } else {
+      console.log('[useGameEngine] No current character - session may have already ended');
+    }
+    
     setGameState(prev => ({
       ...prev,
       isInSession: false,
@@ -122,7 +158,7 @@ export const useGameEngine = () => {
       choices: [],
       context: null
     }));
-  }, []);
+  }, [gameEngine]);
 
   const resetGame = useCallback(() => {
     gameEngine.resetGame();

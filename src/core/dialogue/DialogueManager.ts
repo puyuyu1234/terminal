@@ -178,8 +178,14 @@ export class DialogueManager {
     next: string | ConditionalNext[] | undefined, 
     context: GameContext
   ): Promise<DialogueNode | null> {
+    console.log('[DialogueManager] getNextNode called with:', { next, currentNodeId: this.currentNode?.id });
+    
     if (!next) {
-      if (!this.currentNode?.next) return null;
+      console.log('[DialogueManager] No next parameter, checking current node next');
+      if (!this.currentNode?.next) {
+        console.log('[DialogueManager] No next node - dialogue should end');
+        return null;
+      }
       next = this.currentNode.next;
     }
 
@@ -187,26 +193,36 @@ export class DialogueManager {
 
     if (typeof next === 'string') {
       nextNodeId = next;
+      console.log('[DialogueManager] Next node ID (string):', nextNodeId);
     } else if (Array.isArray(next)) {
+      console.log('[DialogueManager] Processing conditional next:', next);
       for (const conditional of next) {
         const allConditionsMet = conditional.conditions.every(condition =>
           this.conditionEvaluator.evaluate(condition as any, context)
         );
         if (allConditionsMet) {
           nextNodeId = conditional.nodeId;
+          console.log('[DialogueManager] Found matching conditional next:', nextNodeId);
           break;
         }
       }
     }
 
-    if (!nextNodeId) return null;
+    if (!nextNodeId) {
+      console.log('[DialogueManager] No valid next node ID found - returning null');
+      return null;
+    }
 
-    const nextNode = this.dialogueData.get(`${context.currentCharacter.id}_${nextNodeId}`);
+    const nodeKey = `${context.currentCharacter.id}_${nextNodeId}`;
+    console.log('[DialogueManager] Looking for node:', nodeKey);
+    const nextNode = this.dialogueData.get(nodeKey);
     if (nextNode) {
+      console.log('[DialogueManager] Found next node:', nextNode.id);
       await this.processNode(nextNode, context);
       return nextNode;
     }
 
+    console.log('[DialogueManager] Node not found in dialogue data - returning null');
     return null;
   }
 

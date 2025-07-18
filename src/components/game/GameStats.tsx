@@ -7,6 +7,11 @@ interface GameStatsProps {
 }
 
 export const GameStats: React.FC<GameStatsProps> = ({ gameState, onBack }) => {
+  console.log('[GameStats] Received gameState:', gameState);
+  console.log('[GameStats] Player visits:', gameState.player.totalVisits);
+  console.log('[GameStats] Character count:', gameState.characters.size);
+  console.log('[GameStats] History length:', gameState.history.length);
+  
   const characterStats = Array.from(gameState.characters.entries()).map(([id, state]) => ({
     id,
     ...state
