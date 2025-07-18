@@ -66,7 +66,7 @@ export class YAMLDialogueLoader implements DialogueDataSource {
     const genreFiles: Record<string, string[]> = {
       'start': ['first-meeting.yaml'],
       'neutral': ['topics.yaml'], 
-      'contextual': ['conversations.yaml', 'dialogues.yaml'],
+      'contextual': ['conversations.yaml', 'dialogues.yaml', 'personality-quirks.yaml', 'prophetic-visions.yaml', 'sound-memories.yaml', 'forgotten-memories.yaml', 'reality-manipulation.yaml'],
       'end': ['goodbye.yaml']
     };
     
@@ -76,7 +76,11 @@ export class YAMLDialogueLoader implements DialogueDataSource {
     }
     
     for (const fileName of filesToTry) {
-      await this.loadSingleFile(characterId, genreDir, fileName, allNodes);
+      try {
+        await this.loadSingleFile(characterId, genreDir, fileName, allNodes);
+      } catch (error) {
+        console.warn(`Failed to load ${characterId}/${genreDir}/${fileName}:`, error);
+      }
     }
     
     return allNodes;

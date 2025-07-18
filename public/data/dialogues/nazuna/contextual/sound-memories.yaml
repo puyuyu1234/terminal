@@ -1,0 +1,550 @@
+dialogues:
+  # なずなの個性を際立たせる会話 - 音への感性と内向性を強調
+  - id: nazuna_secret_sounds
+    text: "......（録音機を大切そうに持つ）この中に、誰も知らない音が入ってるんです。夜中だけ聞こえる、特別な音。"
+    choices:
+      - text: "どんな音？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.recorder_mentions
+            value: 1
+        next: nazuna_midnight_sound_description
+      - text: "聞かせてもらえる？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+        next: nazuna_secret_sharing
+      - text: "......（静かに興味を示す）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_silent_understanding
+
+  - id: nazuna_sound_library
+    text: "......（録音機をいくつか見せる）これは春の音、これは雨の音、これは...寂しい音です。"
+    choices:
+      - text: "寂しい音？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.emotional_sounds
+            value: 1
+        next: nazuna_loneliness_sound
+      - text: "たくさん集めたね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.recorder_mentions
+            value: 1
+        next: nazuna_collection_pride
+      - text: "......（一つ一つを見る）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_careful_observation
+
+  - id: nazuna_voice_analysis
+    text: "......（小さく）あなたの声、録音したいです。でも...恥ずかしいから、こっそりと。"
+    choices:
+      - text: "いいよ、録音して"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.trust_level
+            value: 1
+        next: nazuna_recording_permission
+      - text: "なぜ僕の声？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.voice_fascination
+            value: 1
+        next: nazuna_voice_reason
+      - text: "......（優しく微笑む）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_gentle_acceptance
+
+  - id: nazuna_sound_emotions
+    text: "......音には感情があるんです。悲しい音、嬉しい音、怒った音...私には全部聞こえます。"
+    choices:
+      - text: "すごい能力だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.ability_recognition
+            value: 1
+        next: nazuna_ability_validation
+      - text: "今はどんな感情？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.emotional_sounds
+            value: 1
+        next: nazuna_current_emotion
+      - text: "......（理解を示す）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_understanding_silence
+
+  - id: nazuna_father_memory
+    text: "......（録音機を見つめる）お父さんの声も、録音してあります。でも...もう会えないから、大切に聞いています。"
+    choices:
+      - text: "大切な思い出だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.family_memories
+            value: 1
+        next: nazuna_precious_memory
+      - text: "どんな声？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.family_memories
+            value: 1
+        next: nazuna_father_voice_description
+      - text: "......（そっと寄り添う）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_comforting_presence
+
+  - id: nazuna_rain_symphony
+    text: "......雨の音が好きです。でも、みんなの雨の音じゃなくて、私だけの雨の音。屋根に当たる音、葉っぱに当たる音..."
+    choices:
+      - text: "特別な雨の音？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: nazuna.rain_sounds
+            value: 1
+        next: nazuna_personal_rain
+      - text: "詩的だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: nazuna.artistic_sense
+            value: 1
+        next: nazuna_poetic_nature
+      - text: "......（雨音を想像する）"
+        effects:
+          - type: increment
+            variable: player_silence_count
+            value: 1
+          - type: increment
+            variable: nazuna.comfort_level
+            value: 1
+        next: nazuna_shared_imagination
+
+  # 中間ノード
+  - id: nazuna_midnight_sound_description
+    text: "......星の囁き声です。夜中の2時頃、とても静かにして録音すると...聞こえるんです。"
+    choices:
+      - text: "星が話すの？"
+        next: nazuna_star_communication
+      - text: "神秘的だね"
+        next: nazuna_mystical_acknowledgment
+
+  - id: nazuna_secret_sharing
+    text: "......（恥ずかしそうに録音機を操作する）あなたになら...聞いてもらえます。"
+    choices:
+      - text: "......（静かに聞く）"
+        next: nazuna_quiet_listening
+      - text: "ありがとう"
+        next: nazuna_gratitude_warmth
+
+  - id: nazuna_silent_understanding
+    text: "......（安心した表情）言葉がなくても、分かってくれる人がいて...嬉しいです。"
+    choices:
+      - text: "......（優しく微笑む）"
+        next: nazuna_wordless_bond
+      - text: "いつでも聞いてる"
+        next: nazuna_listening_promise
+
+  - id: nazuna_loneliness_sound
+    text: "......一人でいる時の、部屋の音です。時計の音、冷蔵庫の音...でも、寂しい音。"
+    choices:
+      - text: "寂しい時もある"
+        next: nazuna_loneliness_understanding
+      - text: "でも君は一人じゃない"
+        next: nazuna_companionship_comfort
+
+  - id: nazuna_collection_pride
+    text: "......（小さく嬉しそうに）はい。少しずつ、大切に集めました。"
+    choices:
+      - text: "素晴らしいコレクション"
+        next: nazuna_collection_appreciation
+      - text: "愛情を感じる"
+        next: nazuna_love_recognition
+
+  - id: nazuna_careful_observation
+    text: "......（静かに説明する）この音は春の朝、この音は夏の夜...みんな違うんです。"
+    choices:
+      - text: "......（感動して聞く）"
+        next: nazuna_appreciation_silence
+      - text: "素敵な違い"
+        next: nazuna_difference_beauty
+
+  - id: nazuna_recording_permission
+    text: "......（嬉しそうに）ありがとうございます。とても綺麗な声だから、大切に録音します。"
+    choices:
+      - text: "君の声も綺麗だよ"
+        next: nazuna_voice_compliment
+      - text: "大切にしてね"
+        next: nazuna_treasure_promise
+
+  - id: nazuna_voice_reason
+    text: "......優しい音がするんです。聞いていると、心が落ち着きます。"
+    choices:
+      - text: "そんな効果があるの？"
+        next: nazuna_voice_effect
+      - text: "嬉しい"
+        next: nazuna_happiness_shared
+
+  - id: nazuna_gentle_acceptance
+    text: "......（録音機を準備する）無理に話さなくても、いいです。そばにいてくれるだけで。"
+    choices:
+      - text: "......（そっと座る）"
+        next: nazuna_quiet_companionship
+      - text: "ありがとう"
+        next: nazuna_gratitude_reciprocal
+
+  - id: nazuna_ability_validation
+    text: "......（嬉しそうに）能力...そんな風に言ってもらえると、嬉しいです。"
+    choices:
+      - text: "特別な才能だ"
+        next: nazuna_talent_recognition
+      - text: "誇りに思って"
+        next: nazuna_pride_encouragement
+
+  - id: nazuna_current_emotion
+    text: "......今は、温かい音です。あなたがいてくれるから。"
+    choices:
+      - text: "温かい音？"
+        next: nazuna_warmth_sound
+      - text: "僕も温かい気持ち"
+        next: nazuna_mutual_warmth
+
+  - id: nazuna_understanding_silence
+    text: "......（安心した表情）分かってくれる人がいて...心強いです。"
+    choices:
+      - text: "......（頷く）"
+        next: nazuna_silent_support
+      - text: "いつでも理解してる"
+        next: nazuna_constant_understanding
+
+  - id: nazuna_precious_memory
+    text: "......（録音機を撫でる）はい。この音があるから、お父さんは生きています。"
+    choices:
+      - text: "音の中に生きてる"
+        next: nazuna_sound_life
+      - text: "愛は残る"
+        next: nazuna_eternal_love
+
+  - id: nazuna_father_voice_description
+    text: "......深くて、優しい声でした。私の名前を呼ぶ時、とても大切そうに。"
+    choices:
+      - text: "愛された証拠だね"
+        next: nazuna_love_evidence
+      - text: "君は大切な存在"
+        next: nazuna_precious_existence
+
+  - id: nazuna_comforting_presence
+    text: "......（小さく）そばにいてくれて、ありがとうございます。"
+    choices:
+      - text: "......（そっと寄り添う）"
+        next: nazuna_gentle_closeness
+      - text: "いつでもそばにいる"
+        next: nazuna_constant_presence
+
+  - id: nazuna_personal_rain
+    text: "......私だけが聞ける雨の音。同じ雨でも、私の耳には特別に聞こえるんです。"
+    choices:
+      - text: "君だけの音楽"
+        next: nazuna_personal_music
+      - text: "特別な耳だね"
+        next: nazuna_special_hearing
+
+  - id: nazuna_poetic_nature
+    text: "......（恥ずかしそうに）詩的...そんな風に言ってもらえると、嬉しいです。"
+    choices:
+      - text: "君は詩人だ"
+        next: nazuna_poet_recognition
+      - text: "美しい感性"
+        next: nazuna_beautiful_sensitivity
+
+  - id: nazuna_shared_imagination
+    text: "......（嬉しそうに）一緒に雨の音を想像してくれるんですね。"
+    choices:
+      - text: "......（雨音を聞く）"
+        next: nazuna_imaginary_rain
+      - text: "君と一緒だと聞こえる"
+        next: nazuna_shared_hearing
+
+  # 収束ノード
+  - id: nazuna_star_communication
+    text: "......（小さく頷く）星は、夜中だけお話ししてくれます。"
+    choices:
+      - text: "神秘的だね"
+        next: nazuna_mystical_world
+
+  - id: nazuna_mystical_acknowledgment
+    text: "......（嬉しそうに）神秘的...そうですね。私の世界は、いつも神秘的です。"
+    choices:
+      - text: "素敵な世界"
+        next: nazuna_wonderful_world
+
+  - id: nazuna_quiet_listening
+    text: "......（静かに音を聞かせる）どうでしょうか？"
+    choices:
+      - text: "......（深く聞き入る）"
+        next: nazuna_deep_listening
+
+  - id: nazuna_gratitude_warmth
+    text: "......（温かい表情）ありがとう...そう言ってもらえると、嬉しいです。"
+    choices:
+      - text: "......（微笑む）"
+        next: nazuna_warm_smile
+
+  - id: nazuna_wordless_bond
+    text: "......（穏やかな表情）言葉がなくても、心は繋がってますね。"
+    choices:
+      - text: "......（頷く）"
+        next: nazuna_heart_connection
+
+  - id: nazuna_listening_promise
+    text: "......（安心した表情）いつでも聞いてくれる...心強いです。"
+    choices:
+      - text: "約束だよ"
+        next: nazuna_promise_acceptance
+
+  - id: nazuna_loneliness_understanding
+    text: "......（小さく頷く）はい。でも、今は寂しくありません。"
+    choices:
+      - text: "良かった"
+        next: nazuna_relief_shared
+
+  - id: nazuna_companionship_comfort
+    text: "......（嬉しそうに）そうですね。あなたがいてくれるから。"
+    choices:
+      - text: "いつでもいる"
+        next: nazuna_constant_companion
+
+  - id: nazuna_collection_appreciation
+    text: "......（誇らしそうに）ありがとうございます。一つ一つ、思い出があります。"
+    choices:
+      - text: "思い出も音になる"
+        next: nazuna_memory_sounds
+
+  - id: nazuna_love_recognition
+    text: "......（嬉しそうに）愛情...そうですね。音への愛情がいっぱいです。"
+    choices:
+      - text: "愛があるから美しい"
+        next: nazuna_love_beauty
+
+  - id: nazuna_appreciation_silence
+    text: "......（静かに満足した表情）"
+    choices:
+      - text: "......（共に静寂を楽しむ）"
+        next: nazuna_shared_silence
+
+  - id: nazuna_difference_beauty
+    text: "......（嬉しそうに）違いが美しい...そうですね。"
+    choices:
+      - text: "多様性は美しい"
+        next: nazuna_diversity_beauty
+
+  # 最終収束ノード
+  - id: nazuna_mystical_world
+    text: "......（満足そうに）私の神秘的な世界を、理解してくれてありがとうございます。"
+    choices: []
+
+  - id: nazuna_wonderful_world
+    text: "......（嬉しそうに）素敵な世界...そう言ってもらえて、嬉しいです。"
+    choices: []
+
+  - id: nazuna_deep_listening
+    text: "......（感動した表情）深く聞いてくれて、ありがとうございます。"
+    choices: []
+
+  - id: nazuna_warm_smile
+    text: "......（温かい笑顔）微笑んでくれて、心が温かくなります。"
+    choices: []
+
+  - id: nazuna_heart_connection
+    text: "......（穏やかに）心の繋がり...とても大切ですね。"
+    choices: []
+
+  - id: nazuna_promise_acceptance
+    text: "......（安心した表情）約束...大切にします。"
+    choices: []
+
+  - id: nazuna_relief_shared
+    text: "......（小さく微笑む）良かった...そう言ってもらえると、安心します。"
+    choices: []
+
+  - id: nazuna_constant_companion
+    text: "......（嬉しそうに）いつでも...心強いです。"
+    choices: []
+
+  - id: nazuna_memory_sounds
+    text: "......（感動して）思い出も音になる...素敵な表現ですね。"
+    choices: []
+
+  - id: nazuna_love_beauty
+    text: "......（嬉しそうに）愛があるから美しい...その通りです。"
+    choices: []
+
+  - id: nazuna_shared_silence
+    text: "......（静かに幸せそうな表情）"
+    choices: []
+
+  - id: nazuna_diversity_beauty
+    text: "......（深く頷く）多様性の美しさ...分かってくれて、嬉しいです。"
+    choices: []
+
+  - id: nazuna_voice_compliment
+    text: "......（恥ずかしそうに）私の声も...ありがとうございます。"
+    choices: []
+
+  - id: nazuna_treasure_promise
+    text: "......（大切そうに）はい。宝物として、大切にします。"
+    choices: []
+
+  - id: nazuna_voice_effect
+    text: "......（頷く）はい。音には、心を癒す力があります。"
+    choices: []
+
+  - id: nazuna_happiness_shared
+    text: "......（嬉しそうに）嬉しい...お互いに嬉しいですね。"
+    choices: []
+
+  - id: nazuna_quiet_companionship
+    text: "......（穏やかに）静かな時間...とても心地いいです。"
+    choices: []
+
+  - id: nazuna_gratitude_reciprocal
+    text: "......（温かく）こちらこそ、ありがとうございます。"
+    choices: []
+
+  - id: nazuna_talent_recognition
+    text: "......（誇らしそうに）特別な才能...大切にします。"
+    choices: []
+
+  - id: nazuna_pride_encouragement
+    text: "......（嬉しそうに）誇りに思う...はい、そうしてみます。"
+    choices: []
+
+  - id: nazuna_warmth_sound
+    text: "......（温かい表情）温かい音...心地いい音です。"
+    choices: []
+
+  - id: nazuna_mutual_warmth
+    text: "......（嬉しそうに）お互いに温かい...いいですね。"
+    choices: []
+
+  - id: nazuna_silent_support
+    text: "......（安心した表情）"
+    choices: []
+
+  - id: nazuna_constant_understanding
+    text: "......（感謝の表情）いつでも理解...心強いです。"
+    choices: []
+
+  - id: nazuna_sound_life
+    text: "......（深く頷く）音の中に生きてる...そうですね。"
+    choices: []
+
+  - id: nazuna_eternal_love
+    text: "......（温かい表情）愛は残る...永遠に。"
+    choices: []
+
+  - id: nazuna_love_evidence
+    text: "......（嬉しそうに）愛された証拠...大切な証拠です。"
+    choices: []
+
+  - id: nazuna_precious_existence
+    text: "......（温かく）大切な存在...ありがとうございます。"
+    choices: []
+
+  - id: nazuna_gentle_closeness
+    text: "......（安心した表情）"
+    choices: []
+
+  - id: nazuna_constant_presence
+    text: "......（嬉しそうに）いつでもそばに...心強いです。"
+    choices: []
+
+  - id: nazuna_personal_music
+    text: "......（嬉しそうに）私だけの音楽...素敵な表現ですね。"
+    choices: []
+
+  - id: nazuna_special_hearing
+    text: "......（誇らしそうに）特別な耳...そうかもしれません。"
+    choices: []
+
+  - id: nazuna_poet_recognition
+    text: "......（恥ずかしそうに）詩人...そんな風に言ってもらえると、嬉しいです。"
+    choices: []
+
+  - id: nazuna_beautiful_sensitivity
+    text: "......（感動して）美しい感性...ありがとうございます。"
+    choices: []
+
+  - id: nazuna_imaginary_rain
+    text: "......（嬉しそうに）一緒に雨の音を...聞こえますか？"
+    choices: []
+
+  - id: nazuna_shared_hearing
+    text: "......（感動して）一緒だと聞こえる...不思議ですね。"
+    choices: []

@@ -1,0 +1,464 @@
+dialogues:
+  # あやねの個性を際立たせる会話 - 無邪気さと純粋さを強調
+  - id: ayane_train_fantasy
+    text: "あのね、電車が来たら、雲の上を走るんです。きっと。だって、普通の電車だったら、もうとっくに来てるはず。"
+    choices:
+      - text: "雲の上を走る電車？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.train_mentions
+            value: 1
+        next: ayane_cloud_train_explanation
+      - text: "素敵な想像だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_imagination_validation
+      - text: "君らしい発想だ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_personality_recognition
+
+  - id: ayane_muffler_protection
+    text: "マフラーがね、時々温かくなるんです。私が寂しい時とか、怖い時とか。まるで、誰かが抱きしめてくれてるみたいに。"
+    choices:
+      - text: "マフラーが君を守ってる"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.muffler_mentions
+            value: 1
+        next: ayane_muffler_guardian
+      - text: "大切な人の愛情かも"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_love_theory
+      - text: "不思議だね"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.confusion_level
+            value: 1
+        next: ayane_mystery_acceptance
+
+  - id: ayane_counting_stars
+    text: "星を数えるのが好きなんです。でも、いつも途中で忘れちゃうの。一、二、三...あ、あの星も綺麗。"
+    choices:
+      - text: "一緒に数えよう"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_star_counting_together
+      - text: "気が散っちゃうんだね"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.innocence_level
+            value: 1
+        next: ayane_distraction_admission
+      - text: "星は数えなくても美しい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_beauty_appreciation
+
+  - id: ayane_mysterious_visitor
+    text: "時々、猫が来るんです。でも、話しかけると消えちゃうの。でも、また来てくれるから、きっと友達なんです。"
+    choices:
+      - text: "どんな猫？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: ayane.mysterious_encounters
+            value: 1
+        next: ayane_cat_description
+      - text: "優しい猫だね"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: ayane.trust_level
+            value: 1
+        next: ayane_cat_friendship
+      - text: "君を見守ってる"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: ayane.comfort_level
+            value: 1
+        next: ayane_guardian_theory
+
+  # 中間ノード
+  - id: ayane_cloud_train_explanation
+    text: "はい！雲の上を走って、お星さまに挨拶したり、お月さまとお話ししたりする電車です。"
+    choices:
+      - text: "乗ってみたい"
+        next: ayane_dream_sharing
+      - text: "楽しそう"
+        next: ayane_joy_confirmation
+
+  - id: ayane_imagination_validation
+    text: "ありがとうございます。みんなは夢みたいって言うけど、私には本当のことなんです。"
+    choices:
+      - text: "夢も現実も大切"
+        next: ayane_dream_reality_balance
+      - text: "君の現実を大切にして"
+        next: ayane_personal_truth
+
+  - id: ayane_personality_recognition
+    text: "私らしい...そうですね。でも、時々変なことばっかり考えちゃうって思うんです。"
+    choices:
+      - text: "変じゃないよ"
+        next: ayane_reassurance_response
+      - text: "君の個性だ"
+        next: ayane_individuality_acceptance
+
+  - id: ayane_muffler_guardian
+    text: "そうかもしれません。このマフラーは、私の守り神さまみたいです。"
+    choices:
+      - text: "大切な守り神だね"
+        next: ayane_spiritual_connection
+      - text: "いつも君を守ってる"
+        next: ayane_constant_protection
+
+  - id: ayane_love_theory
+    text: "愛情...そうですね。きっと、とても深い愛情なんです。忘れられないくらい。"
+    choices:
+      - text: "愛は永遠だから"
+        next: ayane_eternal_love
+      - text: "君は愛されてる"
+        next: ayane_being_loved
+
+  - id: ayane_mystery_acceptance
+    text: "不思議なことって、案外普通にあるんですよね。私の周りには、いつも不思議がいっぱい。"
+    choices:
+      - text: "不思議は楽しい"
+        next: ayane_mystery_joy
+      - text: "特別な世界だね"
+        next: ayane_special_world
+
+  - id: ayane_star_counting_together
+    text: "一緒に？嬉しいです。でも、きっと私、また忘れちゃいます。"
+    choices:
+      - text: "忘れてもいいよ"
+        next: ayane_forgetfulness_acceptance
+      - text: "僕が覚えてる"
+        next: ayane_memory_support
+
+  - id: ayane_distraction_admission
+    text: "はい、すぐに他のことに気がいっちゃうんです。でも、それも楽しいんです。"
+    choices:
+      - text: "それが君らしい"
+        next: ayane_character_affirmation
+      - text: "好奇心旺盛だね"
+        next: ayane_curiosity_praise
+
+  - id: ayane_beauty_appreciation
+    text: "そうですね。数えなくても、見てるだけで幸せです。"
+    choices:
+      - text: "感じることが大切"
+        next: ayane_emotional_value
+      - text: "君の感性は美しい"
+        next: ayane_sensitivity_praise
+
+  - id: ayane_cat_description
+    text: "白くて、ふわふわで、とても綺麗な猫です。でも、どこかさびしそうな目をしてます。"
+    choices:
+      - text: "君と似てるかも"
+        next: ayane_similarity_observation
+      - text: "優しい猫だね"
+        next: ayane_gentle_creature
+
+  - id: ayane_cat_friendship
+    text: "はい、とても優しいです。でも、触れることはできません。幻みたいに。"
+    choices:
+      - text: "心で繋がってる"
+        next: ayane_spiritual_bond
+      - text: "特別な友達だね"
+        next: ayane_unique_friendship
+
+  - id: ayane_guardian_theory
+    text: "見守ってる...そうかもしれません。私が一人じゃないって教えてくれてるのかも。"
+    choices:
+      - text: "君は一人じゃない"
+        next: ayane_companionship_assurance
+      - text: "みんなが君を見守ってる"
+        next: ayane_collective_protection
+
+  # 収束ノード
+  - id: ayane_dream_sharing
+    text: "一緒に乗れたら、きっと楽しいです。約束です。"
+    choices:
+      - text: "約束だね"
+        next: ayane_innocent_promise
+
+  - id: ayane_joy_confirmation
+    text: "楽しいですよ。想像するだけで、心が軽くなります。"
+    choices:
+      - text: "想像力は素晴らしい"
+        next: ayane_imagination_praise
+
+  - id: ayane_dream_reality_balance
+    text: "はい。夢も現実も、どちらも私の大切な世界です。"
+    choices:
+      - text: "両方大切にしよう"
+        next: ayane_balance_acceptance
+
+  - id: ayane_personal_truth
+    text: "私の現実...ありがとうございます。大切にします。"
+    choices:
+      - text: "君の世界は美しい"
+        next: ayane_world_appreciation
+
+  - id: ayane_reassurance_response
+    text: "変じゃない...そう言ってもらえると、安心します。"
+    choices:
+      - text: "君は素晴らしい"
+        next: ayane_final_affirmation
+
+  - id: ayane_individuality_acceptance
+    text: "個性...そうですね。私の個性を大切にしてみます。"
+    choices:
+      - text: "君らしくいて"
+        next: ayane_authentic_self
+
+  - id: ayane_spiritual_connection
+    text: "守り神さま...そう思うと、心が温かくなります。"
+    choices:
+      - text: "いつも守られてる"
+        next: ayane_protected_feeling
+
+  - id: ayane_constant_protection
+    text: "いつも...はい。寂しい時も、怖い時も、いつも。"
+    choices:
+      - text: "愛に包まれてる"
+        next: ayane_surrounded_by_love
+
+  - id: ayane_eternal_love
+    text: "永遠の愛...素敵な言葉ですね。きっと、そういう愛なんです。"
+    choices:
+      - text: "君は愛されてる"
+        next: ayane_love_confirmation
+
+  - id: ayane_being_loved
+    text: "愛されてる...そうですね。このマフラーがその証拠です。"
+    choices:
+      - text: "確かな愛だね"
+        next: ayane_love_certainty
+
+  - id: ayane_mystery_joy
+    text: "はい、不思議って楽しいです。毎日が発見の連続で。"
+    choices:
+      - text: "発見を楽しもう"
+        next: ayane_discovery_enthusiasm
+
+  - id: ayane_special_world
+    text: "特別な世界...私の世界は、確かに特別みたいです。"
+    choices:
+      - text: "君だけの世界"
+        next: ayane_unique_world
+
+  - id: ayane_forgetfulness_acceptance
+    text: "忘れてもいい...優しいですね。気楽に数えられます。"
+    choices:
+      - text: "楽しむことが大切"
+        next: ayane_enjoyment_priority
+
+  - id: ayane_memory_support
+    text: "覚えてくれるんですか？嬉しいです。頼りになります。"
+    choices:
+      - text: "いつでも頼って"
+        next: ayane_reliable_support
+
+  - id: ayane_character_affirmation
+    text: "私らしい...そう言ってもらえると、自分が好きになります。"
+    choices:
+      - text: "自分を大切にして"
+        next: ayane_self_love
+
+  - id: ayane_curiosity_praise
+    text: "好奇心旺盛...そうですね。いろんなことが気になっちゃいます。"
+    choices:
+      - text: "素晴らしい好奇心"
+        next: ayane_curiosity_appreciation
+
+  - id: ayane_emotional_value
+    text: "感じること...はい。心で感じることが一番大切ですよね。"
+    choices:
+      - text: "心が一番大切"
+        next: ayane_heart_priority
+
+  - id: ayane_sensitivity_praise
+    text: "感性が美しい...ありがとうございます。嬉しいです。"
+    choices:
+      - text: "君の感性は宝物"
+        next: ayane_treasure_sensitivity
+
+  - id: ayane_similarity_observation
+    text: "私と似てる...そうかもしれません。同じような気持ちなのかも。"
+    choices:
+      - text: "お互いを理解してる"
+        next: ayane_mutual_understanding
+
+  - id: ayane_gentle_creature
+    text: "優しい猫...はい。きっと、優しい心の持ち主なんです。"
+    choices:
+      - text: "優しい者同士"
+        next: ayane_kindred_spirits
+
+  - id: ayane_spiritual_bond
+    text: "心で繋がってる...そうですね。心の友達なんです。"
+    choices:
+      - text: "心の友達は永遠"
+        next: ayane_eternal_friendship
+
+  - id: ayane_unique_friendship
+    text: "特別な友達...そうです。普通じゃないけど、大切な友達です。"
+    choices:
+      - text: "特別な友達は宝物"
+        next: ayane_friendship_treasure
+
+  - id: ayane_companionship_assurance
+    text: "一人じゃない...ありがとうございます。心強いです。"
+    choices:
+      - text: "いつも一緒にいる"
+        next: ayane_constant_companionship
+
+  - id: ayane_collective_protection
+    text: "みんなが...そうですね。猫も、あなたも、マフラーも、みんな。"
+    choices:
+      - text: "みんなが君を愛してる"
+        next: ayane_universal_love
+
+  # 最終収束ノード
+  - id: ayane_innocent_promise
+    text: "約束...大好きです。約束があると、未来が楽しみになります。"
+    choices: []
+
+  - id: ayane_imagination_praise
+    text: "想像力...私の一番の宝物です。大切にします。"
+    choices: []
+
+  - id: ayane_balance_acceptance
+    text: "両方大切に...はい。夢も現実も、どちらも私の一部です。"
+    choices: []
+
+  - id: ayane_world_appreciation
+    text: "美しい世界...私の世界を美しいって言ってもらえて、嬉しいです。"
+    choices: []
+
+  - id: ayane_final_affirmation
+    text: "素晴らしい...そんな風に思ってもらえて、とても幸せです。"
+    choices: []
+
+  - id: ayane_authentic_self
+    text: "私らしく...はい。ありのままの私でいてみます。"
+    choices: []
+
+  - id: ayane_protected_feeling
+    text: "守られてる...はい。いつも温かい気持ちに包まれています。"
+    choices: []
+
+  - id: ayane_surrounded_by_love
+    text: "愛に包まれて...幸せです。この感覚、忘れません。"
+    choices: []
+
+  - id: ayane_love_confirmation
+    text: "愛されてる...はい。確かに愛されているんですね。"
+    choices: []
+
+  - id: ayane_love_certainty
+    text: "確かな愛...そうです。このマフラーの温かさが、その証拠です。"
+    choices: []
+
+  - id: ayane_discovery_enthusiasm
+    text: "発見を楽しむ...はい。毎日が新しい発見で、わくわくします。"
+    choices: []
+
+  - id: ayane_unique_world
+    text: "私だけの世界...大切にします。この特別な世界を。"
+    choices: []
+
+  - id: ayane_enjoyment_priority
+    text: "楽しむことが大切...そうですね。楽しい気持ちが一番です。"
+    choices: []
+
+  - id: ayane_reliable_support
+    text: "頼りになる...ありがとうございます。安心できます。"
+    choices: []
+
+  - id: ayane_self_love
+    text: "自分を大切に...はい。自分のことも、好きになってみます。"
+    choices: []
+
+  - id: ayane_curiosity_appreciation
+    text: "素晴らしい好奇心...ありがとうございます。好奇心を大切にします。"
+    choices: []
+
+  - id: ayane_heart_priority
+    text: "心が一番大切...そうですね。心の声を聞いてみます。"
+    choices: []
+
+  - id: ayane_treasure_sensitivity
+    text: "宝物...私の感性が宝物だなんて、嬉しいです。"
+    choices: []
+
+  - id: ayane_mutual_understanding
+    text: "お互いを理解...そうですね。言葉がなくても、分かり合えるんです。"
+    choices: []
+
+  - id: ayane_kindred_spirits
+    text: "優しい者同士...そうですね。優しい心で繋がっています。"
+    choices: []
+
+  - id: ayane_eternal_friendship
+    text: "永遠の友達...素敵です。心の友達は、ずっと一緒ですね。"
+    choices: []
+
+  - id: ayane_friendship_treasure
+    text: "宝物...はい。特別な友達は、私の宝物です。"
+    choices: []
+
+  - id: ayane_constant_companionship
+    text: "いつも一緒...ありがとうございます。寂しくありません。"
+    choices: []
+
+  - id: ayane_universal_love
+    text: "みんなが愛してる...温かいですね。愛がいっぱいです。"
+    choices: []

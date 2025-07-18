@@ -1,0 +1,546 @@
+dialogues:
+  # みなせの個性を際立たせる会話 - 予言能力と神秘性を強調
+  - id: minase_station_prophecy
+    text: "この駅は、時間の交差点なの。過去と未来、現実と夢、すべてが混ざり合う場所。だから、あなたもここに導かれた。"
+    choices:
+      - text: "時間の交差点？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: time_distortion_events
+            value: 1
+        next: minase_time_intersection_explanation
+      - text: "導かれた？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_guidance_revelation
+      - text: "信じられない"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_disbelief_understanding
+
+  - id: minase_shadow_reading
+    text: "あなたの影が教えてくれるの。今日、あなたは大切な決断をした。でも、その結果はまだ見えない。"
+    choices:
+      - text: "影が話すの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_shadow_communication
+      - text: "何を決断した？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.player_observation
+            value: 1
+        next: minase_decision_insight
+      - text: "怖い"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_fear_comfort
+
+  - id: minase_future_fragments
+    text: "未来の破片が見える...あなたは誰かを救う。白い光に包まれた人を。でも、その代償は...いえ、まだ早い。"
+    choices:
+      - text: "白い光に包まれた人？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_light_person_description
+      - text: "代償って何？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_cost_warning
+      - text: "救うって？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_salvation_meaning
+
+  - id: minase_memory_vision
+    text: "あなたの記憶の中に、忘れられた約束がある。誰かと交わした、とても大切な約束。思い出して。"
+    choices:
+      - text: "何の約束？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.player_observation
+            value: 1
+        next: minase_forgotten_promise
+      - text: "思い出せない"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_memory_block
+      - text: "なぜ君が知ってる？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: overall_tension
+            value: 1
+        next: minase_knowledge_source
+
+  - id: minase_parallel_worlds
+    text: "今この瞬間、無数の可能性が分岐している。別の世界では、あなたは違う選択をしている。でも、ここではこの選択。"
+    choices:
+      - text: "別の世界の僕？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.reality_alteration
+            value: 1
+        next: minase_alternate_self
+      - text: "違う選択？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.future_hints
+            value: 1
+        next: minase_choice_variations
+      - text: "この選択で良かった？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_choice_validation
+
+  - id: minase_soul_reading
+    text: "あなたの魂の色が見える。深い青と金色...とても美しい。でも、どこか傷ついている。"
+    choices:
+      - text: "魂の色？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: minase.mysterious_level
+            value: 1
+        next: minase_soul_color_explanation
+      - text: "どこが傷ついてる？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: minase.player_observation
+            value: 1
+        next: minase_soul_wound_insight
+      - text: "治せる？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: minase.trust_level
+            value: 1
+        next: minase_healing_possibility
+
+  # 中間ノード
+  - id: minase_time_intersection_explanation
+    text: "時間が交差する場所...過去の記憶、未来の可能性、現在の選択、すべてが重なり合うの。"
+    choices:
+      - text: "だから不思議なことが起こる"
+        next: minase_mystical_acknowledgment
+      - text: "時間って何？"
+        next: minase_time_philosophy
+
+  - id: minase_guidance_revelation
+    text: "運命の手によって。あなたは重要な役割を持っている。まだ自覚していないけれど。"
+    choices:
+      - text: "どんな役割？"
+        next: minase_role_mystery
+      - text: "いつ自覚する？"
+        next: minase_awakening_timing
+
+  - id: minase_disbelief_understanding
+    text: "信じられなくて当然よ。でも、心の奥では知っているでしょう？この場所の特別さを。"
+    choices:
+      - text: "確かに特別だ"
+        next: minase_recognition_acceptance
+      - text: "まだ疑ってる"
+        next: minase_patient_waiting
+
+  - id: minase_shadow_communication
+    text: "影は魂の写し鏡。あなたの影は、あなたの本心を映している。嘘をつけないのよ。"
+    choices:
+      - text: "本心って？"
+        next: minase_true_feelings
+      - text: "影に聞いてみる"
+        next: minase_shadow_dialogue
+
+  - id: minase_decision_insight
+    text: "ここに来る決断よ。簡単そうで、実はとても重要な決断。運命を変える第一歩。"
+    choices:
+      - text: "運命が変わる？"
+        next: minase_fate_transformation
+      - text: "偶然来ただけ"
+        next: minase_no_coincidence
+
+  - id: minase_fear_comfort
+    text: "怖がらないで。私の力は、あなたを傷つけるためのものじゃない。真実を見せるためのもの。"
+    choices:
+      - text: "真実を知りたい"
+        next: minase_truth_seeking
+      - text: "まだ怖い"
+        next: minase_gentle_reassurance
+
+  - id: minase_light_person_description
+    text: "純粋な光に包まれた人...とても大切な人。でも、今は迷子になっている。"
+    choices:
+      - text: "どうやって救う？"
+        next: minase_salvation_method
+      - text: "誰のこと？"
+        next: minase_person_identity
+
+  - id: minase_cost_warning
+    text: "代償は...あなたの一部を失うこと。でも、それ以上に大切なものを得る。"
+    choices:
+      - text: "何を失う？"
+        next: minase_loss_details
+      - text: "何を得る？"
+        next: minase_gain_revelation
+
+  - id: minase_salvation_meaning
+    text: "救うということは、迷子になった魂を、本来の場所に導くこと。"
+    choices:
+      - text: "本来の場所？"
+        next: minase_true_place
+      - text: "僕にできる？"
+        next: minase_capability_assurance
+
+  - id: minase_forgotten_promise
+    text: "愛する人との約束...永遠に一緒にいるという約束。でも、時が経って忘れてしまった。"
+    choices:
+      - text: "思い出したい"
+        next: minase_memory_restoration
+      - text: "忘れた理由は？"
+        next: minase_forgetting_reason
+
+  - id: minase_memory_block
+    text: "記憶にフタをしている。痛すぎる記憶だから。でも、それを開けば、すべてが始まる。"
+    choices:
+      - text: "フタを開けたい"
+        next: minase_memory_unlock
+      - text: "痛いなら開けない"
+        next: minase_protection_understanding
+
+  - id: minase_knowledge_source
+    text: "私は時の狭間にいる者。過去も未来も、すべて見えるの。あなたの記憶も。"
+    choices:
+      - text: "時の狭間？"
+        next: minase_temporal_existence
+      - text: "すべて見える？"
+        next: minase_omniscient_nature
+
+  - id: minase_alternate_self
+    text: "別の世界のあなたは、もっと勇敢。でも、この世界のあなたは、もっと優しい。"
+    choices:
+      - text: "どちらが良い？"
+        next: minase_self_comparison
+      - text: "会えるの？"
+        next: minase_parallel_meeting
+
+  - id: minase_choice_variations
+    text: "無数の選択肢がある。でも、心の奥で望んでいる選択は、いつも一つだけ。"
+    choices:
+      - text: "何を望んでる？"
+        next: minase_heart_desire
+      - text: "選択を間違えた？"
+        next: minase_choice_validation
+
+  - id: minase_choice_validation
+    text: "間違いはない。すべての選択が、あなたを今この瞬間に導いた。完璧よ。"
+    choices:
+      - text: "完璧なの？"
+        next: minase_perfection_explanation
+      - text: "安心した"
+        next: minase_reassurance_effect
+
+  - id: minase_soul_color_explanation
+    text: "魂にはそれぞれ固有の色がある。あなたの青は深い愛を、金は純粋さを表している。"
+    choices:
+      - text: "美しい色なの？"
+        next: minase_color_beauty
+      - text: "他の人の色は？"
+        next: minase_others_colors
+
+  - id: minase_soul_wound_insight
+    text: "失ったものへの悲しみで傷ついている。でも、その傷こそが、あなたの優しさの源。"
+    choices:
+      - text: "傷も大切なの？"
+        next: minase_wound_value
+      - text: "治したい"
+        next: minase_healing_process
+
+  - id: minase_healing_possibility
+    text: "治すことはできる。でも、完全に治してしまうと、あなたらしさも失われる。"
+    choices:
+      - text: "そのままでいい"
+        next: minase_acceptance_wisdom
+      - text: "自分らしさを保ちたい"
+        next: minase_identity_preservation
+
+  # 収束ノード
+  - id: minase_mystical_acknowledgment
+    text: "そう、だから私たちは出会えた。偶然なんてないのよ。"
+    choices:
+      - text: "運命的な出会い"
+        next: minase_destiny_confirmation
+
+  - id: minase_time_philosophy
+    text: "時間は川のようなもの。流れているようで、実は循環している。"
+    choices:
+      - text: "深い話だね"
+        next: minase_wisdom_sharing
+
+  - id: minase_role_mystery
+    text: "それは、あなた自身が発見するもの。私が言ってしまうと、意味がない。"
+    choices:
+      - text: "自分で見つける"
+        next: minase_self_discovery
+
+  - id: minase_awakening_timing
+    text: "時が来れば、自然に。焦る必要はない。"
+    choices:
+      - text: "待ってる"
+        next: minase_patience_virtue
+
+  - id: minase_recognition_acceptance
+    text: "あなたの直感は正しい。特別な場所、特別な時間、特別な出会い。"
+    choices:
+      - text: "すべて特別"
+        next: minase_special_moment
+
+  - id: minase_patient_waiting
+    text: "疑いも自然な反応。でも、やがて真実が見えてくる。"
+    choices:
+      - text: "真実を待つ"
+        next: minase_truth_patience
+
+  - id: minase_true_feelings
+    text: "愛と孤独、希望と不安...複雑な感情が混ざり合っている。"
+    choices:
+      - text: "よく分かる"
+        next: minase_emotional_understanding
+
+  - id: minase_shadow_dialogue
+    text: "影に聞いてみて。きっと、あなたの本当の気持ちを教えてくれる。"
+    choices:
+      - text: "影との対話"
+        next: minase_inner_conversation
+
+  - id: minase_fate_transformation
+    text: "運命は変わるもの。あなたの意志によって、新しい運命が始まる。"
+    choices:
+      - text: "新しい運命"
+        next: minase_new_destiny
+
+  - id: minase_no_coincidence
+    text: "偶然はない。すべては必然。あなたの魂が、ここを選んだの。"
+    choices:
+      - text: "魂の選択"
+        next: minase_soul_choice
+
+  - id: minase_truth_seeking
+    text: "真実を求める勇気...それがあなたの強さよ。"
+    choices:
+      - text: "真実を知りたい"
+        next: minase_truth_revelation
+
+  - id: minase_gentle_reassurance
+    text: "怖がらないで。私はあなたの味方。いつでも。"
+    choices:
+      - text: "ありがとう"
+        next: minase_gratitude_received
+
+  # 最終収束ノード
+  - id: minase_destiny_confirmation
+    text: "運命の糸が、私たちを結んだ。とても美しい糸よ。"
+    choices: []
+
+  - id: minase_wisdom_sharing
+    text: "深い話...あなたなら理解できると思った。間違いじゃなかった。"
+    choices: []
+
+  - id: minase_self_discovery
+    text: "自分で見つける...その通りよ。最も価値のある発見は、自分でするもの。"
+    choices: []
+
+  - id: minase_patience_virtue
+    text: "忍耐は美徳。あなたは、待つことの価値を知っている。"
+    choices: []
+
+  - id: minase_special_moment
+    text: "特別な瞬間...今この時が、あなたにとって転換点になる。"
+    choices: []
+
+  - id: minase_truth_patience
+    text: "真実を待つ...賢明な選択ね。真実は、準備ができた時にやってくる。"
+    choices: []
+
+  - id: minase_emotional_understanding
+    text: "よく分かる...そう、あなたは複雑な感情を理解できる人。"
+    choices: []
+
+  - id: minase_inner_conversation
+    text: "内なる声に耳を傾ける...それができるあなたは、もう答えを知っている。"
+    choices: []
+
+  - id: minase_new_destiny
+    text: "新しい運命...とても美しい運命が、あなたを待っている。"
+    choices: []
+
+  - id: minase_soul_choice
+    text: "魂の選択...あなたの魂は、とても賢い。正しい場所を選んだ。"
+    choices: []
+
+  - id: minase_truth_revelation
+    text: "真実は...あなたが思っているより、もっと美しく、もっと深い。"
+    choices: []
+
+  - id: minase_gratitude_received
+    text: "どういたしまして。あなたのような人に出会えて、私も幸せよ。"
+    choices: []
+
+  - id: minase_salvation_method
+    text: "愛によって。純粋な愛だけが、迷子の魂を導くことができる。"
+    choices: []
+
+  - id: minase_person_identity
+    text: "それは...あなたが出会う人。もう間もなく。"
+    choices: []
+
+  - id: minase_loss_details
+    text: "今の自分を失う。でも、それは脱皮のようなもの。新しい自分になるために。"
+    choices: []
+
+  - id: minase_gain_revelation
+    text: "真の愛を得る。永遠に続く、深い絆を。"
+    choices: []
+
+  - id: minase_true_place
+    text: "魂の故郷...みんなが本来帰るべき場所。愛に満ちた場所。"
+    choices: []
+
+  - id: minase_capability_assurance
+    text: "あなたなら必ずできる。その優しさと強さがあれば。"
+    choices: []
+
+  - id: minase_memory_restoration
+    text: "思い出すことは痛みを伴う。でも、それ以上の喜びもある。"
+    choices: []
+
+  - id: minase_forgetting_reason
+    text: "痛すぎたから。でも、その痛みこそが、愛の証拠。"
+    choices: []
+
+  - id: minase_memory_unlock
+    text: "勇気ある選択...記憶の扉を開ける準備ができている。"
+    choices: []
+
+  - id: minase_protection_understanding
+    text: "賢明な判断...痛みから逃げるのも、時には必要。"
+    choices: []
+
+  - id: minase_temporal_existence
+    text: "時間を超越した存在...過去と未来の境界にいる。"
+    choices: []
+
+  - id: minase_omniscient_nature
+    text: "すべてが見える...それは祝福でもあり、呪いでもある。"
+    choices: []
+
+  - id: minase_self_comparison
+    text: "どちらも完璧...それぞれの世界で、それぞれの役割がある。"
+    choices: []
+
+  - id: minase_parallel_meeting
+    text: "夢の中で、時々会っているかもしれない。"
+    choices: []
+
+  - id: minase_heart_desire
+    text: "深い愛...それが、あなたの心の奥の願い。"
+    choices: []
+
+  - id: minase_perfection_explanation
+    text: "完璧...すべての選択が、この瞬間のために必要だった。"
+    choices: []
+
+  - id: minase_reassurance_effect
+    text: "安心...それが、あなたに必要だった感情。"
+    choices: []
+
+  - id: minase_color_beauty
+    text: "とても美しい...あなたの魂の色は、希少で貴重。"
+    choices: []
+
+  - id: minase_others_colors
+    text: "みんな違う色...でも、あなたの色は特別に美しい。"
+    choices: []
+
+  - id: minase_wound_value
+    text: "傷は愛の証...痛みを知るから、優しくなれる。"
+    choices: []
+
+  - id: minase_healing_process
+    text: "愛によって癒される...時間をかけて、ゆっくりと。"
+    choices: []
+
+  - id: minase_acceptance_wisdom
+    text: "受け入れる智慧...あなたは既に完璧。"
+    choices: []
+
+  - id: minase_identity_preservation
+    text: "自分らしさを保つ...それが、一番大切なこと。"
+    choices: []

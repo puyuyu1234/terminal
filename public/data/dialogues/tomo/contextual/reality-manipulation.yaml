@@ -1,0 +1,550 @@
+dialogues:
+  # ともの個性を際立たせる会話 - 現実操作能力と芸術性を強調
+  - id: tomo_creation_process
+    text: "絵を描く時、現実が震えるんです。筆を動かすたびに、世界が少しずつ変わっていく。でも、怖くもあります。"
+    choices:
+      - text: "どんな風に変わるの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.reality_alteration
+            value: 1
+        next: tomo_reality_changes_detail
+      - text: "なぜ怖いの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.concern_level
+            value: 1
+        next: tomo_fear_explanation
+      - text: "素晴らしい能力だよ"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.power_recognition
+            value: 1
+        next: tomo_ability_validation
+
+  - id: tomo_forbidden_drawing
+    text: "描いてはいけない絵があるんです。でも、時々、無意識に描いてしまいそうになって。その絵を描いたら、きっと..."
+    choices:
+      - text: "どんな絵？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.forbidden_knowledge
+            value: 1
+        next: tomo_forbidden_revelation
+      - text: "描かなくていい"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.comfort_level
+            value: 1
+        next: tomo_prohibition_comfort
+      - text: "なぜ描きたくなるの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.inner_conflict
+            value: 1
+        next: tomo_impulse_explanation
+
+  - id: tomo_world_layers
+    text: "世界には層があるんです。表面の世界と、その下の世界と、さらに深い世界。私の絵は、その間を行き来します。"
+    choices:
+      - text: "どのくらい深い世界がある？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.world_knowledge
+            value: 1
+        next: tomo_world_depth_explanation
+      - text: "危険じゃない？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.concern_level
+            value: 1
+        next: tomo_danger_awareness
+      - text: "見てみたい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_world_sharing
+
+  - id: tomo_living_drawings
+    text: "時々、描いた絵が勝手に動くんです。蝶が羽ばたいたり、花が咲いたり。でも、それを見てるのは私だけ。"
+    choices:
+      - text: "僕にも見せて"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.trust_level
+            value: 1
+        next: tomo_animation_sharing
+      - text: "生きてるみたい"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.animation_level
+            value: 1
+        next: tomo_life_acknowledgment
+      - text: "君だけの特別な世界"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.acceptance_level
+            value: 1
+        next: tomo_special_world_recognition
+
+  - id: tomo_color_emotions
+    text: "色にはそれぞれ感情があるんです。赤は怒り、青は悲しみ、でも黄色は...複雑な感情。混ざり合ってる。"
+    choices:
+      - text: "黄色はどんな感情？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.color_theory
+            value: 1
+        next: tomo_yellow_complexity
+      - text: "君の好きな色は？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.personal_preference
+            value: 1
+        next: tomo_favorite_color
+      - text: "色と話せるの？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.mysterious_level
+            value: 1
+        next: tomo_color_communication
+
+  - id: tomo_artistic_sacrifice
+    text: "絵を描くたびに、何かを失ってる気がするんです。でも、何を失ってるのかわからない。記憶？時間？それとも..."
+    choices:
+      - text: "何を失ってると思う？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: tomo.sacrifice_awareness
+            value: 1
+        next: tomo_loss_speculation
+      - text: "失うものがあっても描く？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: tomo.dedication_level
+            value: 1
+        next: tomo_artistic_commitment
+      - text: "描くのをやめる？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: tomo.concern_level
+            value: 1
+        next: tomo_cessation_consideration
+
+  # 中間ノード
+  - id: tomo_reality_changes_detail
+    text: "小さな変化から始まります。風の向き、雲の形、鳥の鳴き声。でも、時々、大きな変化も。"
+    choices:
+      - text: "大きな変化って？"
+        next: tomo_major_alterations
+      - text: "コントロールできる？"
+        next: tomo_control_discussion
+
+  - id: tomo_fear_explanation
+    text: "力をコントロールできなくなるのが怖いんです。間違った絵を描いて、取り返しのつかないことになったら。"
+    choices:
+      - text: "君なら大丈夫"
+        next: tomo_confidence_building
+      - text: "慎重になることは大切"
+        next: tomo_caution_validation
+
+  - id: tomo_ability_validation
+    text: "素晴らしい...そう言ってもらえると、嬉しいです。でも、責任も重いんです。"
+    choices:
+      - text: "責任を一人で背負わないで"
+        next: tomo_burden_sharing
+      - text: "君なら責任を果たせる"
+        next: tomo_responsibility_confidence
+
+  - id: tomo_forbidden_revelation
+    text: "人の心を変える絵です。でも、人の心を変えるのは、とても危険なこと。だから、描いてはいけない。"
+    choices:
+      - text: "なぜ心を変えたいの？"
+        next: tomo_heart_change_desire
+      - text: "描かない方がいい"
+        next: tomo_prohibition_agreement
+
+  - id: tomo_prohibition_comfort
+    text: "描かなくていい...そうですね。でも、その衝動を抑えるのは、とても辛いんです。"
+    choices:
+      - text: "辛い時は話して"
+        next: tomo_support_offering
+      - text: "他の絵を描こう"
+        next: tomo_alternative_suggestion
+
+  - id: tomo_impulse_explanation
+    text: "描きたい衝動...それは、心の奥底からやってくるんです。止めることができない。"
+    choices:
+      - text: "衝動も君の一部"
+        next: tomo_impulse_acceptance
+      - text: "一緒に抑えよう"
+        next: tomo_impulse_control
+
+  - id: tomo_world_depth_explanation
+    text: "無限に深いです。でも、深く行くほど、危険も増します。迷子になってしまうかもしれない。"
+    choices:
+      - text: "迷子になったらどうする？"
+        next: tomo_lost_scenario
+      - text: "深く行きすぎないで"
+        next: tomo_depth_caution
+
+  - id: tomo_danger_awareness
+    text: "危険...そうですね。でも、美しいものを創るには、危険も必要なんです。"
+    choices:
+      - text: "安全な美しさもある"
+        next: tomo_safe_beauty
+      - text: "君の判断を信じる"
+        next: tomo_trust_decision
+
+  - id: tomo_world_sharing
+    text: "見てみたい...本当ですか？でも、一度見たら、もう普通の世界には戻れないかもしれません。"
+    choices:
+      - text: "構わない"
+        next: tomo_world_initiation
+      - text: "君と一緒なら"
+        next: tomo_companionship_courage
+
+  - id: tomo_animation_sharing
+    text: "見せてあげたいです。でも、あなたの目に映るかどうか...試してみませんか？"
+    choices:
+      - text: "ぜひ見てみたい"
+        next: tomo_animation_attempt
+      - text: "見えなくても信じる"
+        next: tomo_faith_expression
+
+  - id: tomo_life_acknowledgment
+    text: "生きてるみたい...そうなんです。私の絵たちは、みんな生きています。"
+    choices:
+      - text: "命を与えてる"
+        next: tomo_life_giving
+      - text: "責任重大だね"
+        next: tomo_creation_responsibility
+
+  - id: tomo_special_world_recognition
+    text: "特別な世界...そうですね。でも、時々、一人だけの世界が寂しくなります。"
+    choices:
+      - text: "一人じゃない"
+        next: tomo_companionship_offer
+      - text: "世界を分かち合おう"
+        next: tomo_world_sharing_offer
+
+  - id: tomo_yellow_complexity
+    text: "黄色は...希望と絶望が混ざった色。明るいけれど、どこか切ない。"
+    choices:
+      - text: "複雑な感情だね"
+        next: tomo_emotional_complexity
+      - text: "君らしい色"
+        next: tomo_color_personality
+
+  - id: tomo_favorite_color
+    text: "私の好きな色...透明です。何色にもなれるし、何色でもない。"
+    choices:
+      - text: "透明は可能性の色"
+        next: tomo_possibility_color
+      - text: "君みたいな色"
+        next: tomo_color_reflection
+
+  - id: tomo_color_communication
+    text: "色と話せる...そうですね。色たちは、いつも私に話しかけてくれます。"
+    choices:
+      - text: "どんなことを話す？"
+        next: tomo_color_conversation
+      - text: "素敵な友達だね"
+        next: tomo_color_friendship
+
+  - id: tomo_loss_speculation
+    text: "何を失ってるか...もしかしたら、普通の人生を失ってるのかもしれません。"
+    choices:
+      - text: "普通って何？"
+        next: tomo_normalcy_question
+      - text: "君の人生は特別"
+        next: tomo_special_life
+
+  - id: tomo_artistic_commitment
+    text: "失うものがあっても描く...そうですね。描かずにはいられません。"
+    choices:
+      - text: "それが君の使命"
+        next: tomo_mission_recognition
+      - text: "情熱は美しい"
+        next: tomo_passion_beauty
+
+  - id: tomo_cessation_consideration
+    text: "描くのをやめる...それは、息をするのをやめるのと同じです。できません。"
+    choices:
+      - text: "それほど大切なんだね"
+        next: tomo_art_importance
+      - text: "君の本質だ"
+        next: tomo_essence_recognition
+
+  # 収束ノード
+  - id: tomo_major_alterations
+    text: "建物が消えたり、新しい道ができたり。でも、みんな気づかないんです。"
+    choices:
+      - text: "なぜ気づかない？"
+        next: tomo_perception_blindness
+
+  - id: tomo_control_discussion
+    text: "完全にはコントロールできません。でも、少しずつ上手になってます。"
+    choices:
+      - text: "練習が必要だね"
+        next: tomo_practice_necessity
+
+  - id: tomo_confidence_building
+    text: "大丈夫...そう言ってもらえると、勇気が出ます。"
+    choices:
+      - text: "いつでも支えるよ"
+        next: tomo_support_assurance
+
+  - id: tomo_caution_validation
+    text: "慎重になることは大切...そうですね。急がず、丁寧に。"
+    choices:
+      - text: "君のペースで"
+        next: tomo_pace_respect
+
+  - id: tomo_burden_sharing
+    text: "一人で背負わないで...でも、この力は私だけのものだから。"
+    choices:
+      - text: "でも君は一人じゃない"
+        next: tomo_companionship_reminder
+
+  - id: tomo_responsibility_confidence
+    text: "責任を果たせる...そう信じてもらえると、心強いです。"
+    choices:
+      - text: "信じてる"
+        next: tomo_faith_confirmation
+
+  - id: tomo_heart_change_desire
+    text: "心を変えたい...それは、愛されたいからかもしれません。"
+    choices:
+      - text: "愛は自然に生まれる"
+        next: tomo_natural_love
+
+  - id: tomo_prohibition_agreement
+    text: "描かない方がいい...そうですね。でも、誘惑に負けそうになります。"
+    choices:
+      - text: "一緒に抵抗しよう"
+        next: tomo_resistance_together
+
+  - id: tomo_support_offering
+    text: "辛い時は話して...ありがとうございます。心の支えになります。"
+    choices:
+      - text: "いつでも聞いてる"
+        next: tomo_listening_promise
+
+  - id: tomo_alternative_suggestion
+    text: "他の絵を描く...そうですね。美しい絵を描いて、心を癒しましょう。"
+    choices:
+      - text: "美しい絵を一緒に"
+        next: tomo_collaborative_art
+
+  - id: tomo_impulse_acceptance
+    text: "衝動も私の一部...そうですね。否定せず、受け入れてみます。"
+    choices:
+      - text: "受け入れることは強さ"
+        next: tomo_acceptance_strength
+
+  - id: tomo_impulse_control
+    text: "一緒に抑えよう...心強いです。一人だと、負けてしまいそうで。"
+    choices:
+      - text: "一緒に戦う"
+        next: tomo_joint_struggle
+
+  # 最終収束ノード
+  - id: tomo_perception_blindness
+    text: "人は、見たいものしか見ないから。変化を受け入れられないから。"
+    choices: []
+
+  - id: tomo_practice_necessity
+    text: "練習...そうですね。毎日、少しずつ練習しています。"
+    choices: []
+
+  - id: tomo_support_assurance
+    text: "いつでも支える...そう言ってもらえると、何でもできそうです。"
+    choices: []
+
+  - id: tomo_pace_respect
+    text: "私のペースで...ありがとうございます。急がず、丁寧に。"
+    choices: []
+
+  - id: tomo_companionship_reminder
+    text: "一人じゃない...そうですね。あなたがいてくれます。"
+    choices: []
+
+  - id: tomo_faith_confirmation
+    text: "信じてる...その信頼に応えたいです。"
+    choices: []
+
+  - id: tomo_natural_love
+    text: "愛は自然に生まれる...そうですね。無理やり作るものじゃない。"
+    choices: []
+
+  - id: tomo_resistance_together
+    text: "一緒に抵抗...心強いです。一人だと負けてしまいそうで。"
+    choices: []
+
+  - id: tomo_listening_promise
+    text: "いつでも聞いてる...ありがとうございます。心の支えです。"
+    choices: []
+
+  - id: tomo_collaborative_art
+    text: "一緒に美しい絵を...素敵ですね。一緒に創れたら。"
+    choices: []
+
+  - id: tomo_acceptance_strength
+    text: "受け入れることは強さ...そうですね。強くなってみます。"
+    choices: []
+
+  - id: tomo_joint_struggle
+    text: "一緒に戦う...頼もしいです。もう一人じゃない。"
+    choices: []
+
+  - id: tomo_lost_scenario
+    text: "迷子になったら...きっと、あなたが迎えに来てくれますよね？"
+    choices: []
+
+  - id: tomo_depth_caution
+    text: "深く行きすぎないで...そうですね。安全な深さで止めておきます。"
+    choices: []
+
+  - id: tomo_safe_beauty
+    text: "安全な美しさ...そうですね。危険を冒さなくても、美しいものは創れる。"
+    choices: []
+
+  - id: tomo_trust_decision
+    text: "私の判断を信じる...ありがとうございます。責任を持って判断します。"
+    choices: []
+
+  - id: tomo_world_initiation
+    text: "構わない...本当ですか？では、私の世界へようこそ。"
+    choices: []
+
+  - id: tomo_companionship_courage
+    text: "一緒なら...そうですね。あなたと一緒なら、怖くない。"
+    choices: []
+
+  - id: tomo_animation_attempt
+    text: "見てみたい...では、この蝶を見てください。今、羽ばたきます。"
+    choices: []
+
+  - id: tomo_faith_expression
+    text: "見えなくても信じる...ありがとうございます。信じてもらえるだけで嬉しい。"
+    choices: []
+
+  - id: tomo_life_giving
+    text: "命を与えてる...そうですね。私は、絵に命を吹き込んでいます。"
+    choices: []
+
+  - id: tomo_creation_responsibility
+    text: "責任重大...そうですね。創造には、責任が伴います。"
+    choices: []
+
+  - id: tomo_companionship_offer
+    text: "一人じゃない...そうですね。あなたがいてくれるから。"
+    choices: []
+
+  - id: tomo_world_sharing_offer
+    text: "世界を分かち合う...素敵ですね。一緒に世界を見てみませんか？"
+    choices: []
+
+  - id: tomo_emotional_complexity
+    text: "複雑な感情...そうですね。人の心は、とても複雑です。"
+    choices: []
+
+  - id: tomo_color_personality
+    text: "私らしい色...そうですね。複雑で、矛盾していて。"
+    choices: []
+
+  - id: tomo_possibility_color
+    text: "可能性の色...素敵な表現ですね。透明は、無限の可能性を秘めています。"
+    choices: []
+
+  - id: tomo_color_reflection
+    text: "私みたいな色...そうですね。何色でもなくて、何色でもある。"
+    choices: []
+
+  - id: tomo_color_conversation
+    text: "色たちは、世界の秘密を教えてくれます。でも、人間の言葉では表現できません。"
+    choices: []
+
+  - id: tomo_color_friendship
+    text: "素敵な友達...そうですね。色たちは、私の一番の理解者です。"
+    choices: []
+
+  - id: tomo_normalcy_question
+    text: "普通って何？...そうですね。普通なんて、きっと存在しない。"
+    choices: []
+
+  - id: tomo_special_life
+    text: "特別な人生...そうですね。私の人生は、確かに特別です。"
+    choices: []
+
+  - id: tomo_mission_recognition
+    text: "使命...そうですね。これが、私の使命なのかもしれません。"
+    choices: []
+
+  - id: tomo_passion_beauty
+    text: "情熱は美しい...そうですね。この情熱を、美しいものに変えていきます。"
+    choices: []
+
+  - id: tomo_art_importance
+    text: "それほど大切...そうです。絵は、私の全てです。"
+    choices: []
+
+  - id: tomo_essence_recognition
+    text: "私の本質...そうですね。絵を描くことが、私の本質です。"
+    choices: []

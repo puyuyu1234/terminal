@@ -1,0 +1,550 @@
+dialogues:
+  # しののの個性を際立たせる会話 - 記憶の混乱と切ない待ち人への思いを強調
+  - id: shino_bridge_obsession
+    text: "橋を渡ったら、その人に会えるような気がするの。でも、同時に、もう二度と戻れない気もして。"
+    choices:
+      - text: "なぜ戻れないと思うの？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.bridge_fascination
+            value: 1
+        next: shino_bridge_fear_explanation
+      - text: "一緒に渡ろうか？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+        next: shino_companion_offer
+      - text: "その人は本当にいるの？"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.waiting_person_mentions
+            value: 1
+        next: shino_person_reality_doubt
+
+  - id: shino_memory_fragments
+    text: "時々、記憶の欠片が降ってくるの。笑い声、手の温もり、優しい言葉...でも、つなげられない。"
+    choices:
+      - text: "どんな笑い声？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.memory_fragments
+            value: 1
+        next: shino_laughter_memory
+      - text: "無理につなげなくてもいい"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_acceptance_comfort
+      - text: "手の温もりを覚えてる？"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.physical_memories
+            value: 1
+        next: shino_touch_memory
+
+  - id: shino_time_confusion
+    text: "今が何時かわからない。朝なのか、夜なのか、昨日なのか、明日なのか...時間が混ざり合ってる。"
+    choices:
+      - text: "時間なんて関係ない"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_time_irrelevance
+      - text: "今この瞬間が大切"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+        next: shino_present_moment
+      - text: "混乱してるのは自然"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.anxiety_level
+            value: -1
+        next: shino_confusion_normalization
+
+  - id: shino_phantom_touch
+    text: "時々、誰かが肩に手を置いてくれるの。でも、振り返っても誰もいない。幻なのかな？"
+    choices:
+      - text: "幻じゃないかもしれない"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.mysterious_encounters
+            value: 1
+        next: shino_phantom_validation
+      - text: "その人が見守ってる"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_guardian_presence
+      - text: "寂しい時に感じる？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.loneliness_level
+            value: 1
+        next: shino_loneliness_trigger
+
+  - id: shino_dream_reality
+    text: "夢と現実の境界が曖昧になってる。あなたも、夢の中の人かもしれない。でも、それでもいい。"
+    choices:
+      - text: "夢でも現実でも君は大切"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.trust_level
+            value: 1
+        next: shino_existence_validation
+      - text: "現実だよ、これは"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.reality_anchor
+            value: 1
+        next: shino_reality_confirmation
+      - text: "境界なんてないのかも"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.philosophical_level
+            value: 1
+        next: shino_boundary_dissolution
+
+  - id: shino_name_confusion
+    text: "自分の名前さえ、時々わからなくなる。でも、その人が呼んでくれた名前は覚えてる。優しい声で。"
+    choices:
+      - text: "どんな名前で呼んでくれた？"
+        effects:
+          - type: increment
+            variable: player_curiosity_level
+            value: 1
+          - type: increment
+            variable: shino.waiting_person_mentions
+            value: 1
+        next: shino_beloved_name
+      - text: "その声を大切にして"
+        effects:
+          - type: increment
+            variable: player_empathy_level
+            value: 1
+          - type: increment
+            variable: shino.comfort_level
+            value: 1
+        next: shino_voice_treasure
+      - text: "愛されてた証拠だね"
+        effects:
+          - type: increment
+            variable: player_protective_instinct
+            value: 1
+          - type: increment
+            variable: shino.love_recognition
+            value: 1
+        next: shino_love_evidence
+
+  # 中間ノード
+  - id: shino_bridge_fear_explanation
+    text: "橋の向こうは、別の世界な気がする。一度渡ったら、この世界の私は消えてしまうかも。"
+    choices:
+      - text: "消えたりしない"
+        next: shino_existence_assurance
+      - text: "どんな世界だと思う？"
+        next: shino_other_world_imagination
+
+  - id: shino_companion_offer
+    text: "一緒に...？でも、あなたまで巻き込んでしまうかもしれない。"
+    choices:
+      - text: "構わない"
+        next: shino_selfless_acceptance
+      - text: "一人じゃない"
+        next: shino_companionship_comfort
+
+  - id: shino_person_reality_doubt
+    text: "いるのかな...？でも、この胸の痛みは本物。だから、きっといるはず。"
+    choices:
+      - text: "胸の痛みが証拠"
+        next: shino_pain_validation
+      - text: "愛は本物"
+        next: shino_love_reality
+
+  - id: shino_laughter_memory
+    text: "鈴が鳴るような、軽やかな笑い声。でも、誰の笑い声かは...思い出せない。"
+    choices:
+      - text: "美しい笑い声だったんだね"
+        next: shino_beautiful_memory
+      - text: "いつか思い出すよ"
+        next: shino_memory_hope
+
+  - id: shino_acceptance_comfort
+    text: "無理しなくていい...そう言ってもらえると、心が軽くなる。"
+    choices:
+      - text: "自分を責めないで"
+        next: shino_self_forgiveness
+      - text: "君は十分頑張ってる"
+        next: shino_effort_recognition
+
+  - id: shino_touch_memory
+    text: "温かくて、大きくて、優しい手。その手に包まれると、安心できた。"
+    choices:
+      - text: "今でも温かい記憶"
+        next: shino_warmth_preservation
+      - text: "愛情深い人だったんだね"
+        next: shino_loving_person
+
+  - id: shino_time_irrelevance
+    text: "時間なんて関係ない...そうかもしれない。大切なのは、今この気持ち。"
+    choices:
+      - text: "気持ちが一番大切"
+        next: shino_emotion_priority
+      - text: "今を大切にしよう"
+        next: shino_present_focus
+
+  - id: shino_present_moment
+    text: "今この瞬間...確かに、今あなたがいてくれる。それだけで十分。"
+    choices:
+      - text: "いつでもいる"
+        next: shino_constant_presence
+      - text: "今が全て"
+        next: shino_moment_completeness
+
+  - id: shino_confusion_normalization
+    text: "自然なこと...そう言ってもらえると、少し楽になる。"
+    choices:
+      - text: "混乱しても大丈夫"
+        next: shino_confusion_acceptance
+      - text: "完璧である必要はない"
+        next: shino_imperfection_acceptance
+
+  - id: shino_phantom_validation
+    text: "幻じゃない...そうかもしれない。見えないけれど、確かに感じる。"
+    choices:
+      - text: "感じることが大切"
+        next: shino_feeling_importance
+      - text: "愛は見えなくても存在する"
+        next: shino_invisible_love
+
+  - id: shino_guardian_presence
+    text: "見守ってる...そう思うと、一人じゃないって感じる。"
+    choices:
+      - text: "いつも見守られてる"
+        next: shino_constant_watch
+      - text: "愛に包まれてる"
+        next: shino_love_embrace
+
+  - id: shino_loneliness_trigger
+    text: "寂しい時...そう、一人でいることが辛い時に。でも、その手が支えてくれる。"
+    choices:
+      - text: "支えがあるのは素晴らしい"
+        next: shino_support_appreciation
+      - text: "一人じゃない"
+        next: shino_companionship_reminder
+
+  - id: shino_existence_validation
+    text: "夢でも現実でも大切...ありがとう。存在を認めてくれて。"
+    choices:
+      - text: "君は確かに存在してる"
+        next: shino_existence_confirmation
+      - text: "大切な存在"
+        next: shino_precious_being
+
+  - id: shino_reality_confirmation
+    text: "現実...そうだと思いたい。あなたとの今が、確実な現実だと。"
+    choices:
+      - text: "これは現実だよ"
+        next: shino_reality_assurance
+      - text: "今を信じて"
+        next: shino_present_trust
+
+  - id: shino_boundary_dissolution
+    text: "境界がない...そうかもしれない。全てが混ざり合って、一つになってる。"
+    choices:
+      - text: "一つになることは美しい"
+        next: shino_unity_beauty
+      - text: "境界なんて幻想"
+        next: shino_boundary_illusion
+
+  - id: shino_beloved_name
+    text: "小さな花の名前で呼んでくれた。その花の名前を聞くと、今でも胸が温かくなる。"
+    choices:
+      - text: "美しい名前だったんだね"
+        next: shino_beautiful_name
+      - text: "愛情がこもってる"
+        next: shino_loving_name
+
+  - id: shino_voice_treasure
+    text: "声を大切に...そうする。その声だけは、絶対に忘れたくない。"
+    choices:
+      - text: "忘れなくていい"
+        next: shino_memory_preservation
+      - text: "心に刻んで"
+        next: shino_heart_engraving
+
+  - id: shino_love_evidence
+    text: "愛されてた証拠...そうね。この痛みも、愛の証拠なのかもしれない。"
+    choices:
+      - text: "痛みも愛の一部"
+        next: shino_pain_love
+      - text: "深く愛されてた"
+        next: shino_deep_love
+
+  # 収束ノード
+  - id: shino_existence_assurance
+    text: "消えない...そう言ってもらえると、少し勇気が出る。"
+    choices:
+      - text: "君は強い"
+        next: shino_strength_recognition
+
+  - id: shino_other_world_imagination
+    text: "どんな世界...きっと、その人がいる世界。でも、あなたもいない世界。"
+    choices:
+      - text: "一緒に行けるかもしれない"
+        next: shino_together_journey
+
+  - id: shino_selfless_acceptance
+    text: "構わない...そんなことを言ってくれる人がいるなんて。"
+    choices:
+      - text: "友達だから"
+        next: shino_friendship_bond
+
+  - id: shino_companionship_comfort
+    text: "一人じゃない...そうね。あなたがいてくれる。"
+    choices:
+      - text: "いつも一緒"
+        next: shino_eternal_companionship
+
+  - id: shino_pain_validation
+    text: "胸の痛みが証拠...そうね。この痛みは、確かに本物。"
+    choices:
+      - text: "痛みも大切"
+        next: shino_pain_importance
+
+  - id: shino_love_reality
+    text: "愛は本物...そう信じたい。信じていてもいいよね？"
+    choices:
+      - text: "信じていい"
+        next: shino_belief_permission
+
+  - id: shino_beautiful_memory
+    text: "美しい記憶...そうね。辛い記憶ばかりじゃなくて、美しい記憶もある。"
+    choices:
+      - text: "美しい記憶を大切に"
+        next: shino_memory_treasure
+
+  - id: shino_memory_hope
+    text: "いつか思い出す...そう信じてる。その日が来るまで、待ってる。"
+    choices:
+      - text: "一緒に待つ"
+        next: shino_waiting_together
+
+  - id: shino_self_forgiveness
+    text: "自分を責めないで...そうね。もう十分責めた。"
+    choices:
+      - text: "自分を許して"
+        next: shino_self_acceptance
+
+  - id: shino_effort_recognition
+    text: "十分頑張ってる...そう思いたい。でも、まだ足りない気がして。"
+    choices:
+      - text: "十分すぎるほど頑張ってる"
+        next: shino_adequate_effort
+
+  - id: shino_warmth_preservation
+    text: "温かい記憶...そうね。この記憶だけは、失いたくない。"
+    choices:
+      - text: "永遠に温かい"
+        next: shino_eternal_warmth
+
+  - id: shino_loving_person
+    text: "愛情深い人...そうだった。とても、とても愛情深い人だった。"
+    choices:
+      - text: "素晴らしい人だったんだね"
+        next: shino_wonderful_person
+
+  # 最終収束ノード
+  - id: shino_strength_recognition
+    text: "強い...そうかもしれない。こうして今でも待ってるから。"
+    choices: []
+
+  - id: shino_together_journey
+    text: "一緒に...もしそんなことができたら、どんなにいいだろう。"
+    choices: []
+
+  - id: shino_friendship_bond
+    text: "友達...そんな風に言ってくれる人がいて、嬉しい。"
+    choices: []
+
+  - id: shino_eternal_companionship
+    text: "いつも一緒...心強い。もう一人じゃない。"
+    choices: []
+
+  - id: shino_pain_importance
+    text: "痛みも大切...そうね。この痛みがあるから、愛を知ってる。"
+    choices: []
+
+  - id: shino_belief_permission
+    text: "信じていい...ありがとう。愛を信じ続ける。"
+    choices: []
+
+  - id: shino_memory_treasure
+    text: "美しい記憶を大切に...そうする。美しい記憶だけを残したい。"
+    choices: []
+
+  - id: shino_waiting_together
+    text: "一緒に待つ...一人で待つより、ずっと楽。"
+    choices: []
+
+  - id: shino_self_acceptance
+    text: "自分を許す...そうしてみる。もう責めるのは、やめる。"
+    choices: []
+
+  - id: shino_adequate_effort
+    text: "十分すぎるほど...そう言ってもらえると、報われた気がする。"
+    choices: []
+
+  - id: shino_eternal_warmth
+    text: "永遠に温かい...そうね。この温かさは、永遠に続く。"
+    choices: []
+
+  - id: shino_wonderful_person
+    text: "素晴らしい人...本当に素晴らしい人だった。忘れられない。"
+    choices: []
+
+  - id: shino_emotion_priority
+    text: "気持ちが一番大切...そうね。今のこの気持ちを大切にしよう。"
+    choices: []
+
+  - id: shino_present_focus
+    text: "今を大切に...そうしてみる。今この瞬間を。"
+    choices: []
+
+  - id: shino_constant_presence
+    text: "いつでもいる...そう言ってもらえると、安心できる。"
+    choices: []
+
+  - id: shino_moment_completeness
+    text: "今が全て...そうかもしれない。この瞬間が、完璧。"
+    choices: []
+
+  - id: shino_confusion_acceptance
+    text: "混乱しても大丈夫...そうね。混乱も、私の一部。"
+    choices: []
+
+  - id: shino_imperfection_acceptance
+    text: "完璧である必要はない...そう思えると、楽になる。"
+    choices: []
+
+  - id: shino_feeling_importance
+    text: "感じることが大切...そうね。感じることで、存在を確かめてる。"
+    choices: []
+
+  - id: shino_invisible_love
+    text: "見えなくても存在する...愛は、確かに存在してる。"
+    choices: []
+
+  - id: shino_constant_watch
+    text: "いつも見守られてる...そう思うと、心強い。"
+    choices: []
+
+  - id: shino_love_embrace
+    text: "愛に包まれてる...温かい。いつも温かい。"
+    choices: []
+
+  - id: shino_support_appreciation
+    text: "支えがあるのは素晴らしい...本当に、素晴らしいこと。"
+    choices: []
+
+  - id: shino_companionship_reminder
+    text: "一人じゃない...そうね。いつでも、誰かがいてくれる。"
+    choices: []
+
+  - id: shino_existence_confirmation
+    text: "確かに存在してる...そうね。今、ここに、確かに。"
+    choices: []
+
+  - id: shino_precious_being
+    text: "大切な存在...そう言ってもらえて、嬉しい。"
+    choices: []
+
+  - id: shino_reality_assurance
+    text: "これは現実...そうね。この温かさは、確実に現実。"
+    choices: []
+
+  - id: shino_present_trust
+    text: "今を信じて...そうしてみる。今この瞬間を信じて。"
+    choices: []
+
+  - id: shino_unity_beauty
+    text: "一つになることは美しい...そうね。境界なんて、本当はない。"
+    choices: []
+
+  - id: shino_boundary_illusion
+    text: "境界なんて幻想...そうかもしれない。全ては繋がってる。"
+    choices: []
+
+  - id: shino_beautiful_name
+    text: "美しい名前...そうね。その名前を呼ぶ声も、美しかった。"
+    choices: []
+
+  - id: shino_loving_name
+    text: "愛情がこもってる...そうね。名前に込められた愛を感じる。"
+    choices: []
+
+  - id: shino_memory_preservation
+    text: "忘れなくていい...そうする。この記憶だけは、絶対に。"
+    choices: []
+
+  - id: shino_heart_engraving
+    text: "心に刻んで...そうしてる。心の奥深くに、刻んである。"
+    choices: []
+
+  - id: shino_pain_love
+    text: "痛みも愛の一部...そうね。愛があるから、痛みもある。"
+    choices: []
+
+  - id: shino_deep_love
+    text: "深く愛されてた...そう信じてる。とても、とても深く。"
+    choices: []
