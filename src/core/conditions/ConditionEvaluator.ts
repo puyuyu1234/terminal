@@ -48,7 +48,7 @@ export class ConditionEvaluator {
       const charState = context.state.characters.get(params.characterId);
       if (!charState) return false;
       
-      const level = charState.trustLevel;
+      const level = context.state.variables.get(`${params.characterId}.trust_level`) || 0;
       switch (params.operator) {
         case 'hostile':
           return level < -50;
@@ -156,9 +156,7 @@ export class ConditionEvaluator {
           const charState = context.state.characters.get(charId);
           value = charState?.meetCount || 0;
         } else if (condition.name.includes('_trust_level')) {
-          const charId = condition.name.replace('_trust_level', '') as any;
-          const charState = context.state.characters.get(charId);
-          value = charState?.trustLevel || 0;
+          value = context.state.variables.get(condition.name) || 0;
         } else {
           value = context.state.variables.get(condition.name);
         }

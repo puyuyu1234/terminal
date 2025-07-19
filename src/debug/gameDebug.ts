@@ -71,6 +71,16 @@ export class GameDebugger {
       // This would require extending the GameEngine to expose choice effects
     });
   }
+
+  // Debug: Set all character trust levels to MAX
+  maxTrustAll(): void {
+    if (!this.gameEngine) {
+      console.warn('🔧 [DEBUG] GameEngine not attached');
+      return;
+    }
+    this.gameEngine.debugMaxTrustAll();
+    console.log('🚀 [DEBUG] Set all character trust levels to MAX (100)');
+  }
 }
 
 // Create global debugger instance
@@ -90,4 +100,5 @@ if (typeof window !== 'undefined') {
   console.log('  - gameDebugger.logSilenceCount()');
   console.log('  - gameDebugger.incrementSilence()');
   console.log('  - gameDebugger.resetSilence()');
+  console.log('  - gameDebugger.maxTrustAll()');
 }

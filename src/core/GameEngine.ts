@@ -344,6 +344,11 @@ export class GameEngine {
     }
   }
 
+  // Debug: Set all character trust levels to MAX
+  debugMaxTrustAll(): void {
+    this.stateManager.debugMaxTrustAll();
+  }
+
   // Save/Load methods
   async saveGame(): Promise<void> {
     await this.stateManager.save();

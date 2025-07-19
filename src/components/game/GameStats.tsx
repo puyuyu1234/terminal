@@ -15,7 +15,8 @@ export const GameStats: React.FC<GameStatsProps> = ({ gameState, onBack }) => {
   
   const characterStats = Array.from(gameState.characters.entries()).map(([id, state]) => ({
     id,
-    ...state
+    ...state,
+    trustLevel: gameState.variables.get(`${id}.trust_level`) || 0  // Use variable instead of characterData
   }));
 
   const totalVariables = gameState.variables.size;

@@ -163,7 +163,8 @@ export class CharacterManager {
     console.log('  Player visits:', context.state.player.totalVisits);
     console.log('  Character states:');
     context.state.characters.forEach((charState, charId) => {
-      console.log(`    ${charId}: meetCount=${charState.meetCount}, trustLevel=${charState.trustLevel}`);
+      const variableTrustLevel = context.state.variables.get(`${charId}.trust_level`) || 0;
+      console.log(`    ${charId}: meetCount=${charState.meetCount}, trustLevel=${variableTrustLevel} (from variable)`);
     });
     console.log('  Weighted candidates:');
     weightedCandidates.forEach(wc => {

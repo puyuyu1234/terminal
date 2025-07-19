@@ -45,7 +45,7 @@ export class VariableReplacementProcessor implements TextProcessor {
         if (charState) {
           // Check if this is a trust level reference
           if (baseVar === 'trust_level') {
-            return String(charState.trustLevel);
+            return String(context.state.variables.get(`${characterId}.trust_level`) || 0);
           }
           
           // Check character-specific flags or other properties
@@ -134,7 +134,7 @@ export class CharacterStateTextProcessor implements TextProcessor {
 
     return text
       .replace(/\{\{meet_count\}\}/g, String(characterState.meetCount))
-      .replace(/\{\{trust_level\}\}/g, String(characterState.trustLevel))
+      .replace(/\{\{trust_level\}\}/g, String(context.state.variables.get(`${context.currentCharacter.id}.trust_level`) || 0))
       .replace(/\{\{last_choice\}\}/g, () => {
         const lastChoice = characterState.lastChoices[characterState.lastChoices.length - 1];
         return lastChoice || '';

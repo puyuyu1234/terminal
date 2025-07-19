@@ -308,4 +308,21 @@ export class StateManager {
       console.error('Failed to save on destroy:', error);
     });
   }
+
+  // Debug method: Set all character trust levels to MAX
+  debugMaxTrustAll(): void {
+    const characters = ['shino', 'minase', 'ayane', 'nazuna', 'tomo'];
+    
+    characters.forEach(charId => {
+      // Set variable trust_level to 100
+      this.setVariable(`${charId}.trust_level`, 100);
+      
+      // Also update characterData for consistency
+      const charState = this.getCharacterState(charId as any);
+      charState.trustLevel = 100;
+    });
+    
+    console.log('[StateManager] 🚀 DEBUG: Set all character trust levels to MAX (100)');
+    this.save();
+  }
 }
