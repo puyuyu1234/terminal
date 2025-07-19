@@ -93,6 +93,9 @@ export class StateManager {
         specificFlags: new Set(charData.flags),
         lastSeenDate: charData.lastSeenDate
       });
+      
+      // Sync with variable trust_level
+      this.setVariable(`${charId}.trust_level`, charData.trustLevel);
     });
     
     // 会話履歴を復元
@@ -200,6 +203,9 @@ export class StateManager {
     if (!state) {
       state = this.createInitialCharacterState();
       this.state.characters.set(characterId, state);
+      
+      // Sync with variable trust_level
+      this.setVariable(`${characterId}.trust_level`, state.trustLevel);
     }
     return state;
   }
@@ -233,6 +239,9 @@ export class StateManager {
   modifyCharacterTrust(characterId: CharacterId, amount: number): void {
     const charState = this.getCharacterState(characterId);
     charState.trustLevel = Math.max(-100, Math.min(100, charState.trustLevel + amount));
+    
+    // Sync with variable trust_level
+    this.setVariable(`${characterId}.trust_level`, charState.trustLevel);
   }
 
   addToHistory(entry: Omit<DialogueHistoryEntry, 'timestamp'>): void {
